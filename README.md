@@ -98,8 +98,7 @@ formatter-export-*.txt         # paste-friendly name / description
 kanso-{solid,transparent,mono}.json
 files/                         # CDN icons (do not rename)
 scripts/                       # build, patch, audit, publish
-docs/                          # design notes & audits
-badges/                        # icon manifests & local materialize workspace
+badges/                        # icon manifests
 ```
 
 ---

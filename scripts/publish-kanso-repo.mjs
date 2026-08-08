@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Publish the full Kanso suite to github.com/nosvasedis/Kanso
- * — packs, formatter, scripts, docs, and /files icons at repo root.
+ * Publish the public Kanso suite to github.com/nosvasedis/Kanso
+ * — packs, formatter, scripts, and /files icons at repo root.
+ * Internal notes under docs/ are NOT published.
  *
  * Usage:
  *   node scripts/publish-kanso-repo.mjs
@@ -95,7 +96,8 @@ const IGNORE_BADGES_DIR = new Set([
   "generated-transparent",
   "badge-images", // published as /files instead
 ]);
-const IGNORE_DOCS_OK = true;
+/** Internal audits / logo briefs stay local — never ship to the public repo. */
+const PUBLISH_DOCS = false;
 
 async function main() {
   const dryRun = process.argv.includes("--dry-run");
@@ -163,7 +165,9 @@ async function main() {
   await copyDirFiltered(path.join(ROOT, "scripts"), path.join(work, "scripts"), {
     ignoreNames: IGNORE_SCRIPT_DIR,
   });
-  await copyDirFiltered(path.join(ROOT, "docs"), path.join(work, "docs"));
+  if (PUBLISH_DOCS) {
+    await copyDirFiltered(path.join(ROOT, "docs"), path.join(work, "docs"));
+  }
   await copyDirFiltered(path.join(ROOT, "badges"), path.join(work, "badges"), {
     ignoreNames: IGNORE_BADGES_DIR,
   });
@@ -211,7 +215,7 @@ async function main() {
         "user.name=nosvasedis",
         "commit",
         "-m",
-        "Kanso: full suite — formatter, packs, icons, docs\n\nNo echo. Every detail once.",
+        "Kanso: public suite — formatter, packs, icons\n\nNo echo. Every detail once.",
       ],
       { cwd: work }
     );
