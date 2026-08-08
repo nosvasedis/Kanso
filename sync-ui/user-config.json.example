@@ -2,17 +2,17 @@
   "gists": {
     "solid": {
       "url": "https://gist.github.com/nosvasedis/7abd79424bb8981b511838524c52f097",
-      "filename": "solid-nosvasedis-badges-nuvio"
+      "filename": "kanso-solid.json"
     },
     "transparent": {
       "url": "https://gist.github.com/nosvasedis/63b769d205bddbbef79faf8beef53c28",
-      "filename": "transparent-nosvasedis-badges-nuvio"
+      "filename": "kanso-transparent.json"
     },
     "mono": {
       "url": "https://gist.github.com/nosvasedis/1858e332fef11d136f76c697ea6c7439",
-      "filename": "mono-nosvasedis-badges-nuvio"
+      "filename": "kanso-mono.json"
     }
   },
-  "nuvioNotes": "Nuvio loads badges from gist raw URLs — refresh the addon after each auto-push.",
+  "nuvioNotes": "Kanso for Nuvio — No echo. Every detail once. Refresh the badge URL after each gist push.",
   "neverRemoveGroups": []
 }
