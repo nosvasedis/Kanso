@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Publish badges/badge-images/files to the public GitHub repo nosvasedis/kanso
+ * Publish badges/badge-images/files to the public GitHub repo nosvasedis/Kanso
  * (keeps /files at repo root for stable raw CDN URLs).
  *
  * Requires `gh` auth with repo scope.

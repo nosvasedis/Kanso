@@ -1,10 +1,10 @@
 # Kanso icon files (local workspace)
 
 Working copy of content-addressed PNGs published to
-[`nosvasedis/kanso`](https://github.com/nosvasedis/kanso) at `/files`.
+[`nosvasedis/Kanso`](https://github.com/nosvasedis/Kanso) at `/files`.
 
 ```text
-https://raw.githubusercontent.com/nosvasedis/kanso/main/files/<hash16>.png
+https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/<hash16>.png
 ```
 
 ```bash

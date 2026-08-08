@@ -31,8 +31,8 @@ Kanso is built for Nuvio. It is not a Universal “match the whole filename” p
 ### 1. AIOStreams formatter
 
 1. Open your AIOStreams configure page → **Formatter** → Custom.
-2. Import [`formatter.json`](https://raw.githubusercontent.com/nosvasedis/kanso/main/formatter.json),  
-   or paste [`formatter-export-name.txt`](https://raw.githubusercontent.com/nosvasedis/kanso/main/formatter-export-name.txt) into **Name** and [`formatter-export-description.txt`](https://raw.githubusercontent.com/nosvasedis/kanso/main/formatter-export-description.txt) into **Description** (preserve invisible characters).
+2. Import [`formatter.json`](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter.json),  
+   or paste [`formatter-export-name.txt`](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter-export-name.txt) into **Name** and [`formatter-export-description.txt`](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter-export-description.txt) into **Description** (preserve invisible characters).
 3. Ensure your host allows long templates (see [Requirements](#requirements)).
 
 ### 2. Nuvio badges
@@ -72,7 +72,7 @@ Kanso formatter (invisible markers + clean visible layout)
         ↓
 Nuvio haystack
         ↓
-Marker-only badge regex  →  PNG from raw.githubusercontent.com/nosvasedis/kanso/.../files/
+Marker-only badge regex  →  PNG from raw.githubusercontent.com/nosvasedis/Kanso/.../files/
 ```
 
 - Production patterns are short existence checks like `(?s)^(?=.*MARKER)` — not multi‑KB release-group allowlists.

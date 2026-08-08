@@ -1,7 +1,7 @@
 # Badge icons: CDN hosting (Kanso)
 
 Nuvio matches **Kanso** Instant badges with tiny marker regex (effectively free).
-Icons are content-hashed PNGs on [`nosvasedis/kanso`](https://github.com/nosvasedis/kanso) under `/files`.
+Icons are content-hashed PNGs on [`nosvasedis/Kanso`](https://github.com/nosvasedis/Kanso) under `/files`.
 
 ## Architecture
 
@@ -10,7 +10,7 @@ Icons are content-hashed PNGs on [`nosvasedis/kanso`](https://github.com/nosvase
 3. Badge `imageURL`s point at:
 
 ```text
-https://raw.githubusercontent.com/nosvasedis/kanso/main/files/<hash16>.png
+https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/<hash16>.png
 ```
 
 Override with `ICON_CDN_BASE` (e.g. jsDelivr) if desired.

@@ -3,7 +3,7 @@
  *
  * Override with env:
  *   ICON_CDN_OWNER  (default nosvasedis)
- *   ICON_CDN_REPO   (default kanso)
+ *   ICON_CDN_REPO   (default Kanso)
  *   ICON_CDN_REF    (default main)
  *   ICON_CDN_BASE   (full base URL; if set, owner/repo/ref ignored)
  */
@@ -15,7 +15,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.join(__dirname, "..");
 
 export const ICON_CDN_OWNER = process.env.ICON_CDN_OWNER || "nosvasedis";
-export const ICON_CDN_REPO = process.env.ICON_CDN_REPO || "kanso";
+export const ICON_CDN_REPO = process.env.ICON_CDN_REPO || "Kanso";
 export const ICON_CDN_REF = process.env.ICON_CDN_REF || "main";
 
 export const BADGE_IMAGES_DIR = path.join(ROOT, "badges", "badge-images");

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Publish the full Kanso suite to github.com/nosvasedis/kanso
+ * Publish the full Kanso suite to github.com/nosvasedis/Kanso
  * — packs, formatter, scripts, docs, and /files icons at repo root.
  *
  * Usage:
@@ -217,7 +217,7 @@ async function main() {
     );
     await run("git", ["branch", "-M", "main"], { cwd: work });
     await run("git", ["push", "-u", "origin", "HEAD:main"], { cwd: work });
-    console.log("Published https://github.com/nosvasedis/kanso");
+    console.log("Published https://github.com/nosvasedis/Kanso");
   }
 
   try {
