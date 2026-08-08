@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Badge Sync Helper</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Badge Sync Helper</h1>
+      <p class="lead">
+        Keeps your <strong>WEB / Blu-ray / Remux tier</strong> release groups aligned with
+        <a href="https://github.com/Vidhin05/Releases-Regex" target="_blank" rel="noopener"
+          >Vidhin’s Releases-Regex</a
+        >. By default it <em>adds</em> new groups only; optional strict mode also removes groups
+        Vidhin dropped.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="card" id="step-sync">
+        <h2>Step 1 — Sync from Vidhin</h2>
+        <p class="hint">
+          Click <strong>Preview</strong> to see additions (and removals if strict), then
+          <strong>Apply sync</strong> to update the tier release-group lists in the v1 snapshot
+          (<code>backup/v1/oracle/nosvasedis-badges-solid.json</code>) and regenerate
+          <code>formatter.json</code> (the AIOStreams formatter name + description). Your badge
+          JSON files are marker-based and never change from a tier sync.
+        </p>
+        <label class="toggle">
+          <input type="checkbox" id="strict-sync" />
+          <span>
+            <strong>Strict sync</strong> — also remove release groups Vidhin no longer lists for
+            each tier (preview shows − names). Leave off for normal “add only” updates.
+          </span>
+        </label>
+        <div class="actions">
+          <button type="button" class="btn secondary" id="btn-preview">Preview changes</button>
+          <button type="button" class="btn primary" id="btn-apply">Apply sync</button>
+        </div>
+        <p class="status" id="sync-status" aria-live="polite">Ready.</p>
+        <div id="sync-summary" class="summary hidden"></div>
+        <details class="details" id="tier-details">
+          <summary>Tier-by-tier breakdown</summary>
+          <div id="tier-table-wrap"></div>
+        </details>
+      </section>
+
+      <section class="card" id="step-config">
+        <h2>Gist auto-push</h2>
+        <p class="hint">
+          Solid, transparent, and mono badges each have their own Gist. All three auto-upload after
+          patch when <code>GITHUB_TOKEN</code> is in <code>.env</code>.
+        </p>
+        <p class="gist-status" id="gist-status" aria-live="polite"></p>
+        <label class="field">
+          <span>Gist URL</span>
+          <input
+            type="url"
+            id="gist-url"
+            placeholder="https://gist.github.com/you/abc123..."
+            autocomplete="off"
+          />
+        </label>
+        <label class="field">
+          <span>Gist filename</span>
+          <input
+            type="text"
+            id="gist-filename"
+            placeholder="solid-nosvasedis-badges-nuvio"
+            autocomplete="off"
+          />
+        </label>
+        <label class="field">
+          <span>Your own notes (optional)</span>
+          <textarea
+            id="nuvio-notes"
+            rows="2"
+            placeholder="e.g. Nuvio addon name, which device you use..."
+          ></textarea>
+        </label>
+        <div class="actions">
+          <button type="button" class="btn secondary" id="btn-save-config">Save preferences</button>
+          <button type="button" class="btn secondary" id="btn-push-gist">Push to Gist now</button>
+        </div>
+      </section>
+
+      <section class="card steps-card hidden" id="step-after">
+        <h2>Step 2 — Do this in Nuvio / AIOStreams</h2>
+        <p class="hint">
+          The v1 snapshot and <code>formatter.json</code> on disk are updated. Your app does
+          <strong>not</strong> pick the new formatter up until you paste the new name + description
+          into AIOStreams again (or refresh your synced formatter URL).
+        </p>
+        <ol class="checklist" id="checklist"></ol>
+        <div class="actions">
+          <button type="button" class="btn secondary" id="btn-copy-path">Copy formatter.json path</button>
+          <button type="button" class="btn secondary" id="btn-copy-json">Copy formatter name + description</button>
+          <button type="button" class="btn secondary" id="btn-open-folder">Show formatter.json in Explorer</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Default: add-only (safe). Strict: mirror Vidhin per tier. Unranked tiers rebuild
+        automatically. Tiers with no Vidhin data are never wiped in strict mode.
+      </p>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

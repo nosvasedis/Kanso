@@ -1,0 +1,8 @@
+node_modules/
+badges/generated/
+.cache/
+sync-ui/user-config.json
+badges/generated-transparent/
+badges/generated-solid/
+badges/badge-images/.publish-worktree/
+.env
