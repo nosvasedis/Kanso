@@ -1,8 +1,25 @@
-# Kanso
+<p align="center">
+  <img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" />
+</p>
 
-**No echo. Every detail once.**
+<p align="center">
+  <strong>No echo. Every detail once.</strong>
+</p>
 
-Clean stream marks for [Nuvio](https://github.com/NuvioMedia) — an Instant AIOStreams formatter paired with three badge skins. Every useful fact about a stream, shown once: no duplicate resolutions, no redundant audio pills, no noisy filename soup in the badge row.
+<p align="center">
+  Clean stream marks for <a href="https://github.com/NuvioMedia">Nuvio</a> —
+  an Instant <a href="https://github.com/Viren070/AIOStreams">AIOStreams</a> formatter
+  paired with three badge skins.<br/>
+  Every useful fact about a stream, shown <em>once</em>.
+</p>
+
+<p align="center">
+  <a href="https://github.com/nosvasedis/Kanso"><img src="https://img.shields.io/badge/GitHub-nosvasedis%2FKanso-0E0E10?style=flat-square&labelColor=0E0E10&color=38B0F8" alt="Repo" /></a>
+  <a href="#install"><img src="https://img.shields.io/badge/Nuvio-ready-0E0E10?style=flat-square&labelColor=0E0E10&color=38B0F8" alt="Nuvio" /></a>
+  <a href="#install"><img src="https://img.shields.io/badge/AIOStreams-Instant-0E0E10?style=flat-square&labelColor=0E0E10&color=38B0F8" alt="AIOStreams Instant" /></a>
+  <a href="#styles"><img src="https://img.shields.io/badge/styles-Solid%20·%20Transparent%20·%20Mono-0E0E10?style=flat-square&labelColor=0E0E10&color=6B7280" alt="Styles" /></a>
+  <img src="https://img.shields.io/badge/badges-124-0E0E10?style=flat-square&labelColor=0E0E10&color=6B7280" alt="124 badges" />
+</p>
 
 <p align="center">
   <a href="#install">Install</a> ·
@@ -13,113 +30,111 @@ Clean stream marks for [Nuvio](https://github.com/NuvioMedia) — an Instant AIO
 
 ---
 
-## Philosophy
+## Why Kanso?
 
-| Principle | What you get |
-|-----------|----------------|
+| | |
+|:--|:--|
 | **Rich** | Resolution, quality, release tiers, dynamic range, Smart Audio/Visual merges, editions, languages, streaming services |
-| **Clean** | Readable AIOStreams title/description; badges carry the technical signal |
-| **Once** | Best-wins tiers + merge badges (e.g. DV · HDR10+) suppress lower or redundant marks |
-| **Instant** | Invisible Unicode markers from the formatter → tiny Nuvio regex → icons from this repo’s `/files` CDN |
+| **Clean** | Readable AIOStreams rows — badges carry the technical signal |
+| **Once** | Best-wins + merge badges (e.g. DV · HDR10+) suppress duplicates |
+| **Instant** | Invisible markers → tiny Nuvio regex → icons from this repo |
 
-Kanso is built for Nuvio. It is not a Universal “match the whole filename” pack.
+Kanso is built for Nuvio. It is **not** a Universal “match the whole filename” pack.
 
 ---
 
 ## Install
 
-### 1. AIOStreams formatter
+### 1 · AIOStreams formatter
 
-1. Open your AIOStreams configure page → **Formatter** → Custom.
-2. Import [`formatter.json`](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter.json),  
-   or paste [`formatter-export-name.txt`](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter-export-name.txt) into **Name** and [`formatter-export-description.txt`](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter-export-description.txt) into **Description** (preserve invisible characters).
-3. Ensure your host allows long templates (see [Requirements](#requirements)).
+1. Open AIOStreams → **Formatter** → Custom  
+2. Import this file (or paste the export texts — keep invisible characters):
 
-### 2. Nuvio badges
+```text
+https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter.json
+```
 
-Settings → Streams → Stream Badges → import **one** style raw URL:
+Paste alternatives:
 
-| Style | Raw URL |
-|-------|---------|
+```text
+https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter-export-name.txt
+https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter-export-description.txt
+```
+
+3. Raise the template limit (see [Requirements](#requirements))
+
+### 2 · Nuvio badges
+
+**Settings → Streams → Stream Badges** → paste **one** raw URL:
+
+| Style | Import URL |
+|:------|:-----------|
 | **Solid** | `https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-solid.json` |
 | **Transparent** | `https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-transparent.json` |
 | **Mono** | `https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-mono.json` |
 
-Same packs also live in this repo as [`kanso-solid.json`](kanso-solid.json), [`kanso-transparent.json`](kanso-transparent.json), [`kanso-mono.json`](kanso-mono.json).
+Same packs live in-repo: [`kanso-solid.json`](kanso-solid.json) · [`kanso-transparent.json`](kanso-transparent.json) · [`kanso-mono.json`](kanso-mono.json)
 
-Refresh Nuvio after changing the badge URL so icons reload from `/files`.
+> Refresh Nuvio after changing the badge URL so icons reload from `/files`.
 
 ---
 
 ## Styles
 
-| Pack | Look |
-|------|------|
+| Pack | Feel |
+|:-----|:-----|
 | **Solid** | Filled pills, strong color hierarchy |
-| **Transparent** | Outline / glass-friendly icons |
+| **Transparent** | Outline / glass-friendly |
 | **Mono** | High-contrast monochrome for dark UIs |
 
-Matching rules are identical across styles — only art and colors change.
+Matching rules are identical — only art and colors change.
+
+<p align="center">
+  <img src="assets/Kanso/kanso-icon-transparent.png" alt="Kanso mark" height="48" />
+  &nbsp;&nbsp;
+  <img src="assets/Kanso/kanso-lockup-mono-transparent.png" alt="Kanso mono lockup" height="40" />
+</p>
 
 ---
 
 ## How it works
 
 ```text
-Vidhin / stream fields
-        ↓
-Kanso formatter (invisible markers + clean visible layout)
-        ↓
-Nuvio haystack
-        ↓
-Marker-only badge regex  →  PNG from raw.githubusercontent.com/nosvasedis/Kanso/.../files/
+  stream fields / Vidhin
+            │
+            ▼
+  Kanso formatter  ──►  invisible markers + clean layout
+            │
+            ▼
+  Nuvio matches tiny marker regex
+            │
+            ▼
+  badge icons from  /files/  (this repo)
 ```
 
-- Production patterns are short existence checks like `(?s)^(?=.*MARKER)` — not multi‑KB release-group allowlists.
-- Icons are content-addressed under [`files/`](files/) for fast, stable GitHub raw URLs.
+No multi‑KB release-group regex in the badge packs. Detection happens in the formatter; Nuvio only looks for markers.
 
 ---
 
 ## Requirements
 
-- **Nuvio** with stream badge JSON import
-- **AIOStreams** custom formatter
-- Host env: `MAX_FORMATTER_TEMPLATE_LENGTH` **≥ 16000** (Kanso name/description exceed the default 5000)
+- [Nuvio](https://github.com/NuvioMedia) with stream badge JSON import  
+- [AIOStreams](https://github.com/Viren070/AIOStreams) custom formatter  
+- Host env: **`MAX_FORMATTER_TEMPLATE_LENGTH` ≥ `16000`**
 
-Optional but recommended: Vidhin-style ranked stream expressions so release **tiers** fire from `stream.rseMatched` (formatter also has release-group fallbacks).
-
----
-
-## Repo layout
-
-```text
-formatter.json                 # AIOStreams import
-formatter-export-*.txt         # paste-friendly name / description
-kanso-{solid,transparent,mono}.json
-files/                         # CDN icons (do not rename)
-scripts/                       # build, patch, audit, publish
-badges/                        # icon manifests
-```
-
----
-
-## Development
-
-```bash
-npm run test:v2-benchmark      # marker packs stay ≪ 15 ms/stream
-npm run audit:gists            # local packs vs published gists
-npm run audit:icons            # imageURL latency
-npm run icons:cdn              # rematerialize + publish /files
-npm run release:publish        # patch V2 packs + formatter + push gists
-```
+Optional: Vidhin-style ranked stream expressions so release **tiers** use `stream.rseMatched` (release-group fallbacks are included).
 
 ---
 
 ## Credits
 
-- Marker / Instant architecture inspired by the community pattern popularized in [kingsizew/badges](https://github.com/kingsizew/badges) — Kanso uses its **own** marker lexicon, packs, and tooling.
-- Built for [Nuvio](https://github.com/NuvioMedia) and [AIOStreams](https://github.com/Viren070/AIOStreams).
+Marker / Instant architecture inspired by the community pattern in [kingsizew/badges](https://github.com/kingsizew/badges).  
+Kanso uses its **own** marker lexicon, packs, and tooling.
 
 ---
+
+<p align="center">
+  <img src="assets/Kanso/kanso-lockup-dark.png" alt="Kanso" width="320" />
+</p>
 
 <p align="center"><em>No echo. Every detail once.</em></p>

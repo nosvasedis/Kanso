@@ -175,6 +175,18 @@ async function main() {
     ignoreNames: new Set(["user-config.json"]),
   });
 
+  // Brand assets (logos for README)
+  const assetsCandidates = [
+    path.join(ROOT, "assets", "Kanso"),
+    path.join(ROOT, "assets", "kanso"),
+  ];
+  for (const assetsSrc of assetsCandidates) {
+    if (await pathExists(assetsSrc)) {
+      await copyDirFiltered(assetsSrc, path.join(work, "assets", "Kanso"));
+      break;
+    }
+  }
+
   // Slim note for icon workspace (no huge publish-worktree)
   await fs.mkdir(path.join(work, "badges", "badge-images"), { recursive: true });
   await copyFile(
