@@ -6,4 +6,8 @@ badges/generated-transparent/
 badges/generated-solid/
 badges/badge-images/.publish-worktree/
 .env
+.vendor/
+backup/approved-*/
+badges/badge-images/.release-worktree/
+docs/release-evidence/
 docs/kanso-logo-prompt.md

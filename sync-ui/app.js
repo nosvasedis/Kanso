@@ -77,7 +77,7 @@ function renderSummary(result, applied) {
     ${
       applied
         ? result.formatterRegenerated
-          ? "<br>Saved to the v1 tier snapshot and <strong>formatter.json regenerated</strong> — badge JSONs are unchanged, so no gist push is needed."
+          ? "<br>Saved to the v1 tier snapshot and <strong>Compact and Detailed formatters regenerated</strong> — badge JSONs are unchanged, so no gist push is needed."
           : `<br>Saved to the v1 tier snapshot, but formatter.json regeneration ${result.formatterOutput ? `failed: ${escapeHtml(result.formatterOutput)}` : "did not run"}.`
         : "<br>Click <strong>Apply sync</strong> to save."
     }
@@ -158,7 +158,7 @@ function buildChecklist(config, applied, result, gistPush = null) {
   });
 
   items.push({
-    html: `Open <strong>Nuvio</strong> (or your <strong>AIOStreams</strong> addon settings where badges are configured).`,
+    html: `Open <strong>Nuvio</strong> to manage badges. Set the paired formatter in <strong>AIOStreams</strong>.`,
     done: false,
   });
 
@@ -225,7 +225,7 @@ async function refreshGistStatus() {
     const data = await api("/api/gist-status");
     if (data.canPush) {
       el.textContent =
-        "Auto-push ready — solid, transparent, and mono gists update after each patch.";
+        "Ready to publish Compact + Detailed to all three gists. Publish repository assets/formatters first.";
       el.className = "gist-status ready";
     } else if (data.hasToken) {
       const configured = data.themes?.filter((t) => t.gistId).length ?? 0;

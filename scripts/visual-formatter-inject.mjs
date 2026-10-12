@@ -120,16 +120,6 @@ export function buildVisualMarkers(fields) {
   if (!dvHit && hdr10pHit) add(DR_HDR10P_MARKER);
   if (!dvHit && hdr10Hit && !hdr10pHit) add(M.visHdr10);
   if (!dvHit && !hdr10pHit && !hdr10Hit && hdrHit) add(DR_HDR_MARKER);
-  if (
-    !dvHit &&
-    !hdr10pHit &&
-    !hdr10Hit &&
-    !hdrHit &&
-    /remux/i.test(quality) &&
-    /^2160p$/i.test(resolution)
-  ) {
-    add(DR_HDR_MARKER);
-  }
 
   if (/hlg/i.test(visualTags)) add(M.visHlg);
   if (/10bit/i.test(visualTags)) add(M.vis10bit);

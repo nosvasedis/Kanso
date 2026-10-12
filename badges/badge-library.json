@@ -1,0 +1,625 @@
+{
+  "version": 2,
+  "filters": [
+    {
+      "id": "seadex-release",
+      "groupId": "gst",
+      "name": "SEADEX"
+    },
+    {
+      "id": "hybrid-release",
+      "groupId": "gst",
+      "name": "HYBRID"
+    },
+    {
+      "id": "criterion-collection",
+      "groupId": "gst",
+      "name": "CRIT"
+    },
+    {
+      "id": "proper-release",
+      "groupId": "gst",
+      "name": "PROPER"
+    },
+    {
+      "id": "repack-release",
+      "groupId": "gst",
+      "name": "REPACK"
+    },
+    {
+      "id": "remastered-release",
+      "groupId": "gst",
+      "name": "RMSTRD"
+    },
+    {
+      "id": "open-matte-edition",
+      "groupId": "gst",
+      "name": "MATTE"
+    },
+    {
+      "id": "regraded-release",
+      "groupId": "gst",
+      "name": "REGRD"
+    },
+    {
+      "id": "edition-directors-cut",
+      "groupId": "gst",
+      "name": "DIR CUT"
+    },
+    {
+      "id": "edition-extended",
+      "groupId": "gst",
+      "name": "EXTENDED"
+    },
+    {
+      "id": "uncut-edition",
+      "groupId": "gst",
+      "name": "UNCUT"
+    },
+    {
+      "id": "uncensored-edition",
+      "groupId": "gst",
+      "name": "UNCENS"
+    },
+    {
+      "id": "edition-bw",
+      "groupId": "gst",
+      "name": "B&W"
+    },
+    {
+      "id": "edition-true-hue",
+      "groupId": "gst",
+      "name": "TRUE-HUE"
+    },
+    {
+      "id": "edition-theatrical",
+      "groupId": "gst",
+      "name": "THTR"
+    },
+    {
+      "id": "s-nflx",
+      "groupId": "gs",
+      "name": "NETFLIX"
+    },
+    {
+      "id": "s-amzn",
+      "groupId": "gs",
+      "name": "PRIME"
+    },
+    {
+      "id": "s-atvp",
+      "groupId": "gs",
+      "name": "APPLE TV+"
+    },
+    {
+      "id": "s-dsnp",
+      "groupId": "gs",
+      "name": "DISNEY+"
+    },
+    {
+      "id": "s-hmax",
+      "groupId": "gs",
+      "name": "MAX"
+    },
+    {
+      "id": "s-hulu",
+      "groupId": "gs",
+      "name": "HULU"
+    },
+    {
+      "id": "s-pcok",
+      "groupId": "gs",
+      "name": "PEACOCK"
+    },
+    {
+      "id": "s-pamp",
+      "groupId": "gs",
+      "name": "PARAMOUNT+"
+    },
+    {
+      "id": "s-croll",
+      "groupId": "gs",
+      "name": "CRUNCHYROLL"
+    },
+    {
+      "id": "web-unranked",
+      "groupId": "gms",
+      "name": "WEB Unranked"
+    },
+    {
+      "id": "web-6",
+      "groupId": "gms",
+      "name": "WEB 6"
+    },
+    {
+      "id": "web-5",
+      "groupId": "gms",
+      "name": "WEB 5"
+    },
+    {
+      "id": "web-4",
+      "groupId": "gms",
+      "name": "WEB 4"
+    },
+    {
+      "id": "web-3",
+      "groupId": "gms",
+      "name": "WEB 3"
+    },
+    {
+      "id": "web-2",
+      "groupId": "gms",
+      "name": "WEB 2"
+    },
+    {
+      "id": "web-1",
+      "groupId": "gms",
+      "name": "WEB 1"
+    },
+    {
+      "id": "blu-ray-unranked",
+      "groupId": "gms",
+      "name": "BLU-RAY Unranked"
+    },
+    {
+      "id": "blu-ray-8",
+      "groupId": "gms",
+      "name": "BLU-RAY 8"
+    },
+    {
+      "id": "blu-ray-7",
+      "groupId": "gms",
+      "name": "BLU-RAY 7"
+    },
+    {
+      "id": "blu-ray-6",
+      "groupId": "gms",
+      "name": "BLU-RAY 6"
+    },
+    {
+      "id": "blu-ray-5",
+      "groupId": "gms",
+      "name": "BLU-RAY 5"
+    },
+    {
+      "id": "blu-ray-4",
+      "groupId": "gms",
+      "name": "BLU-RAY 4"
+    },
+    {
+      "id": "blu-ray-3",
+      "groupId": "gms",
+      "name": "BLU-RAY 3"
+    },
+    {
+      "id": "blu-ray-2",
+      "groupId": "gms",
+      "name": "BLU-RAY 2"
+    },
+    {
+      "id": "blu-ray-1",
+      "groupId": "gms",
+      "name": "BLU-RAY 1"
+    },
+    {
+      "id": "remux-unranked",
+      "groupId": "gms",
+      "name": "REMUX Unranked"
+    },
+    {
+      "id": "remux-3",
+      "groupId": "gms",
+      "name": "REMUX 3"
+    },
+    {
+      "id": "remux-2",
+      "groupId": "gms",
+      "name": "REMUX 2"
+    },
+    {
+      "id": "remux-1",
+      "groupId": "gms",
+      "name": "REMUX 1"
+    },
+    {
+      "id": "q-br",
+      "groupId": "gq",
+      "name": "Best Remux"
+    },
+    {
+      "id": "q-bb",
+      "groupId": "gq",
+      "name": "Best BluRay"
+    },
+    {
+      "id": "q-bw",
+      "groupId": "gq",
+      "name": "Best WebDL"
+    },
+    {
+      "id": "q-gr",
+      "groupId": "gq",
+      "name": "Good Remux"
+    },
+    {
+      "id": "q-gb",
+      "groupId": "gq",
+      "name": "Good BluRay"
+    },
+    {
+      "id": "q-gw",
+      "groupId": "gq",
+      "name": "Good WebDL"
+    },
+    {
+      "id": "q-or",
+      "groupId": "gq",
+      "name": "OK Remux"
+    },
+    {
+      "id": "q-ob",
+      "groupId": "gq",
+      "name": "OK BluRay"
+    },
+    {
+      "id": "q-ow",
+      "groupId": "gq",
+      "name": "OK WebDL"
+    },
+    {
+      "id": "q-r",
+      "groupId": "grl",
+      "name": "Remux"
+    },
+    {
+      "id": "q-b",
+      "groupId": "grl",
+      "name": "BluRay"
+    },
+    {
+      "id": "q-w",
+      "groupId": "grl",
+      "name": "WebDL"
+    },
+    {
+      "id": "q-wr",
+      "groupId": "grl",
+      "name": "WebRip"
+    },
+    {
+      "id": "q-cam",
+      "groupId": "grl",
+      "name": "CAM"
+    },
+    {
+      "id": "q-hdtv",
+      "groupId": "grl",
+      "name": "HDTV"
+    },
+    {
+      "id": "r-4k",
+      "groupId": "gr",
+      "name": "4K"
+    },
+    {
+      "id": "r-1440",
+      "groupId": "gr",
+      "name": "1440p"
+    },
+    {
+      "id": "r-1080",
+      "groupId": "gr",
+      "name": "1080p"
+    },
+    {
+      "id": "r-720",
+      "groupId": "gr",
+      "name": "720p"
+    },
+    {
+      "id": "r-576",
+      "groupId": "gr",
+      "name": "576p"
+    },
+    {
+      "id": "r-480",
+      "groupId": "gr",
+      "name": "480p"
+    },
+    {
+      "id": "r-360",
+      "groupId": "gr",
+      "name": "360p"
+    },
+    {
+      "id": "r-240",
+      "groupId": "gr",
+      "name": "240p"
+    },
+    {
+      "id": "v-dv-hdr10p",
+      "groupId": "gv",
+      "name": "DV·HDR10+"
+    },
+    {
+      "id": "v-dv-hdr10",
+      "groupId": "gv",
+      "name": "DV·HDR10"
+    },
+    {
+      "id": "v-dv-hdr",
+      "groupId": "gv",
+      "name": "DV·HDR"
+    },
+    {
+      "id": "v-hdr10p",
+      "groupId": "gv",
+      "name": "HDR10+"
+    },
+    {
+      "id": "v-hdr10",
+      "groupId": "gv",
+      "name": "HDR10"
+    },
+    {
+      "id": "v-hdr",
+      "groupId": "gv",
+      "name": "HDR"
+    },
+    {
+      "id": "v-hlg",
+      "groupId": "gv",
+      "name": "HLG"
+    },
+    {
+      "id": "v-10bit",
+      "groupId": "gv",
+      "name": "10bit"
+    },
+    {
+      "id": "v-imax-e",
+      "groupId": "gv",
+      "name": "IMAX Enhanced"
+    },
+    {
+      "id": "v-imax",
+      "groupId": "gv",
+      "name": "IMAX"
+    },
+    {
+      "id": "a-dv",
+      "groupId": "gv",
+      "name": "DV"
+    },
+    {
+      "id": "v-sdr",
+      "groupId": "gv",
+      "name": "SDR"
+    },
+    {
+      "id": "v-ai",
+      "groupId": "gv",
+      "name": "AI"
+    },
+    {
+      "id": "v-3d",
+      "groupId": "gv",
+      "name": "3D"
+    },
+    {
+      "id": "a-at-th",
+      "groupId": "ga",
+      "name": "Atmos·TH"
+    },
+    {
+      "id": "a-dtsx-ma",
+      "groupId": "ga",
+      "name": "DTS:X·MA"
+    },
+    {
+      "id": "a-at-dp",
+      "groupId": "ga",
+      "name": "Atmos·DD+"
+    },
+    {
+      "id": "a-dtsx-hd",
+      "groupId": "ga",
+      "name": "DTS:X·HD"
+    },
+    {
+      "id": "a-dtsx",
+      "groupId": "ga",
+      "name": "DTS:X"
+    },
+    {
+      "id": "a-dtsma",
+      "groupId": "ga",
+      "name": "DTS-HD MA"
+    },
+    {
+      "id": "a-dtshd",
+      "groupId": "ga",
+      "name": "DTS-HD"
+    },
+    {
+      "id": "a-dtses",
+      "groupId": "ga",
+      "name": "DTS-ES"
+    },
+    {
+      "id": "a-dts",
+      "groupId": "ga",
+      "name": "DTS"
+    },
+    {
+      "id": "a-at",
+      "groupId": "ga",
+      "name": "Atmos"
+    },
+    {
+      "id": "a-th",
+      "groupId": "ga",
+      "name": "TrueHD"
+    },
+    {
+      "id": "a-dp",
+      "groupId": "ga",
+      "name": "DD+"
+    },
+    {
+      "id": "a-dd",
+      "groupId": "ga",
+      "name": "DD"
+    },
+    {
+      "id": "a-aac",
+      "groupId": "ga",
+      "name": "AAC"
+    },
+    {
+      "id": "a-flac",
+      "groupId": "ga",
+      "name": "FLAC"
+    },
+    {
+      "id": "a-opus",
+      "groupId": "ga",
+      "name": "OPUS"
+    },
+    {
+      "id": "a-mp3",
+      "groupId": "ga",
+      "name": "MP3"
+    },
+    {
+      "id": "a-pcm",
+      "groupId": "ga",
+      "name": "PCM"
+    },
+    {
+      "id": "ch-71",
+      "groupId": "gc",
+      "name": "7.1"
+    },
+    {
+      "id": "ch-61",
+      "groupId": "gc",
+      "name": "6.1"
+    },
+    {
+      "id": "ch-51",
+      "groupId": "gc",
+      "name": "5.1"
+    },
+    {
+      "id": "ch-20",
+      "groupId": "gc",
+      "name": "2.0"
+    },
+    {
+      "id": "l-en",
+      "groupId": "gl",
+      "name": "🇬🇧"
+    },
+    {
+      "id": "l-es",
+      "groupId": "gl",
+      "name": "🇪🇸"
+    },
+    {
+      "id": "l-fr",
+      "groupId": "gl",
+      "name": "🇫🇷"
+    },
+    {
+      "id": "l-de",
+      "groupId": "gl",
+      "name": "🇩🇪"
+    },
+    {
+      "id": "l-it",
+      "groupId": "gl",
+      "name": "🇮🇹"
+    },
+    {
+      "id": "l-pt-br",
+      "groupId": "gl",
+      "name": "🇧🇷"
+    },
+    {
+      "id": "l-pt-pt",
+      "groupId": "gl",
+      "name": "🇵🇹"
+    },
+    {
+      "id": "l-tr",
+      "groupId": "gl",
+      "name": "🇹🇷"
+    },
+    {
+      "id": "l-pl",
+      "groupId": "gl",
+      "name": "🇵🇱"
+    },
+    {
+      "id": "l-uk",
+      "groupId": "gl",
+      "name": "🇺🇦"
+    },
+    {
+      "id": "l-id",
+      "groupId": "gl",
+      "name": "🇮🇩"
+    },
+    {
+      "id": "l-th",
+      "groupId": "gl",
+      "name": "🇹🇭"
+    },
+    {
+      "id": "l-vi",
+      "groupId": "gl",
+      "name": "🇻🇳"
+    },
+    {
+      "id": "l-ja",
+      "groupId": "gl",
+      "name": "🇯🇵"
+    },
+    {
+      "id": "l-ko",
+      "groupId": "gl",
+      "name": "🇰🇷"
+    },
+    {
+      "id": "l-zh",
+      "groupId": "gl",
+      "name": "🇨🇳"
+    },
+    {
+      "id": "l-hi",
+      "groupId": "gl",
+      "name": "🇮🇳"
+    },
+    {
+      "id": "l-ar",
+      "groupId": "gl",
+      "name": "🇸🇦"
+    },
+    {
+      "id": "l-ru",
+      "groupId": "gl",
+      "name": "🇷🇺"
+    },
+    {
+      "id": "l-el",
+      "groupId": "gl",
+      "name": "🇬🇷"
+    },
+    {
+      "id": "l-mu",
+      "groupId": "gl",
+      "name": "🌐"
+    }
+  ]
+}

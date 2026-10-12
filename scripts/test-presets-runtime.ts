@@ -1,0 +1,113 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { CustomFormatter } from '../.vendor/AIOStreams/packages/core/src/formatters/custom.ts';
+import { validateTemplate } from '../.vendor/AIOStreams/packages/core/src/formatters/engine/parser.ts';
+import { buildPresetFormatter, PRESET_MARKER } from './preset-formatter.mjs';
+import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
+const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
+type FX={label:string;file?:string;parsed?:any;prefs?:string[];type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
+const fx:FX[]=[
+ {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','ch-51','q-gw'],detailText:['File channels: 5.1']},
+ {label:'unknown remux range',parsed:{quality:'REMUX',resolution:'2160p'},common:['r-4k','q-r'],forbid:['v-hdr','v-sdr']},
+ {label:'explicit SDR remux',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['SDR']},common:['v-sdr','q-r'],forbid:['v-hdr']},
+ {label:'HLG is not generic HDR',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['HLG']},common:['v-hlg'],forbid:['v-hdr','v-sdr']},
+ {label:'conflicting HDR SDR',parsed:{visualTags:['HDR','SDR']},forbid:['v-hdr','v-sdr'],text:['Conflicting HDR/SDR']},
+ {label:'DV HDR10 evidenced combination',parsed:{visualTags:['DV','HDR10']},common:['v-dv-hdr10'],forbid:['a-dv','v-hdr10']},
+ {label:'DV only',parsed:{visualTags:['DV']},common:['a-dv'],forbid:['v-hdr']},
+ {label:'HDR10+ only',parsed:{visualTags:['HDR10+']},common:['v-hdr10p'],forbid:['v-hdr','v-hdr10']},
+ {label:'SDR 10bit detail',parsed:{visualTags:['SDR','10bit']},common:['v-sdr'],detailed:['v-10bit'],forbid:['v-hdr']},
+ {label:'HDR does not also show 10bit',parsed:{visualTags:['HDR10','10bit']},common:['v-hdr10'],forbid:['v-10bit']},
+ {label:'English AAC vs Japanese FLAC',prefs:['English'],parsed:{quality:'WEB',resolution:'1080p',languages:['English','Japanese'],audioTags:['FLAC','AAC'],audioChannels:['5.1','2.0'],audioTracks:[{lang:'Japanese',codec:'flac',tag:'FLAC',channels:'5.1',default:true},{lang:'English',codec:'aac',tag:'AAC',channels:'2.0'}],mediaInfoQuality:'probe'},common:['l-en','a-aac'],forbid:['l-ja','a-flac','ch-51'],detailText:['JA: FLAC 5.1','EN: AAC 2.0']},
+ {label:'commentary is not selected',parsed:{audioTracks:[{lang:'English',tag:'FLAC',commentary:true},{lang:'English',tag:'AAC',channels:'2.0'}]},common:['l-en','a-aac'],forbid:['a-flac']},
+ {label:'commentary title is not selected',parsed:{audioTracks:[{lang:'English',tag:'FLAC',title:'Director commentary'},{lang:'English',tag:'AAC'}]},common:['a-aac'],forbid:['a-flac']},
+ {label:'preferred language absent',parsed:{languages:['Japanese'],audioTracks:[{lang:'Japanese',tag:'FLAC'}],mediaInfoQuality:'probe'},forbid:['l-en','l-ja','a-flac'],text:['Preferred audio unavailable']},
+ {label:'no preferences chooses first usable track',prefs:[],parsed:{audioTracks:[{lang:'French',tag:'AAC'},{lang:'English',tag:'FLAC',default:true}]},common:['l-fr','a-aac'],forbid:['l-en','a-flac']},
+ {label:'single track Atmos association',parsed:{audioTracks:[{lang:'English',tag:'TrueHD',codec:'truehd',channels:'7.1'}],audioTags:['TrueHD','Atmos']},common:['l-en','a-at-th'],forbid:['a-at','a-th','ch-71']},
+ {label:'do not borrow another track Atmos',parsed:{audioTracks:[{lang:'English',tag:'AAC'},{lang:'Japanese',tag:'TrueHD',title:'Atmos'}],audioTags:['TrueHD','Atmos','AAC']},common:['l-en','a-aac'],forbid:['a-at','a-at-th']},
+ {label:'missing tag uses track codec',parsed:{audioTracks:[{lang:'English',codec:'eac3'}]},common:['a-dp','l-en']},
+ {label:'Japanese preferences respected',prefs:['Japanese'],parsed:{audioTracks:[{lang:'English',tag:'AAC'},{lang:'Japanese',tag:'FLAC'}]},common:['l-ja','a-flac'],forbid:['l-en','a-aac']},
+ {label:'English subtitle token is not audio proof',file:'Movie.1080p.WEB-DL.Eng.Sub.mkv',parsed:{quality:'WEB',resolution:'1080p',languages:['English']},forbid:['l-en'],text:['Audio unverified']},
+ {label:'probed Greek subtitles distinct from audio',parsed:{quality:'WEB',languages:['English'],subtitles:['Greek'],mediaInfoQuality:'probe'},common:['l-en'],forbid:['l-el'],text:['EL subs']},
+ {label:'Greek audio is not subtitle cue',prefs:['Greek'],parsed:{languages:['Greek'],mediaInfoQuality:'probe'},common:['l-el'],absent:['EL subs']},
+ {label:'subtitle only has no leading separator',flags:{size:undefined},parsed:{subtitles:['Greek']},text:['EL subs']},
+ {label:'library only has no leading separator',flags:{size:undefined,proxied:undefined,library:true},detailText:['Library']},
+ {label:'reported Greek subtitles not audio cue',file:'Movie.1080p.WEB-DL.Ell.Sub.mkv',parsed:{quality:'WEB',resolution:'1080p',languages:['Greek']},forbid:['l-el'],text:['EL subs (reported)','Audio unverified']},
+ {label:'trusted language beats filename',file:'Movie.English.1080p.WEB-DL.mkv',prefs:['French'],parsed:{languages:['French'],mediaInfoQuality:'indexer'},common:['l-fr'],forbid:['l-en']},
+ {label:'missing preferred probed language',parsed:{languages:['Russian'],mediaInfoQuality:'probe'},forbid:['l-ru'],text:['Preferred audio unavailable']},
+ {label:'parsed resolution beats filename',file:'Movie.2160p.WEB-DL.mkv',parsed:{quality:'WEB',resolution:'1080p'},common:['r-1080'],forbid:['r-4k']},
+ {label:'movie title not technical metadata',file:'Atmos.WEBRip.UHD.2026.mkv',parsed:{title:'Atmos.WEBRip.UHD.2026'},forbid:['a-at','q-wr','r-4k']},
+ {label:'release group named Atmos not codec',file:'Movie.1080p.WEB-DL-Atmos.mkv',parsed:{quality:'WEB',resolution:'1080p',releaseGroup:'Atmos'},forbid:['a-at']},
+ {label:'source remux beats Bluray',file:'Movie.2160p.BluRay.REMUX.mkv',parsed:{quality:'REMUX',resolution:'2160p',releaseGroup:'EPSiLON'},compact:['q-r'],detailed:['remux-2'],forbid:['q-b','blu-ray-1','blu-ray-unranked']},
+ {label:'tier multi-match best wins',parsed:{quality:'WEB'},rse:['Radarr Web T1','Sonarr Web T2'],compact:['q-w'],detailed:['web-1'],forbid:['web-2']},
+ {label:'custom ranking does not invent tiers',parsed:{quality:'WEB',releaseGroup:'FLUX'},rse:['Netflix preference'],common:['q-w'],forbid:['web-1']},
+ {label:'unranked source is one badge',parsed:{quality:'WEB',releaseGroup:'Unknown'},common:['q-w'],forbid:['web-unranked']},
+ {label:'anime does not borrow movie group tier',anime:true,parsed:{quality:'BluRay',releaseGroup:'Moxie'},common:['q-b'],forbid:['blu-ray-1','blu-ray-2']},
+ {label:'WebRip tier label preserves actual source',file:'Movie.1080p.WEBRip.FLUX.mkv',parsed:{quality:'WEB',resolution:'1080p',releaseGroup:'FLUX'},compact:['q-wr'],detailed:['web-1-webrip'],forbid:['web-1','q-w']},
+ {label:'CAM warning retained',parsed:{quality:'CAM',resolution:'1080p'},common:['q-cam','r-1080'],forbid:['q-w','q-gw']},
+ {label:'telesync warning retained',parsed:{quality:'TS'},text:['⚠ TS source']},
+ {label:'telecine warning retained',parsed:{quality:'TC'},text:['⚠ TC source']},
+ {label:'screener warning retained',parsed:{quality:'SCR'},text:['⚠ SCR source']},
+ {label:'structured WebRip without filename',parsed:{quality:'WEBRip'},common:['q-wr'],forbid:['q-w']},
+ {label:'structured WEB-DL beats filename',file:'Movie.1080p.WEBRip.mkv',parsed:{quality:'WEB-DL'},common:['q-w'],forbid:['q-wr']},
+ {label:'mixed filename delimiters remain bounded',file:'Movie_1080p WEB-DL_AAC.mkv',parsed:{quality:'WEB',resolution:'1080p'},common:['q-w','a-aac'],forbid:['q-wr']},
+ {label:'technical movie title cannot claim Atmos',file:'Some.Atmos.Movie.1080p.WEB-DL.mkv',parsed:{title:'Some.Atmos.Movie',quality:'WEB',resolution:'1080p'},forbid:['a-at']},
+ {label:'extended and IMAX retained',parsed:{editions:['Extended','IMAX'],quality:'WEB'},common:['edition-extended','v-imax']},
+ {label:'IMAX Enhanced distinct',parsed:{editions:['IMAX Enhanced']},common:['v-imax-e'],forbid:['v-imax']},
+ {label:'B&W and 3D retained',parsed:{editions:['B&W'],visualTags:['3D']},common:['edition-bw','v-3d']},
+ {label:'unsupported cut has contextual filename fallback',file:'Movie.1080p.WEB-DL.Directors.Cut.mkv',parsed:{quality:'WEB',resolution:'1080p'},common:['edition-directors-cut']},
+ {label:'parsed edition beats conflicting filename',file:'Movie.1080p.WEB-DL.Directors.Cut.mkv',parsed:{quality:'WEB',editions:['Extended']},common:['edition-extended'],forbid:['edition-directors-cut']},
+ {label:'remastered edition remains Detailed',parsed:{editions:['Remastered']},detailed:['remastered-release']},
+ {label:'named Uncut movie is not an edition',file:'The.Uncut.Movie.1080p.WEB-DL.mkv',parsed:{title:'The.Uncut.Movie',quality:'WEB',resolution:'1080p'},forbid:['uncut-edition']},
+ {label:'cache false',cache:false,text:['Uncached']},
+ {label:'cache unknown',cache:null,text:['Cache unknown']},
+ {label:'HTTP is not debrid cache',type:'http',service:false,text:['HTTP'],absent:['Cached','Uncached','Cache unknown']},
+ {label:'P2P swarm',type:'p2p',service:false,flags:{torrent:{seeders:125}},text:['P2P','125 seeders']},
+ {label:'Usenet health warning preserved',type:'usenet',flags:{message:'NZB Health: ⚠️ missing blocks'},text:['missing blocks']},
+ {label:'upstream bad-release warning preserved',flags:{regexMatched:{name:'Bad release'}},text:['Release warning']},
+ {label:'upscaled flag stays visible',parsed:{upscaled:true},text:['Upscaled']},
+ {label:'Detailed delivery diagnostics',parsed:{encode:'hevc',container:'mkv',releaseGroup:'GROUP'},flags:{bitrate:30e6,age:24,indexer:'NZBGeek',torrent:{private:true,freeleech:true}},text:['HEVC'],detailText:['MKV','GROUP','NZBGeek','Private','Freeleech']},
+ {label:'season pack and folder size retained',parsed:{seasonPack:true},flags:{folderSize:100e9},text:['Season pack','Pack size:']},
+ {label:'library wins over preload',flags:{library:true,preloading:true},detailText:['Library'],absent:['Preloading']},
+ {label:'preloading distinct',flags:{library:false,preloading:true},detailText:['Preloading']},
+ {label:'empty stream has no punctuation',flags:{size:undefined},service:false,absent:['\n\n']},
+ {label:'rank score does not change badge opinion',score:100,parsed:{quality:'WEB',resolution:'1080p'},common:['q-w','r-1080'],forbid:['q-bw','q-gw','q-ow']},
+];
+const evidence:any[]=[];
+for(const preset of ['compact','detailed']){
+ const suffix=preset==='compact'?'':'-detailed';
+ const templates=JSON.parse(fs.readFileSync(`formatter${suffix}.json`,'utf8'));
+ assert.deepEqual(templates,buildPresetFormatter(preset));
+ for(const [key,value] of Object.entries(templates)){
+   assert.deepEqual(validateTemplate(value as string),[],`${preset} ${key}: invalid real-engine syntax`);
+   assert.ok((value as string).length<=15000);
+   assert.equal(fs.readFileSync(`formatter${suffix}-export-${key}.txt`,'utf8').trimEnd(),value);
+ }
+ for(const f of fx){
+   const prefs=f.prefs??['English'];
+   const engine=new CustomFormatter(templates.name,templates.description,{userData:{preferredLanguages:prefs},queryType:f.anime?'anime.series':'movie',isAnime:f.anime??false,maxSeScore:100} as any);
+   const stream:any={type:f.type??'debrid',filename:f.file??null,size:18.2e9,proxied:false,rankedStreamExpressionsMatched:f.rse??[],streamExpressionScore:f.score??80,parsedFile:f.parsed??{},addon:{name:'Comet'},...(f.service===false?{}:{service:{id:'realdebrid',cached:f.cache===undefined?true:f.cache}}),...f.flags};
+   const out=await engine.format(stream);
+   const visible=clean(out.name+'\n'+out.description);
+   assert.ok(out.name.includes(PRESET_MARKER));
+   assert.doesNotMatch(visible,/[★☆]|\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
+   assert.doesNotMatch(clean(out.description),/^\s*·|\n\s*·|·\s*$|\n\n/,`${preset}/${f.label}: separator leak`);
+   for(const t of [...f.text??[],...(preset==='detailed'?f.detailText??[]:[])])assert.ok(visible.includes(t),`${preset}/${f.label}: missing ${t}: ${visible}`);
+   for(const t of f.absent??[])assert.ok(!visible.includes(t),`${preset}/${f.label}: unexpected ${t}: ${visible}`);
+   let reference:string[]|undefined;
+   for(const skin of ['solid','transparent','mono']){
+     const pack=JSON.parse(fs.readFileSync(`kanso-${skin}${suffix}.json`,'utf8'));
+     const hay=nuvioHaystacks([out.name,out.description,f.file].filter(Boolean));
+     const hits=pack.filters.filter((b:any)=>b.isEnabled&&hay.some((s:string)=>nuvioRegex(b.pattern).test(s))).map((b:any)=>b.id);
+     if(reference)assert.deepEqual(hits,reference,`${preset}/${f.label}: skin changes detection`);else reference=hits;
+     for(const id of [...f.common??[],...f[preset]??[]])assert.ok(hits.includes(id),`${preset}/${f.label}: missing ${id}: ${hits}`);
+     for(const id of f.forbid??[])assert.ok(!hits.includes(id),`${preset}/${f.label}: forbidden ${id}: ${hits}`);
+     assert.ok(hits.filter((id:string)=>/^q-(?:r|b|w|wr|cam|hdtv)$|^(?:web|blu-ray|remux)-\d/.test(id)).length<=1,`${preset}/${f.label}: duplicated source ${hits}`);
+     const legacyHay=nuvioHaystacks([clean(out.name),clean(out.description),f.file].filter(Boolean));
+     assert.equal(pack.filters.filter((b:any)=>b.isEnabled&&legacyHay.some((s:string)=>nuvioRegex(b.pattern).test(s))).length,0,'Mismatched legacy formatter must fail closed');
+   }
+   evidence.push({preset,label:f.label,name:clean(out.name),description:clean(out.description),badges:reference,stream});
+ }
+}
+fs.mkdirSync('docs/release-evidence',{recursive:true});
+fs.writeFileSync('docs/release-evidence/engine-fixtures.json',JSON.stringify(evidence,null,2)+'\n');
+console.log(`PASS: ${fx.length} fixtures × 2 presets × 3 skins; real AIOStreams 2.35.9 syntax, output, metadata precedence and matching.`);

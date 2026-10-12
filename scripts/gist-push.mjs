@@ -1,175 +1,39 @@
-/**
- * Push badge JSON files to configured GitHub Gists (GitHub REST API).
- */
-import fs from "fs/promises";
-import {
-  MONO_BADGES_PATH,
-  SOLID_BADGES_PATH,
-  TRANSPARENT_BADGES_PATH,
-} from "./badge-patch.mjs";
-import {
-  githubToken,
-  loadGistConfig,
-  parseGistId,
-  resolveGistTargets,
-} from "./gist-config.mjs";
-
-/** @typedef {"solid"|"transparent"|"mono"} BadgeGistTheme */
-
-const BADGE_PATHS = {
-  solid: SOLID_BADGES_PATH,
-  transparent: TRANSPARENT_BADGES_PATH,
-  mono: MONO_BADGES_PATH,
-};
-
-const THEMES = /** @type {const} */ (["solid", "transparent", "mono"]);
-
-/**
- * @param {BadgeGistTheme} theme
- * @param {{ dryRun?: boolean }} [options]
- */
-export async function pushGist(theme, options = {}) {
-  const config = await loadGistConfig();
-  const targets = resolveGistTargets(config);
-  const target = targets[theme];
-  const gistId = parseGistId(target.url);
-  if (!gistId) {
-    return { skipped: true, reason: "no_gist_url", theme };
-  }
-
-  const token = await githubToken();
-  if (!token && !options.dryRun) {
-    return { skipped: true, reason: "no_token", theme };
-  }
-
-  let content;
-  try {
-    content = await fs.readFile(BADGE_PATHS[theme], "utf8");
-  } catch {
-    return { skipped: true, reason: "no_badges_file", theme };
-  }
-
-  const filename = target.filename;
-  if (!filename) {
-    return { skipped: true, reason: "no_filename", theme };
-  }
-
-  /** Legacy gist filenames to remove when renaming to kanso-*.json */
-  const LEGACY_GIST_FILES = {
-    solid: ["solid-nosvasedis-badges-nuvio", "nosvasedis-badges-solid.json"],
-    transparent: [
-      "transparent-nosvasedis-badges-nuvio",
-      "nosvasedis-badges-transparent.json",
-    ],
-    mono: ["mono-nosvasedis-badges-nuvio", "nosvasedis-badges-mono.json"],
-  };
-
-  if (options.dryRun) {
-    return {
-      ok: true,
-      dryRun: true,
-      theme,
-      gistId,
-      filename,
-      bytes: Buffer.byteLength(content, "utf8"),
-    };
-  }
-
-  /** @type {Record<string, { content?: string } | null>} */
-  const files = {
-    [filename]: { content },
-  };
-
-  // Only delete legacy filenames that actually exist on the gist (nulling missing → 422).
-  const metaRes = await fetch(`https://api.github.com/gists/${gistId}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-      "User-Agent": "kanso-gist-push",
-    },
-  });
-  if (metaRes.ok) {
-    const meta = await metaRes.json();
-    const existing = new Set(Object.keys(meta.files || {}));
-    for (const legacy of LEGACY_GIST_FILES[theme] ?? []) {
-      if (legacy !== filename && existing.has(legacy)) files[legacy] = null;
-    }
-  }
-
-  const res = await fetch(`https://api.github.com/gists/${gistId}`, {
-    method: "PATCH",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-      "Content-Type": "application/json",
-      "User-Agent": "kanso-gist-push",
-    },
-    body: JSON.stringify({
-      description: `Kanso ${theme} badges for Nuvio — No echo. Every detail once.`,
-      files,
-    }),
-  });
-
-  if (!res.ok) {
-    let detail = await res.text();
-    try {
-      const parsed = JSON.parse(detail);
-      detail = parsed.message || detail;
-    } catch {
-      /* raw */
-    }
-    throw new Error(`${theme} gist push failed (${res.status}): ${detail}`);
-  }
-
-  const data = await res.json();
-  return {
-    ok: true,
-    theme,
-    gistId,
-    filename,
-    htmlUrl: data.html_url,
-    updatedAt: data.updated_at,
-    bytes: Buffer.byteLength(content, "utf8"),
-  };
+/** Publish both presets; preserve all other gist files; verify each write. */
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {ROOT} from './icon-cdn.mjs';
+import {loadGistConfig,resolveGistTargets,parseGistId} from './gist-config.mjs';
+import {github,requireOwner} from './github-release-client.mjs';
+const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
+export async function pushGist(theme,{dryRun=false}={}){
+ const target=resolveGistTargets(await loadGistConfig())[theme];
+ const id=parseGistId(target.url);if(!id)return{skipped:true,reason:'no_gist_url',theme};
+ if(!target.filename?.endsWith('.json'))throw new Error('Gist filename must end in .json');
+ const names=[target.filename,target.filename.replace(/\.json$/,'-detailed.json')];
+ const localNames=[`kanso-${theme}.json`,`kanso-${theme}-detailed.json`];
+ const bodies=await Promise.all(localNames.map(f=>fs.readFile(path.join(ROOT,f),'utf8')));
+ if(dryRun)return{ok:true,dryRun:true,theme,gistId:id,filename:names.join(', '),bytes:bodies.reduce((n,b)=>n+Buffer.byteLength(b),0)};
+ await requireOwner('nosvasedis');
+ const before=await github(`/gists/${id}`);
+ if(before.owner?.login!=='nosvasedis')throw new Error('Gist ownership mismatch');
+ const evidence=path.join(ROOT,'docs/release-evidence');await fs.mkdir(evidence,{recursive:true});
+ const backup=path.join(evidence,`gist-${id}-before.json`);
+ try{await fs.writeFile(backup,JSON.stringify(before,null,2)+'\n',{flag:'wx'});}catch(e){if(e.code!=='EEXIST')throw e;}
+ const files=Object.fromEntries(names.map((name,i)=>[name,{content:bodies[i]}]));
+ await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso 2 ${theme}: Compact + Detailed badges for Nuvio`,files})});
+ const after=await github(`/gists/${id}?verification=${Date.now()}`);
+ for(let i=0;i<names.length;i++){
+   const f=after.files[names[i]];if(!f)throw new Error('Published gist file missing');
+   const body=f.truncated?await(await fetch(f.raw_url)).text():f.content;
+   if(sha(body)!==sha(bodies[i]))throw new Error(`Gist read-back mismatch: ${names[i]}`);
+ }
+ for(const name of Object.keys(before.files))if(!names.includes(name)){
+   if(!after.files[name]||sha(after.files[name].content)!==sha(before.files[name].content))throw new Error(`Unrelated gist file changed: ${name}`);
+ }
+ const result={ok:true,theme,gistId:id,filename:names.join(', '),htmlUrl:after.html_url,updatedAt:after.updated_at,bytes:bodies.reduce((n,b)=>n+Buffer.byteLength(b),0),hashes:names.map((name,i)=>({name,sha256:sha(bodies[i])}))};
+ await fs.writeFile(path.join(evidence,`gist-${theme}-verified.json`),JSON.stringify(result,null,2)+'\n');return result;
 }
-
-/**
- * @param {{ dryRun?: boolean; themes?: BadgeGistTheme[] }} [options]
- */
-export async function pushAllGists(options = {}) {
-  const themes = options.themes ?? THEMES;
-  const results = [];
-  for (const theme of themes) {
-    results.push(await pushGist(theme, options));
-  }
-  return results;
-}
-
-/** Called after a badge patch — pushes the matching gist when configured. */
-export async function pushGistAfterPatch(theme) {
-  const config = await loadGistConfig();
-  const targets = resolveGistTargets(config);
-  const gistId = parseGistId(targets[theme].url);
-  if (!gistId) return { skipped: true, reason: "no_gist_url", theme };
-
-  try {
-    const result = await pushGist(theme);
-    if (result.skipped && result.reason === "no_token") {
-      console.log(
-        `${theme} gist not pushed: add GITHUB_TOKEN to .env — npm run push-gist`
-      );
-      return result;
-    }
-    if (result.ok) {
-      console.log(`${theme} gist updated: ${result.htmlUrl}`);
-    }
-    return result;
-  } catch (err) {
-    console.error(
-      `${theme} gist push failed: ${err instanceof Error ? err.message : err}`
-    );
-    return { ok: false, theme, error: err instanceof Error ? err.message : String(err) };
-  }
-}
+export async function pushAllGists(options={}){const out=[];for(const t of options.themes??['solid','transparent','mono'])out.push(await pushGist(t,options));return out;}
+/** Local patching never uploads; explicit push/release commands publish. */
+export async function pushGistAfterPatch(theme){return{skipped:true,reason:'explicit_publish_required',theme};}

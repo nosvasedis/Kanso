@@ -25,7 +25,7 @@
           Click <strong>Preview</strong> to see additions (and removals if strict), then
           <strong>Apply sync</strong> to update the tier release-group lists in the v1 snapshot
           (<code>backup/v1/oracle/nosvasedis-badges-solid.json</code>) and regenerate
-          <code>formatter.json</code> (the AIOStreams formatter name + description). Your badge
+          both <code>formatter.json</code> and <code>formatter-detailed.json</code>. Your badge
           JSON files are marker-based and never change from a tier sync.
         </p>
         <label class="toggle">
@@ -48,10 +48,9 @@
       </section>
 
       <section class="card" id="step-config">
-        <h2>Gist auto-push</h2>
+        <h2>Gist publication</h2>
         <p class="hint">
-          Solid, transparent, and mono badges each have their own Gist. All three auto-upload after
-          patch when <code>GITHUB_TOKEN</code> is in <code>.env</code>.
+          Solid, transparent, and mono badges each have their own Gist. Builds stay local. Publish the repository first, then push both preset files in each gist when <code>GITHUB_TOKEN</code> is in <code>.env</code>.
         </p>
         <p class="gist-status" id="gist-status" aria-live="polite"></p>
         <label class="field">
@@ -68,7 +67,7 @@
           <input
             type="text"
             id="gist-filename"
-            placeholder="solid-nosvasedis-badges-nuvio"
+            placeholder="kanso-solid.json"
             autocomplete="off"
           />
         </label>
