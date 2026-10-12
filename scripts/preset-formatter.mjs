@@ -1,6 +1,5 @@
 /** Kanso 2 presets. Requires the verified AIOStreams 2.35.9 formatter engine. */
-import { MARKER_ATOMS as M, LANGUAGE_MARKERS, TIER_MARKERS } from './formatter-markers.mjs';
-import { LANGUAGE_ARRAY_TOKENS } from './language-formatter-inject.mjs';
+import { MARKER_ATOMS as M, TIER_MARKERS } from './formatter-markers.mjs';
 import { FORMATTER_V2_INJECT_AUDIO } from './audio-formatter-inject.mjs';
 import { loadTierGroupsFromBadgesSync, tierRseRuleNames } from './tier-inject-generator.mjs';
 import { SYNC_TIER_IDS } from './tier-group-sync.mjs';
@@ -62,11 +61,7 @@ const VISUAL=gate(VISUAL_CONFLICT,'',visual) +
  gate('stream.editions::~IMAX Enhanced::or::stream.visualTags::~IMAX Enhanced',marker('visImaxE'),gate('stream.editions::~IMAX::or::stream.visualTags::~IMAX',marker('visImax'))) +
  gate('stream.visualTags::~3D',marker('vis3d'));
 
-const LANG=Object.entries(LANGUAGE_ARRAY_TOKENS).filter(([id])=>id!=='l-mu');
-const member=(field,tokens)=>`${field}::in(${tokens.map(t=>`'${t}'`).join(',')})`;
-function languageMarkers(field){return LANG.map(([id,tokens])=>gate(member(field,tokens),LANGUAGE_MARKERS[id])).join('');}
-
-export const PREFERRED_TRACKS="stream.audioTracks::where('lang={user.languages}','!commentary','!title~commentary')";
+export const PREFERRED_TRACKS="stream.audioTracks::where('lang={user.languages}','!lang=Unknown|Original|Multi|Dual Audio|Dubbed','!commentary','!title~commentary')";
 const usableTracks="stream.audioTracks::where('!commentary','!title~commentary')";
 /** File order selects one matching track. Codec/channels/language share this exact selection. */
 export function selectedTrack(content){
@@ -81,12 +76,23 @@ const TRACK_AUDIO=trackTags.map(([tag,atom])=>gate(`track.tag::=${tag}`,marker(a
  gate('track.title::~DTS:X',marker('audDtsx'))+
  gate('stream.audioTracks::length::=1::and::stream.audioTags::~Atmos',M.audAtmos)+
  gate('stream.audioTracks::length::=1::and::stream.audioTags::~DTS:X',M.audDtsx);
-const TRACK_CHANNELS=[['7.1','ch71'],['6.1','ch61'],['5.1','ch51'],['2.0','ch20']].map(([c,a])=>gate(`track.channels::=${c}`,marker(a))).join('');
 const reliable="stream.mediaInfoQuality::in('probe','indexer')";
-const fallbackLanguages=gate(reliable,gate('user.languages::exists',languageMarkers('stream.uLanguages::first'),languageMarkers('stream.languages::first')));
+const knownLanguages="stream.languages::remove('Unknown','Original','Multi','Dual Audio','Dubbed')";
+const preferredLanguages="stream.uLanguages::remove('Unknown','Original','Multi','Dual Audio','Dubbed')";
 const filenameAudio=[['Atmos','audAtmos'],['TrueHD','audTruehd'],['DDP','audDdplus'],['AC3','audDd'],['DTS-X','audDtsx'],['DTS-HD.MA','audDtsma'],['FLAC','audFlac'],['Opus','audOpus'],['AAC','audAac'],['MP3','audMp3']].map(([t,a])=>gate(token(t),M[a])).join('');
 const fallbackAudio=gate('stream.audioTags::exists',FORMATTER_V2_INJECT_AUDIO,gate('stream.quality::exists::or::stream.resolution::exists',filenameAudio));
-const AUDIO=gate('stream.audioTracks::exists',selectedTrack(languageMarkers('track.lang')+TRACK_AUDIO+TRACK_CHANNELS),fallbackAudio+fallbackLanguages);
+const AUDIO=gate('stream.audioTracks::exists',selectedTrack(TRACK_AUDIO),fallbackAudio);
+const realTrackLanguage="track.lang::exists::and::track.lang::in('Unknown','Original','Multi','Dual Audio','Dubbed')::isfalse";
+const trackLanguage='{track.lang::languageemoji}';
+const flatLanguage=list=>gate(`${list}::first::languageemoji::exists`,`🎧 {${list}::first::languageemoji}`);
+const fallbackLanguageRow=gate(reliable,gate('user.languages::exists',flatLanguage(preferredLanguages),flatLanguage(knownLanguages)));
+function audioLanguageRow(detailed){
+ const one=selectedTrack(gate(realTrackLanguage+'::and::track.lang::languageemoji::exists','🎧 '+trackLanguage));
+ const details=list=>gate(`${list}::exists`,`{?🎧 {${list}::slice(0,4)::each('${gate(realTrackLanguage+'::and::track.lang::languageemoji::exists',trackLanguage+' ')}{track.tag::exists["{track.tag}"||"{track.codec::upper}"]}{? {track.channels}?}')::join(' · ')}?}`);
+ // Detailed keeps only configured preferred tracks, rather than every language.
+ const tracks=detailed?gate('user.languages::exists',details(PREFERRED_TRACKS),details(usableTracks)):one;
+ return gate('stream.audioTracks::exists',tracks,fallbackLanguageRow);
+}
 
 /** Prefer structured editions/flags; contextual filename fallback only for unsupported provenance. */
 const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.seadex) +
@@ -113,7 +119,7 @@ const context=gate("stream.quality::in('TS','TC','SCR')",'⚠️ {stream.quality
  gate('stream.regexMatched::~Bad','⚠️ Release warning\n') + gate('stream.upscaled::istrue','🔼 Upscaled\n') +
  gate(VISUAL_CONFLICT,'⚠️ HDR/SDR conflict\n');
 const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists',gate(`${PREFERRED_TRACKS}::exists::isfalse`,'🗣️ Preferred audio unavailable\n'),
- gate(`${reliable}::and::stream.languages::exists::and::stream.uLanguages::exists::isfalse`,'🗣️ Preferred audio unavailable\n')));
+ gate(`${reliable}::and::${knownLanguages}::exists::and::${preferredLanguages}::exists::isfalse`,'🗣️ Preferred audio unavailable\n')));
 
 export function buildPresetFormatter(preset='compact'){
  if(!['compact','detailed'].includes(preset))throw new Error(`Unknown preset ${preset}`);
@@ -139,8 +145,8 @@ export function buildPresetFormatter(preset='compact'){
  const joinRows=rows=>rows.join('\n{tools.removeLine}\n');
  let visible=context+noPreferred+joinRows([release,file,deliveryRow])+gate(greekSubCondition,'\n💬 ELˢ')+
    gate('stream.subtitles::exists::isfalse',gate(`${token('Ell.Sub')}::or::${token('Greek.Sub')}`,'\n💬 ELˢ?'));
+ visible+='\n{tools.removeLine}\n'+audioLanguageRow(detailed);
  if(detailed){
-   visible+='\n{tools.removeLine}\n'+gate(`${usableTracks}::exists`,`🎧 {${usableTracks}::slice(0,4)::each('{track.lang::languagecode::default("UND")}: {track.tag::exists["{track.tag}"||"{track.codec::upper}"]}{? {track.channels}?}')::join(' · ')}`);
    visible+=gate('stream.audioTracks::exists::isfalse::and::stream.audioChannels::exists','\n🔊 {stream.audioChannels::join("/")}');
  }
  visible+=MESSAGE_BLOCK;

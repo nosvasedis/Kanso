@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "filters": [
     {
       "id": "seadex-release",
@@ -122,11 +122,6 @@
       "name": "CRUNCHYROLL"
     },
     {
-      "id": "web-unranked",
-      "groupId": "gms",
-      "name": "WEB Unranked"
-    },
-    {
       "id": "web-6",
       "groupId": "gms",
       "name": "WEB 6"
@@ -155,11 +150,6 @@
       "id": "web-1",
       "groupId": "gms",
       "name": "WEB 1"
-    },
-    {
-      "id": "blu-ray-unranked",
-      "groupId": "gms",
-      "name": "BLU-RAY Unranked"
     },
     {
       "id": "blu-ray-8",
@@ -202,11 +192,6 @@
       "name": "BLU-RAY 1"
     },
     {
-      "id": "remux-unranked",
-      "groupId": "gms",
-      "name": "REMUX Unranked"
-    },
-    {
       "id": "remux-3",
       "groupId": "gms",
       "name": "REMUX 3"
@@ -220,51 +205,6 @@
       "id": "remux-1",
       "groupId": "gms",
       "name": "REMUX 1"
-    },
-    {
-      "id": "q-br",
-      "groupId": "gq",
-      "name": "Best Remux"
-    },
-    {
-      "id": "q-bb",
-      "groupId": "gq",
-      "name": "Best BluRay"
-    },
-    {
-      "id": "q-bw",
-      "groupId": "gq",
-      "name": "Best WebDL"
-    },
-    {
-      "id": "q-gr",
-      "groupId": "gq",
-      "name": "Good Remux"
-    },
-    {
-      "id": "q-gb",
-      "groupId": "gq",
-      "name": "Good BluRay"
-    },
-    {
-      "id": "q-gw",
-      "groupId": "gq",
-      "name": "Good WebDL"
-    },
-    {
-      "id": "q-or",
-      "groupId": "gq",
-      "name": "OK Remux"
-    },
-    {
-      "id": "q-ob",
-      "groupId": "gq",
-      "name": "OK BluRay"
-    },
-    {
-      "id": "q-ow",
-      "groupId": "gq",
-      "name": "OK WebDL"
     },
     {
       "id": "q-r",
@@ -495,131 +435,6 @@
       "id": "a-pcm",
       "groupId": "ga",
       "name": "PCM"
-    },
-    {
-      "id": "ch-71",
-      "groupId": "gc",
-      "name": "7.1"
-    },
-    {
-      "id": "ch-61",
-      "groupId": "gc",
-      "name": "6.1"
-    },
-    {
-      "id": "ch-51",
-      "groupId": "gc",
-      "name": "5.1"
-    },
-    {
-      "id": "ch-20",
-      "groupId": "gc",
-      "name": "2.0"
-    },
-    {
-      "id": "l-en",
-      "groupId": "gl",
-      "name": "🇬🇧"
-    },
-    {
-      "id": "l-es",
-      "groupId": "gl",
-      "name": "🇪🇸"
-    },
-    {
-      "id": "l-fr",
-      "groupId": "gl",
-      "name": "🇫🇷"
-    },
-    {
-      "id": "l-de",
-      "groupId": "gl",
-      "name": "🇩🇪"
-    },
-    {
-      "id": "l-it",
-      "groupId": "gl",
-      "name": "🇮🇹"
-    },
-    {
-      "id": "l-pt-br",
-      "groupId": "gl",
-      "name": "🇧🇷"
-    },
-    {
-      "id": "l-pt-pt",
-      "groupId": "gl",
-      "name": "🇵🇹"
-    },
-    {
-      "id": "l-tr",
-      "groupId": "gl",
-      "name": "🇹🇷"
-    },
-    {
-      "id": "l-pl",
-      "groupId": "gl",
-      "name": "🇵🇱"
-    },
-    {
-      "id": "l-uk",
-      "groupId": "gl",
-      "name": "🇺🇦"
-    },
-    {
-      "id": "l-id",
-      "groupId": "gl",
-      "name": "🇮🇩"
-    },
-    {
-      "id": "l-th",
-      "groupId": "gl",
-      "name": "🇹🇭"
-    },
-    {
-      "id": "l-vi",
-      "groupId": "gl",
-      "name": "🇻🇳"
-    },
-    {
-      "id": "l-ja",
-      "groupId": "gl",
-      "name": "🇯🇵"
-    },
-    {
-      "id": "l-ko",
-      "groupId": "gl",
-      "name": "🇰🇷"
-    },
-    {
-      "id": "l-zh",
-      "groupId": "gl",
-      "name": "🇨🇳"
-    },
-    {
-      "id": "l-hi",
-      "groupId": "gl",
-      "name": "🇮🇳"
-    },
-    {
-      "id": "l-ar",
-      "groupId": "gl",
-      "name": "🇸🇦"
-    },
-    {
-      "id": "l-ru",
-      "groupId": "gl",
-      "name": "🇷🇺"
-    },
-    {
-      "id": "l-el",
-      "groupId": "gl",
-      "name": "🇬🇷"
-    },
-    {
-      "id": "l-mu",
-      "groupId": "gl",
-      "name": "🌐"
     }
   ]
 }

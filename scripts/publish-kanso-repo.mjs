@@ -51,7 +51,7 @@ await fs.writeFile(path.join(evidence,'repository-release.json'),JSON.stringify(
 console.log(`Reviewed overlay: ${paths.length} files, no deletions, base ${before}`);
 if(dryRun){console.log('Dry run: checkout ready for review, no remote writes.');process.exit(0);}
 if(paths.length){
- run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m','Kanso 2.0.2: remove audio diagnostic labels and refine emoji rows while preserving illustrated artwork'],work,true);
+ run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m','Kanso 2.1.0: unify preferred-language emoji rows and delete retired badge definitions'],work,true);
  run(['push','origin','HEAD:main'],work,true);
 }
 const commit=run(['rev-parse','HEAD'],work,true);

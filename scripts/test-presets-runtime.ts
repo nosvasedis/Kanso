@@ -3,9 +3,10 @@ import fs from 'node:fs';
 import { CustomFormatter } from '../.vendor/AIOStreams/packages/core/src/formatters/custom.ts';
 import { validateTemplate } from '../.vendor/AIOStreams/packages/core/src/formatters/engine/parser.ts';
 import { buildPresetFormatter, PRESET_MARKER } from './preset-formatter.mjs';
+import { RETIRED_BADGE_IDS } from './retired-badges.mjs';
 import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
-type FX={label:string;file?:string;parsed?:any;prefs?:string[];type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
+type FX={label:string;file?:string;parsed?:any;prefs?:string[];required?:string[];included?:string[];originalLanguage?:string;type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
 const fx:FX[]=[
  {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','ch-51','q-gw'],text:['📦 MKV','🎞️ HEVC','👥 FLUX','💾','✅','☁️ RD','🧩'],detailText:['🔊 5.1']},
  {label:'unknown remux range',parsed:{quality:'REMUX',resolution:'2160p'},common:['r-4k','q-r'],forbid:['v-hdr','v-sdr']},
@@ -17,7 +18,7 @@ const fx:FX[]=[
  {label:'HDR10+ only',parsed:{visualTags:['HDR10+']},common:['v-hdr10p'],forbid:['v-hdr','v-hdr10']},
  {label:'SDR 10bit detail',parsed:{visualTags:['SDR','10bit']},common:['v-sdr'],detailed:['v-10bit'],forbid:['v-hdr']},
  {label:'HDR does not also show 10bit',parsed:{visualTags:['HDR10','10bit']},common:['v-hdr10'],forbid:['v-10bit']},
- {label:'English AAC vs Japanese FLAC',prefs:['English'],parsed:{quality:'WEB',resolution:'1080p',languages:['English','Japanese'],audioTags:['FLAC','AAC'],audioChannels:['5.1','2.0'],audioTracks:[{lang:'Japanese',codec:'flac',tag:'FLAC',channels:'5.1',default:true},{lang:'English',codec:'aac',tag:'AAC',channels:'2.0'}],mediaInfoQuality:'probe'},common:['l-en','a-aac'],forbid:['l-ja','a-flac','ch-51'],detailText:['JA: FLAC 5.1','EN: AAC 2.0']},
+ {label:'English AAC vs Japanese FLAC',prefs:['English'],parsed:{quality:'WEB',resolution:'1080p',languages:['English','Japanese'],audioTags:['FLAC','AAC'],audioChannels:['5.1','2.0'],audioTracks:[{lang:'Japanese',codec:'flac',tag:'FLAC',channels:'5.1',default:true},{lang:'English',codec:'aac',tag:'AAC',channels:'2.0'}],mediaInfoQuality:'probe'},common:['l-en','a-aac'],forbid:['l-ja','a-flac','ch-51'],detailText:['🇬🇧 AAC 2.0'],absent:['JA: FLAC 5.1']},
  {label:'commentary is not selected',parsed:{audioTracks:[{lang:'English',tag:'FLAC',commentary:true},{lang:'English',tag:'AAC',channels:'2.0'}]},common:['l-en','a-aac'],forbid:['a-flac']},
  {label:'commentary title is not selected',parsed:{audioTracks:[{lang:'English',tag:'FLAC',title:'Director commentary'},{lang:'English',tag:'AAC'}]},common:['a-aac'],forbid:['a-flac']},
  {label:'preferred language absent',parsed:{languages:['Japanese'],audioTracks:[{lang:'Japanese',tag:'FLAC'}],mediaInfoQuality:'probe'},forbid:['l-en','l-ja','a-flac'],text:['Preferred audio unavailable']},
@@ -75,8 +76,17 @@ const fx:FX[]=[
  {label:'missing addon has no orphan puzzle',flags:{addon:undefined},absent:['🧩']},
  {label:'proxy without addon retains shield',flags:{addon:undefined,proxied:true},text:['🛡️'],absent:['🧩']},
  {label:'multiple file channels are compact values',parsed:{audioChannels:['5.1','2.0']},detailText:['🔊 5.1/2.0']},
+ {label:'two preferred languages exclude an unrelated track',prefs:['English','Greek'],parsed:{languages:['English','Greek','Japanese'],mediaInfoQuality:'probe',audioTracks:[{lang:'English',tag:'DD+',channels:'5.1'},{lang:'Greek',tag:'AAC',channels:'2.0'},{lang:'Japanese',tag:'FLAC',channels:'7.1'}]},common:['a-dp'],text:['🇬🇧'],detailText:['🇬🇷 AAC 2.0'],absent:['🇯🇵','JA: FLAC']},
+ {label:'Swedish works without a legacy flag badge',prefs:['Swedish'],parsed:{audioTracks:[{lang:'Swedish',tag:'AAC',channels:'2.0'}]},common:['a-aac'],text:['🇸🇪']},
+ {label:'placeholder languages do not become preferred flags',prefs:['English','Original','Multi','Dubbed','Unknown'],parsed:{languages:['Multi','Dubbed','Unknown'],mediaInfoQuality:'indexer'},absent:['🎧','🇬🇧','Preferred audio unavailable']},
+ {label:'Tamtaro Original resolves to the media language',prefs:['English','Original','Multi','Dual Audio','Dubbed','Unknown'],originalLanguage:'Japanese',parsed:{languages:['Japanese'],mediaInfoQuality:'probe',audioTracks:[{lang:'Japanese',tag:'FLAC'}]},common:['a-flac'],text:['🇯🇵']},
+ {label:'required languages participate in the AIO preference context',prefs:['English'],required:['Greek'],parsed:{languages:['Greek'],mediaInfoQuality:'indexer'},text:['🇬🇷']},
+ {label:'flat preferred order is respected',prefs:['Greek','English'],parsed:{languages:['English','Greek'],mediaInfoQuality:'probe'},text:['🇬🇷'],absent:['🇬🇧']},
+ {label:'uncertain language metadata stays quiet',prefs:['English'],parsed:{languages:['English'],mediaInfoQuality:'filename'},absent:['🎧','🇬🇧']},
+ {label:'Tamtaro English DD+ 5.1 without duplicate flags',prefs:['English','Original','Multi','Dual Audio','Dubbed','Unknown'],originalLanguage:'English',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',releaseGroup:'FLUX',network:'Amazon',visualTags:['DV','HDR10+'],languages:['English','Japanese'],mediaInfoQuality:'probe',audioTags:['DD+','Atmos','FLAC'],audioTracks:[{lang:'Japanese',tag:'FLAC',channels:'7.1'},{lang:'English',codec:'eac3',tag:'DD+',channels:'5.1',title:'Main Atmos'}]},common:['r-4k','v-dv-hdr10p','a-at-dp'],compact:['q-w'],detailed:['web-1','s-amzn'],text:['🇬🇧'],detailText:['🇬🇧 DD+ 5.1'],absent:['🇯🇵','JA: FLAC']},
  {label:'rank score does not change badge opinion',score:100,parsed:{quality:'WEB',resolution:'1080p'},common:['q-w','r-1080'],forbid:['q-bw','q-gw','q-ow']},
 ];
+const nativeLanguage:Record<string,string>={'l-en':'🇬🇧','l-ja':'🇯🇵','l-fr':'🇫🇷','l-el':'🇬🇷','l-ru':'🇷🇺'};
 const evidence:any[]=[];
 for(const preset of ['compact','detailed']){
  const suffix=preset==='compact'?'':'-detailed';
@@ -89,26 +99,31 @@ for(const preset of ['compact','detailed']){
  }
  for(const f of fx){
    const prefs=f.prefs??['English'];
-   const engine=new CustomFormatter(templates.name,templates.description,{userData:{preferredLanguages:prefs},queryType:f.anime?'anime.series':'movie',isAnime:f.anime??false,maxSeScore:100} as any);
+   const engine=new CustomFormatter(templates.name,templates.description,{userData:{preferredLanguages:prefs,requiredLanguages:f.required??[],includedLanguages:f.included??[]},originalLanguage:f.originalLanguage,queryType:f.anime?'anime.series':'movie',isAnime:f.anime??false,maxSeScore:100} as any);
    const stream:any={type:f.type??'debrid',filename:f.file??null,size:18.2e9,proxied:false,rankedStreamExpressionsMatched:f.rse??[],streamExpressionScore:f.score??80,parsedFile:f.parsed??{},addon:{name:'Comet'},...(f.service===false?{}:{service:{id:'realdebrid',cached:f.cache===undefined?true:f.cache}}),...f.flags};
    const out=await engine.format(stream);
    const visible=clean(out.name+'\n'+out.description);
    assert.ok(out.name.includes(PRESET_MARKER));
+   for(const line of visible.split('\n').filter(s=>s.startsWith('🎧')))assert.doesNotMatch(line,/\b(?:EN|EL|JA|FR|SV)\b|:/,'Native flags replace language codes in the audio row');
    assert.doesNotMatch(visible,/Audio: file tags|Audio unverified|File channels|^\s*(?:🎧|🔊|💬|🧩)\s*$/m,'Remove diagnostic wording and orphaned emoji rows');
    assert.doesNotMatch(visible,/🧩\s*·\s*Comet/,'Attach the addon cue to its name');
    assert.match(clean(out.name),/🔗|🧲|🌐|📰/,`Restored transport imagery: ${f.label}`);
    if((f.score??80)>=20)assert.match(clean(out.name),/[★☆]/,'Keep original title stars');
    assert.doesNotMatch(visible,/\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
    assert.doesNotMatch(clean(out.description),/^\s*·|\n\s*·|·\s*$|\n\n/,`${preset}/${f.label}: separator leak`);
+   for(const id of f.common??[])if(nativeLanguage[id])assert.ok(visible.includes(nativeLanguage[id]),`${preset}/${f.label}: preferred language missing from formatter`);
+   if(prefs.length||preset==='compact')for(const id of f.forbid??[])if(nativeLanguage[id])assert.ok(!visible.includes(nativeLanguage[id]),`${preset}/${f.label}: non-preferred language in formatter`);
    for(const t of [...f.text??[],...(preset==='detailed'?f.detailText??[]:[])])assert.ok(visible.includes(t),`${preset}/${f.label}: missing ${t}: ${visible}`);
    for(const t of f.absent??[])assert.ok(!visible.includes(t),`${preset}/${f.label}: unexpected ${t}: ${visible}`);
    let reference:string[]|undefined;
    for(const skin of ['solid','transparent','mono']){
      const pack=JSON.parse(fs.readFileSync(`kanso-${skin}${suffix}.json`,'utf8'));
+     assert.ok(pack.filters.every((b:any)=>b.isEnabled&&!RETIRED_BADGE_IDS.has(b.id)), 'Retired badges must be deleted, not disabled');
+     assert.ok(pack.groups.every((g:any)=>pack.filters.some((b:any)=>b.groupId===g.id)), 'No empty retired groups');
      const hay=nuvioHaystacks([out.name,out.description,f.file].filter(Boolean));
      const hits=pack.filters.filter((b:any)=>b.isEnabled&&hay.some((s:string)=>nuvioRegex(b.pattern).test(s))).map((b:any)=>b.id);
      if(reference)assert.deepEqual(hits,reference,`${preset}/${f.label}: skin changes detection`);else reference=hits;
-     for(const id of [...f.common??[],...f[preset]??[]])assert.ok(hits.includes(id),`${preset}/${f.label}: missing ${id}: ${hits}`);
+     for(const id of [...f.common??[],...f[preset]??[]].filter(id=>!RETIRED_BADGE_IDS.has(id)))assert.ok(hits.includes(id),`${preset}/${f.label}: missing ${id}: ${hits}`);
      for(const id of f.forbid??[])assert.ok(!hits.includes(id),`${preset}/${f.label}: forbidden ${id}: ${hits}`);
      assert.ok(hits.filter((id:string)=>/^q-(?:r|b|w|wr|cam|hdtv)$|^(?:web|blu-ray|remux)-\d/.test(id)).length<=1,`${preset}/${f.label}: duplicated source ${hits}`);
      const legacyHay=nuvioHaystacks([clean(out.name),clean(out.description),f.file].filter(Boolean));
