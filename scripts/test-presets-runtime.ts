@@ -7,11 +7,11 @@ import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
 type FX={label:string;file?:string;parsed?:any;prefs?:string[];type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
 const fx:FX[]=[
- {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','ch-51','q-gw'],text:['📦 MKV','🎞️ HEVC','👥 FLUX','💾','✅','☁️ RD','🧩'],detailText:['File channels: 5.1']},
+ {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','ch-51','q-gw'],text:['📦 MKV','🎞️ HEVC','👥 FLUX','💾','✅','☁️ RD','🧩'],detailText:['🔊 5.1']},
  {label:'unknown remux range',parsed:{quality:'REMUX',resolution:'2160p'},common:['r-4k','q-r'],forbid:['v-hdr','v-sdr']},
  {label:'explicit SDR remux',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['SDR']},common:['v-sdr','q-r'],forbid:['v-hdr']},
  {label:'HLG is not generic HDR',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['HLG']},common:['v-hlg'],forbid:['v-hdr','v-sdr']},
- {label:'conflicting HDR SDR',parsed:{visualTags:['HDR','SDR']},forbid:['v-hdr','v-sdr'],text:['Conflicting HDR/SDR']},
+ {label:'conflicting HDR SDR',parsed:{visualTags:['HDR','SDR']},forbid:['v-hdr','v-sdr'],text:['⚠️ HDR/SDR conflict']},
  {label:'DV HDR10 evidenced combination',parsed:{visualTags:['DV','HDR10']},common:['v-dv-hdr10'],forbid:['a-dv','v-hdr10']},
  {label:'DV only',parsed:{visualTags:['DV']},common:['a-dv'],forbid:['v-hdr']},
  {label:'HDR10+ only',parsed:{visualTags:['HDR10+']},common:['v-hdr10p'],forbid:['v-hdr','v-hdr10']},
@@ -26,12 +26,12 @@ const fx:FX[]=[
  {label:'do not borrow another track Atmos',parsed:{audioTracks:[{lang:'English',tag:'AAC'},{lang:'Japanese',tag:'TrueHD',title:'Atmos'}],audioTags:['TrueHD','Atmos','AAC']},common:['l-en','a-aac'],forbid:['a-at','a-at-th']},
  {label:'missing tag uses track codec',parsed:{audioTracks:[{lang:'English',codec:'eac3'}]},common:['a-dp','l-en']},
  {label:'Japanese preferences respected',prefs:['Japanese'],parsed:{audioTracks:[{lang:'English',tag:'AAC'},{lang:'Japanese',tag:'FLAC'}]},common:['l-ja','a-flac'],forbid:['l-en','a-aac']},
- {label:'English subtitle token is not audio proof',file:'Movie.1080p.WEB-DL.Eng.Sub.mkv',parsed:{quality:'WEB',resolution:'1080p',languages:['English']},forbid:['l-en'],text:['Audio unverified']},
- {label:'probed Greek subtitles distinct from audio',parsed:{quality:'WEB',languages:['English'],subtitles:['Greek'],mediaInfoQuality:'probe'},common:['l-en'],forbid:['l-el'],text:['EL subs']},
- {label:'Greek audio is not subtitle cue',prefs:['Greek'],parsed:{languages:['Greek'],mediaInfoQuality:'probe'},common:['l-el'],absent:['EL subs']},
- {label:'subtitle only has no leading separator',flags:{size:undefined},parsed:{subtitles:['Greek']},text:['EL subs']},
+ {label:'English subtitle token is not audio proof',file:'Movie.1080p.WEB-DL.Eng.Sub.mkv',parsed:{quality:'WEB',resolution:'1080p',languages:['English']},forbid:['l-en']},
+ {label:'probed Greek subtitles distinct from audio',parsed:{quality:'WEB',languages:['English'],subtitles:['Greek'],mediaInfoQuality:'probe'},common:['l-en'],forbid:['l-el'],text:['💬 ELˢ']},
+ {label:'Greek audio is not subtitle cue',prefs:['Greek'],parsed:{languages:['Greek'],mediaInfoQuality:'probe'},common:['l-el'],absent:['💬 ELˢ']},
+ {label:'subtitle only has no leading separator',flags:{size:undefined},parsed:{subtitles:['Greek']},text:['💬 ELˢ']},
  {label:'library only has no leading separator',flags:{size:undefined,proxied:undefined,library:true},detailText:['Library']},
- {label:'reported Greek subtitles not audio cue',file:'Movie.1080p.WEB-DL.Ell.Sub.mkv',parsed:{quality:'WEB',resolution:'1080p',languages:['Greek']},forbid:['l-el'],text:['EL subs (reported)','Audio unverified']},
+ {label:'reported Greek subtitles not audio cue',file:'Movie.1080p.WEB-DL.Ell.Sub.mkv',parsed:{quality:'WEB',resolution:'1080p',languages:['Greek']},forbid:['l-el'],text:['💬 ELˢ?']},
  {label:'trusted language beats filename',file:'Movie.English.1080p.WEB-DL.mkv',prefs:['French'],parsed:{languages:['French'],mediaInfoQuality:'indexer'},common:['l-fr'],forbid:['l-en']},
  {label:'missing preferred probed language',parsed:{languages:['Russian'],mediaInfoQuality:'probe'},forbid:['l-ru'],text:['Preferred audio unavailable']},
  {label:'parsed resolution beats filename',file:'Movie.2160p.WEB-DL.mkv',parsed:{quality:'WEB',resolution:'1080p'},common:['r-1080'],forbid:['r-4k']},
@@ -44,9 +44,9 @@ const fx:FX[]=[
  {label:'anime does not borrow movie group tier',anime:true,parsed:{quality:'BluRay',releaseGroup:'Moxie'},common:['q-b'],forbid:['blu-ray-1','blu-ray-2']},
  {label:'WebRip tier label preserves actual source',file:'Movie.1080p.WEBRip.FLUX.mkv',parsed:{quality:'WEB',resolution:'1080p',releaseGroup:'FLUX'},compact:['q-wr'],detailed:['web-1-webrip'],forbid:['web-1','q-w']},
  {label:'CAM warning retained',parsed:{quality:'CAM',resolution:'1080p'},common:['q-cam','r-1080'],forbid:['q-w','q-gw']},
- {label:'telesync warning retained',parsed:{quality:'TS'},text:['⚠ TS source']},
- {label:'telecine warning retained',parsed:{quality:'TC'},text:['⚠ TC source']},
- {label:'screener warning retained',parsed:{quality:'SCR'},text:['⚠ SCR source']},
+ {label:'telesync warning retained',parsed:{quality:'TS'},text:['⚠️ TS']},
+ {label:'telecine warning retained',parsed:{quality:'TC'},text:['⚠️ TC']},
+ {label:'screener warning retained',parsed:{quality:'SCR'},text:['⚠️ SCR']},
  {label:'structured WebRip without filename',parsed:{quality:'WEBRip'},common:['q-wr'],forbid:['q-w']},
  {label:'structured WEB-DL beats filename',file:'Movie.1080p.WEBRip.mkv',parsed:{quality:'WEB-DL'},common:['q-w'],forbid:['q-wr']},
  {label:'mixed filename delimiters remain bounded',file:'Movie_1080p WEB-DL_AAC.mkv',parsed:{quality:'WEB',resolution:'1080p'},common:['q-w','a-aac'],forbid:['q-wr']},
@@ -66,10 +66,15 @@ const fx:FX[]=[
  {label:'upstream bad-release warning preserved',flags:{regexMatched:{name:'Bad release'}},text:['Release warning']},
  {label:'upscaled flag stays visible',parsed:{upscaled:true},text:['Upscaled']},
  {label:'Detailed delivery diagnostics',parsed:{encode:'hevc',container:'mkv',releaseGroup:'GROUP'},flags:{bitrate:30e6,age:24,indexer:'NZBGeek',torrent:{private:true,freeleech:true}},text:['HEVC'],detailText:['MKV','GROUP','NZBGeek','Private','Freeleech']},
- {label:'season pack and folder size retained',parsed:{seasonPack:true},flags:{folderSize:100e9},text:['Season pack','Pack size:']},
+ {label:'season pack and folder size retained',parsed:{seasonPack:true},flags:{folderSize:100e9},text:['📚 Season pack','📁']},
  {label:'library wins over preload',flags:{library:true,preloading:true},detailText:['Library'],absent:['Preloading']},
  {label:'preloading distinct',flags:{library:false,preloading:true},detailText:['Preloading']},
  {label:'empty stream has no punctuation',flags:{size:undefined},service:false,absent:['\n\n']},
+ {label:'commentary only has no orphan headphones',parsed:{audioTracks:[{lang:'English',tag:'AAC',commentary:true}]},text:['Preferred audio unavailable'],absent:['🎧']},
+ {label:'unknown channels stay quiet',parsed:{audioChannels:[]},absent:['🔊']},
+ {label:'missing addon has no orphan puzzle',flags:{addon:undefined},absent:['🧩']},
+ {label:'proxy without addon retains shield',flags:{addon:undefined,proxied:true},text:['🛡️'],absent:['🧩']},
+ {label:'multiple file channels are compact values',parsed:{audioChannels:['5.1','2.0']},detailText:['🔊 5.1/2.0']},
  {label:'rank score does not change badge opinion',score:100,parsed:{quality:'WEB',resolution:'1080p'},common:['q-w','r-1080'],forbid:['q-bw','q-gw','q-ow']},
 ];
 const evidence:any[]=[];
@@ -89,6 +94,8 @@ for(const preset of ['compact','detailed']){
    const out=await engine.format(stream);
    const visible=clean(out.name+'\n'+out.description);
    assert.ok(out.name.includes(PRESET_MARKER));
+   assert.doesNotMatch(visible,/Audio: file tags|Audio unverified|File channels|^\s*(?:🎧|🔊|💬|🧩)\s*$/m,'Remove diagnostic wording and orphaned emoji rows');
+   assert.doesNotMatch(visible,/🧩\s*·\s*Comet/,'Attach the addon cue to its name');
    assert.match(clean(out.name),/🔗|🧲|🌐|📰/,`Restored transport imagery: ${f.label}`);
    if((f.score??80)>=20)assert.match(clean(out.name),/[★☆]/,'Keep original title stars');
    assert.doesNotMatch(visible,/\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
