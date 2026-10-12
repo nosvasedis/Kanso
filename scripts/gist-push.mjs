@@ -21,7 +21,7 @@ export async function pushGist(theme,{dryRun=false}={}){
  const backup=path.join(evidence,`gist-${id}-before-${before.history?.[0]?.version??Date.now()}.json`);
  try{await fs.writeFile(backup,JSON.stringify(before,null,2)+'\n',{flag:'wx'});}catch(e){if(e.code!=='EEXIST')throw e;}
  const files=Object.fromEntries(names.map((name,i)=>[name,{content:bodies[i]}]));
- await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso 2.1.0 ${theme}: illustrated Compact + Detailed badges and emoji formatter for Nuvio`,files})});
+ await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso 2.1.1 ${theme}: illustrated Compact + Detailed badges and emoji formatter for Nuvio`,files})});
  const after=await github(`/gists/${id}?verification=${Date.now()}`);
  for(let i=0;i<names.length;i++){
    const f=after.files[names[i]];if(!f)throw new Error('Published gist file missing');

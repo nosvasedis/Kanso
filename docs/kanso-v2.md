@@ -1,6 +1,10 @@
-# Kanso 2.1.0 — preferred language in the formatter; retired badges deleted
+# Kanso 2.1.1 — preferred language in the formatter; retired badges deleted
 
 Language is represented once: in the emoji formatter. Compact uses a native Unicode flag, such as `🎧 🇬🇧`; Detailed includes matching track details, such as `🎧 🇬🇧 DD+ 5.1`. The separate image flag badges are removed.
+
+In 2.1.1, consecutive tracks sharing a language use one flag: `🎧 🇬🇧 TrueHD 7.1 · DD 5.1`. A language change gets a new flag, including a return to a previously shown language. Track order, codec selection and the four-track limit remain unchanged. Spoken audio is above subtitles; the subtitle cue is the bottom visible row, after provider messages.
+
+The generic release warning is replaced by `🚩` followed by the actual matched rule name, omitting Radarr/Sonarr prefixes. The existing Bad-rule trigger now ignores case. It reports the rule name without inferring a playback defect. Recording warnings spell out Telesync/Telecine/Screener with recording emoji; HDR/SDR conflicts and upscaling remain explicit. NZB health messages preserve status and full details without redundant speech-bubble decoration. Unknown provider messages retain their original content.
 
 ## Actual deletion
 
@@ -20,7 +24,7 @@ The formatter-owned diagnostic labels removed in 2.0.2 stay absent. Emoji cache/
 
 ## Verification and upgrade
 
-77 real-engine fixtures × two presets × three skins; retired-ID absence, no disabled entries/empty groups, native preferred-language assertions, Tamtaro-style Original/required-language cases, Swedish outside the old image inventory, all 136 retained PNG hashes and tier-sync regressions. Templates fit the default 15,000-character budget: Compact 8,362/8,522; Detailed 11,694/11,945. Engine validation uses official AIOStreams 2.35.9.
+88 real-engine fixtures × two presets × three skins; retired-ID absence, no disabled entries/empty groups, native preferred-language assertions, Tamtaro-style Original/required-language cases, Swedish outside the old image inventory, all 136 retained PNG hashes and tier-sync regressions. Templates fit the default 15,000-character budget: Compact 8,577/8,720; Detailed 13,858/13,490. Engine validation uses official AIOStreams 2.35.9.
 
 Refresh the formatter and replace the old imported Kanso badge pack with the matching new pack. Updating a remote JSON does not automatically delete old entries retained by a merge in the client. Keep Kanso as your custom formatter during Tamtaro template updates.
 

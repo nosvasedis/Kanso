@@ -88,7 +88,17 @@ const flatLanguage=list=>gate(`${list}::first::languageemoji::exists`,`🎧 {${l
 const fallbackLanguageRow=gate(reliable,gate('user.languages::exists',flatLanguage(preferredLanguages),flatLanguage(knownLanguages)));
 function audioLanguageRow(detailed){
  const one=selectedTrack(gate(realTrackLanguage+'::and::track.lang::languageemoji::exists','🎧 '+trackLanguage));
- const details=list=>gate(`${list}::exists`,`{?🎧 {${list}::slice(0,4)::each('${gate(realTrackLanguage+'::and::track.lang::languageemoji::exists',trackLanguage+' ')}{track.tag::exists["{track.tag}"||"{track.codec::upper}"]}{? {track.channels}?}')::join(' · ')}?}`);
+ // The stable engine has no previous-track field or nested each(). Render four
+ // slots explicitly so a flag appears only at the start of a language run.
+ const details=list=>{
+   const slots=Array.from({length:4},(_,i)=>{
+     const previous=`${list}::slice(${i-1},${i})::pluck('lang')::first`;
+     const flag=gate((i?`track.lang::neq::${previous}::and::`:'')+realTrackLanguage+'::and::track.lang::languageemoji::exists',trackLanguage+' ');
+     const content=flag+'{track.tag::exists["{track.tag}"||"{track.codec::upper}"]}{? {track.channels}?}';
+     return `{${list}::slice(${i},${i+1})::each('{?${i?' · ':''}${content}?}')::join('')}`;
+   }).join('');
+   return gate(`${list}::exists`,`{?🎧 ${slots}?}`);
+ };
  // Detailed keeps only configured preferred tracks, rather than every language.
  const tracks=detailed?gate('user.languages::exists',details(PREFERRED_TRACKS),details(usableTracks)):one;
  return gate('stream.audioTracks::exists',tracks,fallbackLanguageRow);
@@ -115,9 +125,13 @@ function row(parts){return parts.map((p,i)=>gate(p.condition,
   (i?gate(parts.slice(0,i).map(x=>x.condition).join('::or::'),' · '):'')+p.text)).join('');}
 const part=(field,text=`{${field}}`)=>({condition:present(field),text});
 const greekSubCondition='stream.subtitles::~Greek';
-const context=gate("stream.quality::in('TS','TC','SCR')",'⚠️ {stream.quality}\n')+
- gate('stream.regexMatched::~Bad','⚠️ Release warning\n') + gate('stream.upscaled::istrue','🔼 Upscaled\n') +
- gate(VISUAL_CONFLICT,'⚠️ HDR/SDR conflict\n');
+const context=gate('stream.quality::=TS','📹 Telesync (TS)\n')+
+ gate('stream.quality::=TC','📹 Telecine (TC)\n')+gate('stream.quality::=SCR','📼 Screener (SCR)\n')+
+ gate('stream.regexMatched::lower::~bad',"🚩 {stream.regexMatched::replace('Radarr ','')::replace('Sonarr ','')}\n") +
+ gate('stream.upscaled::istrue','🔼 Upscaled\n') +
+ gate(VISUAL_CONFLICT,'⚠️ Conflicting HDR/SDR tags\n');
+const healthMessage="{stream.message::replace('NZB Health: ✅','✅')::replace('NZB Health: 🧝','🧝')::replace('AvailNZB 💚','💚')::replace('NZB Health: ⚠️','⚠️')::replace('NZB Health: 🚫','❌')}";
+const messages=gate('stream.message::exists',gate('stream.message::$NZB Health::or::stream.message::$AvailNZB','\n'+healthMessage,MESSAGE_BLOCK));
 const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists',gate(`${PREFERRED_TRACKS}::exists::isfalse`,'🗣️ Preferred audio unavailable\n'),
  gate(`${reliable}::and::${knownLanguages}::exists::and::${preferredLanguages}::exists::isfalse`,'🗣️ Preferred audio unavailable\n')));
 
@@ -143,13 +157,15 @@ export function buildPresetFormatter(preset='compact'){
    {condition:'stream.type::=p2p::and::stream.seeders::>0',text:'⇋ {stream.seeders} seeders 🌱'}
  ]);
  const joinRows=rows=>rows.join('\n{tools.removeLine}\n');
- let visible=context+noPreferred+joinRows([release,file,deliveryRow])+gate(greekSubCondition,'\n💬 ELˢ')+
-   gate('stream.subtitles::exists::isfalse',gate(`${token('Ell.Sub')}::or::${token('Greek.Sub')}`,'\n💬 ELˢ?'));
+ let visible=context+noPreferred+joinRows([release,file,deliveryRow]);
  visible+='\n{tools.removeLine}\n'+audioLanguageRow(detailed);
  if(detailed){
    visible+=gate('stream.audioTracks::exists::isfalse::and::stream.audioChannels::exists','\n🔊 {stream.audioChannels::join("/")}');
  }
- visible+=MESSAGE_BLOCK;
+ visible+=messages;
+ // Subtitles are the last visible row, after spoken audio and provider messages.
+ visible+=gate(greekSubCondition,'\n💬 ELˢ')+
+   gate('stream.subtitles::exists::isfalse',gate(`${token('Ell.Sub')}::or::${token('Greek.Sub')}`,'\n💬 ELˢ?'));
  let name=PRESET_NAME+PRESET_MARKER;
  let description=visible;
  // Source and tier share a field so native per-field scans cannot echo the source.
@@ -162,7 +178,7 @@ export function buildPresetFormatter(preset='compact'){
    active.forEach((s,i)=>{if(bits&(1<<i))n+=s;else d+=s;});
    if(Math.max(n.length,d.length)<=PRESET_MAX_LENGTH&&(!partition||Math.max(n.length,d.length)<Math.max(partition.n.length,partition.d.length)))partition={n,d};
  }
- if(!partition)throw new Error(`Preset ${preset}: templates cannot fit the ${PRESET_MAX_LENGTH} character budget`);
+ if(!partition)throw new Error(`Preset ${preset}: templates cannot fit the ${PRESET_MAX_LENGTH} character budget (visible ${name.length}/${description.length}; badge segments ${active.map(s=>s.length).join('/')})`);
  name=partition.n;description=partition.d;
  if(Math.max(name.length,description.length)>PRESET_MAX_LENGTH)throw new Error(`Preset ${preset} exceeds ${PRESET_MAX_LENGTH}: ${name.length}/${description.length}`);
  return {name,description};

@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.1.0
+# Kanso 2.1.1
 
 Illustrated stream badges and an emoji formatter for Nuvio + AIOStreams. Audio language lives in one formatter row, with native Unicode flags, without ISO language codes; the duplicate flag badges are retired. Original logos, transport icons, stars and emoji rows are preserved. **Compact is the default. Detailed adds provenance.** Both come in Solid, Transparent and Mono.
 
@@ -24,7 +24,7 @@ This preview uses exported PNGs and real AIOStreams output. Its browser layout a
 5. For an upgrade from Kanso 1, **refresh both the formatter and the badge pack**. Kanso 2 uses a version marker; mixed old/new exports are deliberately prevented from producing confident badges. Saving a URL does not guarantee the app has fetched the newest content—refresh its sync/import when needed.
 6. If your client already displays native resolution or size labels, disable whichever duplicate display you prefer. Badge import UI and native labels vary by platform/version.
 
-Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 8,362 / 8,522 characters; Detailed is 11,694 / 11,945. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 8,577 / 8,720 characters; Detailed is 13,858 / 13,490. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## What each preset shows
 
@@ -67,6 +67,10 @@ Keep Kanso as the custom formatter when updating Tamtaro; changing the formatter
 
 All three skins preserve original illustrated artwork for the retained categories: Dolby/DTS/source logos, streaming artwork, resolutions, numbered tiers and editions. Language flags are native formatter emoji, such as `🎧 🇬🇧` in Compact or `🎧 🇬🇧 DD+ 5.1` in Detailed. Their separate badge entries and invisible language markers are removed. The formatter preserves its transport emoji, title stars, release/file/delivery cues and useful warnings. Cache/provider and addon cues stay together: `✅ ☁️ RD · 🧩 Comet`.
 
+Detailed labels each consecutive language group once: `🎧 🇬🇧 TrueHD 7.1 · DD 5.1`. A flag returns when the language changes, so every codec remains associated with its language. Spoken audio appears above subtitles; the `💬 ELˢ` subtitle cue is the last visible row.
+
+Release-rule concerns display their specific matched name, such as `🚩 Bad Dual Groups`, rather than a generic release warning. Radarr/Sonarr prefixes are omitted; the reason is preserved. This reports the matched rule, not a playback failure. Recording warnings use `📹 Telesync (TS)`, `📹 Telecine (TC)` or `📼 Screener (SCR)`. Conflicting HDR/SDR tags retain `⚠️`, upscaling retains `🔼`, and NZB health messages keep their status emoji and full details without an extra speech bubble. Other provider messages remain intact.
+
 Solid retains the original category colors. Eight composites have white artwork embedded in their original PNG: their backgrounds now use dark audio gray or dark amber so the art remains visible. Their image bytes are unchanged. Transparent and Mono retain their original treatments. Transparent depends on the app background; restored multicolor artwork does not imply a uniform text-contrast guarantee. Content-addressed image paths and old files remain available for recovery.
 
 ## Build, test and maintain
@@ -77,7 +81,7 @@ npm run test:setup
 npm run release
 ```
 
-The setup clones the official AIOStreams **v2.35.9**, pinned to commit `1dcfa7665e7fa759b5604e39bf0f491e9aefaea5`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 77 fixtures × two presets × three skins, plus all 136 retained original PNG hashes, illustrated-art preservation checks and 48 composite/background checks and tier-sync regressions. The restored art mapping is pinned in a regression test so a future build cannot silently replace it with text labels. No native playback/device compatibility claim is made by these tests.
+The setup clones the official AIOStreams **v2.35.9**, pinned to commit `1dcfa7665e7fa759b5604e39bf0f491e9aefaea5`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 88 fixtures × two presets × three skins, plus all 136 retained original PNG hashes, illustrated-art preservation checks and 48 composite/background checks and tier-sync regressions. The restored art mapping is pinned in a regression test so a future build cannot silently replace it with text labels. No native playback/device compatibility claim is made by these tests.
 
 Maintainer publication, using the existing authorized GitHub CLI login for repository writes and a gist-capable token in `.env`:
 
