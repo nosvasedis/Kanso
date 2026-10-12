@@ -2,6 +2,8 @@ import { readFileSync } from 'node:fs';
 import { v2PatternForBadge, MARKER_ATOMS as M, TIER_MARKERS } from './formatter-markers.mjs';
 import { PRESET_MARKER } from './preset-formatter.mjs';
 const library=JSON.parse(readFileSync(new URL('../badges/badge-library.json',import.meta.url),'utf8'));
+export const ILLUSTRATED_APPEARANCE=JSON.parse(readFileSync(new URL('../badges/illustrated-appearance.json',import.meta.url),'utf8')).themes;
+export const WHITE_COMPOSITE_IDS=new Set(['a-at-th','a-at-dp','a-dtsx-ma','a-dtsx-hd','a-dtses','v-dv-hdr10p','v-dv-hdr10','v-dv-hdr']);
 const literal=m=>[...m].map(c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0')).join('');
 const requireMarker=m=>`(?=.*(?:${literal(m)}))`;
 const forbid=m=>`(?!.*(?:${literal(m)}))`;
@@ -63,8 +65,15 @@ export function buildPresetBadges(theme,preset){
    if(f.id==='v-10bit')f.pattern+=['drDv','drHdr','drHdr10p','visHdr10','visHlg'].map(a=>forbid(M[a])).join('');
    f.pattern=f.pattern.replace('(?s)^','(?s)^'+requireMarker(PRESET_MARKER));
    if(!f.pattern)throw new Error(`Missing pattern ${f.id}`);
-   const c=colorsFor(f.groupId,theme);f.tagColor=c.fill;f.borderColor=c.border;f.textColor=c.ink;f.tagStyle='filled';
+   // Keep the original illustrated PNGs, flag art, colors and category character.
+   const original=ILLUSTRATED_APPEARANCE[theme].filters[f.id.replace(/-webrip$/,'')];
+   if(!original)throw new Error(`Missing original illustrated artwork: ${theme}/${f.id}`);
+   Object.assign(f,{imageURL:original.imageURL,tagColor:original.tagColor,borderColor:original.borderColor,textColor:original.textColor,tagStyle:original.tagStyle});
+   if(theme==='solid'&&WHITE_COMPOSITE_IDS.has(f.id)){
+     // These original PNGs contain white ink. Fix the background, preserve the art.
+     f.tagColor=f.id.startsWith('v-')?'#795800':'#263238';f.borderColor='#FF'+f.tagColor.slice(1);f.textColor='#FFFFFF';
+   }
  }
  filters.sort((a,b)=>groupOrder.indexOf(a.groupId)-groupOrder.indexOf(b.groupId));
- return {filters,groups:groupOrder.map(id=>{const c=colorsFor(id,theme);return{id,name:groups[id],color:c.fill,borderColor:c.border,isExpanded:true};})};
+ return {filters,groups:groupOrder.map(id=>{const original=ILLUSTRATED_APPEARANCE[theme].groups.find(g=>g.id===id);const c=colorsFor(id,theme);return{id,name:groups[id],color:original?.color??c.fill,borderColor:original?.borderColor??c.border,isExpanded:true};})};
 }

@@ -7,7 +7,7 @@ import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
 type FX={label:string;file?:string;parsed?:any;prefs?:string[];type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
 const fx:FX[]=[
- {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','ch-51','q-gw'],detailText:['File channels: 5.1']},
+ {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','ch-51','q-gw'],text:['📦 MKV','🎞️ HEVC','👥 FLUX','💾','✅','☁️ RD','🧩'],detailText:['File channels: 5.1']},
  {label:'unknown remux range',parsed:{quality:'REMUX',resolution:'2160p'},common:['r-4k','q-r'],forbid:['v-hdr','v-sdr']},
  {label:'explicit SDR remux',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['SDR']},common:['v-sdr','q-r'],forbid:['v-hdr']},
  {label:'HLG is not generic HDR',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['HLG']},common:['v-hlg'],forbid:['v-hdr','v-sdr']},
@@ -60,8 +60,8 @@ const fx:FX[]=[
  {label:'named Uncut movie is not an edition',file:'The.Uncut.Movie.1080p.WEB-DL.mkv',parsed:{title:'The.Uncut.Movie',quality:'WEB',resolution:'1080p'},forbid:['uncut-edition']},
  {label:'cache false',cache:false,text:['Uncached']},
  {label:'cache unknown',cache:null,text:['Cache unknown']},
- {label:'HTTP is not debrid cache',type:'http',service:false,text:['HTTP'],absent:['Cached','Uncached','Cache unknown']},
- {label:'P2P swarm',type:'p2p',service:false,flags:{torrent:{seeders:125}},text:['P2P','125 seeders']},
+ {label:'HTTP is not debrid cache',type:'http',service:false,text:['🌐'],absent:['Cached','Uncached','Cache unknown']},
+ {label:'P2P swarm',type:'p2p',service:false,flags:{torrent:{seeders:125}},text:['🧲','125 seeders']},
  {label:'Usenet health warning preserved',type:'usenet',flags:{message:'NZB Health: ⚠️ missing blocks'},text:['missing blocks']},
  {label:'upstream bad-release warning preserved',flags:{regexMatched:{name:'Bad release'}},text:['Release warning']},
  {label:'upscaled flag stays visible',parsed:{upscaled:true},text:['Upscaled']},
@@ -89,7 +89,9 @@ for(const preset of ['compact','detailed']){
    const out=await engine.format(stream);
    const visible=clean(out.name+'\n'+out.description);
    assert.ok(out.name.includes(PRESET_MARKER));
-   assert.doesNotMatch(visible,/[★☆]|\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
+   assert.match(clean(out.name),/🔗|🧲|🌐|📰/,`Restored transport imagery: ${f.label}`);
+   if((f.score??80)>=20)assert.match(clean(out.name),/[★☆]/,'Keep original title stars');
+   assert.doesNotMatch(visible,/\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
    assert.doesNotMatch(clean(out.description),/^\s*·|\n\s*·|·\s*$|\n\n/,`${preset}/${f.label}: separator leak`);
    for(const t of [...f.text??[],...(preset==='detailed'?f.detailText??[]:[])])assert.ok(visible.includes(t),`${preset}/${f.label}: missing ${t}: ${visible}`);
    for(const t of f.absent??[])assert.ok(!visible.includes(t),`${preset}/${f.label}: unexpected ${t}: ${visible}`);

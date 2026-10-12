@@ -1,8 +1,8 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2
+# Kanso 2.0.1
 
-Readable stream badges for Nuvio, paired with an AIOStreams formatter. **Compact is the default. Detailed adds provenance.** Both come in Solid, Transparent and Mono.
+The original illustrated stream badges and emoji formatter for Nuvio + AIOStreams. Logos, language flags, transport icons, stars and emoji rows are preserved. **Compact is the default. Detailed adds provenance.** Both come in Solid, Transparent and Mono.
 
 ![Actual Kanso 2 artwork and formatter preview](assets/Kanso/kanso-v2-preview.png)
 
@@ -24,23 +24,25 @@ This preview uses exported PNGs and real AIOStreams output. Its browser layout a
 5. For an upgrade from Kanso 1, **refresh both the formatter and the badge pack**. Kanso 2 uses a version marker; mixed old/new exports are deliberately prevented from producing confident badges. Saving a URL does not guarantee the app has fetched the newest content—refresh its sync/import when needed.
 6. If your client already displays native resolution or size labels, disable whichever duplicate display you prefer. Badge import UI and native labels vary by platform/version.
 
-Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 10,057 / 8,399 characters; Detailed is 12,221 / 12,274. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 10,114 / 9,528 characters; Detailed is 13,019 / 13,127. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## What each preset shows
 
 | Information | Compact | Detailed |
 |---|---|---|
-| Delivery/cache, service, addon, size, encoding | Yes | Yes |
+| Emoji transport/stars, cache, service, addon, size, encoding | Yes | Yes |
 | Warnings, pack context, Greek subtitle cue | Yes | Yes |
 | Resolution, source, relevant audio language, picture, audio | Yes | Yes |
 | Viewing cuts, B&W, IMAX, 3D, SeaDex when evidenced | Yes | Yes |
-| Known release tier | Source only | Combined with source, e.g. `WEB-DL T1` |
+| Known release tier | Source only | Original source-family/tier artwork |
 | Streaming origin and specialist provenance | Hidden | Available |
-| Container, release group, bitrate, age, indexer, country | Hidden | When present |
+| Container and release group with their original emoji cues | When present | When present |
+| Bitrate, age, indexer, country | Hidden | When present |
 | Track-specific channels, proxy/tracker/library state | Hidden | Text when present |
-| Stars and Best/Good/OK score badges | Hidden | Hidden |
+| Original title stars | Yes, when scored | Yes, when scored |
+| Duplicate Best/Good/OK score badges | Hidden | Hidden |
 
-Changing the preset does not change AIOStreams sorting or ranking. Tiers are named rule/group classifications, not playback guarantees. Unknown tiers display one source badge. WEBRip is kept distinct from WEB-DL.
+Changing the preset does not change AIOStreams sorting or ranking. Tiers are named rule/group classifications, not playback guarantees. Unknown tiers display one source badge. WEBRip is classified separately from WEB-DL; the original numbered WEB artwork is a generic WEB-family tier icon. The preserved stars show AIOStreams relative expression score, not a guarantee of playback or objective file quality.
 
 The canonical library keeps all 124 existing filter IDs, including disabled legacy score/channel entries. Detailed adds six source-specific WEBRip tier variants. This is a library size, not a target number of badges per stream. Warnings and meaningful cuts come first, then resolution/source, language, picture/audio and optional detail. Native rows can clip; Detailed is intentionally denser.
 
@@ -56,7 +58,9 @@ The canonical library keeps all 124 existing filter IDs, including disabled lega
 
 ## Appearance
 
-Solid uses dark ink on light audio and picture backgrounds, consistent blue resolution labels, purple viewing cuts and red warnings. Transparent uses white lettering and category outlines on dark surfaces; it cannot guarantee contrast on an arbitrary light background. Mono uses white lettering with a black fill. Content-addressed PNG filenames make artwork updates independent of stale old image paths. Older artwork is retained for recovery.
+All three skins use the original illustrated PNGs: Dolby/DTS/source logos, streaming artwork, resolutions, numbered tiers, editions and language flags. The formatter keeps its transport emoji, title stars and emoji cues for release, file and delivery rows. It does not replace those images with plain text labels.
+
+Solid retains the original category colors. Eight composites have white artwork embedded in their original PNG: their backgrounds now use dark audio gray or dark amber so the art remains visible. Their image bytes are unchanged. Transparent and Mono retain their original treatments. Transparent depends on the app background; restored multicolor artwork does not imply a uniform text-contrast guarantee. Content-addressed image paths and old files remain available for recovery.
 
 ## Build, test and maintain
 
@@ -66,9 +70,9 @@ npm run test:setup
 npm run release
 ```
 
-The setup clones the official AIOStreams **v2.35.9**, pinned to commit `1dcfa7665e7fa759b5604e39bf0f491e9aefaea5`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 64 fixtures × two presets × three skins, plus 166 unique PNGs, contrast/padding/hash checks and tier-sync regressions. No native playback/device compatibility claim is made by these tests.
+The setup clones the official AIOStreams **v2.35.9**, pinned to commit `1dcfa7665e7fa759b5604e39bf0f491e9aefaea5`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 64 fixtures × two presets × three skins, plus all 189 original PNG hashes, illustrated-art preservation checks and 48 composite/background checks and tier-sync regressions. The restored art mapping is pinned in a regression test so a future build cannot silently replace it with text labels. No native playback/device compatibility claim is made by these tests.
 
-Maintainer publication, with an authorized token in `.env`:
+Maintainer publication, using the existing authorized GitHub CLI login for repository writes and a gist-capable token in `.env`:
 
 ```sh
 npm run release:publish

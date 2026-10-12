@@ -5,7 +5,8 @@ import { FORMATTER_V2_INJECT_AUDIO } from './audio-formatter-inject.mjs';
 import { loadTierGroupsFromBadgesSync, tierRseRuleNames } from './tier-inject-generator.mjs';
 import { SYNC_TIER_IDS } from './tier-group-sync.mjs';
 import { FORMATTER_STREAMING_INJECT } from './streaming-formatter-patterns.mjs';
-import { MESSAGE_BLOCK } from './formatter-layout.mjs';
+import { MESSAGE_BLOCK, TITLE_TRANSPORT } from './formatter-layout.mjs';
+import { FORMATTER_RANK_STARS } from './quality-rank-patterns.mjs';
 
 export const PRESET_MAX_LENGTH = 15000;
 export const MIN_AIOSTREAMS_VERSION = '2.35.9';
@@ -101,43 +102,49 @@ const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.sead
      ["Director's.Cut",'editionDc'],['Directors.Cut','editionDc'],['Extended','editionExt'],['B&W','editionBw'],['Black.and.White','editionBw'],['Open.Matte','gstOpenMatte'],['Uncut','gstUncut'],['Theatrical','gstTheatrical'],['True-Hue','editionHue'],['Remastered','gstRemaster']
    ].map(([t,a])=>gate(token(t),M[a])).join('')));
 
-const cached=gate('service.cached::istrue','Cached',gate('service.cached::isfalse','Uncached','Cache unknown'));
-const delivery=gate("stream.type::in('debrid','usenet','stremio-usenet')",cached,gate('stream.type::=p2p','P2P',gate('stream.type::=http','HTTP',gate('stream.type::=live','Live','Stream'))));
-export const PRESET_NAME=delivery+'{? · {service.shortName}?}{? · {addon.name::truncate(16)}?}';
+export const PRESET_NAME=TITLE_TRANSPORT+FORMATTER_RANK_STARS;
 
 /** Optional parts carry a separator only after an earlier nonempty field. */
 function row(parts){return parts.map((p,i)=>gate(p.condition,
   (i?gate(parts.slice(0,i).map(x=>x.condition).join('::or::'),' · '):'')+p.text)).join('');}
 const part=(field,text=`{${field}}`)=>({condition:present(field),text});
-const fileParts=[part('stream.size','{stream.size::sbytes}'),part('stream.encode','{stream.encode::upper}')];
 const greekSubCondition='stream.subtitles::~Greek';
-const context=gate('stream.seasonPack::istrue','Season pack\n') +
- gate("stream.quality::in('TS','TC','SCR')",'⚠ {stream.quality} source\n')+
+const context=gate("stream.quality::in('TS','TC','SCR')",'⚠ {stream.quality} source\n')+
  gate('stream.regexMatched::~Bad','⚠ Release warning\n') + gate('stream.upscaled::istrue','Upscaled\n') +
  gate(VISUAL_CONFLICT,'⚠ Conflicting HDR/SDR metadata\n');
 const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists',gate(`${PREFERRED_TRACKS}::exists::isfalse`,'Preferred audio unavailable\n'),
  gate(`${reliable}::and::stream.languages::exists::and::stream.uLanguages::exists::isfalse`,'Preferred audio unavailable\n')));
-const noTracks=gate('stream.audioTracks::exists::isfalse',gate(reliable,gate('stream.audioTags::exists','Audio: file tags\n'),gate('stream.languages::exists::or::stream.audioTags::exists','Audio unverified\n')));
+const noTracks=gate('stream.audioTracks::exists::isfalse',gate(reliable,gate('stream.audioTags::exists','\nℹ️ Audio: file tags'),gate('stream.languages::exists::or::stream.audioTags::exists','\nℹ️ Audio unverified')));
 
 export function buildPresetFormatter(preset='compact'){
  if(!['compact','detailed'].includes(preset))throw new Error(`Unknown preset ${preset}`);
  const detailed=preset==='detailed';
- const parts=detailed?[...fileParts,part('stream.container','{stream.container::upper}'),part('stream.releaseGroup','{stream.releaseGroup::truncate(16)}')]:fileParts;
- let visible=context+noPreferred+noTracks+row(parts)+gate(greekSubCondition,'\nEL subs')+
+ const release=row([part('stream.container','📦 {stream.container::upper}'),part('stream.encode','🎞️ {stream.encode::upper}'),part('stream.releaseGroup','👥 {stream.releaseGroup::truncate(11)}'),...(detailed?[part('stream.country')]:[])]);
+ const file=row([
+   {condition:'stream.seasonPack::istrue',text:'📚 Season pack'},
+   part('stream.size','💾 {stream.size::sbytes}'),part('stream.folderSize','📁 Pack size: {stream.folderSize::sbytes}'),
+   ...(detailed?[part('stream.bitrate','📶 {stream.bitrate::sbitrate}'),part('stream.age','🕐 {stream.age}')]:[])
+ ]);
+ const debrid="stream.type::in('debrid','usenet','stremio-usenet')";
+ const deliveryRow=row([
+   {condition:debrid,text:gate('service.cached::istrue','✅',gate('service.cached::isfalse','⏳ Uncached','❔ Cache unknown'))},
+   part('service.shortName','☁️ {service.shortName}'),
+   {condition:'stream.proxied::exists',text:gate('stream.proxied::istrue','🛡️','🧩')},
+   part('addon.name','{addon.name::truncate(14)}'),
+   ...(detailed?[part('stream.indexer','🔍 {stream.indexer::truncate(18)}'),
+     {condition:'stream.private::istrue',text:'🔐 Private'},{condition:'stream.freeleech::istrue',text:'🆓 Freeleech'},
+     {condition:'stream.library::istrue::or::stream.preloading::istrue',text:gate('stream.library::istrue','📚 Library','⬇️ Preloading')}]:[]),
+   {condition:'stream.type::=p2p::and::stream.seeders::>0',text:'⇋ {stream.seeders} seeders 🌱'}
+ ]);
+ const joinRows=rows=>rows.join('\n{tools.removeLine}\n');
+ let visible=context+noPreferred+joinRows([release,file,deliveryRow])+gate(greekSubCondition,'\nEL subs')+
    gate('stream.subtitles::exists::isfalse',gate(`${token('Ell.Sub')}::or::${token('Greek.Sub')}`,'\nEL subs (reported)'));
  if(detailed){
-   visible+='\n{tools.removeLine}\n'+row([part('stream.bitrate','{stream.bitrate::sbitrate}'),part('stream.age'),part('stream.indexer','{stream.indexer::truncate(18)}'),part('stream.country')]);
    visible+='\n{tools.removeLine}\n'+gate('stream.audioTracks::exists',`{${usableTracks}::slice(0,4)::each('{track.lang::languagecode::default("UND")}: {track.tag::exists["{track.tag}"||"{track.codec::upper}"]}{? {track.channels}?}')::join(' · ')}`);
    visible+=gate('stream.audioTracks::exists::isfalse::and::stream.audioChannels::exists','\nFile channels: {stream.audioChannels::join("/")}');
-   visible+='\n{tools.removeLine}\n'+row([
-     {condition:'stream.proxied::exists',text:gate('stream.proxied::istrue','Proxy on','Proxy off')},
-     {condition:'stream.private::istrue',text:'Private'},
-     {condition:'stream.freeleech::istrue',text:'Freeleech'},
-     {condition:'stream.library::istrue::or::stream.preloading::istrue',text:gate('stream.library::istrue','Library','Preloading')}
-   ]);
  }
- visible+=gate('stream.folderSize::exists','\nPack size: {stream.folderSize::sbytes}')+
-   gate('stream.type::=p2p::and::stream.seeders::>0','\n{stream.seeders} seeders')+MESSAGE_BLOCK;
+ visible+=noTracks;
+ visible+=MESSAGE_BLOCK;
  let name=PRESET_NAME+PRESET_MARKER;
  let description=visible;
  // Source and tier share a field so native per-field scans cannot echo the source.

@@ -18,10 +18,10 @@ export async function pushGist(theme,{dryRun=false}={}){
  const before=await github(`/gists/${id}`);
  if(before.owner?.login!=='nosvasedis')throw new Error('Gist ownership mismatch');
  const evidence=path.join(ROOT,'docs/release-evidence');await fs.mkdir(evidence,{recursive:true});
- const backup=path.join(evidence,`gist-${id}-before.json`);
+ const backup=path.join(evidence,`gist-${id}-before-${before.history?.[0]?.version??Date.now()}.json`);
  try{await fs.writeFile(backup,JSON.stringify(before,null,2)+'\n',{flag:'wx'});}catch(e){if(e.code!=='EEXIST')throw e;}
  const files=Object.fromEntries(names.map((name,i)=>[name,{content:bodies[i]}]));
- await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso 2 ${theme}: Compact + Detailed badges for Nuvio`,files})});
+ await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso 2.0.1 ${theme}: illustrated Compact + Detailed badges and emoji formatter for Nuvio`,files})});
  const after=await github(`/gists/${id}?verification=${Date.now()}`);
  for(let i=0;i<names.length;i++){
    const f=after.files[names[i]];if(!f)throw new Error('Published gist file missing');

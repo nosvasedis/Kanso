@@ -1,23 +1,24 @@
-# Kanso 2 release notes
+# Kanso 2.0.1 — original illustrated appearance restored
 
-Compact becomes the default; Detailed is a separately paired formatter/badge preset. All three skins remain available. Import both halves of the selected pair when upgrading.
+The illustrated badge images, language flags and emoji formatter presentation are restored. The earlier text-label redesign changed the appearance too broadly. Both Compact and Detailed now use the original PNG artwork and emoji rows; the original title stars are available again.
 
-## Fixed
+## Preserved appearance
 
-- Removed 2160p REMUX → HDR inference; preserved explicit SDR, HLG and DV/HDR combinations, with a warning for contradictory metadata.
-- Corrected source/resolution precedence, sparse WEB metadata and actual WEBRip labeling. Known tiers are merged into the Detailed source badge, without another Unranked or plain-source pill.
-- Replaced unreadable white-on-white and low-contrast composite artwork. PNG ink now matches the exported background; text is measured with the renderer and padded consistently.
-- Removed duplicate star/Best/Good/OK judgments from the active presets. Underlying sorting and tier rules remain intact.
-- Associated preferred language, codec and channels with one usable track, excluding known commentary. File-level fallback data is presented with appropriate uncertainty; Greek subtitles do not claim Greek audio.
-- Kept meaningful cuts/presentation variants, SeaDex, source warnings, pack context, health messages and real delivery/cache state. Technical provenance belongs in Detailed.
-- Local builds never auto-publish. Release publication preserves remote files/history and other gist files, verifies ownership, backs up pre-write revisions and reads content back.
+- All 189 original PNG files are referenced with their original content hashes, including Dolby/DTS/source logos, streaming logos, flag artwork and specialist badges. The build no longer generates plain text replacements.
+- Original category colors and three skin treatments are retained. Eight Solid composites contain white artwork: only their backgrounds are corrected to dark audio gray/dark amber; the PNGs are unchanged.
+- Transport icons, stars, package/encoding/group icons, file-size cues, cloud/cache cues and other emoji rows are restored. A scored title's stars remain relative expression-score information; duplicate Best/Good/OK badges stay disabled.
+- Detailed uses the original numbered tier artwork. The WEB tier image identifies the generic WEB family, rather than visually distinguishing WEB-DL from WEBRip; the classification and accessible name retain that distinction.
 
-## Verified scope
+## Accuracy fixes retained
 
-Official AIOStreams 2.35.9 syntax and output; 64 fixtures across both presets and all skins; 166 unique exported PNGs; file hashes, embedded ink, glyph padding and modeled small-text contrast of at least 4.86:1; tier-sync regressions. Actual PNG/output previews were inspected at desktop and mobile browser sizes.
+No 4K REMUX-to-HDR inference; explicit SDR/HLG/DV/HDR distinctions and conflict warnings; structured source/resolution precedence; preferred language/codec/channel association from one usable track; subtitle/audio separation; cache uncertainty; source, pack and health warnings. Compact and Detailed remain paired content presets, independent of skin.
 
-A browser reconstruction of Nuvio TV geometry was used. Native Nuvio installation, focus/marquee behavior, screen-reader behavior and playback are not established by that preview. Transparent requires a suitable dark background. Detailed can exceed the visible native badge-row width.
+## Verification
 
-The default template budget is 15,000 per field. The two presets are validated under it; host overrides and later engine schema changes can require separate verification. The verified engine exposes singular `track.tag`; the build does not assume newer documentation's plural track field is supported.
+64 fixtures across two presets and three skins against official AIOStreams 2.35.9; 189 original PNG byte hashes; a pinned original-art mapping; 48 white-composite/background checks with a minimum modeled contrast of 6.54:1; tier-sync regressions. This contrast figure applies only to those repaired white composites, not all multicolor artwork.
 
-The old 124-filter inventory is preserved, with legacy ranking/channel entries disabled in the new presets. Detailed includes six extra WEBRip tier label variants. Existing content-hashed artwork remains available for rollback.
+Actual exported artwork and formatter output were inspected in a browser reconstruction of Nuvio TV geometry. Native Nuvio installation, focus/marquee behavior and playback are not established by that preview. Detailed can exceed the visible native badge-row width.
+
+Both templates fit the current default 15,000-character limit: Compact 10,114/9,528; Detailed 13,019/13,127. The tested engine exposes singular `track.tag`; the build does not assume later documentation's plural field is available.
+
+Refresh both the matching formatter and badge pack to replace the text-label release. The stable install URLs are unchanged. Local original backups and prior public Git/gist revisions remain available for recovery.
