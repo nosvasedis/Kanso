@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.1.1
+# Kanso 2.1.2
 
 Illustrated stream badges and an emoji formatter for Nuvio + AIOStreams. Audio language lives in one formatter row, with native Unicode flags, without ISO language codes; the duplicate flag badges are retired. Original logos, transport icons, stars and emoji rows are preserved. **Compact is the default. Detailed adds provenance.** Both come in Solid, Transparent and Mono.
 
@@ -22,9 +22,9 @@ This preview uses exported PNGs and real AIOStreams output. Its browser layout a
 3. Set your preferred audio languages in AIOStreams. Kanso reads those preferences.
 4. In a Nuvio client that supports importing custom badge packs, replace the old Kanso pack with the matching **badge file** from the table. Retired flags/score/channel filters are removed from the JSON; merging with an old imported pack can leave those old entries behind. Each gist now contains both presets: choose the correct filename. Turn off the old Kanso filters before importing, or replace the old pack, so two versions cannot display together.
 5. For an upgrade from Kanso 1, **refresh both the formatter and the badge pack**. Kanso 2 uses a version marker; mixed old/new exports are deliberately prevented from producing confident badges. Saving a URL does not guarantee the app has fetched the newest content—refresh its sync/import when needed.
-6. If your client already displays native resolution or size labels, disable whichever duplicate display you prefer. Badge import UI and native labels vary by platform/version.
+6. On Nuvio TV, turn off its native file-size badges if you keep Kanso's `💾` size row. TV 1.0.0 enables native size badges by default; this app setting is separate from the imported pack. Other native labels and imported packs can also repeat information; Kanso cannot change client settings remotely.
 
-Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 8,577 / 8,720 characters; Detailed is 13,858 / 13,490. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 7,461 / 7,993 characters; Detailed is 14,993 / 14,978. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## What each preset shows
 
@@ -51,7 +51,7 @@ The active library contains 87 retained badge definitions. The exported Compact 
 
 - **No inferred HDR from 4K REMUX.** Unknown range shows neither HDR nor SDR. Explicit SDR, HLG and supported DV/HDR combinations stay distinct. Conflicting SDR/HDR metadata produces a warning rather than simultaneous claims.
 - Structured source/resolution information takes precedence. Limited filename fallbacks require bounded tokens and technical context; parsed title/release-group strings are removed from that fallback text.
-- With audio tracks, Compact uses the **first usable matching track in file order** from your AIOStreams preferred-language context, excluding known commentary. The selected codec badge belongs to that same track. Detailed shows only matching preferred tracks, each with its own Unicode flag, codec and channels. It does not guarantee the player will select it, and it does not impose an order between multiple preferred languages. With no preferences it chooses the first usable track.
+- With audio tracks, Compact uses the **first usable matching track in file order** from your AIOStreams preferred-language context, excluding known commentary. The selected codec badge belongs to that same track. Detailed shows matching preferred language groups and channels; the selected format stays in its image badge, and alternate codecs appear in text only when they differ. It does not guarantee the player will select it, and it does not impose an order between multiple preferred languages. With no preferences it chooses the first usable track.
 - If the preferred language is unavailable, a warning replaces a misleading language/codec assertion. Detailed lists up to four matching usable tracks. With no language preferences it can show the first usable tracks. Unrecognized languages have no flag badge fallback; supported languages such as Swedish now use the engine’s native language/emoji conversion rather than a fixed image inventory.
 - Without track metadata, audio codec tags describe the **file**, not a guaranteed language/codec pairing. Without tracks, a native language row is used only with `probe` or `indexer` confidence, choosing the first available preferred language. Unreliable flat language hints do not produce confident audio flags. Internal confidence diagnostics are omitted from the formatter. `💬 ELˢ` is a subtitle cue, never evidence of Greek audio; filename-only cues use `💬 ELˢ?`.
 - Cache state is Cached, Uncached or Cache unknown. HTTP, P2P and live delivery do not acquire a fictitious debrid cache status. Bad sources and upstream health messages remain visible.
@@ -65,9 +65,11 @@ Keep Kanso as the custom formatter when updating Tamtaro; changing the formatter
 
 ## Appearance
 
-All three skins preserve original illustrated artwork for the retained categories: Dolby/DTS/source logos, streaming artwork, resolutions, numbered tiers and editions. Language flags are native formatter emoji, such as `🎧 🇬🇧` in Compact or `🎧 🇬🇧 DD+ 5.1` in Detailed. Their separate badge entries and invisible language markers are removed. The formatter preserves its transport emoji, title stars, release/file/delivery cues and useful warnings. Cache/provider and addon cues stay together: `✅ ☁️ RD · 🧩 Comet`.
+All three skins preserve original illustrated artwork for the retained categories: Dolby/DTS/source logos, streaming artwork, resolutions, numbered tiers and editions. Language flags are native formatter emoji, such as `🎧 🇬🇧` in Compact or `🎧 🇬🇧 5.1` beside its DD+ image in Detailed. Their separate badge entries and invisible language markers are removed. The formatter preserves its transport emoji, title stars, release/file/delivery cues and useful warnings. Cache/provider and addon cues stay together: `✅ ☁️ RD · 🧩 Comet`.
 
-Detailed labels each consecutive language group once: `🎧 🇬🇧 TrueHD 7.1 · DD 5.1`. A flag returns when the language changes, so every codec remains associated with its language. Spoken audio appears above subtitles; the `💬 ELˢ` subtitle cue is the last visible row.
+Detailed labels each consecutive language group once: `🎧 🇬🇧 7.1 · DD 5.1` beside the TrueHD/Atmos image. It omits a codec already owned by that image, including matching alternate tracks and canonical/raw codec aliases. A flag returns when the language changes. Spoken audio appears above subtitles; the `💬 ELˢ` subtitle cue is the last visible row.
+
+The title begins with an invisible U+200E left-to-right anchor. Nuvio TV 1.0.0 positions the title using its first strong-direction character; emoji/stars alone could otherwise let a later hidden U+200F marker select right alignment. Marker identities and the visible icons/stars remain intact. HDR10+/HDR10/HLG suppress their redundant generic HDR badges, DTS Master Audio wins over generic DTS-HD, and an indexer identical to the addon is shown once. Structured audio tags cannot borrow a different codec from the filename.
 
 Release-rule concerns display their specific matched name, such as `🚩 Bad Dual Groups`, rather than a generic release warning. Radarr/Sonarr prefixes are omitted; the reason is preserved. This reports the matched rule, not a playback failure. Recording warnings use `📹 Telesync (TS)`, `📹 Telecine (TC)` or `📼 Screener (SCR)`. Conflicting HDR/SDR tags retain `⚠️`, upscaling retains `🔼`, and NZB health messages keep their status emoji and full details without an extra speech bubble. Other provider messages remain intact.
 
@@ -81,7 +83,9 @@ npm run test:setup
 npm run release
 ```
 
-The setup clones the official AIOStreams **v2.35.9**, pinned to commit `1dcfa7665e7fa759b5604e39bf0f491e9aefaea5`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 88 fixtures × two presets × three skins, plus all 136 retained original PNG hashes, illustrated-art preservation checks and 48 composite/background checks and tier-sync regressions. The restored art mapping is pinned in a regression test so a future build cannot silently replace it with text labels. No native playback/device compatibility claim is made by these tests.
+The setup clones the official AIOStreams **v2.35.9**, pinned to commit `1dcfa7665e7fa759b5604e39bf0f491e9aefaea5`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 194 fixtures × two presets × three skins, plus all 136 retained original PNG hashes, illustrated-art preservation checks and 48 composite/background checks and tier-sync regressions. The restored art mapping is pinned in a regression test so a future build cannot silently replace it with text labels. No native playback/device compatibility claim is made by these tests.
+
+Every exported badge has a positive real-metadata fixture. The suite also checks codec text/image overlap. For native Java regex and Nuvio's exact first-strong direction semantics, run `node scripts/test-nuvio-java.mjs` with Java 21 or later; pass `--java=/path/to/java` to select an installed runtime. The current check compiled all 435 pack patterns, matched 1,164 cases and verified 388 left-aligned titles; removing the anchor reproduced RTL in 63 of those titles. These checks do not substitute for testing your installed TV app or playback.
 
 Maintainer publication, using the existing authorized GitHub CLI login for repository writes and a gist-capable token in `.env`:
 

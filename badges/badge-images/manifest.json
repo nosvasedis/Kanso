@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T23:27:13.700Z",
+  "generatedAt": "2026-10-13T00:47:43.762Z",
   "brand": "Kanso",
   "version": 2,
   "minimumAIOStreams": "2.35.9",
@@ -456,8 +456,8 @@
     "compact": {
       "formatter": "formatter.json",
       "lengths": {
-        "name": 8577,
-        "description": 8720
+        "name": 7461,
+        "description": 7993
       },
       "packs": {
         "solid": "kanso-solid.json",
@@ -468,8 +468,8 @@
     "detailed": {
       "formatter": "formatter-detailed.json",
       "lengths": {
-        "name": 13858,
-        "description": 13490
+        "name": 14993,
+        "description": 14978
       },
       "packs": {
         "solid": "kanso-solid-detailed.json",

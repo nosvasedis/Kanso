@@ -72,7 +72,7 @@ export const STREAMING_FORMATTER_SERVICES = [
 ];
 
 /** Hidden haystack when AIOStreams parsed stream.network (not shown in mono formatter). */
-export const FORMATTER_STREAMING_INJECT = STREAMING_FORMATTER_SERVICES.map(
+export const FORMATTER_STREAMING_SEGMENTS = STREAMING_FORMATTER_SERVICES.map(
   ({ id }) => {
     const terms = {
       "s-nflx": ["Netflix", "NFLX", "NF"],
@@ -88,7 +88,8 @@ export const FORMATTER_STREAMING_INJECT = STREAMING_FORMATTER_SERVICES.map(
     const condition = terms.map((term) => `stream.network::~${term}`).join("::or::");
     return `{${condition}["${STREAMING_MARKERS[id]}"||""]}`;
   }
-).join("");
+);
+export const FORMATTER_STREAMING_INJECT = FORMATTER_STREAMING_SEGMENTS.join("");
 
 /** @param {string} id @param {string} [filenameAlt] */
 export function streamingBadgePattern(id, filenameAlt) {

@@ -63,6 +63,9 @@ export function buildPresetBadges(theme,preset){
  for(const f of filters){
    f.name=f.label;
    if(f.id==='v-10bit')f.pattern+=['drDv','drHdr','drHdr10p','visHdr10','visHlg'].map(a=>forbid(M[a])).join('');
+   if(f.id==='v-hdr')f.pattern+=['drDv','drHdr10p','visHdr10p','visHdr10','visHlg'].map(a=>forbid(M[a])).join('');
+   if(f.id==='v-hdr10')f.pattern+=['drHdr10p','visHdr10p'].map(a=>forbid(M[a])).join('');
+   if(f.id==='a-dtsma')f.pattern=f.pattern.replace(forbid(M.audDtshd),'');
    f.pattern=f.pattern.replace('(?s)^','(?s)^'+requireMarker(PRESET_MARKER));
    if(!f.pattern)throw new Error(`Missing pattern ${f.id}`);
    // Keep original illustrated artwork for the retained badge categories.
