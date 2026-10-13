@@ -8,10 +8,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200b\\u200c\\u200d))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/83a6a044cdeb4e4c.png?rev=83a6a044cdeb",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF6A1B9A"
     },
     {
       "id": "v-imax-e",
@@ -21,10 +21,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u200f\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/08a3b65b297b4d84.png?rev=08a3b65b297b",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-imax",
@@ -34,10 +34,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u200f\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1f4e53a6250fc94c.png?rev=1f4e53a6250f",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-3d",
@@ -47,10 +47,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u200f\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/36fb177f01db3c14.png?rev=36fb177f01db",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "hybrid-release",
@@ -60,10 +60,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cfec8336ff27218e.png?rev=cfec8336ff27",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00838F"
     },
     {
       "id": "criterion-collection",
@@ -73,10 +73,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6e3541502b64aebd.png?rev=6e3541502b64",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFC62828"
     },
     {
       "id": "edition-directors-cut",
@@ -86,10 +86,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206c))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8cfff2d8bc6980c2.png?rev=8cfff2d8bc69",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6BC0"
     },
     {
       "id": "edition-extended",
@@ -99,10 +99,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206d))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a1f9c3891f689c27.png?rev=a1f9c3891f68",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00897B"
     },
     {
       "id": "uncut-edition",
@@ -112,10 +112,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200f\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5f8c16c4d796b24a.png?rev=5f8c16c4d796",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF558B2F"
     },
     {
       "id": "uncensored-edition",
@@ -125,10 +125,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200f\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9abb214cdb427c93.png?rev=9abb214cdb42",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFEF6C00"
     },
     {
       "id": "edition-theatrical",
@@ -138,10 +138,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200f\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/37212037d950b887.png?rev=37212037d950",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF283593"
     },
     {
       "id": "edition-bw",
@@ -151,10 +151,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u206a))(?=.*(?:\\u206b))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/82ee582b8872095b.png?rev=82ee582b8872",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF616161"
     },
     {
       "id": "edition-true-hue",
@@ -164,10 +164,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206a))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/adc158bee31331b7.png?rev=adc158bee313",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE65100"
     },
     {
       "id": "open-matte-edition",
@@ -177,10 +177,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c4a21e6887059c57.png?rev=c4a21e688705",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF6D4C41"
     },
     {
       "id": "remastered-release",
@@ -190,10 +190,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/791f9590ffcb79be.png?rev=791f9590ffcb",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF7B1FA2"
     },
     {
       "id": "regraded-release",
@@ -203,10 +203,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2b4c606d1eb1bb27.png?rev=2b4c606d1eb1",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFD81B60"
     },
     {
       "id": "proper-release",
@@ -216,10 +216,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/81e328ca55760974.png?rev=81e328ca5576",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1976D2"
     },
     {
       "id": "repack-release",
@@ -229,10 +229,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c21d2b31c380ac69.png?rev=c21d2b31c380",
-      "tagColor": "#000000",
-      "borderColor": "#BBDEFB",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFF9A825"
     },
     {
       "id": "s-nflx",
@@ -243,9 +243,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2061))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f9ff8350db664b98.png?rev=f9ff8350db66",
       "tagColor": "#00000000",
-      "borderColor": "#E50914",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE50914"
     },
     {
       "id": "s-amzn",
@@ -256,9 +256,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2062))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/734e98d3cae7e057.png?rev=734e98d3cae7",
       "tagColor": "#00000000",
-      "borderColor": "#00A8E1",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00A8E1"
     },
     {
       "id": "s-atvp",
@@ -269,9 +269,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2063))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/385cbbb6b82b3396.png?rev=385cbbb6b82b",
       "tagColor": "#00000000",
-      "borderColor": "#A2AAAD",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF000000"
     },
     {
       "id": "s-dsnp",
@@ -282,9 +282,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2064))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/31ef53ec24e71524.png?rev=31ef53ec24e7",
       "tagColor": "#00000000",
-      "borderColor": "#0063E5",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00C7DC"
     },
     {
       "id": "s-hmax",
@@ -295,9 +295,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2065))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9bfc00cc3550c96c.png?rev=9bfc00cc3550",
       "tagColor": "#00000000",
-      "borderColor": "#A45CFF",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFB100FF"
     },
     {
       "id": "s-hulu",
@@ -308,9 +308,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2066))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/312e1f6e4a662259.png?rev=312e1f6e4a66",
       "tagColor": "#00000000",
-      "borderColor": "#1CE783",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1CE783"
     },
     {
       "id": "s-pcok",
@@ -321,9 +321,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2067))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3a246330d6cd6c35.png?rev=3a246330d6cd",
       "tagColor": "#00000000",
-      "borderColor": "#FCCC12",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFB81C"
     },
     {
       "id": "s-pamp",
@@ -334,9 +334,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2068))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d69428aff13c3ab5.png?rev=d69428aff13c",
       "tagColor": "#00000000",
-      "borderColor": "#0064FF",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF0050D0"
     },
     {
       "id": "s-croll",
@@ -347,9 +347,9 @@
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u2060\\u2069))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6fad3db2470348e2.png?rev=6fad3db24703",
       "tagColor": "#00000000",
-      "borderColor": "#F47521",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFF47521"
     },
     {
       "id": "web-1",
@@ -359,10 +359,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\ufeff\\u180d\\u206f))(?=.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6595f44253a04917.png?rev=6595f44253a0",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-1-webrip",
@@ -372,10 +372,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\ufeff\\u180d\\u206f))(?=.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6595f44253a04917.png?rev=6595f44253a0",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-2",
@@ -385,10 +385,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?=.*(?:\\u180c\\ufeff\\u180c\\u206f))(?=.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/27efc136d44f1fb5.png?rev=27efc136d44f",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-2-webrip",
@@ -398,10 +398,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?=.*(?:\\u180c\\ufeff\\u180c\\u206f))(?=.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/27efc136d44f1fb5.png?rev=27efc136d44f",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-3",
@@ -411,10 +411,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?=.*(?:\\u180c\\ufeff\\u180b\\u206f))(?=.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3bcd76d4e67f1653.png?rev=3bcd76d4e67f",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-3-webrip",
@@ -424,10 +424,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?=.*(?:\\u180c\\ufeff\\u180b\\u206f))(?=.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3bcd76d4e67f1653.png?rev=3bcd76d4e67f",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-4",
@@ -437,10 +437,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?=.*(?:\\u180c\\u200f\\ufeff\\u206f))(?=.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f18c482e4ce057a7.png?rev=f18c482e4ce0",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-4-webrip",
@@ -450,10 +450,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?=.*(?:\\u180c\\u200f\\ufeff\\u206f))(?=.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f18c482e4ce057a7.png?rev=f18c482e4ce0",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-5",
@@ -463,10 +463,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?!.*(?:\\u180c\\u200f\\ufeff\\u206f))(?=.*(?:\\u180c\\u200f\\u200f\\u206f))(?=.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/92f6cccc95876363.png?rev=92f6cccc9587",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-5-webrip",
@@ -476,10 +476,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?!.*(?:\\u180c\\u200f\\ufeff\\u206f))(?=.*(?:\\u180c\\u200f\\u200f\\u206f))(?=.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/92f6cccc95876363.png?rev=92f6cccc9587",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-6",
@@ -489,10 +489,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?!.*(?:\\u180c\\u200f\\ufeff\\u206f))(?!.*(?:\\u180c\\u200f\\u200f\\u206f))(?=.*(?:\\u180c\\u200f\\u200e\\u206f))(?=.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bb4a74cb6b1603a8.png?rev=bb4a74cb6b16",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "web-6-webrip",
@@ -502,10 +502,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?!.*(?:\\u180c\\u200f\\ufeff\\u206f))(?!.*(?:\\u180c\\u200f\\u200f\\u206f))(?=.*(?:\\u180c\\u200f\\u200e\\u206f))(?=.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bb4a74cb6b1603a8.png?rev=bb4a74cb6b16",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-1",
@@ -515,10 +515,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180b\\u200f\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/40337222bb4cf4da.png?rev=40337222bb4c",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-2",
@@ -528,10 +528,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))(?=.*(?:\\u180d\\u180b\\u200e\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6d60306ab9c2c159.png?rev=6d60306ab9c2",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-3",
@@ -541,10 +541,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))(?!.*(?:\\u180d\\u180b\\u200e\\u206f))(?=.*(?:\\u180d\\u180b\\u180d\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f327c831a4d0939f.png?rev=f327c831a4d0",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-4",
@@ -554,10 +554,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))(?!.*(?:\\u180d\\u180b\\u200e\\u206f))(?!.*(?:\\u180d\\u180b\\u180d\\u206f))(?=.*(?:\\u180d\\u180b\\u180c\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c31d6e6a6704f760.png?rev=c31d6e6a6704",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-5",
@@ -567,10 +567,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))(?!.*(?:\\u180d\\u180b\\u200e\\u206f))(?!.*(?:\\u180d\\u180b\\u180d\\u206f))(?!.*(?:\\u180d\\u180b\\u180c\\u206f))(?=.*(?:\\u180d\\u180b\\u180b\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7aa7f0decab652b0.png?rev=7aa7f0decab6",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-6",
@@ -580,10 +580,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))(?!.*(?:\\u180d\\u180b\\u200e\\u206f))(?!.*(?:\\u180d\\u180b\\u180d\\u206f))(?!.*(?:\\u180d\\u180b\\u180c\\u206f))(?!.*(?:\\u180d\\u180b\\u180b\\u206f))(?=.*(?:\\u180c\\ufeff\\ufeff\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3a0af8c4f99be351.png?rev=3a0af8c4f99b",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-7",
@@ -593,10 +593,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))(?!.*(?:\\u180d\\u180b\\u200e\\u206f))(?!.*(?:\\u180d\\u180b\\u180d\\u206f))(?!.*(?:\\u180d\\u180b\\u180c\\u206f))(?!.*(?:\\u180d\\u180b\\u180b\\u206f))(?!.*(?:\\u180c\\ufeff\\ufeff\\u206f))(?=.*(?:\\u180c\\ufeff\\u200f\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8a135e7ac4c47954.png?rev=8a135e7ac4c4",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "blu-ray-8",
@@ -606,10 +606,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))(?!.*(?:\\u180d\\u180b\\u200e\\u206f))(?!.*(?:\\u180d\\u180b\\u180d\\u206f))(?!.*(?:\\u180d\\u180b\\u180c\\u206f))(?!.*(?:\\u180d\\u180b\\u180b\\u206f))(?!.*(?:\\u180c\\ufeff\\ufeff\\u206f))(?!.*(?:\\u180c\\ufeff\\u200f\\u206f))(?=.*(?:\\u180c\\ufeff\\u200e\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6677dd2ac1c0778f.png?rev=6677dd2ac1c0",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "remux-1",
@@ -619,10 +619,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180c\\u180c\\u206f))(?=.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/37e1ed6be35f17aa.png?rev=37e1ed6be35f",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "remux-2",
@@ -632,10 +632,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180c\\u180c\\u206f))(?=.*(?:\\u180d\\u180c\\u180b\\u206f))(?=.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/68714d6dfc685120.png?rev=68714d6dfc68",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "remux-3",
@@ -645,10 +645,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180c\\u180c\\u206f))(?!.*(?:\\u180d\\u180c\\u180b\\u206f))(?=.*(?:\\u180d\\u180b\\ufeff\\u206f))(?=.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/87668c41e8e9d97a.png?rev=87668c41e8e9",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF1565C0"
     },
     {
       "id": "q-r",
@@ -658,10 +658,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180d\\u180b\\ufeff\\u206f))(?!.*(?:\\u180d\\u180c\\u180b\\u206f))(?!.*(?:\\u180d\\u180c\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5557b373335520ec.png?rev=5557b3733355",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-b",
@@ -671,10 +671,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180c\\ufeff\\u200e\\u206f))(?!.*(?:\\u180c\\ufeff\\u200f\\u206f))(?!.*(?:\\u180c\\ufeff\\ufeff\\u206f))(?!.*(?:\\u180d\\u180b\\u180b\\u206f))(?!.*(?:\\u180d\\u180b\\u180c\\u206f))(?!.*(?:\\u180d\\u180b\\u180d\\u206f))(?!.*(?:\\u180d\\u180b\\u200e\\u206f))(?!.*(?:\\u180d\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/31c1db1be19c2eb2.png?rev=31c1db1be19c",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-w",
@@ -684,10 +684,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180c\\u200f\\u200e\\u206f))(?!.*(?:\\u180c\\u200f\\u200f\\u206f))(?!.*(?:\\u180c\\u200f\\ufeff\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ffcfeaa1e1232cc4.png?rev=ffcfeaa1e123",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-wr",
@@ -697,10 +697,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180c\\u200f\\u200e\\u206f))(?!.*(?:\\u180c\\u200f\\u200f\\u206f))(?!.*(?:\\u180c\\u200f\\ufeff\\u206f))(?!.*(?:\\u180c\\ufeff\\u180b\\u206f))(?!.*(?:\\u180c\\ufeff\\u180c\\u206f))(?!.*(?:\\u180c\\ufeff\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/680d556dd7f005a6.png?rev=680d556dd7f0",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-hdtv",
@@ -710,10 +710,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180b\\ufeff\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fe0db07041e0427b.png?rev=fe0db07041e0",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-hdrip",
@@ -723,10 +723,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180c\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/de787b811e1c1669.png?rev=de787b811e1c",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-dvdrip",
@@ -736,10 +736,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180c\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\ufeff\\u206f))(?!.*(?:\\u180b\\u180c\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/afdbe4af50e8446f.png?rev=afdbe4af50e8",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-scr",
@@ -749,10 +749,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180c\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\ufeff\\u206f))(?!.*(?:\\u180b\\u180c\\u180b\\u206f))(?!.*(?:\\u180b\\u180c\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b77a00e180a77398.png?rev=b77a00e180a7",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-tc",
@@ -762,10 +762,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180c\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\ufeff\\u206f))(?!.*(?:\\u180b\\u180c\\u180b\\u206f))(?!.*(?:\\u180b\\u180c\\u180c\\u206f))(?!.*(?:\\u180b\\u180c\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/69c968f567a92f9e.png?rev=69c968f567a9",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-ts",
@@ -775,10 +775,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180c\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u200f\\u206f))(?!.*(?:\\u180b\\u180b\\u180b\\u206f))(?!.*(?:\\u180b\\u180b\\u180c\\u206f))(?!.*(?:\\u180b\\u180b\\u180d\\u206f))(?!.*(?:\\u180b\\u180b\\u200e\\u206f))(?!.*(?:\\u180b\\u180b\\ufeff\\u206f))(?!.*(?:\\u180b\\u180c\\u180b\\u206f))(?!.*(?:\\u180b\\u180c\\u180c\\u206f))(?!.*(?:\\u180b\\u180c\\u180d\\u206f))(?!.*(?:\\u180b\\u180c\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/19f74964f3ee476c.png?rev=19f74964f3ee",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "q-cam",
@@ -788,10 +788,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a90a35555f5c2f53.png?rev=a90a35555f5c",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF5C6B76"
     },
     {
       "id": "r-4k",
@@ -801,10 +801,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u180c\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cd4d1835a9502e4d.png?rev=cd4d1835a950",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF27C04F"
     },
     {
       "id": "r-1440",
@@ -814,10 +814,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u180d\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d277dc1a5ce9bf4e.png?rev=d277dc1a5ce9",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFF9728"
     },
     {
       "id": "r-1080",
@@ -827,10 +827,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u180d\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c95aa05b8acff01c.png?rev=c95aa05b8acf",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFF9728"
     },
     {
       "id": "r-720",
@@ -840,10 +840,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u180d\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/df348c6026cc6980.png?rev=df348c6026cc",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE55353"
     },
     {
       "id": "r-576",
@@ -853,10 +853,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u180d\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/205a9628d6123170.png?rev=205a9628d612",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE55353"
     },
     {
       "id": "r-480",
@@ -866,10 +866,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u180d\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d10baa0a6dc70473.png?rev=d10baa0a6dc7",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE55353"
     },
     {
       "id": "r-360",
@@ -879,10 +879,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u180d\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3224a4b6ab3b70fd.png?rev=3224a4b6ab3b",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE55353"
     },
     {
       "id": "r-240",
@@ -892,10 +892,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180c\\u206f))(?=.*(?:\\u180b\\u200e\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8e9b0e772c999459.png?rev=8e9b0e772c99",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE55353"
     },
     {
       "id": "r-144",
@@ -905,10 +905,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u180c\\ufeff\\u206f))(?!.*(?:\\u180b\\u180d\\u180b\\u206f))(?!.*(?:\\u180b\\u180d\\u180c\\u206f))(?!.*(?:\\u180b\\u180d\\u180d\\u206f))(?!.*(?:\\u180b\\u180d\\u200e\\u206f))(?!.*(?:\\u180b\\u180d\\u200f\\u206f))(?!.*(?:\\u180b\\u180d\\ufeff\\u206f))(?!.*(?:\\u180b\\u200e\\u180b\\u206f))(?=.*(?:\\u180b\\u200e\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4c86ab0bf929b87a.png?rev=4c86ab0bf929",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFE55353"
     },
     {
       "id": "v-dv-hdr10p",
@@ -918,10 +918,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206e\\u2061))(?=.*(?:\\u180b\\u200e\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f07ea097e9321306.png?rev=f07ea097e932",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-dv-hdr10",
@@ -931,10 +931,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u200e\\u180d\\u206f))(?=.*(?:\\u206e\\u2061))(?=.*(?:\\u180b\\u200e\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fa26b5c86665fad1.png?rev=fa26b5c86665",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-dv-hdr",
@@ -944,10 +944,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u200e\\u180d\\u206f))(?!.*(?:\\u180b\\u200e\\u200e\\u206f))(?=.*(?:\\u206e\\u2061))(?=.*(?:\\u180b\\u200e\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9dffa553dcdee396.png?rev=9dffa553dcde",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-hdr10p",
@@ -957,10 +957,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206e\\u2062))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8717fdea5747f030.png?rev=8717fdea5747",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-hdr10",
@@ -970,10 +970,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u206e\\u2061))(?=.*(?:\\u180b\\u200e\\u200e\\u206f))(?!.*(?:\\u206e\\u2062))(?!.*(?:\\u180b\\u200e\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c6bee5e558bcd50c.png?rev=c6bee5e558bc",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-hdr",
@@ -983,10 +983,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206e\\u2063))(?!.*(?:\\u206e\\u2061))(?!.*(?:\\u206e\\u2062))(?!.*(?:\\u180b\\u200e\\u180d\\u206f))(?!.*(?:\\u180b\\u200e\\u200e\\u206f))(?!.*(?:\\u180b\\u200e\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8d9a0782c2ee1ac9.png?rev=8d9a0782c2ee",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-hlg",
@@ -996,10 +996,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u200e\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f541e9a668fb6a6c.png?rev=f541e9a668fb",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-10bit",
@@ -1009,10 +1009,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u200f\\u180b\\u206f))(?!.*(?:\\u206e\\u2061))(?!.*(?:\\u206e\\u2063))(?!.*(?:\\u206e\\u2062))(?!.*(?:\\u180b\\u200e\\u200e\\u206f))(?!.*(?:\\u180b\\u200e\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1e8447262f193af7.png?rev=1e8447262f19",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "a-dv",
@@ -1022,10 +1022,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\u200e\\u180d\\u206f))(?!.*(?:\\u180b\\u200e\\u200e\\u206f))(?!.*(?:\\u180b\\u200e\\u200f\\u206f))(?=.*(?:\\u206e\\u2061))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3b906b4d0f7cb647.png?rev=3b906b4d0f7c",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-sdr",
@@ -1035,10 +1035,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u200f\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/eea6dd98b1be3bdb.png?rev=eea6dd98b1be",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "v-ai",
@@ -1048,10 +1048,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\u200f\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/01339815ac2c4a13.png?rev=01339815ac2c",
-      "tagColor": "#000000",
-      "borderColor": "#E64141",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FFFFD54F"
     },
     {
       "id": "a-at-th",
@@ -1061,10 +1061,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\ufeff\\u180b\\u206f))(?=.*(?:\\u180b\\ufeff\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/392b4d3d77865dd4.png?rev=392b4d3d7786",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dtsx-ma",
@@ -1074,10 +1074,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180b\\ufeff\\u200f\\u206f))(?=.*(?:\\u180b\\ufeff\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e33a0d0c764ae9c2.png?rev=e33a0d0c764a",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-at-dp",
@@ -1087,10 +1087,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180c\\u206f))(?=.*(?:\\u180b\\ufeff\\u180b\\u206f))(?=.*(?:\\u180b\\ufeff\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/01dd334973629d63.png?rev=01dd33497362",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dtsx-hd",
@@ -1100,10 +1100,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\ufeff\\u206f))(?=.*(?:\\u180b\\ufeff\\u200f\\u206f))(?=.*(?:\\u180c\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/215ca4472a5f07c7.png?rev=215ca4472a5f",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dtsx",
@@ -1113,10 +1113,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\ufeff\\u206f))(?!.*(?:\\u180c\\u180b\\u180b\\u206f))(?=.*(?:\\u180b\\ufeff\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/034352dd5569f216.png?rev=034352dd5569",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dtsma",
@@ -1126,10 +1126,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u200f\\u206f))(?=.*(?:\\u180b\\ufeff\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1062843754a31008.png?rev=1062843754a3",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dtshd",
@@ -1139,10 +1139,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u200f\\u206f))(?!.*(?:\\u180b\\ufeff\\ufeff\\u206f))(?=.*(?:\\u180c\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2d157b07035c322b.png?rev=2d157b07035c",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dtses",
@@ -1152,10 +1152,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u200f\\u206f))(?!.*(?:\\u180b\\ufeff\\ufeff\\u206f))(?!.*(?:\\u180c\\u180b\\u180b\\u206f))(?=.*(?:\\u180c\\u180b\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cf3f4780ac09df74.png?rev=cf3f4780ac09",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dts",
@@ -1165,10 +1165,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u200f\\u206f))(?!.*(?:\\u180b\\ufeff\\ufeff\\u206f))(?!.*(?:\\u180c\\u180b\\u180b\\u206f))(?!.*(?:\\u180c\\u180b\\u180c\\u206f))(?=.*(?:\\u180c\\u180b\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/861ded6d03a8419d.png?rev=861ded6d03a8",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-at",
@@ -1178,10 +1178,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180c\\u206f))(?!.*(?:\\u180b\\ufeff\\u180d\\u206f))(?=.*(?:\\u180b\\ufeff\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6b4f42cac5e6924e.png?rev=6b4f42cac5e6",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-th",
@@ -1191,10 +1191,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180d\\u206f))(?=.*(?:\\u180b\\ufeff\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8d427378f838c33f.png?rev=8d427378f838",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dp",
@@ -1204,10 +1204,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180c\\u206f))(?=.*(?:\\u180b\\ufeff\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0c30d035d4440e92.png?rev=0c30d035d444",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-dd",
@@ -1217,10 +1217,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180d\\u206f))(?!.*(?:\\u180b\\ufeff\\u180b\\u206f))(?!.*(?:\\u180b\\ufeff\\u180c\\u206f))(?=.*(?:\\u180b\\ufeff\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cccc2d6ee5320e9d.png?rev=cccc2d6ee532",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-aac",
@@ -1230,10 +1230,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\u180b\\u200e\\u206f))(?!.*(?:\\u180c\\u180b\\u200f\\u206f))(?=.*(?:\\u180c\\u180b\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/194f7ad171f845d7.png?rev=194f7ad171f8",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-flac",
@@ -1243,10 +1243,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180b\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9905e2e7ff17807a.png?rev=9905e2e7ff17",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-opus",
@@ -1256,10 +1256,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180c\\u180b\\u200e\\u206f))(?=.*(?:\\u180c\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a430a40aeecefd7e.png?rev=a430a40aeece",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-mp3",
@@ -1269,10 +1269,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180c\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9bae7abaa8001114.png?rev=9bae7abaa800",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "a-pcm",
@@ -1282,10 +1282,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180c\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d800966aec9e9818.png?rev=d800966aec9e",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF00BCD4"
     },
     {
       "id": "ch-71",
@@ -1295,10 +1295,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180c\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/597727f7cb7b0b0a.png?rev=597727f7cb7b",
-      "tagColor": "#000000",
-      "borderColor": "#FFD500",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF0097A7"
     },
     {
       "id": "ch-61",
@@ -1308,10 +1308,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180c\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/abf2c2df6c23e133.png?rev=abf2c2df6c23",
-      "tagColor": "#000000",
-      "borderColor": "#176BE8",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF0097A7"
     },
     {
       "id": "ch-51",
@@ -1321,10 +1321,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180c\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/85a2f3486532517e.png?rev=85a2f3486532",
-      "tagColor": "#000000",
-      "borderColor": "#2EB853",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF0097A7"
     },
     {
       "id": "ch-20",
@@ -1334,10 +1334,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180c\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a37bf826fb2cb2dd.png?rev=a37bf826fb2c",
-      "tagColor": "#000000",
-      "borderColor": "#FF7300",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "bordered"
+      "borderColor": "#FF0097A7"
     },
     {
       "id": "l-en",
@@ -1347,10 +1347,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180c\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a2743202437efbb1.png?rev=a2743202437e",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-es",
@@ -1360,10 +1360,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180c\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a379f1641b2418c2.png?rev=a379f1641b24",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-lat",
@@ -1373,10 +1373,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180c\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bb5ad06513b571c4.png?rev=bb5ad06513b5",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-fr",
@@ -1386,10 +1386,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180c\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dc1ab7d08d351ca5.png?rev=dc1ab7d08d35",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-de",
@@ -1399,10 +1399,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180d\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0d997365ee79734f.png?rev=0d997365ee79",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-it",
@@ -1412,10 +1412,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180d\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/69019d5a2c4d1c2b.png?rev=69019d5a2c4d",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-pt-br",
@@ -1425,10 +1425,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180d\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cc67864eb7ddd131.png?rev=cc67864eb7dd",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-pt-pt",
@@ -1438,10 +1438,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?!.*(?:\\u180d\\u180d\\u180d\\u206f))(?=.*(?:\\u180d\\u180d\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/19fbbc7329b1b25d.png?rev=19fbbc7329b1",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-tr",
@@ -1451,10 +1451,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180d\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/99067d0c03aea1c4.png?rev=99067d0c03ae",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-pl",
@@ -1464,10 +1464,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u180d\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/087cd55fb38d6a4e.png?rev=087cd55fb38d",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-uk",
@@ -1477,10 +1477,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200e\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d1ad3b871091fc07.png?rev=d1ad3b871091",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-id",
@@ -1490,10 +1490,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200e\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ca8b602448c9d8dd.png?rev=ca8b602448c9",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-th",
@@ -1503,10 +1503,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200e\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0ab9b20add7fcf8c.png?rev=0ab9b20add7f",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-vi",
@@ -1516,10 +1516,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200e\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2d679bbfde8bb91b.png?rev=2d679bbfde8b",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ja",
@@ -1529,10 +1529,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200e\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4f1a3078b2c14f7d.png?rev=4f1a3078b2c1",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ko",
@@ -1542,10 +1542,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200e\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6e34635395416f51.png?rev=6e3463539541",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-zh",
@@ -1555,10 +1555,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200f\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2da11f135fc24b98.png?rev=2da11f135fc2",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-hi",
@@ -1568,10 +1568,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200f\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/19d6265faf9b2908.png?rev=19d6265faf9b",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ar",
@@ -1581,10 +1581,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200f\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dab04e8bf5af69d8.png?rev=dab04e8bf5af",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ru",
@@ -1594,10 +1594,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200f\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b50cb0325050435a.png?rev=b50cb0325050",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-el",
@@ -1607,10 +1607,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200f\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bbdeb57beb09cfd4.png?rev=bbdeb57beb09",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-sv",
@@ -1620,10 +1620,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\u200f\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b7703f313c1e17a8.png?rev=b7703f313c1e",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-nl",
@@ -1633,10 +1633,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\ufeff\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0364ea192f929bed.png?rev=0364ea192f92",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-da",
@@ -1646,10 +1646,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\ufeff\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/63d15efae2160641.png?rev=63d15efae216",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-no",
@@ -1659,10 +1659,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\ufeff\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c303ca8290421277.png?rev=c303ca829042",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-fi",
@@ -1672,10 +1672,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\ufeff\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5c664acd49786906.png?rev=5c664acd4978",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-cs",
@@ -1685,10 +1685,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\ufeff\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d921ba08abf74d06.png?rev=d921ba08abf7",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-sk",
@@ -1698,10 +1698,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180d\\ufeff\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7f8fcbe62bc83fdd.png?rev=7f8fcbe62bc8",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-hu",
@@ -1711,10 +1711,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e5500bc8876d1c02.png?rev=e5500bc8876d",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ro",
@@ -1724,10 +1724,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180b\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/15003c88fb6a3124.png?rev=15003c88fb6a",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-bg",
@@ -1737,10 +1737,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180b\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2e9e76e8e266ed39.png?rev=2e9e76e8e266",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-hr",
@@ -1750,10 +1750,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180b\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2d8759bd1edec73b.png?rev=2d8759bd1ede",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-sr",
@@ -1763,10 +1763,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5d807e1f0114ba47.png?rev=5d807e1f0114",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-sl",
@@ -1776,10 +1776,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180b\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/360f003c17937e63.png?rev=360f003c1793",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-et",
@@ -1789,10 +1789,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180c\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6b7760a74ef7100c.png?rev=6b7760a74ef7",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-lv",
@@ -1802,10 +1802,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180c\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8aaf377cab19bf64.png?rev=8aaf377cab19",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-lt",
@@ -1815,10 +1815,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180c\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c88e7fbb28a5192a.png?rev=c88e7fbb28a5",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-he",
@@ -1828,10 +1828,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180c\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3bc9a9b65958b0b1.png?rev=3bc9a9b65958",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-fa",
@@ -1841,10 +1841,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180c\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c0cca9ce60d781fa.png?rev=c0cca9ce60d7",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ms",
@@ -1854,10 +1854,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180c\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7bafe97e696c1df4.png?rev=7bafe97e696c",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-bn",
@@ -1867,10 +1867,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180d\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3ae4be6cda70e102.png?rev=3ae4be6cda70",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ta",
@@ -1880,10 +1880,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180d\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7466d10f87a976f6.png?rev=7466d10f87a9",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-te",
@@ -1893,10 +1893,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180d\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ea960affd2420885.png?rev=ea960affd242",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-ml",
@@ -1906,10 +1906,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180d\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8b538eff37a1d414.png?rev=8b538eff37a1",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-kn",
@@ -1919,10 +1919,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180d\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b41cba9f0f270a93.png?rev=b41cba9f0f27",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-mr",
@@ -1932,10 +1932,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u180d\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2c22601e61e55f08.png?rev=2c22601e61e5",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-gu",
@@ -1945,10 +1945,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200e\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cb9ee92385f010ae.png?rev=cb9ee92385f0",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "l-pa",
@@ -1958,10 +1958,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200e\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1b259ca60d880e1c.png?rev=1b259ca60d88",
-      "tagColor": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FFAB47BC"
     },
     {
       "id": "sub-en",
@@ -1971,10 +1971,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200e\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5fc17de5981cc0b1.png?rev=5fc17de5981c",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-es",
@@ -1984,10 +1984,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200e\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0d7790b34279d129.png?rev=0d7790b34279",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-lat",
@@ -1997,10 +1997,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200e\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/76275e028d114d67.png?rev=76275e028d11",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-fr",
@@ -2010,10 +2010,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200e\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9e85f753d2f4db1b.png?rev=9e85f753d2f4",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-de",
@@ -2023,10 +2023,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200f\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b7706f2077202475.png?rev=b7706f207720",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-it",
@@ -2036,10 +2036,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200f\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ba23588633866b94.png?rev=ba2358863386",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-pt-br",
@@ -2049,10 +2049,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200f\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d073e711d9f14ba1.png?rev=d073e711d9f1",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-pt-pt",
@@ -2062,10 +2062,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200f\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b383801ae280c7fd.png?rev=b383801ae280",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-tr",
@@ -2075,10 +2075,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200f\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/831a8a27257caea2.png?rev=831a8a27257c",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-pl",
@@ -2088,10 +2088,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\u200f\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/057edb217b678a4d.png?rev=057edb217b67",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-uk",
@@ -2101,10 +2101,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\ufeff\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e4323a95f0b6bf75.png?rev=e4323a95f0b6",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-id",
@@ -2114,10 +2114,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\ufeff\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1413a006eee3f8a6.png?rev=1413a006eee3",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-th",
@@ -2127,10 +2127,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\ufeff\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fc3e802b4661e267.png?rev=fc3e802b4661",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-vi",
@@ -2140,10 +2140,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\ufeff\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8ae05b00ef3fc26f.png?rev=8ae05b00ef3f",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ja",
@@ -2153,10 +2153,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\ufeff\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6121bfaa53ca3bbb.png?rev=6121bfaa53ca",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ko",
@@ -2166,10 +2166,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200e\\ufeff\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dac8b643c803c040.png?rev=dac8b643c803",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-zh",
@@ -2179,10 +2179,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180b\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2a7baca93a279a6a.png?rev=2a7baca93a27",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-hi",
@@ -2192,10 +2192,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180b\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c956bec0ea342f37.png?rev=c956bec0ea34",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ar",
@@ -2205,10 +2205,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180b\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/36401908c70f3a8d.png?rev=36401908c70f",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ru",
@@ -2218,10 +2218,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180b\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8027693682b0424d.png?rev=8027693682b0",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-el",
@@ -2231,10 +2231,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180b\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a16be53ae9f9cf0a.png?rev=a16be53ae9f9",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-sv",
@@ -2244,10 +2244,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180b\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2994056ff8c3ec46.png?rev=2994056ff8c3",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-nl",
@@ -2257,10 +2257,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180c\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f434966342473b4a.png?rev=f43496634247",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-da",
@@ -2270,10 +2270,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180c\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/626dedeb9739581f.png?rev=626dedeb9739",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-no",
@@ -2283,10 +2283,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180c\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4c7a0470dfe58456.png?rev=4c7a0470dfe5",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-fi",
@@ -2296,10 +2296,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180c\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e9502c7455a55e07.png?rev=e9502c7455a5",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-cs",
@@ -2309,10 +2309,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180c\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/70217294c21dd45a.png?rev=70217294c21d",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-sk",
@@ -2322,10 +2322,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180c\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e2dcf27c6abcf4d4.png?rev=e2dcf27c6abc",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-hu",
@@ -2335,10 +2335,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180d\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e7645f53130eb7a5.png?rev=e7645f53130e",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ro",
@@ -2348,10 +2348,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180d\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/86d7e97a0bc25068.png?rev=86d7e97a0bc2",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-bg",
@@ -2361,10 +2361,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180d\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9bf0e0124a03a50c.png?rev=9bf0e0124a03",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-hr",
@@ -2374,10 +2374,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180d\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bf6ab1e2c6748183.png?rev=bf6ab1e2c674",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-sr",
@@ -2387,10 +2387,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180d\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8560f32868d23576.png?rev=8560f32868d2",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-sl",
@@ -2400,10 +2400,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u180d\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ecb4ea2452d99531.png?rev=ecb4ea2452d9",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-et",
@@ -2413,10 +2413,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200e\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3bff90223941f8fb.png?rev=3bff90223941",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-lv",
@@ -2426,10 +2426,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200e\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cc19c072b70d2e16.png?rev=cc19c072b70d",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-lt",
@@ -2439,10 +2439,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200e\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/669b9406f14bae81.png?rev=669b9406f14b",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-he",
@@ -2452,10 +2452,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200e\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/71a6931cc1d9335c.png?rev=71a6931cc1d9",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-fa",
@@ -2465,10 +2465,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200e\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a4c6681c6bb92687.png?rev=a4c6681c6bb9",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ms",
@@ -2478,10 +2478,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200e\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b25b2fe8a34e7e0d.png?rev=b25b2fe8a34e",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-bn",
@@ -2491,10 +2491,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200f\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/718f06ff17726368.png?rev=718f06ff1772",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ta",
@@ -2504,10 +2504,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200f\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/90228caa098c843b.png?rev=90228caa098c",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-te",
@@ -2517,10 +2517,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200f\\u180d\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/569b3411c21ebaec.png?rev=569b3411c21e",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-ml",
@@ -2530,10 +2530,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200f\\u200e\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0e3b119c8e23058b.png?rev=0e3b119c8e23",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-kn",
@@ -2543,10 +2543,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200f\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6392bda884077612.png?rev=6392bda88407",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-mr",
@@ -2556,10 +2556,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\u200f\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/582c2d710ffef339.png?rev=582c2d710ffe",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-gu",
@@ -2569,10 +2569,10 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\ufeff\\u180b\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a179fabf235ce1c5.png?rev=a179fabf235c",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     },
     {
       "id": "sub-pa",
@@ -2582,81 +2582,81 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u200f\\ufeff\\u180c\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9c6b87f4ec0b4f66.png?rev=9c6b87f4ec0b",
-      "tagColor": "#000000",
-      "borderColor": "#000000",
+      "tagColor": "#00000000",
+      "tagStyle": "filled and bordered",
       "textColor": "#FFFFFF",
-      "tagStyle": "filled and bordered"
+      "borderColor": "#FF8E24AA"
     }
   ],
   "groups": [
     {
       "id": "gst",
       "name": "Specials",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FF6A1B9A",
       "isExpanded": true
     },
     {
       "id": "gs",
       "name": "Streaming",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FF546E7A",
       "isExpanded": true
     },
     {
       "id": "gms",
       "name": "Tiers",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FF1565C0",
       "isExpanded": true
     },
     {
       "id": "grl",
       "name": "Source",
-      "color": "#000000",
-      "borderColor": "#FF455A64",
+      "color": "#00000000",
+      "borderColor": "#FF5C6B76",
       "isExpanded": true
     },
     {
       "id": "gr",
       "name": "Resolution",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FF27C04F",
       "isExpanded": true
     },
     {
       "id": "gv",
       "name": "Picture",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FFFFD54F",
       "isExpanded": true
     },
     {
       "id": "ga",
       "name": "Audio",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FF00BCD4",
       "isExpanded": true
     },
     {
       "id": "gc",
       "name": "Channels",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FF0097A7",
       "isExpanded": true
     },
     {
       "id": "gl",
       "name": "Language",
-      "color": "#000000",
-      "borderColor": "#FFFFFFFF",
+      "color": "#00000000",
+      "borderColor": "#FFAB47BC",
       "isExpanded": true
     },
     {
       "id": "gsub",
       "name": "Subtitles",
-      "color": "#000000",
-      "borderColor": "#000000",
+      "color": "#00000000",
+      "borderColor": "#FF8E24AA",
       "isExpanded": true
     }
   ]

@@ -1,6 +1,6 @@
-# Kanso 2.2.2 — Kingsize look, Instant markers, every fact once
+# Kanso 2.2.3 — Kingsize look, Instant markers, every fact once
 
-Kanso keeps Instant Unicode matching on structured AIOStreams fields. Visual chips use rehosted [kingsizew](https://github.com/kingsizew/badges) glyphs across four skins: Solid, Transparent (Default Colored), Mono White and Outline.
+Kanso keeps Instant Unicode matching on structured AIOStreams fields. Visual chips use rehosted [kingsizew](https://github.com/kingsizew/badges) glyphs across four skins: Solid, Transparent (Default Colored), Mono White and Outline. Solid/Transparent/Outline chrome is Kanso-owned by category (gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming, unique specials). Mono stays white/black.
 
 The formatter never prints a fact an enabled chip already shows. Language, subtitles, channels, source family/tier, CAM/TS/TC/SCR and picture tags are chips. Encode sits beside the container as `🎞️` text, not a chip. The title carries cache (`⚡`/`⏳`/`❔`), transport emoji and stars. Seeders appear on the title only for P2P or uncached streams.
 

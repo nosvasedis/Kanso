@@ -2,9 +2,8 @@
  * Transparent badge theme — clear fill + per-category stroke colors.
  * Nuvio: tagStyle "filled and bordered" shows border without opaque fill when tagColor is transparent.
  */
-import { streamingBrandStroke } from "./streaming-brand-colors.mjs";
-import { specialTagStroke } from "./special-tag-colors.mjs";
 import { LANGUAGE_BADGE_IDS, SUBTITLE_BADGE_IDS } from "./language-catalog.mjs";
+import { CHROME, borderArgb, chromeRgb6 } from "./badge-chrome-map.mjs";
 
 export const TRANSPARENT_FILL = "#00000000";
 export const TRANSPARENT_TAG_STYLE = "filled and bordered";
@@ -31,57 +30,15 @@ export const STROKE = {
   white: "#FFFFFFFF",
 };
 
-const QUALITY_BEST = new Set(["q-br", "q-bb", "q-bw"]);
-const QUALITY_GOOD = new Set(["q-gr", "q-gb", "q-gw"]);
-const QUALITY_OK = new Set(["q-or", "q-ob", "q-ow"]);
 export const RELEASE_FILTER_IDS = ["q-r", "q-b", "q-w", "q-wr", "q-cam", "q-hdtv"];
-const RELEASE_FILTERS = new Set(RELEASE_FILTER_IDS);
-
-const VISUAL_IDS = new Set([
-  "v-dv-hdr10p",
-  "v-dv-hdr10",
-  "v-dv-hdr",
-  "v-hdr10p",
-  "v-hdr10",
-  "v-hdr",
-  "v-hlg",
-  "v-10bit",
-  "v-sdr",
-  "v-ai",
-  "v-imax-e",
-  "v-imax",
-  "a-dv",
-  "v-3d",
-]);
 
 /** @param {string} id @param {string} groupId */
 export function strokeForFilter(id, groupId) {
-  if (id === "seadex-release") return STROKE.seadex;
-  if (id === "edition-directors-cut") return STROKE.editionDc;
-  if (id === "edition-extended") return STROKE.editionExt;
-  if (id === "edition-true-hue") return STROKE.editionHue;
-  if (id === "edition-bw") return STROKE.editionBw;
-  const tagStroke = specialTagStroke(id);
-  if (tagStroke) return tagStroke;
-  if (groupId === "gms") return STROKE.media;
-  if (groupId === "gs") {
-    try {
-      return streamingBrandStroke(id);
-    } catch {
-      return STROKE.streaming;
-    }
+  try {
+    return borderArgb(chromeRgb6(id, groupId));
+  } catch {
+    return STROKE.streaming;
   }
-  if (groupId === "grl" || RELEASE_FILTERS.has(id)) return STROKE.release;
-  if (QUALITY_BEST.has(id)) return STROKE.qualityBest;
-  if (QUALITY_GOOD.has(id)) return STROKE.qualityGood;
-  if (QUALITY_OK.has(id)) return STROKE.qualityOk;
-  if (id === "r-4k") return STROKE.qualityBest;
-  if (id === "r-1440" || id === "r-1080") return STROKE.qualityGood;
-  if (id === "r-720" || id === "r-576" || id === "r-480" || id === "r-360" || id === "r-240")
-    return STROKE.qualityOk;
-  if (groupId === "ga" || groupId === "gc" || groupId === "gl" || groupId === "ge" || groupId === "gsub") return STROKE.white;
-  if (groupId === "gv" || VISUAL_IDS.has(id)) return STROKE.visual;
-  return STROKE.white;
 }
 
 /** @param {{ id: string, groupId: string }} filter */
@@ -96,19 +53,25 @@ export function applyTransparentTheme(filter) {
 /** @deprecated Use applyTransparentTheme */
 export const applyMonoTheme = applyTransparentTheme;
 
+const groupChrome = (name, rgb6) => ({
+  name,
+  color: TRANSPARENT_FILL,
+  borderColor: borderArgb(rgb6),
+});
+
 export const MONO_GROUP_META = {
-  gst: { name: "Special Tags", color: TRANSPARENT_FILL, borderColor: STROKE.seadex },
-  gs: { name: "Streaming", color: TRANSPARENT_FILL, borderColor: "#FF546E7A" },
-  gms: { name: "Tiers", color: TRANSPARENT_FILL, borderColor: STROKE.media },
-  gq: { name: "Quality", color: TRANSPARENT_FILL, borderColor: STROKE.qualityBest },
-  grl: { name: "Release", color: TRANSPARENT_FILL, borderColor: STROKE.release },
-  gr: { name: "Resolution", color: TRANSPARENT_FILL, borderColor: STROKE.qualityBest },
-  gv: { name: "Visual", color: TRANSPARENT_FILL, borderColor: STROKE.visual },
-  ga: { name: "Audio", color: TRANSPARENT_FILL, borderColor: STROKE.white },
-  gc: { name: "Channels", color: TRANSPARENT_FILL, borderColor: STROKE.white },
-  ge: { name: "Encoder", color: TRANSPARENT_FILL, borderColor: STROKE.white },
-  gl: { name: "Language", color: TRANSPARENT_FILL, borderColor: STROKE.white },
-  gsub: { name: "Subtitles", color: TRANSPARENT_FILL, borderColor: STROKE.white },
+  gst: groupChrome("Special Tags", CHROME.seadex),
+  gs: groupChrome("Streaming", CHROME.streamingGroup),
+  gms: groupChrome("Tiers", CHROME.tiers),
+  gq: groupChrome("Quality", CHROME.res4k),
+  grl: groupChrome("Release", CHROME.source),
+  gr: groupChrome("Resolution", CHROME.res4k),
+  gv: groupChrome("Visual", CHROME.picture),
+  ga: groupChrome("Audio", CHROME.audio),
+  gc: groupChrome("Channels", CHROME.channels),
+  ge: groupChrome("Encoder", CHROME.tiers),
+  gl: groupChrome("Language", CHROME.language),
+  gsub: groupChrome("Subtitles", CHROME.subtitles),
 };
 
 export const TRANSPARENT_GROUP_META = MONO_GROUP_META;

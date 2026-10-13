@@ -3,9 +3,33 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {RETIRED_BADGE_IDS} from './retired-badges.mjs';
 import {buildPresetBadges,DISPLAY_FILTER_ORDER,DISPLAY_GROUP_ORDER,ILLUSTRATED_APPEARANCE,PRESET_SKINS,SPECIAL_DISPLAY_IDS} from './preset-badges.mjs';
-import {MONO_FILTER_ORDER} from './badge-transparent-theme.mjs';
+import {applyTransparentTheme,MONO_FILTER_ORDER,TRANSPARENT_FILL} from './badge-transparent-theme.mjs';
+import {applySolidTheme} from './badge-solid-theme.mjs';
+import {borderArgb,chromeRgb6} from './badge-chrome-map.mjs';
 import {BADGE_IMAGE_FILES_DIR,hashIconBuffer,iconFileName} from './icon-cdn.mjs';
 assert.deepEqual([...MONO_FILTER_ORDER.gst].sort(),SPECIAL_DISPLAY_IDS.filter(id=>!['v-imax-e','v-imax','v-3d'].includes(id)).sort(),'Every library special is in the leading specials block');
+function expectChrome(pack,skin,id,groupId){
+ const f=pack.filters.find(x=>x.id===id);
+ assert.ok(f,`${skin} missing ${id}`);
+ const rgb=chromeRgb6(id,groupId);
+ if(skin==='solid'){
+   const t=applySolidTheme({id,groupId});
+   assert.equal(f.tagColor,t.tagColor,`${skin}/${id} fill`);
+   assert.equal(f.borderColor,t.borderColor,`${skin}/${id} border`);
+   assert.equal(f.textColor,t.textColor,`${skin}/${id} ink`);
+   assert.equal(f.tagStyle,'filled');
+ }else if(skin==='transparent'||skin==='outline'){
+   const t=applyTransparentTheme({id,groupId});
+   assert.equal(f.tagColor,TRANSPARENT_FILL,`${skin}/${id} transparent fill`);
+   assert.equal(f.borderColor,borderArgb(rgb),`${skin}/${id} border`);
+   assert.equal(f.textColor,t.textColor,`${skin}/${id} ink`);
+   assert.equal(f.tagStyle,t.tagStyle);
+ }else{
+   assert.equal(f.tagColor.toUpperCase(),'#FFFFFF',`${skin}/${id} mono fill`);
+   assert.ok(['#FFFFFF','#FFFFFFFF'].includes(f.borderColor.toUpperCase()),`${skin}/${id} mono border ${f.borderColor}`);
+   assert.equal(f.textColor,'#000000',`${skin}/${id} mono ink`);
+ }
+}
 const checked=new Set();
 for(const preset of ['compact','detailed'])for(const skin of PRESET_SKINS){
  const suffix=preset==='compact'?'':'-detailed';
@@ -38,7 +62,20 @@ for(const preset of ['compact','detailed'])for(const skin of PRESET_SKINS){
  const story=[special,streaming,tier,picture,audio,channels,language].filter(i=>i!==undefined);
  for(let i=1;i<story.length;i++)assert.ok(story[i-1]<story[i],`${skin}/${preset} chip story ${story}`);
  assert.ok(!pack.filters.some(f=>f.groupId==='ge'||f.id.startsWith('ge-')),`${skin}/${preset} encoder chips are deleted`);
+ if(preset==='compact'){
+   expectChrome(pack,skin,'a-at-th','ga');
+   expectChrome(pack,skin,'ch-51','gc');
+   expectChrome(pack,skin,'l-en','gl');
+   expectChrome(pack,skin,'r-4k','gr');
+   expectChrome(pack,skin,'r-144','gr');
+   expectChrome(pack,skin,'q-w','grl');
+   expectChrome(pack,skin,'v-hdr10','gv');
+   expectChrome(pack,skin,'hybrid-release','gst');
+ }
  if(preset==='detailed'){
+   expectChrome(pack,skin,'s-nflx','gs');
+   expectChrome(pack,skin,'web-1','gms');
+   expectChrome(pack,skin,'sub-en','gsub');
    assert.ok(at('hybrid-release')<at('s-nflx')&&at('s-nflx')<at('web-1')&&at('web-1')<at('v-dv-hdr10p')&&at('v-dv-hdr10p')<at('a-at-th')&&at('a-at-th')<at('ch-71')&&at('ch-71')<at('l-en'));
    assert.ok(at('web-1')<at('web-1-webrip')&&at('web-1-webrip')<at('web-2'));
  }

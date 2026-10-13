@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.2.2
+# Kanso 2.2.3
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
@@ -69,7 +69,7 @@ Keep Kanso as the custom formatter when updating Tamtaro; changing the formatter
 
 ## Appearance
 
-Solid uses kingsizew Solid (tier fill, black glyphs). Transparent uses Default Colored (dark fill, white/light glyphs, colored borders). Mono uses Mono White. Outline uses Colored Outline. Art is rehosted under Kanso `/files`.
+Glyphs stay kingsizew. Solid, Transparent and Outline use Kanso category chrome so kinds scan from the couch: unique specials, official streaming brands, blue tiers, slate source, traffic-light resolution (4K green, 1080 amber, 720 and below red), gold picture, cyan audio / darker cyan channels, orchid language / deeper orchid subtitles. Solid paints that as fill; Transparent and Outline paint it as border on a clear fill. Mono stays white/black. Art is rehosted under Kanso `/files`.
 
 The title begins with an invisible U+200E left-to-right anchor so Nuvio TV 1.0.0 cannot let a later hidden marker pick RTL alignment. HDR10+/HDR10/HLG suppress redundant generic HDR badges, and DTS Master Audio wins over generic DTS-HD. Structured audio tags cannot borrow a different codec from the filename.
 

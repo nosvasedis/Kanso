@@ -2,7 +2,9 @@ import { readFileSync } from 'node:fs';
 import { v2PatternForBadge, MARKER_ATOMS as M, TIER_MARKERS } from './formatter-markers.mjs';
 import { PRESET_MARKER } from './preset-formatter.mjs';
 import { RETIRED_BADGE_IDS } from './retired-badges.mjs';
-import { MONO_FILTER_ORDER, MONO_GROUP_ORDER } from './badge-transparent-theme.mjs';
+import { applyTransparentTheme, MONO_FILTER_ORDER, MONO_GROUP_ORDER, TRANSPARENT_GROUP_META } from './badge-transparent-theme.mjs';
+import { applySolidTheme, solidGroupMeta } from './badge-solid-theme.mjs';
+import { CHROME } from './badge-chrome-map.mjs';
 const library=JSON.parse(readFileSync(new URL('../badges/badge-library.json',import.meta.url),'utf8'));
 export const ILLUSTRATED_APPEARANCE=JSON.parse(readFileSync(new URL('../badges/illustrated-appearance.json',import.meta.url),'utf8')).themes;
 export const PRESET_SKINS=['solid','transparent','mono','outline'];
@@ -69,12 +71,25 @@ function plainSource(id,preset){
  return p;
 }
 export function colorsFor(group,theme){
- const palette={gst:['5C6BC0','FFFFFF'],gr:['1565C0','FFFFFF'],gms:['455A64','FFFFFF'],grl:['455A64','FFFFFF'],gv:['FFD54F','141414'],ga:['FFFFFF','141414'],gc:['FFFFFF','141414'],ge:['1565C0','FFFFFF'],gs:['455A64','FFFFFF'],gl:['FFFFFF','141414'],gsub:['FFFFFF','141414'],gprovenance:['455A64','FFFFFF']};
- const [fill,ink]=palette[group]??['455A64','FFFFFF'];
+ const palette={
+  gst:[CHROME.seadex,'FFFFFF'],
+  gs:[CHROME.streamingGroup,'FFFFFF'],
+  gms:[CHROME.tiers,'FFFFFF'],
+  grl:[CHROME.source,'FFFFFF'],
+  gr:[CHROME.res4k,'000000'],
+  gv:[CHROME.picture,'000000'],
+  ga:[CHROME.audio,'000000'],
+  gc:[CHROME.channels,'FFFFFF'],
+  ge:[CHROME.tiers,'FFFFFF'],
+  gl:[CHROME.language,'FFFFFF'],
+  gsub:[CHROME.subtitles,'FFFFFF'],
+  gprovenance:[CHROME.source,'FFFFFF'],
+ };
+ const [fill,ink]=palette[group]??[CHROME.source,'FFFFFF'];
  if(theme==='solid')return{fill:'#'+fill,ink:'#'+ink,border:'#FF'+fill};
  if(theme==='mono')return{fill:'#FFFFFF',ink:'#000000',border:'#FFFFFFFF'};
  if(theme==='outline')return{fill:'#00000000',ink:'#FFFFFF',border:'#FF'+fill};
- return{fill:'#000000',ink:'#FFFFFF',border:'#FF'+fill};
+ return{fill:'#00000000',ink:'#FFFFFF',border:'#FF'+fill};
 }
 export function buildPresetBadges(theme,preset){
  if(!PRESET_SKINS.includes(theme)||!['compact','detailed'].includes(preset))throw new Error('Unknown preset/skin');
@@ -109,12 +124,22 @@ export function buildPresetBadges(theme,preset){
    if(!f.pattern)throw new Error(`Missing pattern ${f.id}`);
    const original=ILLUSTRATED_APPEARANCE[theme].filters[f.id.replace(/-webrip$/,'')];
    if(!original?.imageURL)throw new Error(`Missing Kingsize artwork: ${theme}/${f.id}`);
-   Object.assign(f,{imageURL:original.imageURL,tagColor:original.tagColor,borderColor:original.borderColor,textColor:original.textColor,tagStyle:original.tagStyle});
+   f.imageURL=original.imageURL;
+   if(theme==='mono')Object.assign(f,{tagColor:original.tagColor,borderColor:original.borderColor,textColor:original.textColor,tagStyle:original.tagStyle});
+   else if(theme==='solid')applySolidTheme(f);
+   else applyTransparentTheme(f);
  }
  filters.sort((a,b)=>{
    const [ga,ia,ida]=displayRank(a),[gb,ib,idb]=displayRank(b);
    return ga-gb||ia-ib||ida.localeCompare(idb);
  });
  const enabled=filters.filter(f=>f.isEnabled);
- return {filters:enabled,groups:groupOrder.filter(id=>enabled.some(f=>f.groupId===id)).map(id=>{const original=ILLUSTRATED_APPEARANCE[theme].groups.find(g=>g.id===id);const c=colorsFor(id,theme);return{id,name:groups[id],color:original?.color??c.fill,borderColor:original?.borderColor??c.border,isExpanded:true};})};
+ const solidMeta=solidGroupMeta();
+ return {filters:enabled,groups:groupOrder.filter(id=>enabled.some(f=>f.groupId===id)).map(id=>{
+   const original=ILLUSTRATED_APPEARANCE[theme].groups.find(g=>g.id===id);
+   const c=colorsFor(id,theme);
+   if(theme==='mono')return{id,name:groups[id],color:original?.color??c.fill,borderColor:original?.borderColor??c.border,isExpanded:true};
+   const meta=theme==='solid'?solidMeta[id]:TRANSPARENT_GROUP_META[id];
+   return{id,name:groups[id],color:meta?.color??c.fill,borderColor:meta?.borderColor??c.border,isExpanded:true};
+ })};
 }
