@@ -9,7 +9,7 @@ import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
 type FX={label:string;file?:string;parsed?:any;prefs?:string[];required?:string[];included?:string[];originalLanguage?:string;type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
 const fx:FX[]=[
- {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp','ge-hevc','ch-51'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','q-gw'],text:['📦 MKV','👥 FLUX','💾','⚡','☁️ RD','🧩'],absent:['🎞️ HEVC','✅','🔊','🎧']},
+ {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp','ch-51'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','q-gw','ge-hevc','ge-av1','ge-avc'],text:['📦 MKV · 🎞️ HEVC · 👥 FLUX','💾','⚡','☁️ RD','🧩'],absent:['✅','🔊','🎧','…']},
  {label:'unknown remux range',parsed:{quality:'REMUX',resolution:'2160p'},common:['r-4k','q-r'],forbid:['v-hdr','v-sdr']},
  {label:'explicit SDR remux',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['SDR']},common:['v-sdr','q-r'],forbid:['v-hdr']},
  {label:'HLG is not generic HDR',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['HLG']},common:['v-hlg'],forbid:['v-hdr','v-sdr']},
@@ -58,7 +58,7 @@ const fx:FX[]=[
  {label:'B&W and 3D retained',parsed:{editions:['B&W'],visualTags:['3D']},common:['edition-bw','v-3d']},
  {label:'unsupported cut has contextual filename fallback',file:'Movie.1080p.WEB-DL.Directors.Cut.mkv',parsed:{quality:'WEB',resolution:'1080p'},common:['edition-directors-cut']},
  {label:'parsed edition beats conflicting filename',file:'Movie.1080p.WEB-DL.Directors.Cut.mkv',parsed:{quality:'WEB',editions:['Extended']},common:['edition-extended'],forbid:['edition-directors-cut']},
- {label:'remastered edition remains Detailed',parsed:{editions:['Remastered']},detailed:['remastered-release']},
+ {label:'remastered edition is a special',parsed:{editions:['Remastered']},common:['remastered-release']},
  {label:'named Uncut movie is not an edition',file:'The.Uncut.Movie.1080p.WEB-DL.mkv',parsed:{title:'The.Uncut.Movie',quality:'WEB',resolution:'1080p'},forbid:['uncut-edition']},
  {label:'cache false',cache:false,text:['⏳'],absent:['Uncached','✅']},
  {label:'cache unknown',cache:null,text:['❔'],absent:['Cache unknown']},
@@ -72,13 +72,13 @@ const fx:FX[]=[
  {label:'positive release rule stays quiet',flags:{regexMatched:{name:'Radarr Remux Tier 1'}},absent:['🚩']},
  {label:'failed health details preserved',type:'usenet',flags:{message:'NZB Health: 🚫 missing 12 blocks'},text:['❌ missing 12 blocks'],absent:['💬','NZB Health:']},
  {label:'ordinary provider message preserved',flags:{message:'Download pending; retry in 30 seconds'},text:['💬 Download pending; retry in 30 seconds']},
- {label:'same English language flag once',prefs:['English','Greek'],parsed:{quality:'REMUX',resolution:'2160p',releaseGroup:'FraMeSToR',encode:'hevc',subtitles:['Greek'],audioTracks:[{lang:'English',tag:'TrueHD',channels:'7.1',title:'Atmos'},{lang:'English',tag:'DD',channels:'5.1'}]},common:['a-at-th','l-en','sub-el','ge-hevc','ch-71'],absent:['🎧','🇬🇧','💬 ELˢ','7.1']},
+ {label:'same English language flag once',prefs:['English','Greek'],parsed:{quality:'REMUX',resolution:'2160p',container:'mkv',releaseGroup:'FraMeSToR',encode:'hevc',subtitles:['Greek'],audioTracks:[{lang:'English',tag:'TrueHD',channels:'7.1',title:'Atmos'},{lang:'English',tag:'DD',channels:'5.1'}]},common:['a-at-th','l-en','sub-el','ch-71'],forbid:['ge-hevc'],text:['📦 MKV · 🎞️ HEVC · 👥 FraMeSToR'],absent:['🎧','🇬🇧','💬 ELˢ','7.1','…']},
  {label:'specific reason with grouped audio and bottom subtitles',prefs:['English','Greek'],type:'usenet',flags:{regexMatched:{name:'Radarr Bad Dual Groups'},message:'NZB Health: ⚠️ missing blocks',bitrate:66e6,age:86,indexer:'altHUB',addon:{name:'altHUB'},size:50.6e9},parsed:{quality:'REMUX',resolution:'2160p',releaseGroup:'FraMeSToR',encode:'hevc',subtitles:['Greek'],visualTags:['DV','HDR10'],audioTracks:[{lang:'English',tag:'TrueHD',channels:'7.1',title:'Atmos'},{lang:'English',tag:'DD',channels:'5.1'}]},common:['a-at-th','v-dv-hdr10','l-en','sub-el'],text:['🚩 Bad Dual Groups','⚠️ missing blocks'],absent:['🎧','🇬🇧','💬 ELˢ','Release warning']},
  {label:'four tracks keep language transitions',prefs:['English','Greek'],parsed:{audioTracks:[{lang:'English',tag:'TrueHD',channels:'7.1'},{lang:'English',tag:'DD',channels:'5.1'},{lang:'Greek',tag:'AAC',channels:'2.0'},{lang:'Greek',tag:'DD+',channels:'5.1'},{lang:'English',tag:'FLAC'}]},common:['a-th','l-en','ch-71'],detailed:['l-el'],forbid:['a-flac'],absent:['🎧','🇬🇧','🇬🇷','FLAC']},
  {label:'returning language flag keeps association',prefs:['English','Greek'],parsed:{audioTracks:[{lang:'English',tag:'TrueHD'},{lang:'Greek',tag:'AAC'},{lang:'English',tag:'DD'}]},common:['a-th','l-en'],detailed:['l-el'],absent:['🎧','🇬🇧','🇬🇷']},
  {label:'commentary exclusion does not repeat language',parsed:{audioTracks:[{lang:'English',tag:'TrueHD',channels:'7.1'},{lang:'English',tag:'FLAC',commentary:true},{lang:'English',tag:'DD',channels:'5.1'}]},common:['a-th','l-en','ch-71'],forbid:['a-flac'],absent:['🎧','FLAC']},
  {label:'upscaled flag stays visible',parsed:{upscaled:true},text:['Upscaled']},
- {label:'Detailed delivery diagnostics',parsed:{encode:'hevc',container:'mkv',releaseGroup:'GROUP'},flags:{bitrate:30e6,age:24,indexer:'NZBGeek',torrent:{private:true,freeleech:true}},common:['ge-hevc'],text:['MKV','GROUP'],detailText:['NZBGeek','Private','Freeleech'],absent:['HEVC']},
+ {label:'Detailed delivery diagnostics',parsed:{encode:'hevc',container:'mkv',releaseGroup:'GROUP'},flags:{bitrate:30e6,age:24,indexer:'NZBGeek',torrent:{private:true,freeleech:true}},forbid:['ge-hevc'],text:['📦 MKV · 🎞️ HEVC · 👥 GROUP'],detailText:['NZBGeek','Private','Freeleech']},
  {label:'season pack and folder size retained',parsed:{seasonPack:true},flags:{folderSize:100e9},text:['📚 Season pack','📁']},
  {label:'library wins over preload',flags:{library:true,preloading:true},detailText:['Library'],absent:['Preloading']},
  {label:'preloading distinct',flags:{library:false,preloading:true},detailText:['Preloading']},
@@ -99,7 +99,7 @@ const fx:FX[]=[
  {label:'required languages participate in the AIO preference context',prefs:['English'],required:['Greek'],parsed:{languages:['Greek'],mediaInfoQuality:'indexer',audioTracks:[{lang:'Greek',tag:'AAC'}]},common:['l-el'],forbid:['l-en'],absent:['🇬🇷']},
  {label:'flat preferred order is respected',prefs:['Greek','English'],parsed:{languages:['English','Greek'],mediaInfoQuality:'probe',audioTracks:[{lang:'Greek',tag:'AAC'},{lang:'English',tag:'AAC'}]},common:['l-el','a-aac'],detailed:['l-en'],absent:['🇬🇷','🇬🇧']},
  {label:'uncertain language metadata stays quiet',prefs:['English'],parsed:{languages:['English'],mediaInfoQuality:'filename'},absent:['🎧','🇬🇧'],forbid:['l-en']},
- {label:'Tamtaro English DD+ 5.1 without duplicate flags',prefs:['English','Original','Multi','Dual Audio','Dubbed','Unknown'],originalLanguage:'English',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',releaseGroup:'FLUX',network:'Amazon',visualTags:['DV','HDR10+'],languages:['English','Japanese'],mediaInfoQuality:'probe',audioTags:['DD+','Atmos','FLAC'],audioTracks:[{lang:'Japanese',tag:'FLAC',channels:'7.1'},{lang:'English',codec:'eac3',tag:'DD+',channels:'5.1',title:'Main Atmos'}]},common:['r-4k','v-dv-hdr10p','a-at-dp','l-en','ge-hevc','ch-51'],compact:['q-w'],detailed:['web-1','s-amzn'],absent:['🇬🇧','🇯🇵','JA: FLAC']},
+ {label:'Tamtaro English DD+ 5.1 without duplicate flags',prefs:['English','Original','Multi','Dual Audio','Dubbed','Unknown'],originalLanguage:'English',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',releaseGroup:'FLUX',network:'Amazon',visualTags:['DV','HDR10+'],languages:['English','Japanese'],mediaInfoQuality:'probe',audioTags:['DD+','Atmos','FLAC'],audioTracks:[{lang:'Japanese',tag:'FLAC',channels:'7.1'},{lang:'English',codec:'eac3',tag:'DD+',channels:'5.1',title:'Main Atmos'}]},common:['r-4k','v-dv-hdr10p','a-at-dp','l-en','ch-51'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['ge-hevc'],text:['📦 MKV · 🎞️ HEVC · 👥 FLUX'],absent:['🇬🇧','🇯🇵','JA: FLAC']},
  {label:'rank score does not change badge opinion',score:100,parsed:{quality:'WEB',resolution:'1080p'},common:['q-w','r-1080'],forbid:['q-bw','q-gw','q-ow']},
  {label:'missing language does not leave orphan audio row',prefs:[],parsed:{audioTracks:[{tag:'AAC'}]},common:['a-aac'],absent:['🎧']},
  {label:'unknown language codec stays in its badge',prefs:[],parsed:{audioTracks:[{lang:'Unknown',tag:'AAC'}]},common:['a-aac'],absent:['🎧'],forbid:['l-en']},
@@ -114,6 +114,14 @@ const fx:FX[]=[
  {label:'DV HDR10 plus keeps only combined artwork',parsed:{visualTags:['DV','HDR','HDR10','HDR10+']},common:['v-dv-hdr10p'],forbid:['v-dv-hdr','v-dv-hdr10','v-hdr10p','v-hdr10','v-hdr','a-dv']},
  {label:'DTS master audio wins over generic DTS HD',parsed:{audioTags:['DTS-HD MA','DTS-HD','DTS']},common:['a-dtsma'],forbid:['a-dtshd','a-dts']},
  {label:'structured file codec ignores unrelated filename codec',file:'Movie.1080p.WEB-DL.Atmos.TrueHD.mkv',parsed:{quality:'WEB',resolution:'1080p',audioTags:['AAC']},common:['a-aac'],forbid:['a-at-th','a-at','a-th']},
+ {label:'x265 is shown as HEVC beside the container',parsed:{encode:'x265',container:'mkv',releaseGroup:'FLUX'},forbid:['ge-hevc'],text:['📦 MKV · 🎞️ HEVC · 👥 FLUX'],absent:['x265','X265','…']},
+ {label:'h264 is shown as AVC beside the container',parsed:{encode:'h264',container:'mp4'},forbid:['ge-avc'],text:['📦 MP4 · 🎞️ AVC'],absent:['H264','…']},
+ {label:'AV1 sits with the container without a chip',parsed:{encode:'av1',container:'mkv',releaseGroup:'Group'},forbid:['ge-av1'],text:['📦 MKV · 🎞️ AV1 · 👥 Group'],absent:['…']},
+ {label:'encode without a container does not lead with a separator',parsed:{encode:'hevc',releaseGroup:'FLUX'},flags:{size:undefined},forbid:['ge-hevc'],text:['🎞️ HEVC · 👥 FLUX'],absent:['📦','…']},
+ {label:'container without encode has no film emoji',parsed:{container:'mkv',releaseGroup:'FLUX'},absent:['🎞️','…']},
+ {label:'long release group is not truncated',parsed:{container:'mkv',encode:'hevc',releaseGroup:'SuperLongReleaseGroup'},text:['📦 MKV · 🎞️ HEVC · 👥 SuperLongReleaseGroup'],absent:['…']},
+ {label:'XviD and DivX keep their chip names as text',parsed:{container:'avi',encode:'xvid',releaseGroup:'GROUP'},forbid:['ge-xvid','ge-divx'],text:['📦 AVI · 🎞️ XviD · 👥 GROUP'],absent:['XVID','…']},
+ {label:'filename HEVC does not invent encode text',file:'Movie.1080p.WEB-DL.HEVC.FLUX.mkv',parsed:{quality:'WEB',container:'mkv',releaseGroup:'FLUX'},absent:['🎞️','…']},
 ];
 fx.push(...coverageFixtures);
 const evidence:any[]=[];
@@ -121,6 +129,8 @@ for(const preset of ['compact','detailed']){
  const suffix=preset==='compact'?'':'-detailed';
  const templates=JSON.parse(fs.readFileSync(`formatter${suffix}.json`,'utf8'));
  assert.deepEqual(templates,buildPresetFormatter(preset));
+ assert.ok(templates.description.includes('🎞️'),`${preset}: encode sits beside the container`);
+ assert.ok(!templates.description.includes('releaseGroup::truncate'),`${preset}: release group must not be truncated`);
  for(const [key,value] of Object.entries(templates)){
    assert.deepEqual(validateTemplate(value as string),[],`${preset} ${key}: invalid real-engine syntax`);
    assert.ok((value as string).length<=15000);
@@ -134,7 +144,7 @@ for(const preset of ['compact','detailed']){
    const visible=clean(out.name+'\n'+out.description);
    assert.ok(out.name.includes(PRESET_MARKER));
    assert.ok(out.name.startsWith(TITLE_LTR_ANCHOR),'Emoji/star titles must begin with the invisible LTR anchor');
-   assert.doesNotMatch(visible,/🇬🇧|🇯🇵|🇫🇷|🇬🇷|🇷🇺|🇸🇪|🎞️ HEVC|💬 ELˢ/,`${preset}/${f.label}: formatter echoed a chip-owned fact`);
+   assert.doesNotMatch(visible,/🇬🇧|🇯🇵|🇫🇷|🇬🇷|🇷🇺|🇸🇪|💬 ELˢ/,`${preset}/${f.label}: formatter echoed a chip-owned fact`);
    assert.doesNotMatch(visible,/Audio: file tags|Audio unverified|File channels|^\s*(?:🎧|🔊|💬|🧩)\s*$/m,'Remove diagnostic wording and orphaned emoji rows');
    assert.doesNotMatch(visible,/🧩\s*·\s*Comet/,'Attach the addon cue to its name');
    assert.match(clean(out.name),/🔗|🧲|🌐|📰/,`Restored transport imagery: ${f.label}`);

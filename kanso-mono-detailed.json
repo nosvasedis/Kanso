@@ -53,6 +53,32 @@
       "tagStyle": "filled"
     },
     {
+      "id": "hybrid-release",
+      "groupId": "gst",
+      "name": "HYBRID",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\ufeff\\u206f))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ea59a970bf64533c.png?rev=ea59a970bf64",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
+      "id": "criterion-collection",
+      "groupId": "gst",
+      "name": "CRITERION",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180b\\u206f))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/60779bf4cda63be0.png?rev=60779bf4cda6",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
       "id": "edition-directors-cut",
       "groupId": "gst",
       "name": "DIR CUT",
@@ -105,6 +131,19 @@
       "tagStyle": "filled"
     },
     {
+      "id": "edition-theatrical",
+      "groupId": "gst",
+      "name": "THEATRICAL",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200f\\u180d\\u206f))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/37212037d950b887.png?rev=37212037d950",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
       "id": "edition-bw",
       "groupId": "gst",
       "name": "B&W",
@@ -118,6 +157,19 @@
       "tagStyle": "filled"
     },
     {
+      "id": "edition-true-hue",
+      "groupId": "gst",
+      "name": "TRUE HUE",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206a))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c40cb2b19980e8d0.png?rev=c40cb2b19980",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
       "id": "open-matte-edition",
       "groupId": "gst",
       "name": "OPEN MATTE",
@@ -125,6 +177,58 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u200f\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5202155f748ccac8.png?rev=5202155f748c",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
+      "id": "remastered-release",
+      "groupId": "gst",
+      "name": "REMASTER",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u200e\\u206f))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/19eb2a34c5bcc39e.png?rev=19eb2a34c5bc",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
+      "id": "regraded-release",
+      "groupId": "gst",
+      "name": "REGRADED",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\ufeff\\u206f))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7b723c5dbfb03f93.png?rev=7b723c5dbfb0",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
+      "id": "proper-release",
+      "groupId": "gst",
+      "name": "PROPER",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180c\\u206f))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/72caa12a07a3742a.png?rev=72caa12a07a3",
+      "tagColor": "#FFFFFF",
+      "borderColor": "#FFFFFF",
+      "textColor": "#000000",
+      "tagStyle": "filled"
+    },
+    {
+      "id": "repack-release",
+      "groupId": "gst",
+      "name": "REPACK",
+      "type": "filter",
+      "isEnabled": true,
+      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180d\\u206f))",
+      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/01cb807ef2546a13.png?rev=01cb807ef254",
       "tagColor": "#FFFFFF",
       "borderColor": "#FFFFFF",
       "textColor": "#000000",
@@ -1230,71 +1334,6 @@
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180c\\ufeff\\u206f))",
       "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a37bf826fb2cb2dd.png?rev=a37bf826fb2c",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "ge-av1",
-      "groupId": "ge",
-      "name": "AV1",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\u180b\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2cca635c8d9690e7.png?rev=2cca635c8d96",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "ge-hevc",
-      "groupId": "ge",
-      "name": "HEVC",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\u180c\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4433ade5c89add2f.png?rev=4433ade5c89a",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "ge-avc",
-      "groupId": "ge",
-      "name": "AVC",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\u180d\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b53e3520e8ac02df.png?rev=b53e3520e8ac",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "ge-xvid",
-      "groupId": "ge",
-      "name": "XviD",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\u200e\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/940b12613f149029.png?rev=940b12613f14",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "ge-divx",
-      "groupId": "ge",
-      "name": "DivX",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\u200f\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b238b1cbe026596a.png?rev=b238b1cbe026",
       "tagColor": "#FFFFFF",
       "borderColor": "#FFFFFF",
       "textColor": "#000000",
@@ -2547,110 +2586,6 @@
       "borderColor": "#FFFFFFFF",
       "textColor": "#000000",
       "tagStyle": "filled"
-    },
-    {
-      "id": "criterion-collection",
-      "groupId": "gprovenance",
-      "name": "CRITERION",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180b\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/60779bf4cda63be0.png?rev=60779bf4cda6",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "edition-theatrical",
-      "groupId": "gprovenance",
-      "name": "THEATRICAL",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200f\\u180d\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/37212037d950b887.png?rev=37212037d950",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "edition-true-hue",
-      "groupId": "gprovenance",
-      "name": "TRUE HUE",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u206a))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c40cb2b19980e8d0.png?rev=c40cb2b19980",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "hybrid-release",
-      "groupId": "gprovenance",
-      "name": "HYBRID",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u180d\\ufeff\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ea59a970bf64533c.png?rev=ea59a970bf64",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "proper-release",
-      "groupId": "gprovenance",
-      "name": "PROPER",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180c\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/72caa12a07a3742a.png?rev=72caa12a07a3",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "regraded-release",
-      "groupId": "gprovenance",
-      "name": "REGRADED",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\ufeff\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7b723c5dbfb03f93.png?rev=7b723c5dbfb0",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "remastered-release",
-      "groupId": "gprovenance",
-      "name": "REMASTER",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u200e\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/19eb2a34c5bcc39e.png?rev=19eb2a34c5bc",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
-    },
-    {
-      "id": "repack-release",
-      "groupId": "gprovenance",
-      "name": "REPACK",
-      "type": "filter",
-      "isEnabled": true,
-      "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200b\\u206f))(?=.*(?:\\u180c\\u200e\\u180d\\u206f))",
-      "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/01cb807ef2546a13.png?rev=01cb807ef254",
-      "tagColor": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "textColor": "#000000",
-      "tagStyle": "filled"
     }
   ],
   "groups": [
@@ -2711,13 +2646,6 @@
       "isExpanded": true
     },
     {
-      "id": "ge",
-      "name": "Encoder",
-      "color": "#FFFFFF",
-      "borderColor": "#FFFFFF",
-      "isExpanded": true
-    },
-    {
       "id": "gl",
       "name": "Language",
       "color": "#FFFFFF",
@@ -2729,13 +2657,6 @@
       "name": "Subtitles",
       "color": "#000000",
       "borderColor": "#000000",
-      "isExpanded": true
-    },
-    {
-      "id": "gprovenance",
-      "name": "Release detail",
-      "color": "#FFFFFF",
-      "borderColor": "#FFFFFFFF",
       "isExpanded": true
     }
   ]

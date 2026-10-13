@@ -10,21 +10,25 @@ export const WHITE_COMPOSITE_IDS=new Set();
 const literal=m=>[...m].map(c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0')).join('');
 const requireMarker=m=>`(?=.*(?:${literal(m)}))`;
 const forbid=m=>`(?!.*(?:${literal(m)}))`;
-const editionIds=['edition-directors-cut','edition-extended','uncut-edition','uncensored-edition','edition-bw','open-matte-edition','seadex-release'];
 /** Presentation chips live with specials on the stream, not in the HDR row. */
 export const PRESENTATION_SPECIAL_IDS=['v-imax-e','v-imax','v-3d'];
-/** Specials → streaming → tier → source → resolution → picture → audio → channels → encode → language → subs. */
-export const DISPLAY_GROUP_ORDER=[...MONO_GROUP_ORDER,'gprovenance'];
+/**
+ * Every special sits in gst, first on the row. Hybrid/Criterion are source
+ * specials, not a trailing provenance footnote.
+ */
+export const SPECIAL_DISPLAY_IDS=[
+ 'seadex-release',
+ ...PRESENTATION_SPECIAL_IDS,
+ 'hybrid-release','criterion-collection',
+ 'edition-directors-cut','edition-extended','uncut-edition','uncensored-edition','edition-theatrical',
+ 'edition-bw','edition-true-hue','open-matte-edition',
+ 'remastered-release','regraded-release','proper-release','repack-release',
+];
+/** Specials → streaming → tier → source → resolution → picture → audio → channels → language → subs. Encode is formatter text. */
+export const DISPLAY_GROUP_ORDER=[...MONO_GROUP_ORDER];
 const webFamily=Array.from({length:6},(_,i)=>{const n=i+1;return[`web-${n}`,`web-${n}-webrip`];}).flat();
 export const DISPLAY_FILTER_ORDER={
- gst:[
-  'seadex-release',
-  ...PRESENTATION_SPECIAL_IDS,
-  'edition-directors-cut','edition-extended','uncut-edition','uncensored-edition','edition-theatrical',
-  'edition-bw','edition-true-hue','open-matte-edition',
-  'hybrid-release','criterion-collection',
-  'proper-release','repack-release','remastered-release','regraded-release',
- ],
+ gst:SPECIAL_DISPLAY_IDS,
  gs:MONO_FILTER_ORDER.gs,
  gms:[...webFamily,...Array.from({length:8},(_,i)=>`blu-ray-${i+1}`),'remux-1','remux-2','remux-3'],
  grl:MONO_FILTER_ORDER.grl,
@@ -76,12 +80,11 @@ export function buildPresetBadges(theme,preset){
  if(!PRESET_SKINS.includes(theme)||!['compact','detailed'].includes(preset))throw new Error('Unknown preset/skin');
  const filters=library.filters.filter(f=>!RETIRED_BADGE_IDS.has(f.id)).map(original=>{
    const f={...original,type:'filter',isEnabled:true};
-   if(f.groupId==='gst'&&!editionIds.includes(f.id))f.groupId='gprovenance';
-   if(PRESENTATION_SPECIAL_IDS.includes(f.id))f.groupId='gst';
+   if(SPECIAL_DISPLAY_IDS.includes(f.id))f.groupId='gst';
    f.label=LABELS[f.id]??f.name;
    if(sourceAtoms[f.id])f.pattern=plainSource(f.id,preset);
    else f.pattern=v2PatternForBadge(f.id);
-   if(preset==='compact'&&['gms','gs','gprovenance'].includes(f.groupId))f.isEnabled=false;
+   if(preset==='compact'&&['gms','gs'].includes(f.groupId))f.isEnabled=false;
    if(preset==='compact'&&f.id==='v-10bit')f.isEnabled=false;
    if(f.groupId==='gms'){
      const family=f.id.startsWith('web-')?'web':f.id.startsWith('blu-ray-')?'bluray':'remux';

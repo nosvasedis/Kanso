@@ -1,4 +1,4 @@
-/** Permanently retired: score combos and unranked family chips. */
+/** Permanently retired: score combos, unranked family chips, MULTI, and encoder chips (encode is formatter text). */
 export const RETIRED_BADGE_IDS = new Set([
   "q-br",
   "q-bb",
@@ -13,4 +13,9 @@ export const RETIRED_BADGE_IDS = new Set([
   "blu-ray-unranked",
   "remux-unranked",
   "l-mu",
+  "ge-av1",
+  "ge-hevc",
+  "ge-avc",
+  "ge-xvid",
+  "ge-divx",
 ]);

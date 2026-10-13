@@ -1,8 +1,8 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.2.1
+# Kanso 2.2.2
 
-Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, encoder, source and picture; the formatter never repeats those. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
+Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
 Badge artwork is by [kingsizew](https://github.com/kingsizew/badges), rehosted on the Kanso CDN. Matching uses Kanso Instant Unicode markers from structured AIOStreams fields, not filename regex.
 
@@ -26,30 +26,30 @@ This preview uses exported PNGs and real AIOStreams output. Its browser layout a
 5. For an upgrade, **refresh both the formatter and the badge pack**. Kanso uses a version marker; mixed old/new exports are prevented from producing confident badges. Saving a URL does not guarantee the app has fetched the newest content—refresh its sync/import when needed.
 6. On Nuvio TV, turn off its native file-size badges if you keep Kanso's `💾` size row. TV 1.0.0 enables native size badges by default; this app setting is separate from the imported pack.
 
-Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 12,366 / 12,363 characters; Detailed is 14,830 / 14,830. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 11,846 / 11,836 characters; Detailed is 14,320 / 14,320. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## What each preset shows
 
 | Information | Compact | Detailed |
 |---|---|---|
 | Title: cache (`⚡`/`⏳`/`❔`), transport emoji, stars | Yes | Yes |
-| Size, container, release group, addon/service | Yes | Yes |
+| Size, container, encode (`🎞️`), release group, addon/service | Yes | Yes |
 | Warnings that have no chip (preferred audio missing, HDR/SDR conflict, upscaled, Bad-rule name, NZB health) | Yes | Yes |
-| Resolution, source, picture, audio, channels, encoder chips | Yes | Yes |
+| Resolution, source, picture, audio, channels chips | Yes | Yes |
 | Preferred language chip | One preferred language | Up to four preferred tracks |
 | Preferred subtitle chips | Preferred languages present on the file | Preferred languages present on the file |
-| Viewing cuts, B&W, IMAX, 3D, SeaDex when evidenced | Yes | Yes |
+| Specials (SeaDex, IMAX, 3D, Hybrid, Criterion, cuts, B&W, Proper, …) when evidenced | Yes | Yes |
 | Known release tier | One source family chip | Numbered source-family/tier chip |
-| Streaming origin and specialist provenance | Hidden | Available |
+| Streaming origin | Hidden | Available |
 | Bitrate, age, indexer, country | Hidden | When present |
 | Seeders | Title, P2P or uncached only | Title, P2P or uncached only |
 | Duplicate Best/Good/OK score badges | Hidden | Hidden |
 
-Chips read left to right as specials (SeaDex, IMAX, cuts, B&W), then streaming origin, then numbered tier or generic source, then resolution, picture, audio, channels, encoder, language and subtitles.
+Chips read left to right as specials (SeaDex, IMAX, 3D, Hybrid, Criterion, cuts, B&W, remaster/proper), then streaming origin, then numbered tier or generic source, then resolution, picture, audio, channels, language and subtitles. Encode is formatter text on the release row (`📦 MKV · 🎞️ HEVC · 👥 GROUP`), never a chip.
 
 Changing the preset does not change AIOStreams sorting or ranking. Tiers are named rule/group classifications, not playback guarantees. Unknown tiers display one source badge. WEBRip is classified separately from WEB-DL. The title stars show AIOStreams relative expression score, not a guarantee of playback or objective file quality.
 
-The active library contains 198 badge definitions. Compact exports 163 chips; Detailed exports 204, including six WEBRip tier variants. Best/Good/OK score chips, unranked family chips and MULTI language chips stay retired. No disabled placeholders or empty groups are exported.
+The active library contains 198 badge definitions. Compact exports 166 chips; Detailed exports 199, including six WEBRip tier variants. Best/Good/OK score chips, unranked family chips, MULTI language chips and encoder chips stay retired. No disabled placeholders or empty groups are exported.
 
 ## Accuracy and uncertainty
 
@@ -57,7 +57,7 @@ The active library contains 198 badge definitions. Compact exports 163 chips; De
 - Structured source/resolution information takes precedence. Limited filename fallbacks require bounded tokens and technical context; parsed title/release-group strings are removed from that fallback text.
 - With audio tracks, Compact uses the **first usable matching track in file order** from your AIOStreams preferred-language context, excluding known commentary. The selected codec, channel and language chips belong to that same track. Detailed can show up to four matching preferred languages. Extra languages and subtitles on the file that are not in that preference list do not get chips. It does not guarantee the player will select that track.
 - If the preferred language is unavailable, a warning replaces a misleading language/codec assertion. Unrecognized languages have no chip. Swedish and the rest of the 48-language inventory use image chips, not formatter flags.
-- Without track metadata, audio codec tags describe the **file**, not a guaranteed language/codec pairing. Without tracks, a language chip is used only with `probe` or `indexer` confidence. Encode, channels, subtitles and source never also appear as formatter text.
+- Without track metadata, audio codec tags describe the **file**, not a guaranteed language/codec pairing. Without tracks, a language chip is used only with `probe` or `indexer` confidence. Channels, subtitles and source never also appear as formatter text. Encode is formatter-owned beside the container and is not truncated.
 - Cache state is `⚡` cached, `⏳` uncached or `❔` unknown, on the title only, and only for debrid/usenet. HTTP, P2P and live delivery do not acquire a fictitious debrid cache status. Bad sources and upstream health messages remain visible.
 - A Netflix/Prime/etc. origin badge does not establish current subscription availability or regional rights.
 

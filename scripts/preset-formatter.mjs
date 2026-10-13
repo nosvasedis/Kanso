@@ -123,12 +123,8 @@ const CHANNELS=gate('stream.audioTracks::exists',selectedTrack(
  gate('stream.audioChannels::~5.1::and::stream.audioChannels::~7.1::isfalse::and::stream.audioChannels::~6.1::isfalse',M.ch51)+
  gate('stream.audioChannels::~2.0::and::stream.audioChannels::~5.1::isfalse::and::stream.audioChannels::~6.1::isfalse::and::stream.audioChannels::~7.1::isfalse',M.ch20)
 );
-const ENCODER=gate('stream.encode::~av1',M.encAv1)+
- gate('stream.encode::~hevc::or::stream.encode::~h265::or::stream.encode::~x265',M.encHevc)+
- gate('stream.encode::~avc::or::stream.encode::~h264::or::stream.encode::~x264',M.encAvc)+
- gate('stream.encode::~xvid',M.encXvid)+
- gate('stream.encode::~divx',M.encDivx)+
- gate('stream.encode::exists::isfalse',[['AV1','encAv1'],['HEVC','encHevc'],['x265','encHevc'],['AVC','encAvc'],['x264','encAvc'],['XviD','encXvid'],['DivX','encDivx']].map(([t,a])=>gate(token(t),M[a])).join(''));
+/** Canonical encode names; `{? ?}` keeps separators aligned with a real value. */
+const encodeShown="{stream.encode::upper::replace('X265','HEVC')::replace('H265','HEVC')::replace('X264','AVC')::replace('H264','AVC')::replace('XVID','XviD')::replace('DIVX','DivX')}";
 
 /** Prefer structured editions/flags; contextual filename fallback only for unsupported provenance. */
 const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.seadex) +
@@ -170,7 +166,12 @@ const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists
 export function buildPresetFormatter(preset='compact'){
  if(!['compact','detailed'].includes(preset))throw new Error(`Unknown preset ${preset}`);
  const detailed=preset==='detailed';
- const release=row([part('stream.container','📦 {stream.container::upper}'),part('stream.releaseGroup','👥 {stream.releaseGroup::truncate(11)}'),...(detailed?[part('stream.country')]:[])]);
+ const release=row([
+   part('stream.container','📦 {stream.container::upper}'),
+   part('stream.encode',`🎞️ ${encodeShown}`),
+   part('stream.releaseGroup','👥 {stream.releaseGroup}'),
+   ...(detailed?[part('stream.country')]:[]),
+ ]);
  const fileCore=row([
    {condition:'stream.seasonPack::istrue',text:'📚 Season pack'},
    part('stream.size','💾 {stream.size::sbytes}'),part('stream.folderSize','📁 {stream.folderSize::sbytes}'),
@@ -195,7 +196,7 @@ export function buildPresetFormatter(preset='compact'){
  let name=PRESET_NAME+PRESET_MARKER;
  let description=visible;
  // Source and tier share a field so native per-field scans cannot echo the source.
- const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,CHANNELS,ENCODER,languageMarkers(detailed),SUBTITLE_MARKERS_INJECT,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];
+ const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,CHANNELS,languageMarkers(detailed),SUBTITLE_MARKERS_INJECT,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];
  // Find an exact two-field partition; greedy packing can reject a valid fit.
  const active=segments.filter(Boolean);
  let partition;
