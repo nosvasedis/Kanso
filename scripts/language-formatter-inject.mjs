@@ -9,6 +9,7 @@ import { LANGUAGE_MARKERS } from "./formatter-markers.mjs";
 import { MONO_FILTER_ORDER } from "./badge-transparent-theme.mjs";
 import { BADGE_MARKERS, resolveMarkerRef } from "./formatter-markers.mjs";
 import { LANGUAGE_BADGE_PATTERNS } from "./language-patterns.mjs";
+import { LANGUAGE_CATALOG } from "./language-catalog.mjs";
 
 const GL_IDS = MONO_FILTER_ORDER.gl;
 
@@ -16,58 +17,18 @@ const GL_IDS = MONO_FILTER_ORDER.gl;
  * Canonical AIOStreams PARSE_REGEX.languages names for stream.languages::~…
  * @type {Record<string, string[]>}
  */
-export const LANGUAGE_ARRAY_TOKENS = {
-  "l-en": ["English"],
-  "l-es": ["Spanish", "Latino"],
-  "l-fr": ["French"],
-  "l-de": ["German"],
-  "l-it": ["Italian"],
-  "l-pt-br": ["Portuguese (Brazil)"],
-  "l-pt-pt": ["Portuguese"],
-  "l-tr": ["Turkish"],
-  "l-pl": ["Polish"],
-  "l-uk": ["Ukrainian"],
-  "l-id": ["Indonesian"],
-  "l-th": ["Thai"],
-  "l-vi": ["Vietnamese"],
-  "l-ja": ["Japanese"],
-  "l-ko": ["Korean"],
-  "l-zh": ["Chinese"],
-  "l-hi": ["Hindi"],
-  "l-ar": ["Arabic"],
-  "l-ru": ["Russian"],
-  "l-el": ["Greek"],
-  "l-mu": ["Multi", "Dual Audio"],
-};
+export const LANGUAGE_ARRAY_TOKENS = Object.fromEntries(
+  LANGUAGE_CATALOG.map((l) => [l.id, l.tokens])
+);
 
 /**
  * Compact filename fallbacks (literal substring tokens — AIOStreams `~` is
  * String/Array.includes, not RegExp).
  * @type {Record<string, string[]>}
  */
-export const LANGUAGE_FILENAME_TOKENS = {
-  "l-en": ["English", ".Eng."],
-  "l-es": ["Spanish", "Latino"],
-  "l-fr": ["French", ".VFF"],
-  "l-de": ["German", ".GER."],
-  "l-it": ["Italian", ".ITA."],
-  "l-pt-br": ["PT-BR", "Portuguese-Brazil"],
-  "l-pt-pt": ["PT-PT", "Portuguese"],
-  "l-tr": ["Turkish", ".TUR."],
-  "l-pl": ["Polish", ".POL."],
-  "l-uk": ["Ukrainian", ".UKR."],
-  "l-id": ["Indonesian", ".IND."],
-  "l-th": ["Thai", ".THA."],
-  "l-vi": ["Vietnamese", ".VIE."],
-  "l-ja": ["Japanese", ".JPN"],
-  "l-ko": ["Korean", ".KOR."],
-  "l-zh": ["Chinese", "Mandarin"],
-  "l-hi": ["Hindi", ".HIN."],
-  "l-ar": ["Arabic", ".ARA."],
-  "l-ru": ["Russian", ".RUS."],
-  "l-el": ["Greek", ".ELL."],
-  "l-mu": ["MULTi", "Dual.Audio"],
-};
+export const LANGUAGE_FILENAME_TOKENS = Object.fromEntries(
+  LANGUAGE_CATALOG.map((l) => [l.id, l.tokens])
+);
 
 /** @deprecated filename OR string — prefer LANGUAGE_FILENAME_TOKENS */
 export const LANGUAGE_FILENAME_CONDITIONS = Object.fromEntries(

@@ -1,10 +1,11 @@
 /** Kanso 2 presets. Requires the verified AIOStreams 2.35.9 formatter engine. */
-import { MARKER_ATOMS as M, TIER_MARKERS } from './formatter-markers.mjs';
+import { MARKER_ATOMS as M, TIER_MARKERS, LANGUAGE_MARKERS, SUBTITLE_MARKERS } from './formatter-markers.mjs';
 import { loadTierGroupsFromBadgesSync, tierRseRuleNames } from './tier-inject-generator.mjs';
 import { SYNC_TIER_IDS } from './tier-group-sync.mjs';
 import { FORMATTER_STREAMING_SEGMENTS } from './streaming-formatter-patterns.mjs';
 import { TITLE_TRANSPORT } from './formatter-layout.mjs';
 import { FORMATTER_RANK_STARS } from './quality-rank-patterns.mjs';
+import { languageReplaceEntries, subtitleIdForLanguage } from './language-catalog.mjs';
 
 export const PRESET_MAX_LENGTH = 15000;
 export const MIN_AIOSTREAMS_VERSION = '2.35.9';
@@ -40,11 +41,14 @@ const SOURCE = gate('stream.quality::~REMUX',M.srcRemux)+
  gate('stream.quality::~CAM',M.srcCam)+gate('stream.quality::~HDTV',M.srcHdtv)+
  gate('stream.quality::=WEBRip',M.srcWebrip)+gate('stream.quality::=WEB-DL',M.srcWebdl)+
  gate('stream.quality::=WEB',gate('stream.filename::exists',gate(`${token('WEBRip')}::or::${token('WEB-Rip')}`,M.srcWebrip,M.srcWebdl),M.srcWebdl))+
+ gate('stream.quality::~HDRip',M.srcHdrip)+gate('stream.quality::~DVDRip',M.srcDvdrip)+
+ gate('stream.quality::=SCR',M.srcScr)+gate('stream.quality::=TC',M.srcTc)+gate('stream.quality::=TS',M.srcTs)+
  gate('stream.quality::exists::isfalse::and::stream.resolution::exists',[
-   ['REMUX','srcRemux'],['BluRay','srcBluray'],['Blu-ray','srcBluray'],['HDCAM','srcCam'],['HDTV','srcHdtv'],['WEB-DL','srcWebdl'],['WEBDL','srcWebdl'],['WEBRip','srcWebrip']
+   ['REMUX','srcRemux'],['BluRay','srcBluray'],['Blu-ray','srcBluray'],['HDCAM','srcCam'],['HDTV','srcHdtv'],['WEB-DL','srcWebdl'],['WEBDL','srcWebdl'],['WEBRip','srcWebrip'],
+   ['HDRip','srcHdrip'],['DVDRip','srcDvdrip'],['SCR','srcScr']
  ].map(([t,a])=>gate(token(t),M[a])).join(''));
 
-const resolutions=[['2160p','res4k'],['4K','res4k'],['UHD','res4k'],['1440p','res1440'],['1080p','res1080'],['1080i','res1080'],['720p','res720'],['576p','res576'],['480p','res480'],['360p','res360'],['240p','res240']];
+const resolutions=[['2160p','res4k'],['4K','res4k'],['UHD','res4k'],['1440p','res1440'],['1080p','res1080'],['1080i','res1080'],['720p','res720'],['576p','res576'],['480p','res480'],['360p','res360'],['240p','res240'],['144p','res144']];
 const RESOLUTION=Object.entries(Object.groupBy(resolutions,([,atom])=>atom)).map(([atom,items])=>gate(`stream.resolution::in(${items.map(([value])=>`'${value}'`).join(',')})`,marker(atom))).join('') +
  gate('stream.resolution::exists::isfalse',resolutions.filter(([v])=>/p$/.test(v)).map(([v,a])=>gate(token(v),marker(a))).join(''));
 
@@ -91,39 +95,38 @@ const fileAudio=`{stream.audioTags::keep(${values(fileTagEntries)})${replacement
 const fallbackAudio=gate('stream.audioTags::exists',fileAudio,gate('stream.quality::exists::or::stream.resolution::exists',filenameAudio));
 const AUDIO=gate('stream.audioTracks::exists',selectedTrack(TRACK_AUDIO),fallbackAudio);
 const realTrackLanguage="track.lang::in('Unknown','Original','Multi','Dual Audio','Dubbed')::isfalse";
-const trackLanguage='{track.lang::languageemoji}';
-const flatLanguage=list=>gate(`${list}::first::languageemoji::exists`,`🎧 {${list}::first::languageemoji}`);
-const fallbackLanguageRow=gate(reliable,gate('user.languages::exists',flatLanguage(preferredLanguages),flatLanguage(knownLanguages)));
-function audioLanguageRow(detailed){
- const one=selectedTrack(gate(realTrackLanguage+'::and::track.lang::languageemoji::exists','🎧 '+trackLanguage));
- // The stable engine has no previous-track field or nested each(). Render four
- // slots explicitly so a flag appears only at the start of a language run.
- const details=list=>{
-   const primary=`${list}::slice(0,1)`;
-   const primaryTag=`${primary}::pluck('tag')::first::lower`;
-   const primaryCodec=`${primary}::pluck('codec')::first${canonicalAudio}`;
-   const slots=Array.from({length:4},(_,i)=>{
-     const firstCodec=gate(`track.tag::in(${tagValues})`,'','{? {track.tag}?}')+gate(`track.codec::in(${rawValues})::isfalse::and::track.tag::exists::isfalse`,'{? {track.codec::upper}?}');
-     // The first track's known codec is owned by its original image badge.
-     // Later tracks sharing that codec need only their language/channels.
-     const sameTag=`track.tag::lower::equal::${primaryTag}`;
-     const tagMatchesRaw=`track.tag::lower::equal::${primaryCodec}`;
-     const sameRaw=`track.codec${canonicalAudio}::equal::${primaryTag}::or::${primary}::where('codec={track.codec}')::exists::or::track.tag::exists`;
-     const codec=i?gate(sameTag,'',gate(tagMatchesRaw,'','{? {track.tag}?}'))+gate(sameRaw,'','{? {track.codec::upper}?}'):firstCodec;
-     const previous=`${list}::slice(${i-1},${i})::pluck('lang')::first`;
-     const flag=gate((i?`track.lang::neq::${previous}::and::`:'')+realTrackLanguage+'::and::track.lang::languageemoji::exists',trackLanguage);
-     const content=flag+codec+'{? {track.channels}?}';
-     return `{${list}::slice(${i},${i+1})::each('{?${i?' · ':''}${content}?}')::join('')${i?"::replace('  ',' ')":''}}`;
-   }).join('');
-   return `{?🎧 ${slots}?}`;
- };
- // Detailed keeps only configured preferred tracks, rather than every language.
- if(!detailed)return gate('stream.audioTracks::exists',one,fallbackLanguageRow);
- // Keep branches flat to respect the stable engine's five-level nesting cap.
- return gate(`user.languages::exists::and::${PREFERRED_TRACKS}::exists`,details(PREFERRED_TRACKS))+
-   gate(`${usableTracks}::pluck('lang')::languageemoji::exists::or::${usableTracks}::pluck('channels')::exists::and::user.languages::exists::isfalse`,details(usableTracks))+
-   gate('stream.audioTracks::exists::isfalse',fallbackLanguageRow);
+const languageChain=languageReplaceEntries().map(([token,id])=>`::replace('${token.toUpperCase()}','${LANGUAGE_MARKERS[id]}')`).join('');
+const subtitleChain=languageReplaceEntries().map(([token,id])=>`::replace('${token.toUpperCase()}','${SUBTITLE_MARKERS[subtitleIdForLanguage(id)]}')`).join('');
+const trackLanguageMarkers=gate(realTrackLanguage,`{track.lang::upper${languageChain}}`);
+function languageMarkers(detailed){
+ const fromTracks=detailed
+  ? gate(`user.languages::exists::and::${PREFERRED_TRACKS}::exists`,`{${PREFERRED_TRACKS}::slice(0,4)::each('${trackLanguageMarkers}')::join('')}`)+
+    gate(`user.languages::exists::isfalse::and::${usableTracks}::exists`,`{${usableTracks}::slice(0,4)::each('${trackLanguageMarkers}')::join('')}`)
+  : gate('stream.audioTracks::exists',selectedTrack(trackLanguageMarkers));
+ const limit=detailed?4:1;
+ const fromNames=gate(`${reliable}::and::stream.audioTracks::exists::isfalse`,
+   gate('user.languages::exists',`{${preferredLanguages}::slice(0,${limit})::join(' ')::upper${languageChain}}`,
+     `{${knownLanguages}::slice(0,${limit})::join(' ')::upper${languageChain}}`));
+ return fromTracks+fromNames;
 }
+const SUBTITLE_MARKERS_INJECT=`{stream.subtitles::exists["{stream.subtitles::join(' ')::upper${subtitleChain}}"||""]}`;
+const CHANNELS=gate('stream.audioTracks::exists',selectedTrack(
+  gate('track.channels::~7.1::or::track.channels::~8.1',M.ch71)+
+  gate('track.channels::~6.1::and::track.channels::~7.1::isfalse',M.ch61)+
+  gate('track.channels::~5.1::and::track.channels::~7.1::isfalse::and::track.channels::~6.1::isfalse',M.ch51)+
+  gate('track.channels::~2.0::and::track.channels::~5.1::isfalse::and::track.channels::~6.1::isfalse::and::track.channels::~7.1::isfalse',M.ch20)
+),
+ gate('stream.audioChannels::~7.1::or::stream.audioChannels::~8.1',M.ch71)+
+ gate('stream.audioChannels::~6.1::and::stream.audioChannels::~7.1::isfalse',M.ch61)+
+ gate('stream.audioChannels::~5.1::and::stream.audioChannels::~7.1::isfalse::and::stream.audioChannels::~6.1::isfalse',M.ch51)+
+ gate('stream.audioChannels::~2.0::and::stream.audioChannels::~5.1::isfalse::and::stream.audioChannels::~6.1::isfalse::and::stream.audioChannels::~7.1::isfalse',M.ch20)
+);
+const ENCODER=gate('stream.encode::~av1',M.encAv1)+
+ gate('stream.encode::~hevc::or::stream.encode::~h265::or::stream.encode::~x265',M.encHevc)+
+ gate('stream.encode::~avc::or::stream.encode::~h264::or::stream.encode::~x264',M.encAvc)+
+ gate('stream.encode::~xvid',M.encXvid)+
+ gate('stream.encode::~divx',M.encDivx)+
+ gate('stream.encode::exists::isfalse',[['AV1','encAv1'],['HEVC','encHevc'],['x265','encHevc'],['AVC','encAvc'],['x264','encAvc'],['XviD','encXvid'],['DivX','encDivx']].map(([t,a])=>gate(token(t),M[a])).join(''));
 
 /** Prefer structured editions/flags; contextual filename fallback only for unsupported provenance. */
 const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.seadex) +
@@ -142,7 +145,11 @@ const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.sead
 // Nuvio TV aligns the entire title by its first strong bidi character. Emoji
 // and stars are neutral, so a later U+200F badge marker could choose RTL.
 export const TITLE_LTR_ANCHOR='\u200e';
-export const PRESET_NAME=TITLE_LTR_ANCHOR+TITLE_TRANSPORT+FORMATTER_RANK_STARS;
+const debridType="stream.type::in('debrid','usenet','stremio-usenet')";
+const TITLE_CACHE=gate(debridType,gate('service.cached::istrue','⚡ ',gate('service.cached::isfalse','⏳ ','❔ ')));
+const TITLE_SEEDERS=gate("stream.type::=p2p::and::stream.seeders::>0",' {stream.seeders} seeders')+
+ gate(`${debridType}::and::service.cached::isfalse::and::stream.seeders::>0`,' {stream.seeders} seeders');
+export const PRESET_NAME=TITLE_LTR_ANCHOR+TITLE_CACHE+TITLE_TRANSPORT+FORMATTER_RANK_STARS+TITLE_SEEDERS;
 
 /** Optional parts carry a separator only after an earlier nonempty field. */
 function row(parts){return parts.map((p,i)=>{
@@ -150,10 +157,7 @@ function row(parts){return parts.map((p,i)=>{
  return p.field?`{?${text}?}`:gate(p.condition,text);
 }).join('');}
 const part=(field,text=`{${field}}`)=>({field,condition:present(field),text});
-const greekSubCondition='stream.subtitles::~Greek';
-const context=gate('stream.quality::=TS','📹 Telesync (TS)\n')+
- gate('stream.quality::=TC','📹 Telecine (TC)\n')+gate('stream.quality::=SCR','📼 Screener (SCR)\n')+
- gate('stream.regexMatched::lower::~bad',"🚩 {stream.regexMatched::replace('Radarr ','')::replace('Sonarr ','')}\n") +
+const context=gate('stream.regexMatched::lower::~bad',"🚩 {stream.regexMatched::replace('Radarr ','')::replace('Sonarr ','')}\n") +
  gate('stream.upscaled::istrue','🔼 Upscaled\n') +
  gate(VISUAL_CONFLICT,'⚠️ Conflicting HDR/SDR tags\n');
 const healthMessage="{stream.message::replace('NZB Health: 🚫','❌')::replace('NZB Health: ','')::replace('AvailNZB 💚','💚')}";
@@ -164,17 +168,16 @@ const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists
 export function buildPresetFormatter(preset='compact'){
  if(!['compact','detailed'].includes(preset))throw new Error(`Unknown preset ${preset}`);
  const detailed=preset==='detailed';
- const release=row([part('stream.container','📦 {stream.container::upper}'),part('stream.encode','🎞️ {stream.encode::upper}'),part('stream.releaseGroup','👥 {stream.releaseGroup::truncate(11)}'),...(detailed?[part('stream.country')]:[])]);
+ const release=row([part('stream.container','📦 {stream.container::upper}'),part('stream.releaseGroup','👥 {stream.releaseGroup::truncate(11)}'),...(detailed?[part('stream.country')]:[])]);
  const fileCore=row([
    {condition:'stream.seasonPack::istrue',text:'📚 Season pack'},
    part('stream.size','💾 {stream.size::sbytes}'),part('stream.folderSize','📁 {stream.folderSize::sbytes}'),
  ]);
  const file=fileCore+(detailed?'{? 📶 {stream.bitrate::sbitrate}?}{? 🕐 {stream.age}?}':'');
  const debrid="stream.type::in('debrid','usenet','stremio-usenet')";
- const cache=gate('service.cached::istrue','✅',gate('service.cached::isfalse','⏳ Uncached','❔ Cache unknown'));
- const servicePath=gate(debrid,cache)+gate('service.shortName::exists',gate(debrid,' ')+'☁️ {service.shortName}');
+ const servicePath=gate('service.shortName::exists','☁️ {service.shortName}');
  const deliveryCore=row([
-   {condition:debrid+'::or::service.shortName::exists',text:servicePath},
+   {condition:'service.shortName::exists',text:servicePath},
    part('addon.name',gate('stream.proxied::istrue','🛡️','🧩')+' {addon.name::truncate(14)}'),
    {condition:'addon.name::exists::isfalse::and::stream.proxied::istrue',text:'🛡️'},
  ]);
@@ -183,22 +186,14 @@ export function buildPresetFormatter(preset='compact'){
  const deliveryRow=deliveryCore+(detailed?
    gate('stream.indexer::lower::neq::addon.name::lower::and::stream.indexer::exists',' 🔍 {stream.indexer::truncate(18)}')+
    gate('stream.private::istrue',' 🔐 Private')+gate('stream.freeleech::istrue',' 🆓 Freeleech')+
-   gate('stream.library::istrue::or::stream.preloading::istrue',' '+gate('stream.library::istrue','📚 Library','⬇️ Preloading')):'')+
-   gate('stream.type::=p2p::and::stream.seeders::>0',' ⇋ {stream.seeders} seeders 🌱');
+   gate('stream.library::istrue::or::stream.preloading::istrue',' '+gate('stream.library::istrue','📚 Library','⬇️ Preloading')):'');
  const joinRows=rows=>rows.join('\n{tools.removeLine}\n');
  let visible=context+noPreferred+joinRows([release,file,deliveryRow]);
- visible+='\n{tools.removeLine}\n'+audioLanguageRow(detailed);
- if(detailed){
-   visible+=gate('stream.audioTracks::exists::isfalse::and::stream.audioChannels::exists','\n🔊 {stream.audioChannels::join("/")}');
- }
  visible+=messages;
- // Subtitles are the last visible row, after spoken audio and provider messages.
- visible+=gate(greekSubCondition,'\n💬 ELˢ')+
-   gate('stream.subtitles::exists::isfalse',gate(`${token('Ell.Sub')}::or::${token('Greek.Sub')}`,'\n💬 ELˢ?'));
  let name=PRESET_NAME+PRESET_MARKER;
  let description=visible;
  // Source and tier share a field so native per-field scans cannot echo the source.
- const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];
+ const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,CHANNELS,ENCODER,languageMarkers(detailed),SUBTITLE_MARKERS_INJECT,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];
  // Find an exact two-field partition; greedy packing can reject a valid fit.
  const active=segments.filter(Boolean);
  let partition;

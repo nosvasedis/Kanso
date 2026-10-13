@@ -9,7 +9,7 @@ import { ROOT } from "./badge-patch.mjs";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const CONFIG_PATH = path.join(ROOT, "sync-ui", "user-config.json");
 
-/** @typedef {"solid"|"transparent"|"mono"} BadgeGistTheme */
+/** @typedef {"solid"|"transparent"|"mono"|"outline"} BadgeGistTheme */
 
 export const BADGE_GIST_DEFAULTS = {
   solid: {
@@ -23,6 +23,10 @@ export const BADGE_GIST_DEFAULTS = {
   mono: {
     url: "https://gist.github.com/nosvasedis/1858e332fef11d136f76c697ea6c7439",
     filename: "kanso-mono.json",
+  },
+  outline: {
+    url: "https://gist.github.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127",
+    filename: "kanso-outline.json",
   },
 };
 
@@ -100,6 +104,7 @@ export function resolveGistTargets(config) {
     solid: pick("solid"),
     transparent: pick("transparent"),
     mono: pick("mono"),
+    outline: pick("outline"),
   };
 }
 

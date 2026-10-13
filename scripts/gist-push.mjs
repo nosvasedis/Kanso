@@ -5,6 +5,9 @@ import crypto from 'node:crypto';
 import {ROOT} from './icon-cdn.mjs';
 import {loadGistConfig,resolveGistTargets,parseGistId} from './gist-config.mjs';
 import {github,requireOwner} from './github-release-client.mjs';
+import {PRESET_SKINS} from './preset-badges.mjs';
+import {readFileSync} from 'node:fs';
+const VERSION=JSON.parse(readFileSync(new URL('../package.json',import.meta.url),'utf8')).version;
 const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 export async function pushGist(theme,{dryRun=false}={}){
  const target=resolveGistTargets(await loadGistConfig())[theme];
@@ -21,7 +24,7 @@ export async function pushGist(theme,{dryRun=false}={}){
  const backup=path.join(evidence,`gist-${id}-before-${before.history?.[0]?.version??Date.now()}.json`);
  try{await fs.writeFile(backup,JSON.stringify(before,null,2)+'\n',{flag:'wx'});}catch(e){if(e.code!=='EEXIST')throw e;}
  const files=Object.fromEntries(names.map((name,i)=>[name,{content:bodies[i]}]));
- await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso 2.1.2 ${theme}: illustrated Compact + Detailed badges and emoji formatter for Nuvio`,files})});
+ await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso ${VERSION} ${theme}: Compact + Detailed Instant-marker badges for Nuvio`,files})});
  const after=await github(`/gists/${id}?verification=${Date.now()}`);
  for(let i=0;i<names.length;i++){
    const f=after.files[names[i]];if(!f)throw new Error('Published gist file missing');
@@ -34,6 +37,6 @@ export async function pushGist(theme,{dryRun=false}={}){
  const result={ok:true,theme,gistId:id,filename:names.join(', '),htmlUrl:after.html_url,updatedAt:after.updated_at,bytes:bodies.reduce((n,b)=>n+Buffer.byteLength(b),0),hashes:names.map((name,i)=>({name,sha256:sha(bodies[i])}))};
  await fs.writeFile(path.join(evidence,`gist-${theme}-verified.json`),JSON.stringify(result,null,2)+'\n');return result;
 }
-export async function pushAllGists(options={}){const out=[];for(const t of options.themes??['solid','transparent','mono'])out.push(await pushGist(t,options));return out;}
+export async function pushAllGists(options={}){const out=[];for(const t of options.themes??PRESET_SKINS)out.push(await pushGist(t,options));return out;}
 /** Local patching never uploads; explicit push/release commands publish. */
 export async function pushGistAfterPatch(theme){return{skipped:true,reason:'explicit_publish_required',theme};}

@@ -11,6 +11,7 @@
  * assigned at build time with substring-collision checks against RESERVED_MARKERS.
  */
 import { MONO_FILTER_ORDER } from "./badge-transparent-theme.mjs";
+import { SUBTITLE_BADGE_IDS } from "./language-catalog.mjs";
 import { DR_DV_MARKER, DR_HDR10P_MARKER, DR_HDR_MARKER } from "./dr-formatter-markers.mjs";
 import {
   EDITION_BW_MARKER,
@@ -104,6 +105,11 @@ const ATOM_SLOTS = {
   srcWebrip: "",
   srcCam: "",
   srcHdtv: "",
+  srcHdrip: "",
+  srcDvdrip: "",
+  srcScr: "",
+  srcTc: "",
+  srcTs: "",
   // Resolution
   res4k: "",
   res1440: "",
@@ -113,6 +119,7 @@ const ATOM_SLOTS = {
   res480: "",
   res360: "",
   res240: "",
+  res144: "",
   // Visual tags
   visHdr10p: "",
   visHdr10: "",
@@ -144,6 +151,12 @@ const ATOM_SLOTS = {
   ch61: "",
   ch51: "",
   ch20: "",
+  // Encoder
+  encAv1: "",
+  encHevc: "",
+  encAvc: "",
+  encXvid: "",
+  encDivx: "",
   // gst special (beyond existing edition/seadex)
   gstHybrid: "",
   gstCriterion: "",
@@ -159,6 +172,7 @@ const ATOM_SLOTS = {
 
 const TIER_BADGE_IDS = MONO_FILTER_ORDER.gms;
 const LANGUAGE_BADGE_IDS = MONO_FILTER_ORDER.gl;
+const SUB_BADGE_IDS = MONO_FILTER_ORDER.gsub ?? SUBTITLE_BADGE_IDS;
 
 /** @type {Record<string, string | string[]>} */
 export const BADGE_MARKERS = {
@@ -187,21 +201,17 @@ export const BADGE_MARKERS = {
   "a-at-dp": ["audAtmos", "audDdplus"],
   "a-dtsx-ma": ["audDtsx", "audDtsma"],
   "a-dtsx-hd": ["audDtsx", "audDtshd"],
-  "q-br": ["srcRemux"],
-  "q-bb": ["srcBluray"],
-  "q-bw": ["srcWebdl"],
-  "q-gr": ["srcRemux"],
-  "q-gb": ["srcBluray"],
-  "q-gw": ["srcWebdl"],
-  "q-or": ["srcRemux"],
-  "q-ob": ["srcBluray"],
-  "q-ow": ["srcWebdl"],
   "q-r": ["srcRemux"],
   "q-b": ["srcBluray"],
   "q-w": ["srcWebdl"],
   "q-wr": ["srcWebrip"],
   "q-cam": ["srcCam"],
   "q-hdtv": ["srcHdtv"],
+  "q-hdrip": ["srcHdrip"],
+  "q-dvdrip": ["srcDvdrip"],
+  "q-scr": ["srcScr"],
+  "q-tc": ["srcTc"],
+  "q-ts": ["srcTs"],
   "r-4k": ["res4k"],
   "r-1440": ["res1440"],
   "r-1080": ["res1080"],
@@ -210,6 +220,12 @@ export const BADGE_MARKERS = {
   "r-480": ["res480"],
   "r-360": ["res360"],
   "r-240": ["res240"],
+  "r-144": ["res144"],
+  "ge-av1": ["encAv1"],
+  "ge-hevc": ["encHevc"],
+  "ge-avc": ["encAvc"],
+  "ge-xvid": ["encXvid"],
+  "ge-divx": ["encDivx"],
   "v-hdr10": ["visHdr10"],
   "v-hlg": ["visHlg"],
   "v-10bit": ["vis10bit"],
@@ -250,7 +266,7 @@ export const BADGE_MARKERS = {
 
 // Allocate atoms + per-tier + per-language markers
 const atomKeys = Object.keys(ATOM_SLOTS);
-const tierAndLangCount = TIER_BADGE_IDS.length + LANGUAGE_BADGE_IDS.length;
+const tierAndLangCount = TIER_BADGE_IDS.length + LANGUAGE_BADGE_IDS.length + SUB_BADGE_IDS.length;
 const allocated = allocateMarkers(atomKeys.length + tierAndLangCount);
 
 let i = 0;
@@ -269,11 +285,19 @@ export const LANGUAGE_MARKERS = Object.fromEntries(
   LANGUAGE_BADGE_IDS.map((id) => [id, allocated[i++]])
 );
 
+/** @type {Record<string, string>} */
+export const SUBTITLE_MARKERS = Object.fromEntries(
+  SUB_BADGE_IDS.map((id) => [id, allocated[i++]])
+);
+
 for (const id of TIER_BADGE_IDS) {
   BADGE_MARKERS[id] = TIER_MARKERS[id];
 }
 for (const id of LANGUAGE_BADGE_IDS) {
   BADGE_MARKERS[id] = LANGUAGE_MARKERS[id];
+}
+for (const id of SUB_BADGE_IDS) {
+  BADGE_MARKERS[id] = SUBTITLE_MARKERS[id];
 }
 
 /** Resolve atom key or raw marker string. @param {string | string[]} ref */
@@ -377,7 +401,7 @@ function releaseV2Pattern(badgeId) {
   if (!markers?.length) return null;
   const parts = markers.map((m) => `(?=.*(?:${markerRegexLiteral(m)}))`).join("");
   const noStars =
-    badgeId === "q-cam" || badgeId === "q-hdtv"
+    /^(?:q-cam|q-hdtv|q-hdrip|q-dvdrip|q-scr|q-tc|q-ts)$/.test(badgeId)
       ? ""
       : `(?![\\s\\S]*${RANK_STAR_ANY})`;
   const exclusions = V2_PATTERN_MARKER_EXCLUSIONS[badgeId];
@@ -390,7 +414,7 @@ export function v2PatternForBadge(badgeId) {
   if (/^q-[bgo][rbw]$/.test(badgeId)) {
     return qualityComboV2Pattern(badgeId);
   }
-  if (/^q-(?:r|b|w|wr|cam|hdtv)$/.test(badgeId)) {
+  if (/^q-(?:r|b|w|wr|cam|hdtv|hdrip|dvdrip|scr|tc|ts)$/.test(badgeId)) {
     return releaseV2Pattern(badgeId);
   }
   const audioPriority = priorityAudioPattern(badgeId);
@@ -465,14 +489,12 @@ export const V2_INJECT_IMPLEMENTED_IDS = new Set([
   "ch-51",
   "ch-20",
   // Phase 4 — gms (20)
-  "web-unranked",
   "web-6",
   "web-5",
   "web-4",
   "web-3",
   "web-2",
   "web-1",
-  "blu-ray-unranked",
   "blu-ray-8",
   "blu-ray-7",
   "blu-ray-6",
@@ -481,26 +503,20 @@ export const V2_INJECT_IMPLEMENTED_IDS = new Set([
   "blu-ray-3",
   "blu-ray-2",
   "blu-ray-1",
-  "remux-unranked",
   "remux-3",
   "remux-2",
   "remux-1",
-  // Phase 5 — gq (9) + grl (6) + gr (8)
-  "q-br",
-  "q-bb",
-  "q-bw",
-  "q-gr",
-  "q-gb",
-  "q-gw",
-  "q-or",
-  "q-ob",
-  "q-ow",
   "q-r",
   "q-b",
   "q-w",
   "q-wr",
   "q-cam",
   "q-hdtv",
+  "q-hdrip",
+  "q-dvdrip",
+  "q-scr",
+  "q-tc",
+  "q-ts",
   "r-4k",
   "r-1440",
   "r-1080",
@@ -509,28 +525,14 @@ export const V2_INJECT_IMPLEMENTED_IDS = new Set([
   "r-480",
   "r-360",
   "r-240",
-  // Phase 6 — gl (20)
-  "l-en",
-  "l-es",
-  "l-fr",
-  "l-de",
-  "l-it",
-  "l-pt-br",
-  "l-pt-pt",
-  "l-tr",
-  "l-pl",
-  "l-uk",
-  "l-id",
-  "l-th",
-  "l-vi",
-  "l-ja",
-  "l-ko",
-  "l-zh",
-  "l-hi",
-  "l-ar",
-  "l-ru",
-  "l-el",
-  "l-mu",
+  "r-144",
+  "ge-av1",
+  "ge-hevc",
+  "ge-avc",
+  "ge-xvid",
+  "ge-divx",
+  ...LANGUAGE_BADGE_IDS,
+  ...SUB_BADGE_IDS,
   // Phase 7 — gst (12)
   "hybrid-release",
   "criterion-collection",
@@ -567,7 +569,6 @@ export const V2_PATTERN_MARKER_EXCLUSIONS = {
   "a-dts": ["audDtsx", "audDtsma", "audDtshd", "audDtses"],
   "a-opus": ["audFlac"],
   "a-aac": ["audFlac", "audOpus"],
-  "web-unranked": ["web-1", "web-2", "web-3", "web-4", "web-5", "web-6"],
   // Best-wins: a lower tier never shows when a better tier of the same source
   // already matched (RSE rules can multi-match — e.g. BLUTONiUM is in both
   // Radarr Web T1 and Sonarr Web T2 — and the formatter emits every matched
@@ -577,16 +578,6 @@ export const V2_PATTERN_MARKER_EXCLUSIONS = {
   "web-4": ["web-1", "web-2", "web-3"],
   "web-5": ["web-1", "web-2", "web-3", "web-4"],
   "web-6": ["web-1", "web-2", "web-3", "web-4", "web-5"],
-  "blu-ray-unranked": [
-    "blu-ray-1",
-    "blu-ray-2",
-    "blu-ray-3",
-    "blu-ray-4",
-    "blu-ray-5",
-    "blu-ray-6",
-    "blu-ray-7",
-    "blu-ray-8",
-  ],
   "blu-ray-2": ["blu-ray-1"],
   "blu-ray-3": ["blu-ray-1", "blu-ray-2"],
   "blu-ray-4": ["blu-ray-1", "blu-ray-2", "blu-ray-3"],
@@ -602,17 +593,17 @@ export const V2_PATTERN_MARKER_EXCLUSIONS = {
     "blu-ray-6",
     "blu-ray-7",
   ],
-  "remux-unranked": ["remux-1", "remux-2", "remux-3"],
   "remux-2": ["remux-1"],
   "remux-3": ["remux-1", "remux-2"],
-  "r-4k": ["res1440", "res1080", "res720", "res576", "res480", "res360", "res240"],
-  "r-1440": ["res4k", "res1080", "res720", "res576", "res480", "res360", "res240"],
-  "r-1080": ["res4k", "res1440", "res720", "res576", "res480", "res360", "res240"],
-  "r-720": ["res4k", "res1440", "res1080", "res576", "res480", "res360", "res240"],
-  "r-576": ["res4k", "res1440", "res1080", "res720", "res480", "res360", "res240"],
-  "r-480": ["res4k", "res1440", "res1080", "res720", "res576", "res360", "res240"],
-  "r-360": ["res4k", "res1440", "res1080", "res720", "res576", "res480", "res240"],
-  "r-240": ["res4k", "res1440", "res1080", "res720", "res576", "res480", "res360"],
+  "r-4k": ["res1440", "res1080", "res720", "res576", "res480", "res360", "res240", "res144"],
+  "r-1440": ["res4k", "res1080", "res720", "res576", "res480", "res360", "res240", "res144"],
+  "r-1080": ["res4k", "res1440", "res720", "res576", "res480", "res360", "res240", "res144"],
+  "r-720": ["res4k", "res1440", "res1080", "res576", "res480", "res360", "res240", "res144"],
+  "r-576": ["res4k", "res1440", "res1080", "res720", "res480", "res360", "res240", "res144"],
+  "r-480": ["res4k", "res1440", "res1080", "res720", "res576", "res360", "res240", "res144"],
+  "r-360": ["res4k", "res1440", "res1080", "res720", "res576", "res480", "res240", "res144"],
+  "r-240": ["res4k", "res1440", "res1080", "res720", "res576", "res480", "res360", "res144"],
+  "r-144": ["res4k", "res1440", "res1080", "res720", "res576", "res480", "res360", "res240"],
   "q-w": ["srcWebrip"],
   "q-b": ["srcRemux"],
   "q-bb": ["srcRemux"],
@@ -655,6 +646,7 @@ export function validateMarkerRegistry() {
     ...Object.values(ATOM_SLOTS),
     ...Object.values(TIER_MARKERS),
     ...Object.values(LANGUAGE_MARKERS),
+    ...Object.values(SUBTITLE_MARKERS),
   ].filter(Boolean);
 
   for (let i = 0; i < allocated.length; i++) {

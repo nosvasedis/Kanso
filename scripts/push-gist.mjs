@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 /**
- * Push badge JSON to all configured GitHub Gists (solid + transparent + mono).
+ * Push badge JSON to all configured GitHub Gists.
  */
 import { pushAllGists, pushGist } from "./gist-push.mjs";
 import { githubToken, loadGistConfig, parseGistId, resolveGistTargets } from "./gist-config.mjs";
+import { PRESET_SKINS } from "./preset-badges.mjs";
 
 const dryRun = process.argv.includes("--dry-run");
 const requirePush = process.argv.includes("--require");
-const themeArg = process.argv.find((a) => ["solid", "transparent", "mono"].includes(a));
-const themes = themeArg ? [themeArg] : ["solid", "transparent", "mono"];
+const themeArg = process.argv.find((a) => PRESET_SKINS.includes(a));
+const themes = themeArg ? [themeArg] : [...PRESET_SKINS];
 
 try {
   const config = await loadGistConfig();

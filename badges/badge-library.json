@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "filters": [
     {
       "id": "seadex-release",
@@ -227,14 +227,39 @@
       "name": "WebRip"
     },
     {
-      "id": "q-cam",
-      "groupId": "grl",
-      "name": "CAM"
-    },
-    {
       "id": "q-hdtv",
       "groupId": "grl",
       "name": "HDTV"
+    },
+    {
+      "id": "q-hdrip",
+      "groupId": "grl",
+      "name": "HDRip"
+    },
+    {
+      "id": "q-dvdrip",
+      "groupId": "grl",
+      "name": "DVDRip"
+    },
+    {
+      "id": "q-scr",
+      "groupId": "grl",
+      "name": "SCR"
+    },
+    {
+      "id": "q-tc",
+      "groupId": "grl",
+      "name": "TC"
+    },
+    {
+      "id": "q-ts",
+      "groupId": "grl",
+      "name": "TS"
+    },
+    {
+      "id": "q-cam",
+      "groupId": "grl",
+      "name": "CAM"
     },
     {
       "id": "r-4k",
@@ -275,6 +300,11 @@
       "id": "r-240",
       "groupId": "gr",
       "name": "240p"
+    },
+    {
+      "id": "r-144",
+      "groupId": "gr",
+      "name": "144p"
     },
     {
       "id": "v-dv-hdr10p",
@@ -435,6 +465,531 @@
       "id": "a-pcm",
       "groupId": "ga",
       "name": "PCM"
+    },
+    {
+      "id": "ch-71",
+      "groupId": "gc",
+      "name": "7.1"
+    },
+    {
+      "id": "ch-61",
+      "groupId": "gc",
+      "name": "6.1"
+    },
+    {
+      "id": "ch-51",
+      "groupId": "gc",
+      "name": "5.1"
+    },
+    {
+      "id": "ch-20",
+      "groupId": "gc",
+      "name": "2.0"
+    },
+    {
+      "id": "ge-av1",
+      "groupId": "ge",
+      "name": "AV1"
+    },
+    {
+      "id": "ge-hevc",
+      "groupId": "ge",
+      "name": "HEVC"
+    },
+    {
+      "id": "ge-avc",
+      "groupId": "ge",
+      "name": "AVC"
+    },
+    {
+      "id": "ge-xvid",
+      "groupId": "ge",
+      "name": "XviD"
+    },
+    {
+      "id": "ge-divx",
+      "groupId": "ge",
+      "name": "DivX"
+    },
+    {
+      "id": "l-en",
+      "groupId": "gl",
+      "name": "EN"
+    },
+    {
+      "id": "l-es",
+      "groupId": "gl",
+      "name": "ES"
+    },
+    {
+      "id": "l-lat",
+      "groupId": "gl",
+      "name": "LAT"
+    },
+    {
+      "id": "l-fr",
+      "groupId": "gl",
+      "name": "FR"
+    },
+    {
+      "id": "l-de",
+      "groupId": "gl",
+      "name": "DE"
+    },
+    {
+      "id": "l-it",
+      "groupId": "gl",
+      "name": "IT"
+    },
+    {
+      "id": "l-pt-br",
+      "groupId": "gl",
+      "name": "PT-BR"
+    },
+    {
+      "id": "l-pt-pt",
+      "groupId": "gl",
+      "name": "PT"
+    },
+    {
+      "id": "l-tr",
+      "groupId": "gl",
+      "name": "TR"
+    },
+    {
+      "id": "l-pl",
+      "groupId": "gl",
+      "name": "PL"
+    },
+    {
+      "id": "l-uk",
+      "groupId": "gl",
+      "name": "UK"
+    },
+    {
+      "id": "l-id",
+      "groupId": "gl",
+      "name": "ID"
+    },
+    {
+      "id": "l-th",
+      "groupId": "gl",
+      "name": "TH"
+    },
+    {
+      "id": "l-vi",
+      "groupId": "gl",
+      "name": "VI"
+    },
+    {
+      "id": "l-ja",
+      "groupId": "gl",
+      "name": "JA"
+    },
+    {
+      "id": "l-ko",
+      "groupId": "gl",
+      "name": "KO"
+    },
+    {
+      "id": "l-zh",
+      "groupId": "gl",
+      "name": "ZH"
+    },
+    {
+      "id": "l-hi",
+      "groupId": "gl",
+      "name": "HI"
+    },
+    {
+      "id": "l-ar",
+      "groupId": "gl",
+      "name": "AR"
+    },
+    {
+      "id": "l-ru",
+      "groupId": "gl",
+      "name": "RU"
+    },
+    {
+      "id": "l-el",
+      "groupId": "gl",
+      "name": "EL"
+    },
+    {
+      "id": "l-sv",
+      "groupId": "gl",
+      "name": "SV"
+    },
+    {
+      "id": "l-nl",
+      "groupId": "gl",
+      "name": "NL"
+    },
+    {
+      "id": "l-da",
+      "groupId": "gl",
+      "name": "DA"
+    },
+    {
+      "id": "l-no",
+      "groupId": "gl",
+      "name": "NO"
+    },
+    {
+      "id": "l-fi",
+      "groupId": "gl",
+      "name": "FI"
+    },
+    {
+      "id": "l-cs",
+      "groupId": "gl",
+      "name": "CS"
+    },
+    {
+      "id": "l-sk",
+      "groupId": "gl",
+      "name": "SK"
+    },
+    {
+      "id": "l-hu",
+      "groupId": "gl",
+      "name": "HU"
+    },
+    {
+      "id": "l-ro",
+      "groupId": "gl",
+      "name": "RO"
+    },
+    {
+      "id": "l-bg",
+      "groupId": "gl",
+      "name": "BG"
+    },
+    {
+      "id": "l-hr",
+      "groupId": "gl",
+      "name": "HR"
+    },
+    {
+      "id": "l-sr",
+      "groupId": "gl",
+      "name": "SR"
+    },
+    {
+      "id": "l-sl",
+      "groupId": "gl",
+      "name": "SL"
+    },
+    {
+      "id": "l-et",
+      "groupId": "gl",
+      "name": "ET"
+    },
+    {
+      "id": "l-lv",
+      "groupId": "gl",
+      "name": "LV"
+    },
+    {
+      "id": "l-lt",
+      "groupId": "gl",
+      "name": "LT"
+    },
+    {
+      "id": "l-he",
+      "groupId": "gl",
+      "name": "HE"
+    },
+    {
+      "id": "l-fa",
+      "groupId": "gl",
+      "name": "FA"
+    },
+    {
+      "id": "l-ms",
+      "groupId": "gl",
+      "name": "MS"
+    },
+    {
+      "id": "l-bn",
+      "groupId": "gl",
+      "name": "BN"
+    },
+    {
+      "id": "l-ta",
+      "groupId": "gl",
+      "name": "TA"
+    },
+    {
+      "id": "l-te",
+      "groupId": "gl",
+      "name": "TE"
+    },
+    {
+      "id": "l-ml",
+      "groupId": "gl",
+      "name": "ML"
+    },
+    {
+      "id": "l-kn",
+      "groupId": "gl",
+      "name": "KN"
+    },
+    {
+      "id": "l-mr",
+      "groupId": "gl",
+      "name": "MR"
+    },
+    {
+      "id": "l-gu",
+      "groupId": "gl",
+      "name": "GU"
+    },
+    {
+      "id": "l-pa",
+      "groupId": "gl",
+      "name": "PA"
+    },
+    {
+      "id": "sub-en",
+      "groupId": "gsub",
+      "name": "EN SUB"
+    },
+    {
+      "id": "sub-es",
+      "groupId": "gsub",
+      "name": "ES SUB"
+    },
+    {
+      "id": "sub-lat",
+      "groupId": "gsub",
+      "name": "LAT SUB"
+    },
+    {
+      "id": "sub-fr",
+      "groupId": "gsub",
+      "name": "FR SUB"
+    },
+    {
+      "id": "sub-de",
+      "groupId": "gsub",
+      "name": "DE SUB"
+    },
+    {
+      "id": "sub-it",
+      "groupId": "gsub",
+      "name": "IT SUB"
+    },
+    {
+      "id": "sub-pt-br",
+      "groupId": "gsub",
+      "name": "PT-BR SUB"
+    },
+    {
+      "id": "sub-pt-pt",
+      "groupId": "gsub",
+      "name": "PT SUB"
+    },
+    {
+      "id": "sub-tr",
+      "groupId": "gsub",
+      "name": "TR SUB"
+    },
+    {
+      "id": "sub-pl",
+      "groupId": "gsub",
+      "name": "PL SUB"
+    },
+    {
+      "id": "sub-uk",
+      "groupId": "gsub",
+      "name": "UK SUB"
+    },
+    {
+      "id": "sub-id",
+      "groupId": "gsub",
+      "name": "ID SUB"
+    },
+    {
+      "id": "sub-th",
+      "groupId": "gsub",
+      "name": "TH SUB"
+    },
+    {
+      "id": "sub-vi",
+      "groupId": "gsub",
+      "name": "VI SUB"
+    },
+    {
+      "id": "sub-ja",
+      "groupId": "gsub",
+      "name": "JA SUB"
+    },
+    {
+      "id": "sub-ko",
+      "groupId": "gsub",
+      "name": "KO SUB"
+    },
+    {
+      "id": "sub-zh",
+      "groupId": "gsub",
+      "name": "ZH SUB"
+    },
+    {
+      "id": "sub-hi",
+      "groupId": "gsub",
+      "name": "HI SUB"
+    },
+    {
+      "id": "sub-ar",
+      "groupId": "gsub",
+      "name": "AR SUB"
+    },
+    {
+      "id": "sub-ru",
+      "groupId": "gsub",
+      "name": "RU SUB"
+    },
+    {
+      "id": "sub-el",
+      "groupId": "gsub",
+      "name": "EL SUB"
+    },
+    {
+      "id": "sub-sv",
+      "groupId": "gsub",
+      "name": "SV SUB"
+    },
+    {
+      "id": "sub-nl",
+      "groupId": "gsub",
+      "name": "NL SUB"
+    },
+    {
+      "id": "sub-da",
+      "groupId": "gsub",
+      "name": "DA SUB"
+    },
+    {
+      "id": "sub-no",
+      "groupId": "gsub",
+      "name": "NO SUB"
+    },
+    {
+      "id": "sub-fi",
+      "groupId": "gsub",
+      "name": "FI SUB"
+    },
+    {
+      "id": "sub-cs",
+      "groupId": "gsub",
+      "name": "CS SUB"
+    },
+    {
+      "id": "sub-sk",
+      "groupId": "gsub",
+      "name": "SK SUB"
+    },
+    {
+      "id": "sub-hu",
+      "groupId": "gsub",
+      "name": "HU SUB"
+    },
+    {
+      "id": "sub-ro",
+      "groupId": "gsub",
+      "name": "RO SUB"
+    },
+    {
+      "id": "sub-bg",
+      "groupId": "gsub",
+      "name": "BG SUB"
+    },
+    {
+      "id": "sub-hr",
+      "groupId": "gsub",
+      "name": "HR SUB"
+    },
+    {
+      "id": "sub-sr",
+      "groupId": "gsub",
+      "name": "SR SUB"
+    },
+    {
+      "id": "sub-sl",
+      "groupId": "gsub",
+      "name": "SL SUB"
+    },
+    {
+      "id": "sub-et",
+      "groupId": "gsub",
+      "name": "ET SUB"
+    },
+    {
+      "id": "sub-lv",
+      "groupId": "gsub",
+      "name": "LV SUB"
+    },
+    {
+      "id": "sub-lt",
+      "groupId": "gsub",
+      "name": "LT SUB"
+    },
+    {
+      "id": "sub-he",
+      "groupId": "gsub",
+      "name": "HE SUB"
+    },
+    {
+      "id": "sub-fa",
+      "groupId": "gsub",
+      "name": "FA SUB"
+    },
+    {
+      "id": "sub-ms",
+      "groupId": "gsub",
+      "name": "MS SUB"
+    },
+    {
+      "id": "sub-bn",
+      "groupId": "gsub",
+      "name": "BN SUB"
+    },
+    {
+      "id": "sub-ta",
+      "groupId": "gsub",
+      "name": "TA SUB"
+    },
+    {
+      "id": "sub-te",
+      "groupId": "gsub",
+      "name": "TE SUB"
+    },
+    {
+      "id": "sub-ml",
+      "groupId": "gsub",
+      "name": "ML SUB"
+    },
+    {
+      "id": "sub-kn",
+      "groupId": "gsub",
+      "name": "KN SUB"
+    },
+    {
+      "id": "sub-mr",
+      "groupId": "gsub",
+      "name": "MR SUB"
+    },
+    {
+      "id": "sub-gu",
+      "groupId": "gsub",
+      "name": "GU SUB"
+    },
+    {
+      "id": "sub-pa",
+      "groupId": "gsub",
+      "name": "PA SUB"
     }
   ]
 }

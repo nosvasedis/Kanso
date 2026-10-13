@@ -5,6 +5,9 @@ import {spawnSync} from 'node:child_process';
 import {githubToken} from './gist-config.mjs';
 import {github,requireOwner} from './github-release-client.mjs';
 import {ROOT,BADGE_IMAGE_FILES_DIR,ICON_CDN_OWNER,ICON_CDN_REPO} from './icon-cdn.mjs';
+import {PRESET_SKINS} from './preset-badges.mjs';
+import {readFileSync} from 'node:fs';
+const VERSION=JSON.parse(readFileSync(new URL('../package.json',import.meta.url),'utf8')).version;
 const repo=`${ICON_CDN_OWNER}/${ICON_CDN_REPO}`;
 const dryRun=process.argv.includes('--dry-run');
 await requireOwner(ICON_CDN_OWNER);
@@ -25,7 +28,7 @@ run(['clone','--branch','main',`https://github.com/${repo}.git`,work],ROOT,true)
 const before=run(['rev-parse','HEAD'],work,true);
 const files=['README.md','package.json','package-lock.json','.gitignore','.env.example','sync-helper.bat','formatter.json','formatter-detailed.json',
  ...['','-detailed'].flatMap(s=>['name','description'].map(f=>`formatter${s}-export-${f}.txt`)),
- ...['solid','transparent','mono'].flatMap(t=>['','-detailed'].map(s=>`kanso-${t}${s}.json`)),
+ ...PRESET_SKINS.flatMap(t=>['','-detailed'].map(s=>`kanso-${t}${s}.json`)),
  'backup/v1/oracle/nosvasedis-badges-solid.json','docs/kanso-v2.md','badges/badge-images/README.md','badges/badge-images/manifest.json'];
 const copy=async(src,dest)=>{await fs.mkdir(path.dirname(dest),{recursive:true});await fs.copyFile(src,dest);};
 for(const f of files)await copy(path.join(ROOT,f),path.join(work,f));
@@ -34,7 +37,7 @@ const overlay=async(src,dest)=>{for(const e of await fs.readdir(src,{withFileTyp
 for(const dir of ['scripts','badges','sync-ui','assets/Kanso'])await overlay(path.join(ROOT,dir),path.join(work,dir));
 // Ship current references only; previously published hashes stay in the checkout.
 const referenced=new Set();
-for(const theme of ['solid','transparent','mono'])for(const suffix of ['','-detailed']){
+for(const theme of PRESET_SKINS)for(const suffix of ['','-detailed']){
  const pack=JSON.parse(await fs.readFile(path.join(ROOT,`kanso-${theme}${suffix}.json`),'utf8'));
  for(const f of pack.filters)referenced.add(path.basename(new URL(f.imageURL).pathname));
 }
@@ -51,7 +54,7 @@ await fs.writeFile(path.join(evidence,'repository-release.json'),JSON.stringify(
 console.log(`Reviewed overlay: ${paths.length} files, no deletions, base ${before}`);
 if(dryRun){console.log('Dry run: checkout ready for review, no remote writes.');process.exit(0);}
 if(paths.length){
- run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m','Kanso 2.1.2: anchor TV titles left and remove redundant audio and HDR facts'],work,true);
+ run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m',`Kanso ${VERSION}: Kingsize look, Instant markers, four skins, every fact once`],work,true);
  run(['push','origin','HEAD:main'],work,true);
 }
 const commit=run(['rev-parse','HEAD'],work,true);

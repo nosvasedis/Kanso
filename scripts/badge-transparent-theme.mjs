@@ -4,6 +4,7 @@
  */
 import { streamingBrandStroke } from "./streaming-brand-colors.mjs";
 import { specialTagStroke } from "./special-tag-colors.mjs";
+import { LANGUAGE_BADGE_IDS, SUBTITLE_BADGE_IDS } from "./language-catalog.mjs";
 
 export const TRANSPARENT_FILL = "#00000000";
 export const TRANSPARENT_TAG_STYLE = "filled and bordered";
@@ -78,7 +79,7 @@ export function strokeForFilter(id, groupId) {
   if (id === "r-1440" || id === "r-1080") return STROKE.qualityGood;
   if (id === "r-720" || id === "r-576" || id === "r-480" || id === "r-360" || id === "r-240")
     return STROKE.qualityOk;
-  if (groupId === "ga" || groupId === "gc" || groupId === "gl") return STROKE.white;
+  if (groupId === "ga" || groupId === "gc" || groupId === "gl" || groupId === "ge" || groupId === "gsub") return STROKE.white;
   if (groupId === "gv" || VISUAL_IDS.has(id)) return STROKE.visual;
   return STROKE.white;
 }
@@ -105,12 +106,14 @@ export const MONO_GROUP_META = {
   gv: { name: "Visual", color: TRANSPARENT_FILL, borderColor: STROKE.visual },
   ga: { name: "Audio", color: TRANSPARENT_FILL, borderColor: STROKE.white },
   gc: { name: "Channels", color: TRANSPARENT_FILL, borderColor: STROKE.white },
+  ge: { name: "Encoder", color: TRANSPARENT_FILL, borderColor: STROKE.white },
   gl: { name: "Language", color: TRANSPARENT_FILL, borderColor: STROKE.white },
+  gsub: { name: "Subtitles", color: TRANSPARENT_FILL, borderColor: STROKE.white },
 };
 
 export const TRANSPARENT_GROUP_META = MONO_GROUP_META;
 
-export const MONO_GROUP_ORDER = ["gst", "gs", "gms", "gq", "grl", "gr", "gv", "ga", "gc", "gl"];
+export const MONO_GROUP_ORDER = ["gst", "gs", "gms", "grl", "gr", "gv", "ga", "gc", "ge", "gl", "gsub"];
 
 export const MONO_FILTER_ORDER = {
   gst: [
@@ -142,14 +145,12 @@ export const MONO_FILTER_ORDER = {
     "s-croll",
   ],
   gms: [
-    "web-unranked",
     "web-6",
     "web-5",
     "web-4",
     "web-3",
     "web-2",
     "web-1",
-    "blu-ray-unranked",
     "blu-ray-8",
     "blu-ray-7",
     "blu-ray-6",
@@ -158,24 +159,12 @@ export const MONO_FILTER_ORDER = {
     "blu-ray-3",
     "blu-ray-2",
     "blu-ray-1",
-    "remux-unranked",
     "remux-3",
     "remux-2",
     "remux-1",
   ],
-  gq: [
-    "q-br",
-    "q-bb",
-    "q-bw",
-    "q-gr",
-    "q-gb",
-    "q-gw",
-    "q-or",
-    "q-ob",
-    "q-ow",
-  ],
-  grl: ["q-r", "q-b", "q-w", "q-wr", "q-cam", "q-hdtv"],
-  gr: ["r-4k", "r-1440", "r-1080", "r-720", "r-576", "r-480", "r-360", "r-240"],
+  grl: ["q-r", "q-b", "q-w", "q-wr", "q-hdtv", "q-hdrip", "q-dvdrip", "q-scr", "q-tc", "q-ts", "q-cam"],
+  gr: ["r-4k", "r-1440", "r-1080", "r-720", "r-576", "r-480", "r-360", "r-240", "r-144"],
   gv: [
     "v-dv-hdr10p",
     "v-dv-hdr10",
@@ -213,29 +202,9 @@ export const MONO_FILTER_ORDER = {
     "a-pcm",
   ],
   gc: ["ch-71", "ch-61", "ch-51", "ch-20"],
-  gl: [
-    "l-en",
-    "l-es",
-    "l-fr",
-    "l-de",
-    "l-it",
-    "l-pt-br",
-    "l-pt-pt",
-    "l-tr",
-    "l-pl",
-    "l-uk",
-    "l-id",
-    "l-th",
-    "l-vi",
-    "l-ja",
-    "l-ko",
-    "l-zh",
-    "l-hi",
-    "l-ar",
-    "l-ru",
-    "l-el",
-    "l-mu",
-  ],
+  ge: ["ge-av1", "ge-hevc", "ge-avc", "ge-xvid", "ge-divx"],
+  gl: LANGUAGE_BADGE_IDS,
+  gsub: SUBTITLE_BADGE_IDS,
 };
 
 const LEGACY_FILLS = new Set([
