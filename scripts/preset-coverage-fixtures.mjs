@@ -30,6 +30,7 @@ export const coverageFixtures=pack.filters.map(({id})=>{
  else if(languages[id]){f.prefs=[languages[id]];f.parsed.audioTracks=[{lang:languages[id],tag:'AAC'}];}
  else if(id.startsWith('sub-')){
    const lang=LANGUAGE_CATALOG.find(l=>subtitleIdForLanguage(l.id)===id);
+   f.prefs=[lang.tokens[0]];
    f.parsed.subtitles=[lang.tokens[0]];
  }
  else throw new Error(`Missing real metadata fixture for ${id}`);

@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { v2PatternForBadge, MARKER_ATOMS as M, TIER_MARKERS } from './formatter-markers.mjs';
 import { PRESET_MARKER } from './preset-formatter.mjs';
 import { RETIRED_BADGE_IDS } from './retired-badges.mjs';
+import { MONO_FILTER_ORDER, MONO_GROUP_ORDER } from './badge-transparent-theme.mjs';
 const library=JSON.parse(readFileSync(new URL('../badges/badge-library.json',import.meta.url),'utf8'));
 export const ILLUSTRATED_APPEARANCE=JSON.parse(readFileSync(new URL('../badges/illustrated-appearance.json',import.meta.url),'utf8')).themes;
 export const PRESET_SKINS=['solid','transparent','mono','outline'];
@@ -10,8 +11,39 @@ const literal=m=>[...m].map(c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'
 const requireMarker=m=>`(?=.*(?:${literal(m)}))`;
 const forbid=m=>`(?!.*(?:${literal(m)}))`;
 const editionIds=['edition-directors-cut','edition-extended','uncut-edition','uncensored-edition','edition-bw','open-matte-edition','seadex-release'];
-const groupOrder=['gst','gr','gms','grl','gv','ga','gc','ge','gs','gl','gsub','gprovenance'];
-const groups={gst:'Cuts and anime',gr:'Resolution',gms:'Source tiers',grl:'Source',gv:'Picture',ga:'Audio',gc:'Channels',ge:'Encoder',gs:'Streaming origin',gl:'Language',gsub:'Subtitles',gprovenance:'Release detail'};
+/** Presentation chips live with specials on the stream, not in the HDR row. */
+export const PRESENTATION_SPECIAL_IDS=['v-imax-e','v-imax','v-3d'];
+/** Specials → streaming → tier → source → resolution → picture → audio → channels → encode → language → subs. */
+export const DISPLAY_GROUP_ORDER=[...MONO_GROUP_ORDER,'gprovenance'];
+const webFamily=Array.from({length:6},(_,i)=>{const n=i+1;return[`web-${n}`,`web-${n}-webrip`];}).flat();
+export const DISPLAY_FILTER_ORDER={
+ gst:[
+  'seadex-release',
+  ...PRESENTATION_SPECIAL_IDS,
+  'edition-directors-cut','edition-extended','uncut-edition','uncensored-edition','edition-theatrical',
+  'edition-bw','edition-true-hue','open-matte-edition',
+  'hybrid-release','criterion-collection',
+  'proper-release','repack-release','remastered-release','regraded-release',
+ ],
+ gs:MONO_FILTER_ORDER.gs,
+ gms:[...webFamily,...Array.from({length:8},(_,i)=>`blu-ray-${i+1}`),'remux-1','remux-2','remux-3'],
+ grl:MONO_FILTER_ORDER.grl,
+ gr:MONO_FILTER_ORDER.gr,
+ gv:MONO_FILTER_ORDER.gv.filter(id=>!PRESENTATION_SPECIAL_IDS.includes(id)),
+ ga:MONO_FILTER_ORDER.ga,
+ gc:MONO_FILTER_ORDER.gc,
+ ge:MONO_FILTER_ORDER.ge,
+ gl:MONO_FILTER_ORDER.gl,
+ gsub:MONO_FILTER_ORDER.gsub,
+};
+const groupOrder=DISPLAY_GROUP_ORDER;
+const groups={gst:'Specials',gs:'Streaming',gms:'Tiers',grl:'Source',gr:'Resolution',gv:'Picture',ga:'Audio',gc:'Channels',ge:'Encoder',gl:'Language',gsub:'Subtitles',gprovenance:'Release detail'};
+function displayRank(filter){
+ const group=groupOrder.indexOf(filter.groupId);
+ const order=DISPLAY_FILTER_ORDER[filter.groupId]??[];
+ const within=order.indexOf(filter.id);
+ return [group<0?999:group,within<0?999:within,filter.id];
+}
 export const LABELS={
  'edition-directors-cut':'DIR CUT','edition-extended':'EXTENDED','edition-true-hue':'TRUE HUE','edition-bw':'B&W','edition-theatrical':'THEATRICAL','seadex-release':'SEADEX',
  'criterion-collection':'CRITERION','proper-release':'PROPER','repack-release':'REPACK','remastered-release':'REMASTER','open-matte-edition':'OPEN MATTE','regraded-release':'REGRADED','uncensored-edition':'UNCENSORED','uncut-edition':'UNCUT','hybrid-release':'HYBRID',
@@ -45,6 +77,7 @@ export function buildPresetBadges(theme,preset){
  const filters=library.filters.filter(f=>!RETIRED_BADGE_IDS.has(f.id)).map(original=>{
    const f={...original,type:'filter',isEnabled:true};
    if(f.groupId==='gst'&&!editionIds.includes(f.id))f.groupId='gprovenance';
+   if(PRESENTATION_SPECIAL_IDS.includes(f.id))f.groupId='gst';
    f.label=LABELS[f.id]??f.name;
    if(sourceAtoms[f.id])f.pattern=plainSource(f.id,preset);
    else f.pattern=v2PatternForBadge(f.id);
@@ -75,7 +108,10 @@ export function buildPresetBadges(theme,preset){
    if(!original?.imageURL)throw new Error(`Missing Kingsize artwork: ${theme}/${f.id}`);
    Object.assign(f,{imageURL:original.imageURL,tagColor:original.tagColor,borderColor:original.borderColor,textColor:original.textColor,tagStyle:original.tagStyle});
  }
- filters.sort((a,b)=>groupOrder.indexOf(a.groupId)-groupOrder.indexOf(b.groupId));
+ filters.sort((a,b)=>{
+   const [ga,ia,ida]=displayRank(a),[gb,ib,idb]=displayRank(b);
+   return ga-gb||ia-ib||ida.localeCompare(idb);
+ });
  const enabled=filters.filter(f=>f.isEnabled);
  return {filters:enabled,groups:groupOrder.filter(id=>enabled.some(f=>f.groupId===id)).map(id=>{const original=ILLUSTRATED_APPEARANCE[theme].groups.find(g=>g.id===id);const c=colorsFor(id,theme);return{id,name:groups[id],color:original?.color??c.fill,borderColor:original?.borderColor??c.border,isExpanded:true};})};
 }

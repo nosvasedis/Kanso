@@ -94,22 +94,24 @@ const fileTagEntries=[...trackTags,['E-AC-3','audDdplus'],['DDP','audDdplus'],['
 const fileAudio=`{stream.audioTags::keep(${values(fileTagEntries)})${replacementChain(fileTagEntries)}::join('')}`;
 const fallbackAudio=gate('stream.audioTags::exists',fileAudio,gate('stream.quality::exists::or::stream.resolution::exists',filenameAudio));
 const AUDIO=gate('stream.audioTracks::exists',selectedTrack(TRACK_AUDIO),fallbackAudio);
-const realTrackLanguage="track.lang::in('Unknown','Original','Multi','Dual Audio','Dubbed')::isfalse";
 const languageChain=languageReplaceEntries().map(([token,id])=>`::replace('${token.toUpperCase()}','${LANGUAGE_MARKERS[id]}')`).join('');
 const subtitleChain=languageReplaceEntries().map(([token,id])=>`::replace('${token.toUpperCase()}','${SUBTITLE_MARKERS[subtitleIdForLanguage(id)]}')`).join('');
-const trackLanguageMarkers=gate(realTrackLanguage,`{track.lang::upper${languageChain}}`);
+const placeholders="'Unknown','Original','Multi','Dual Audio','Dubbed'";
+/** Exact catalog names only. keep() drops concatenated MULTI dumps so replace cannot light the whole inventory. */
+const languageNames=(list,limit)=>`{${list}::remove(${placeholders})::slice(0,${limit})::join(' ')::upper${languageChain}}`;
 function languageMarkers(detailed){
- const fromTracks=detailed
-  ? gate(`user.languages::exists::and::${PREFERRED_TRACKS}::exists`,`{${PREFERRED_TRACKS}::slice(0,4)::each('${trackLanguageMarkers}')::join('')}`)+
-    gate(`user.languages::exists::isfalse::and::${usableTracks}::exists`,`{${usableTracks}::slice(0,4)::each('${trackLanguageMarkers}')::join('')}`)
-  : gate('stream.audioTracks::exists',selectedTrack(trackLanguageMarkers));
  const limit=detailed?4:1;
+ const fromTracks=gate('stream.audioTracks::exists',
+   gate('user.languages::exists',
+     languageNames(`${PREFERRED_TRACKS}::pluck('lang')::keep({user.languages})`,limit),
+     languageNames(`${usableTracks}::pluck('lang')`,limit)));
  const fromNames=gate(`${reliable}::and::stream.audioTracks::exists::isfalse`,
-   gate('user.languages::exists',`{${preferredLanguages}::slice(0,${limit})::join(' ')::upper${languageChain}}`,
-     `{${knownLanguages}::slice(0,${limit})::join(' ')::upper${languageChain}}`));
+   gate('user.languages::exists',languageNames('stream.uLanguages::keep({user.languages})',limit),
+     languageNames('stream.languages',limit)));
  return fromTracks+fromNames;
 }
-const SUBTITLE_MARKERS_INJECT=`{stream.subtitles::exists["{stream.subtitles::join(' ')::upper${subtitleChain}}"||""]}`;
+const SUBTITLE_MARKERS_INJECT=gate('user.languages::exists::or::user.subtitles::exists',
+ `{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::join(' ')::upper${subtitleChain}}`);
 const CHANNELS=gate('stream.audioTracks::exists',selectedTrack(
   gate('track.channels::~7.1::or::track.channels::~8.1',M.ch71)+
   gate('track.channels::~6.1::and::track.channels::~7.1::isfalse',M.ch61)+

@@ -1,6 +1,6 @@
 {
   "name": "kanso",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Kanso — clean stream marks for Nuvio. No echo. Every detail once.",
   "type": "module",
   "scripts": {
