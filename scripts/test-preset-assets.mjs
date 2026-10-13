@@ -100,9 +100,13 @@ for(const preset of ['compact','detailed'])for(const skin of PRESET_SKINS){
    assert.equal(f.imageURL,original.imageURL,`Kingsize glyph missing for ${skin}/${f.id}`);
    const file=path.basename(new URL(f.imageURL).pathname),buffer=await fs.readFile(path.join(BADGE_IMAGE_FILES_DIR,file));
    assert.equal(file,iconFileName(hashIconBuffer(buffer)),'PNG bytes must match the content hash');
+   const lum=await opaqueAvgLum(buffer);
+   if(skin==='solid'&&(f.groupId==='gst'||f.groupId==='gv')){
+     assert.ok(lum<40,`solid/${f.id} special/picture glyph must be black on the fill (${lum.toFixed(1)})`);
+   }
    if(LOCAL_EXTRA_IDS.has(f.id)){
-     const lum=await opaqueAvgLum(buffer);
-     if(skin==='mono')assert.ok(lum<40,`${skin}/${f.id} Mono glyph stays black (${lum.toFixed(1)})`);
+     const wantBlack=skin==='mono'||(skin==='solid'&&f.id==='v-3d');
+     if(wantBlack)assert.ok(lum<40,`${skin}/${f.id} glyph stays black (${lum.toFixed(1)})`);
      else assert.ok(lum>215,`${skin}/${f.id} glyph ink should be white like AAC/FLAC (${lum.toFixed(1)})`);
    }
    checked.add(file);

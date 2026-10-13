@@ -17,7 +17,11 @@ const BLACK_FILES = {
   "a-pcm": "d800966aec9e9818.png",
 };
 
-const WHITE_INK_SKINS = new Set(["solid", "transparent", "outline"]);
+function extraInk(id, skin) {
+  if (skin === "mono") return "black";
+  if (id === "v-3d" && skin === "solid") return "black";
+  return "white";
+}
 
 export async function invertGlyphInk(buffer) {
   const { data, info } = await sharp(buffer)
@@ -54,7 +58,7 @@ export async function applyLocalExtraGlyphs(appearance) {
     for (const id of LOCAL_EXTRA_IDS) {
       const look = theme.filters[id];
       if (!look) continue;
-      look.imageURL = WHITE_INK_SKINS.has(skin) ? urls[id].white : urls[id].black;
+      look.imageURL = extraInk(id, skin) === "white" ? urls[id].white : urls[id].black;
     }
   }
   return urls;
