@@ -2487,7 +2487,7 @@
         },
         "a-mp3": {
           "name": "AAC",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9bae7abaa8001114.png?rev=9bae7abaa800",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e0247886865035c0.png?rev=e02478868650",
           "tagColor": "#FF7300",
           "textColor": "#000000",
           "borderColor": "#FF7300",
@@ -2495,7 +2495,7 @@
         },
         "a-pcm": {
           "name": "FLAC",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d800966aec9e9818.png?rev=d800966aec9e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/06455c17a27d7c5c.png?rev=06455c17a27d",
           "tagColor": "#176BE8",
           "textColor": "#000000",
           "borderColor": "#176BE8",
@@ -2503,7 +2503,7 @@
         },
         "v-3d": {
           "name": "IMAX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/36fb177f01db3c14.png?rev=36fb177f01db",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f3009c691f65ab92.png?rev=f3009c691f65",
           "tagColor": "#176BE8",
           "textColor": "#000000",
           "borderColor": "#176BE8",
@@ -5069,7 +5069,7 @@
         },
         "a-mp3": {
           "name": "AAC",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9bae7abaa8001114.png?rev=9bae7abaa800",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e0247886865035c0.png?rev=e02478868650",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FF7300",
@@ -5077,7 +5077,7 @@
         },
         "a-pcm": {
           "name": "FLAC",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d800966aec9e9818.png?rev=d800966aec9e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/06455c17a27d7c5c.png?rev=06455c17a27d",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#176BE8",
@@ -5085,7 +5085,7 @@
         },
         "v-3d": {
           "name": "IMAX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/36fb177f01db3c14.png?rev=36fb177f01db",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f3009c691f65ab92.png?rev=f3009c691f65",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#176BE8",
@@ -10233,7 +10233,7 @@
         },
         "a-mp3": {
           "name": "AAC",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9bae7abaa8001114.png?rev=9bae7abaa800",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e0247886865035c0.png?rev=e02478868650",
           "tagColor": "#00000000",
           "textColor": "#FF7300",
           "borderColor": "#FF7300",
@@ -10241,7 +10241,7 @@
         },
         "a-pcm": {
           "name": "FLAC",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d800966aec9e9818.png?rev=d800966aec9e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/06455c17a27d7c5c.png?rev=06455c17a27d",
           "tagColor": "#00000000",
           "textColor": "#176BE8",
           "borderColor": "#176BE8",
@@ -10249,7 +10249,7 @@
         },
         "v-3d": {
           "name": "IMAX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/36fb177f01db3c14.png?rev=36fb177f01db",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f3009c691f65ab92.png?rev=f3009c691f65",
           "tagColor": "#00000000",
           "textColor": "#176BE8",
           "borderColor": "#176BE8",

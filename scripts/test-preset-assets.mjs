@@ -6,7 +6,19 @@ import {buildPresetBadges,DISPLAY_FILTER_ORDER,DISPLAY_GROUP_ORDER,ILLUSTRATED_A
 import {applyTransparentTheme,MONO_FILTER_ORDER,TRANSPARENT_FILL} from './badge-transparent-theme.mjs';
 import {applySolidTheme} from './badge-solid-theme.mjs';
 import {borderArgb,chromeRgb6} from './badge-chrome-map.mjs';
+import sharp from 'sharp';
 import {BADGE_IMAGE_FILES_DIR,hashIconBuffer,iconFileName} from './icon-cdn.mjs';
+const LOCAL_EXTRA_IDS=new Set(['v-3d','a-mp3','a-pcm']);
+async function opaqueAvgLum(buffer){
+ const {data}=await sharp(buffer).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+ let n=0,s=0;
+ for(let i=0;i<data.length;i+=4){
+  if(data[i+3]<32)continue;
+  n++;
+  s+=0.299*data[i]+0.587*data[i+1]+0.114*data[i+2];
+ }
+ return n?s/n:0;
+}
 assert.deepEqual([...MONO_FILTER_ORDER.gst].sort(),SPECIAL_DISPLAY_IDS.filter(id=>!['v-imax-e','v-imax','v-3d'].includes(id)).sort(),'Every library special is in the leading specials block');
 function expectChrome(pack,skin,id,groupId){
  const f=pack.filters.find(x=>x.id===id);
@@ -88,6 +100,11 @@ for(const preset of ['compact','detailed'])for(const skin of PRESET_SKINS){
    assert.equal(f.imageURL,original.imageURL,`Kingsize glyph missing for ${skin}/${f.id}`);
    const file=path.basename(new URL(f.imageURL).pathname),buffer=await fs.readFile(path.join(BADGE_IMAGE_FILES_DIR,file));
    assert.equal(file,iconFileName(hashIconBuffer(buffer)),'PNG bytes must match the content hash');
+   if(LOCAL_EXTRA_IDS.has(f.id)){
+     const lum=await opaqueAvgLum(buffer);
+     if(skin==='mono')assert.ok(lum<40,`${skin}/${f.id} Mono glyph stays black (${lum.toFixed(1)})`);
+     else assert.ok(lum>215,`${skin}/${f.id} glyph ink should be white like AAC/FLAC (${lum.toFixed(1)})`);
+   }
    checked.add(file);
  }
 }

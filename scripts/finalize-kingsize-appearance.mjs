@@ -10,6 +10,7 @@ import {
   hashIconBuffer,
   iconFileName,
 } from "./icon-cdn.mjs";
+import { applyLocalExtraGlyphs } from "./local-extra-glyphs.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const APPEARANCE_PATH = path.join(ROOT, "badges", "illustrated-appearance.json");
@@ -50,12 +51,6 @@ const QUALITY_FILES = {
   "q-w": "web-dl",
 };
 
-const LOCAL_EXTRAS = {
-  "a-mp3": "9bae7abaa8001114.png",
-  "a-pcm": "d800966aec9e9818.png",
-  "v-3d": "36fb177f01db3c14.png",
-};
-
 const LOOK_FALLBACK = {
   "a-mp3": "a-aac",
   "a-pcm": "a-flac",
@@ -92,16 +87,11 @@ async function main() {
       const look = filters[id] ?? { ...filters["q-w"] };
       filters[id] = { ...look, imageURL, name: look?.name ?? id };
     }
-    for (const [id, file] of Object.entries(LOCAL_EXTRAS)) {
-      const from = LOOK_FALLBACK[id];
-      const look = filters[id] ?? { ...filters[from] };
-      const hash = file.replace(".png", "");
-      filters[id] = {
-        ...look,
-        imageURL: `https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/${file}?rev=${hash.slice(0, 12)}`,
-      };
+    for (const [id, from] of Object.entries(LOOK_FALLBACK)) {
+      if (!filters[id] && filters[from]) filters[id] = { ...filters[from] };
     }
   }
+  await applyLocalExtraGlyphs(appearance);
   await fs.writeFile(APPEARANCE_PATH, JSON.stringify(appearance, null, 2) + "\n");
   console.log("Canonicalized Kingsize appearance ids");
 }
