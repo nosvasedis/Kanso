@@ -1,14 +1,14 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.2.6
+# Kanso 2.3.0
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
-Badge artwork is by [kingsizew](https://github.com/kingsizew/badges), rehosted on the Kanso CDN. Matching uses Kanso Instant Unicode markers from structured AIOStreams fields, not filename regex.
+**Outline is the default appearance; Manrope Semibold is the default badge font.** Sourced brand marks sit alongside a complete custom glyph family, with shared height, stroke, corners and spacing. The custom direction was developed with imagegen and drawn as crisp production SVGs. Source files and per-badge provenance are documented in [the design notes](docs/badge-design.md). Matching uses Kanso Instant Unicode markers from structured AIOStreams fields, not filename regex.
 
-![Actual Kanso 2 artwork and formatter preview](assets/Kanso/kanso-v2-preview.png)
+![New Kanso Outline badge system](assets/Kanso/kanso-badges-preview.png)
 
-This preview uses exported PNGs and real AIOStreams output. Its browser layout approximates Nuvio TV badge dimensions; it is not a screenshot of an installed Nuvio client.
+This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.3.0 replaces the previous badge appearance and formatter contract; use the matching install files below.
 
 ## Choose a matching pair
 
@@ -19,14 +19,14 @@ This preview uses exported PNGs and real AIOStreams output. Its browser layout a
 
 ## Install or upgrade
 
-1. Use **AIOStreams 2.35.9 or later**. Kanso 2 is verified against the official 2.35.9 engine. Older engines can lack the track operations this formatter needs.
+1. Use **AIOStreams 2.36.0 or later**. Kanso 2 is verified against the official 2.36.0 engine. Older engines can lack the track operations this formatter needs.
 2. In AIOStreams, select the custom formatter and import/sync the formatter URL for your preset, where supported. Alternatively paste its `name` and `description` separately. The exact paste strings are supplied in `formatter-export-name.txt` and `formatter-export-description.txt`, or their `formatter-detailed-…` equivalents.
 3. Set your preferred audio languages in AIOStreams. Kanso reads those preferences.
 4. In a Nuvio client that supports importing custom badge packs, **replace** the old Kanso pack with the matching **badge file** from the table. Merging with an old imported pack can leave retired entries behind. Each gist contains both presets: choose the correct filename. Turn off the old Kanso filters before importing so two versions cannot display together.
 5. For an upgrade, **refresh both the formatter and the badge pack**. Kanso uses a version marker; mixed old/new exports are prevented from producing confident badges. Saving a URL does not guarantee the app has fetched the newest content—refresh its sync/import when needed.
 6. On Nuvio TV, turn off its native file-size badges if you keep Kanso's `💾` size row. TV 1.0.0 enables native size badges by default; this app setting is separate from the imported pack.
 
-Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 11,846 / 11,836 characters; Detailed is 14,320 / 14,320. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 12,540 / 12,478 characters; Detailed is 14,988 / 14,988. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## What each preset shows
 
@@ -49,14 +49,14 @@ Chips read left to right as specials (SeaDex, IMAX, 3D, Hybrid, Criterion, cuts,
 
 Changing the preset does not change AIOStreams sorting or ranking. Tiers are named rule/group classifications, not playback guarantees. Unknown tiers display one source badge. WEBRip is classified separately from WEB-DL. The title stars show AIOStreams relative expression score, not a guarantee of playback or objective file quality.
 
-The active library contains 198 badge definitions. Compact exports 166 chips; Detailed exports 199, including six WEBRip tier variants. Best/Good/OK score chips, unranked family chips, MULTI language chips and encoder chips stay retired. No disabled placeholders or empty groups are exported.
+The detection library contains 201 definitions. The redesigned Compact exports 156 chips; Detailed exports 189, including six WEBRip tier variants. Language variants are consolidated into 38 display families in each audio/subtitle row. New reported-channel badges cover 1.0, 2.1 and 8.1; 8.1 no longer displays as 7.1. Best/Good/OK score chips, unranked family chips, MULTI language chips and encoder chips stay retired. No disabled placeholders or empty groups are exported.
 
 ## Accuracy and uncertainty
 
 - **No inferred HDR from 4K REMUX.** Unknown range shows neither HDR nor SDR. Explicit SDR, HLG and supported DV/HDR combinations stay distinct. Conflicting SDR/HDR metadata produces a warning rather than simultaneous claims.
 - Structured source/resolution information takes precedence. Limited filename fallbacks require bounded tokens and technical context; parsed title/release-group strings are removed from that fallback text.
 - With audio tracks, Compact uses the **first usable matching track in file order** from your AIOStreams preferred-language context, excluding known commentary. The selected codec, channel and language chips belong to that same track. Detailed can show up to four matching preferred languages. Extra languages and subtitles on the file that are not in that preference list do not get chips. It does not guarantee the player will select that track.
-- If the preferred language is unavailable, a warning replaces a misleading language/codec assertion. Unrecognized languages have no chip. Swedish and the rest of the 48-language inventory use image chips, not formatter flags.
+- If the preferred language is unavailable, a warning replaces a misleading language/codec assertion. Unrecognized languages have no chip. The 48 detected identities map to 38 spoken/subtitle display families. ES groups Spanish variants, PT groups Portuguese variants, and IN groups the nine Indian languages for both audio and subtitles. IN is a family label; use the player to see the exact language. Preference selection still uses exact identities.
 - Without track metadata, audio codec tags describe the **file**, not a guaranteed language/codec pairing. Without tracks, a language chip is used only with `probe` or `indexer` confidence. Channels, subtitles and source never also appear as formatter text. Encode is formatter-owned beside the container and is not truncated.
 - Cache state is `⚡` cached, `⏳` uncached or `❔` unknown, on the title only, and only for debrid/usenet. HTTP, P2P and live delivery do not acquire a fictitious debrid cache status. Bad sources and upstream health messages remain visible.
 - A Netflix/Prime/etc. origin badge does not establish current subscription availability or regional rights.
@@ -69,7 +69,7 @@ Keep Kanso as the custom formatter when updating Tamtaro; changing the formatter
 
 ## Appearance
 
-Glyphs stay kingsizew. Solid, Transparent and Outline use Kanso category chrome so kinds scan from the couch: unique specials, official streaming brands, blue tiers, slate source, traffic-light resolution (4K green, 1080 amber, 720 and below red), gold picture, cyan audio / darker cyan channels, orchid language / deeper orchid subtitles. Solid paints that as fill; Transparent and Outline paint it as border on a clear fill and differ by kingsizew artwork (Default Colored vs Colored Outline). Language chips use the flag glyph on every skin. Mono stays white/black. Art is rehosted under Kanso `/files`.
+Manrope Semibold gives generic badges a shared voice; small captions and tiers use Bold. Brand marks retain their own letterforms. Source icons sit above their captions to save horizontal space, and tiers use large, plain T1–T8 labels. Channels have a speaker. Spoken languages use speech-shaped flags with horizontal codes; subtitles use flag-filled documents behind a code stacked above SUB. All four skins share geometry. **Outline has colored words and glyphs matching the border; Transparent has white words and glyphs.** Flags retain real colors. Special editions keep distinct colors, and sources and their tiers share family hues. Picture uses gold, audio/channels cyan and languages/subtitles orchid/violet. Capture sources use coral. Solid uses category fill with contrasting ink; Mono uses white/black. Nuvio draws the border. The new channel contract requires the new formatter and pack together; mismatched old output fails closed.
 
 The title begins with an invisible U+200E left-to-right anchor so Nuvio TV 1.0.0 cannot let a later hidden marker pick RTL alignment. HDR10+/HDR10/HLG suppress redundant generic HDR badges, and DTS Master Audio wins over generic DTS-HD. Structured audio tags cannot borrow a different codec from the filename.
 
@@ -83,7 +83,7 @@ npm run test:setup
 npm run release
 ```
 
-The setup clones the official AIOStreams **v2.35.9**, pinned to commit `1dcfa7665e7fa759b5604e39bf0f491e9aefaea5`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 305 fixtures × two presets × four skins, plus all referenced PNG hashes and tier-sync regressions. No native playback/device compatibility claim is made by these tests.
+The setup clones the official AIOStreams **v2.36.0**, pinned to commit `ce6244454ee131bf0945b2bd6abc670a449b224d`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 337 fixtures × two presets × four skins, plus all referenced PNG hashes and tier-sync regressions. No native playback/device compatibility claim is made by these tests.
 
 Every exported badge has a positive real-metadata fixture. For native Java regex and Nuvio's exact first-strong direction semantics, run `node scripts/test-nuvio-java.mjs` with Java 21 or later; pass `--java=/path/to/java` to select an installed runtime. These checks do not substitute for testing your installed TV app or playback.
 
@@ -101,4 +101,4 @@ Publication overlays a fresh checkout, preserves remote history/unrelated files,
 
 For this migration, old local exports/scripts were saved under `backup/approved-20261013`. That recovery folder is private and not included in the public repository. Public users can retrieve the previous formatter, pack and PNG files from Git history; pair an old formatter with its matching old pack. Maintainer release records and pre-write gist revisions are saved privately in `docs/release-evidence/`.
 
-See [release notes](docs/kanso-v2.md), the [AIOStreams formatter reference](https://docs.aiostreams.viren070.me/reference/custom-formatter/), [official AIOStreams source](https://github.com/Viren070/AIOStreams/tree/v2.35.9), [Nuvio repositories](https://github.com/NuvioMedia) and [kingsizew/badges](https://github.com/kingsizew/badges).
+See [release notes](docs/kanso-v2.md), the [AIOStreams formatter reference](https://docs.aiostreams.viren070.me/reference/custom-formatter/), [official AIOStreams source](https://github.com/Viren070/AIOStreams/tree/v2.36.0), [Nuvio repositories](https://github.com/NuvioMedia) and [kingsizew/badges](https://github.com/kingsizew/badges).

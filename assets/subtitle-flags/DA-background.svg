@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="82" height="60" viewBox="0 0 82 60"><defs><clipPath id="captionDocument"><path d="M7 2H62L79 19v34q0 5-5 5H7q-5 0-5-5V7q0-5 5-5z"/></clipPath></defs><g clip-path="url(#captionDocument)"><g transform="translate(2 2)"><svg  xmlns="http://www.w3.org/2000/svg" id="flag-icons-dk" viewBox="0 0 640 480" width="78" height="56" preserveAspectRatio="none">
+  <path fill="#c8102e" d="M0 0h640.1v480H0z"/>
+  <path fill="#fff" d="M205.7 0h68.6v480h-68.6z"/>
+  <path fill="#fff" d="M0 205.7h640.1v68.6H0z"/>
+</svg>
+</g><rect x="7" y="35" width="37" height="19" rx="4" fill="#151A21" opacity=".7"/><path d="M12 41h26m-26 7h20" stroke="#000000" stroke-width="3" stroke-linecap="round"/></g><path d="M62 2v17h17" fill="#000000" stroke="#000000" stroke-width="1.5" stroke-linejoin="round"/></svg>

@@ -26,15 +26,15 @@ const work=path.join(ROOT,'badges/badge-images/.release-worktree',String(Date.no
 await fs.mkdir(path.dirname(work),{recursive:true});
 run(['clone','--branch','main',`https://github.com/${repo}.git`,work],ROOT,true);
 const before=run(['rev-parse','HEAD'],work,true);
-const files=['README.md','package.json','package-lock.json','.gitignore','.env.example','sync-helper.bat','formatter.json','formatter-detailed.json',
+const files=['README.md','package.json','package-lock.json','.gitignore','.gitattributes','.env.example','sync-helper.bat','formatter.json','formatter-detailed.json',
  ...['','-detailed'].flatMap(s=>['name','description'].map(f=>`formatter${s}-export-${f}.txt`)),
  ...PRESET_SKINS.flatMap(t=>['','-detailed'].map(s=>`kanso-${t}${s}.json`)),
- 'backup/v1/oracle/nosvasedis-badges-solid.json','docs/kanso-v2.md','badges/badge-images/README.md','badges/badge-images/manifest.json'];
+ 'backup/v1/oracle/nosvasedis-badges-solid.json','docs/kanso-v2.md','docs/badge-design.md','badges/badge-images/README.md','badges/badge-images/manifest.json'];
 const copy=async(src,dest)=>{await fs.mkdir(path.dirname(dest),{recursive:true});await fs.copyFile(src,dest);};
 for(const f of files)await copy(path.join(ROOT,f),path.join(work,f));
 const ignored=new Set(['generated','generated-solid','generated-transparent','badge-images','user-config.json','probe-preset-engine.ts']);
 const overlay=async(src,dest)=>{for(const e of await fs.readdir(src,{withFileTypes:true})){if(ignored.has(e.name))continue;const s=path.join(src,e.name),d=path.join(dest,e.name);if(e.isDirectory())await overlay(s,d);else if(e.isFile())await copy(s,d);}};
-for(const dir of ['scripts','badges','sync-ui','assets/Kanso'])await overlay(path.join(ROOT,dir),path.join(work,dir));
+for(const dir of ['scripts','badges','sync-ui','assets/Kanso','assets/fonts','assets/badge-sources','assets/glyphs','assets/flag-sources','assets/spoken-flags','assets/subtitle-flags'])await overlay(path.join(ROOT,dir),path.join(work,dir));
 // Ship current references only; previously published hashes stay in the checkout.
 const referenced=new Set();
 for(const theme of PRESET_SKINS)for(const suffix of ['','-detailed']){
@@ -42,7 +42,7 @@ for(const theme of PRESET_SKINS)for(const suffix of ['','-detailed']){
  for(const f of pack.filters)referenced.add(path.basename(new URL(f.imageURL).pathname));
 }
 for(const file of referenced)await copy(path.join(BADGE_IMAGE_FILES_DIR,file),path.join(work,'files',file));
-run(['add','--',...files,'scripts','badges','sync-ui','assets/Kanso','files'],work,true);
+run(['add','--',...files,'scripts','badges','sync-ui','assets/Kanso','assets/fonts','assets/badge-sources','assets/glyphs','assets/flag-sources','assets/spoken-flags','assets/subtitle-flags','files'],work,true);
 run(['diff','--cached','--check'],work);
 const paths=run(['diff','--cached','--name-only'],work,true).split('\n').filter(Boolean);
 if(paths.some(f=>/(^|\/)(\.env|user-config\.json|\.vendor|node_modules|release-evidence)(\/|$)/.test(f)))throw new Error('Private/runtime file reached staging');
@@ -54,7 +54,7 @@ await fs.writeFile(path.join(evidence,'repository-release.json'),JSON.stringify(
 console.log(`Reviewed overlay: ${paths.length} files, no deletions, base ${before}`);
 if(dryRun){console.log('Dry run: checkout ready for review, no remote writes.');process.exit(0);}
 if(paths.length){
- run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m',`Kanso ${VERSION}: language flag glyphs on every skin`],work,true);
+ run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m',`Kanso ${VERSION}: new badge system and AIOStreams 2.36 coverage`],work,true);
  run(['push','origin','HEAD:main'],work,true);
 }
 const commit=run(['rev-parse','HEAD'],work,true);

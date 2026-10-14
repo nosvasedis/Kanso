@@ -6,9 +6,35 @@ import { buildPresetFormatter, PRESET_MARKER, TITLE_LTR_ANCHOR } from './preset-
 import { RETIRED_BADGE_IDS } from './retired-badges.mjs';
 import {coverageFixtures,audioBadgeFacts} from './preset-coverage-fixtures.mjs';
 import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
+import { displayLanguageId } from './display-language-families.mjs';
+import {LANGUAGE_CATALOG} from './language-catalog.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
 type FX={label:string;file?:string;parsed?:any;prefs?:string[];required?:string[];included?:string[];originalLanguage?:string;type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
 const fx:FX[]=[
+ {label:'multi-tag DD+ Atmos without title',parsed:{audioTracks:[{lang:'English',tags:['DD+','Atmos'],channels:'5.1'}]},common:['a-at-dp','ch-51','l-en'],forbid:['a-at','a-dp']},
+ {label:'multi-tag TrueHD Atmos without title',parsed:{audioTracks:[{lang:'English',tags:['TrueHD','Atmos']}]},common:['a-at-th'],forbid:['a-th','a-at']},
+ {label:'multi-tag DTS:X MA without title',parsed:{audioTracks:[{lang:'English',tags:['DTS-HD MA','DTS:X']}]},common:['a-dtsx-ma'],forbid:['a-dtsma','a-dtsx']},
+ {label:'multi-tag codec stays selected',prefs:['English'],parsed:{audioTracks:[{lang:'Japanese',tags:['TrueHD','Atmos']},{lang:'English',tags:['AAC']}]},common:['a-aac','l-en'],forbid:['a-at-th','l-ja']},
+ {label:'audio description selected flag',parsed:{audioTracks:[{lang:'English',tags:['AAC'],visualImpaired:true}]},common:['a-description','a-aac']},
+ {label:'audio description selected title',parsed:{audioTracks:[{lang:'English',tags:['AAC'],title:'English Audio Description'}]},common:['a-description']},
+ {label:'nonselected description does not claim AD',parsed:{audioTracks:[{lang:'English',tags:['AAC']},{lang:'English',tags:['AAC'],visualImpaired:true}]},forbid:['a-description']},
+ {label:'commentary description excluded',parsed:{audioTracks:[{lang:'English',tags:['AAC'],commentary:true,visualImpaired:true},{lang:'English',tags:['AAC']}]},forbid:['a-description']},
+ {label:'forced and SDH subtitles selected',prefs:['Greek'],parsed:{subtitleTracks:[{lang:'Greek',forced:true,hearingImpaired:true}]},common:['caption-forced','caption-sdh']},
+ {label:'subtitle titles provide accessibility',prefs:['Greek'],parsed:{subtitleTracks:[{lang:'Greek',title:'GREEK SDH FORCED'}]},common:['caption-forced','caption-sdh']},
+ {label:'other language accessibility stays dark',prefs:['Greek'],parsed:{subtitleTracks:[{lang:'English',forced:true,hearingImpaired:true}]},forbid:['caption-forced','caption-sdh']},
+ {label:'no subtitle preference shows known accessibility',prefs:[],parsed:{subtitleTracks:[{lang:'English',forced:true}]},common:['caption-forced']},
+ {label:'DVD remux cannot claim Blu-ray tiers',parsed:{quality:'DVD REMUX',releaseGroup:'FraMeSToR'},common:['q-dvd-remux'],forbid:['q-r','q-b','remux-1','blu-ray-1']},
+ {label:'hardcoded source has specific artwork',parsed:{quality:'HC HD-Rip'},common:['q-hc'],forbid:['q-hdrip']},
+ {label:'SBS replaces generic 3D',parsed:{visualTags:['3D','H-SBS']},common:['v-3d-sbs'],forbid:['v-3d']},
+ {label:'OU replaces generic 3D',parsed:{visualTags:['3D','H-OU']},common:['v-3d-ou'],forbid:['v-3d']},
+ {label:'conflicting 3D layouts cannot claim either layout',parsed:{visualTags:['3D','H-SBS','H-OU']},forbid:['v-3d-sbs','v-3d-ou','v-3d']},
+ {label:'8.1 is not mislabeled 7.1',parsed:{audioTracks:[{lang:'English',tag:'AAC',channels:'8.1'}]},common:['ch-81'],forbid:['ch-71','ch-51','ch-20']},
+ {label:'mono 1.0 stays mono',parsed:{audioTracks:[{lang:'English',tag:'PCM',channels:'1.0'}]},common:['ch-10'],forbid:['ch-20']},
+ {label:'2.1 stays separate from stereo',parsed:{audioTracks:[{lang:'English',tag:'AAC',channels:'2.1'}]},common:['ch-21'],forbid:['ch-20']},
+ {label:'file channel precedence includes new layouts',parsed:{audioChannels:['1.0','2.1','8.1','7.1']},common:['ch-81'],forbid:['ch-71','ch-21','ch-10']},
+ ...LANGUAGE_CATALOG.filter(l=>['l-hi','l-bn','l-ta','l-te','l-ml','l-kn','l-mr','l-gu','l-pa'].includes(l.id)).map(l=>({label:`Indian family retains ${l.tokens[0]} preference`,prefs:[l.tokens[0]],parsed:{audioTracks:[{lang:l.tokens[0],tag:'AAC'}],subtitles:[l.tokens[0]]},common:['l-in','sub-in']})),
+ ...LANGUAGE_CATALOG.filter(l=>['l-es','l-lat','l-pt-br','l-pt-pt'].includes(l.id)).map(l=>({label:`Regional family retains ${l.tokens[0]} preference`,prefs:[l.tokens[0]],parsed:{audioTracks:[{lang:l.tokens[0],tag:'AAC'}],subtitles:[l.tokens[0]]},common:[displayLanguageId(l.id),displayLanguageId(l.id.replace(/^l-/,'sub-'))]})),
+ {label:'Indian badge does not bypass Hindi audio preference',prefs:['Hindi'],parsed:{audioTracks:[{lang:'Tamil',tag:'AAC'}],subtitles:['Tamil']},forbid:['l-in','sub-in'],text:['Preferred audio unavailable']},
  {label:'4K WEB DV HDR10+ Atmos',file:'Movie.2160p.AMZN.WEB-DL.DDP.Atmos.FLUX.mkv',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',visualTags:['DV','HDR10+'],audioTags:['Atmos','DD+'],audioChannels:['5.1'],languages:['English'],network:'Amazon',releaseGroup:'FLUX',mediaInfoQuality:'probe'},common:['r-4k','l-en','v-dv-hdr10p','a-at-dp','ch-51'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['v-hdr10p','a-at','a-dp','q-gw','ge-hevc','ge-av1','ge-avc'],text:['📦 MKV · 🎞️ HEVC · 👥 FLUX','💾','⚡','☁️ RD','🧩'],absent:['✅','🔊','🎧','…']},
  {label:'unknown remux range',parsed:{quality:'REMUX',resolution:'2160p'},common:['r-4k','q-r'],forbid:['v-hdr','v-sdr']},
  {label:'explicit SDR remux',parsed:{quality:'REMUX',resolution:'2160p',visualTags:['SDR']},common:['v-sdr','q-r'],forbid:['v-hdr']},
@@ -166,9 +192,10 @@ for(const preset of ['compact','detailed']){
        assert.doesNotMatch(audioRow,new RegExp(`(?:^|[ ·])${word}(?=$|[ ·])`,'i'),`${preset}/${f.label}: ${fact} duplicated between the audio row and ${id} image`);
      }
      if(reference)assert.deepEqual(hits,reference,`${preset}/${f.label}: skin changes detection`);else reference=hits;
-     for(const id of [...f.common??[],...f[preset]??[]].filter(id=>!RETIRED_BADGE_IDS.has(id)))assert.ok(hits.includes(id),`${preset}/${f.label}: missing ${id}: ${hits}`);
-     for(const id of f.forbid??[])assert.ok(!hits.includes(id),`${preset}/${f.label}: forbidden ${id}: ${hits}`);
-     assert.ok(hits.filter((id:string)=>/^q-(?:r|b|w|wr|cam|hdtv|hdrip|dvdrip|scr|tc|ts)$|^(?:web|blu-ray|remux)-\d/.test(id)).length<=1,`${preset}/${f.label}: duplicated source ${hits}`);
+     const required=[...f.common??[],...f[preset]??[]].filter(id=>!RETIRED_BADGE_IDS.has(id)).map(displayLanguageId);
+     for(const id of required)assert.ok(hits.includes(id),`${preset}/${f.label}: missing ${id}: ${hits}`);
+     for(const id of (f.forbid??[]).map(displayLanguageId).filter(id=>!required.includes(id)))assert.ok(!hits.includes(id),`${preset}/${f.label}: forbidden ${id}: ${hits}`);
+     assert.ok(hits.filter((id:string)=>/^q-(?:r|b|w|wr|cam|hdtv|hdrip|dvdrip|scr|tc|ts|hc|dvd-remux)$|^(?:web|blu-ray|remux)-\d/.test(id)).length<=1,`${preset}/${f.label}: duplicated source ${hits}`);
      const legacyHay=nuvioHaystacks([clean(out.name),clean(out.description),f.file].filter(Boolean));
      assert.equal(pack.filters.filter((b:any)=>b.isEnabled&&legacyHay.some((s:string)=>nuvioRegex(b.pattern).test(s))).length,0,'Mismatched legacy formatter must fail closed');
    }
@@ -176,10 +203,19 @@ for(const preset of ['compact','detailed']){
  }
 }
 fs.mkdirSync('docs/release-evidence',{recursive:true});
+// A formatter from the previously published contract must not accidentally
+// light new badges, even though the old metadata marker IDs stay stable.
+for(const oldPresetMarker of ['\u206f\u200b\u206f\u200b\u206f','\u206f\u200b\u206f\u200c\u206f']){
+for(const e of evidence.slice(0,8)){
+ const hay=nuvioHaystacks([e.rawName.replaceAll(PRESET_MARKER,oldPresetMarker),e.rawDescription.replaceAll(PRESET_MARKER,oldPresetMarker)]);
+ const pack=JSON.parse(fs.readFileSync(`kanso-outline${e.preset==='compact'?'':'-detailed'}.json`,'utf8'));
+ assert.equal(pack.filters.filter((b:any)=>hay.some((s:string)=>nuvioRegex(b.pattern).test(s))).length,0,'Old formatter / new badges must fail closed');
+}
+}
 fs.writeFileSync('docs/release-evidence/engine-fixtures.json',JSON.stringify(evidence,null,2)+'\n');
 for(const preset of ['compact','detailed']){
  const inventory=JSON.parse(fs.readFileSync(`kanso-solid${preset==='compact'?'':'-detailed'}.json`,'utf8')).filters;
  const covered=new Set(evidence.filter(f=>f.preset===preset).flatMap(f=>f.badges));
  assert.deepEqual(inventory.map((f:any)=>f.id).filter((id:string)=>!covered.has(id)),[],`${preset}: every exported badge must have a positive real-engine fixture`);
 }
-console.log(`PASS: ${fx.length} fixtures × 2 presets × 4 skins; Instant markers, no echo, AIOStreams 2.35.9.`);
+console.log(`PASS: ${fx.length} fixtures × 2 presets × 4 skins; Instant markers, no echo, AIOStreams 2.36.0.`);

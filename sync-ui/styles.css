@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Manrope";
+  src: url("fonts/Manrope.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #0f1419;
   --surface: #1a2332;
@@ -9,7 +17,7 @@
   --ok: #66bb6a;
   --warn: #ffb74d;
   --radius: 12px;
-  --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 * {

@@ -4,7 +4,9 @@ import { PRESET_MARKER } from './preset-formatter.mjs';
 import { RETIRED_BADGE_IDS } from './retired-badges.mjs';
 import { applyTransparentTheme, MONO_FILTER_ORDER, MONO_GROUP_ORDER, TRANSPARENT_GROUP_META } from './badge-transparent-theme.mjs';
 import { applySolidTheme, solidGroupMeta } from './badge-solid-theme.mjs';
+import {applyOutlineTheme,OUTLINE_PALETTE,outlineRgb6} from './badge-outline-theme.mjs';
 import { CHROME } from './badge-chrome-map.mjs';
+import {groupLanguageFilters,LANGUAGE_FAMILIES} from './display-language-families.mjs';
 const library=JSON.parse(readFileSync(new URL('../badges/badge-library.json',import.meta.url),'utf8'));
 export const ILLUSTRATED_APPEARANCE=JSON.parse(readFileSync(new URL('../badges/illustrated-appearance.json',import.meta.url),'utf8')).themes;
 export const PRESET_SKINS=['solid','transparent','mono','outline'];
@@ -13,7 +15,7 @@ const literal=m=>[...m].map(c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'
 const requireMarker=m=>`(?=.*(?:${literal(m)}))`;
 const forbid=m=>`(?!.*(?:${literal(m)}))`;
 /** Presentation chips live with specials on the stream, not in the HDR row. */
-export const PRESENTATION_SPECIAL_IDS=['v-imax-e','v-imax','v-3d'];
+export const PRESENTATION_SPECIAL_IDS=['v-imax-e','v-imax','v-3d','v-3d-sbs','v-3d-ou'];
 /**
  * Every special sits in gst, first on the row. Hybrid/Criterion are source
  * specials, not a trailing provenance footnote.
@@ -33,24 +35,27 @@ export const DISPLAY_FILTER_ORDER={
  gst:SPECIAL_DISPLAY_IDS,
  gs:MONO_FILTER_ORDER.gs,
  gms:[...webFamily,...Array.from({length:8},(_,i)=>`blu-ray-${i+1}`),'remux-1','remux-2','remux-3'],
- grl:MONO_FILTER_ORDER.grl,
+ grl:['q-r','q-dvd-remux',...MONO_FILTER_ORDER.grl.filter(id=>id!=='q-r'),'q-hc'],
  gr:MONO_FILTER_ORDER.gr,
  gv:MONO_FILTER_ORDER.gv.filter(id=>!PRESENTATION_SPECIAL_IDS.includes(id)),
- ga:MONO_FILTER_ORDER.ga,
+ ga:[...MONO_FILTER_ORDER.ga,'a-description'],
  gc:MONO_FILTER_ORDER.gc,
  ge:MONO_FILTER_ORDER.ge,
  gl:MONO_FILTER_ORDER.gl,
- gsub:MONO_FILTER_ORDER.gsub,
+ gsub:[...MONO_FILTER_ORDER.gsub,'caption-forced','caption-sdh'],
 };
 const groupOrder=DISPLAY_GROUP_ORDER;
 const groups={gst:'Specials',gs:'Streaming',gms:'Tiers',grl:'Source',gr:'Resolution',gv:'Picture',ga:'Audio',gc:'Channels',ge:'Encoder',gl:'Language',gsub:'Subtitles',gprovenance:'Release detail'};
 function displayRank(filter){
  const group=groupOrder.indexOf(filter.groupId);
  const order=DISPLAY_FILTER_ORDER[filter.groupId]??[];
- const within=order.indexOf(filter.id);
+ const family=LANGUAGE_FAMILIES.find(g=>g.id===filter.id.replace(/^sub-/,'l-'));
+ const rankId=family?(filter.id.startsWith('sub-')?family.members[0].replace(/^l-/,'sub-'):family.members[0]):filter.id;
+ const within=order.indexOf(rankId);
  return [group<0?999:group,within<0?999:within,filter.id];
 }
 export const LABELS={
+ 'q-hc':'HC HDRIP','q-dvd-remux':'DVD REMUX','v-3d-sbs':'3D SBS','v-3d-ou':'3D OU','a-description':'AD','caption-forced':'FORCED','caption-sdh':'SDH',
  'edition-directors-cut':'DIR CUT','edition-extended':'EXTENDED','edition-true-hue':'TRUE HUE','edition-bw':'B&W','edition-theatrical':'THEATRICAL','seadex-release':'SEADEX',
  'criterion-collection':'CRITERION','proper-release':'PROPER','repack-release':'REPACK','remastered-release':'REMASTER','open-matte-edition':'OPEN MATTE','regraded-release':'REGRADED','uncensored-edition':'UNCENSORED','uncut-edition':'UNCUT','hybrid-release':'HYBRID',
  'q-r':'REMUX','q-b':'BLU-RAY','q-w':'WEB-DL','q-wr':'WEBRip','q-cam':'CAM','q-hdtv':'HDTV','q-hdrip':'HDRip','q-dvdrip':'DVDRip','q-scr':'SCR','q-tc':'TC','q-ts':'TS',
@@ -59,8 +64,8 @@ export const LABELS={
  'v-dv-hdr10p':'DV/HDR10+','v-dv-hdr10':'DV/HDR10','v-dv-hdr':'DV/HDR','v-hdr10p':'HDR10+','v-hdr10':'HDR10','v-hdr':'HDR','v-hlg':'HLG','v-10bit':'10bit','v-imax-e':'IMAX ENH.','v-imax':'IMAX','a-dv':'DOLBY VISION','v-sdr':'SDR','v-ai':'AI','v-3d':'3D',
  'a-at-th':'TrueHD Atmos','a-at-dp':'DD+ Atmos','a-dtsx-ma':'DTS:X MA','a-dtsx-hd':'DTS:X HD','a-dtsx':'DTS:X','a-dtsma':'DTS-HD MA','a-dtshd':'DTS-HD','a-dtses':'DTS-ES','a-th':'TrueHD','a-at':'Atmos','a-dp':'DD+','a-dd':'DD',
 };
-const sourceAtoms={'q-r':'srcRemux','q-b':'srcBluray','q-w':'srcWebdl','q-wr':'srcWebrip','q-cam':'srcCam','q-hdtv':'srcHdtv','q-hdrip':'srcHdrip','q-dvdrip':'srcDvdrip','q-scr':'srcScr','q-tc':'srcTc','q-ts':'srcTs'};
-const priority=['q-cam','q-r','q-b','q-w','q-wr','q-hdtv','q-hdrip','q-dvdrip','q-scr','q-tc','q-ts'];
+const sourceAtoms={'q-hc':'srcHcRip','q-dvd-remux':'srcDvdRemux','q-r':'srcRemux','q-b':'srcBluray','q-w':'srcWebdl','q-wr':'srcWebrip','q-cam':'srcCam','q-hdtv':'srcHdtv','q-hdrip':'srcHdrip','q-dvdrip':'srcDvdrip','q-scr':'srcScr','q-tc':'srcTc','q-ts':'srcTs'};
+const priority=['q-cam','q-hc','q-dvd-remux','q-r','q-b','q-w','q-wr','q-hdtv','q-hdrip','q-dvdrip','q-scr','q-tc','q-ts'];
 function plainSource(id,preset){
  let p='(?s)^'+requireMarker(M[sourceAtoms[id]]);
  for(const higher of priority.slice(0,priority.indexOf(id)))p+=forbid(M[sourceAtoms[higher]]);
@@ -93,7 +98,7 @@ export function colorsFor(group,theme){
 }
 export function buildPresetBadges(theme,preset){
  if(!PRESET_SKINS.includes(theme)||!['compact','detailed'].includes(preset))throw new Error('Unknown preset/skin');
- const filters=library.filters.filter(f=>!RETIRED_BADGE_IDS.has(f.id)).map(original=>{
+ let filters=library.filters.filter(f=>!RETIRED_BADGE_IDS.has(f.id)).map(original=>{
    const f={...original,type:'filter',isEnabled:true};
    if(SPECIAL_DISPLAY_IDS.includes(f.id))f.groupId='gst';
    f.label=LABELS[f.id]??f.name;
@@ -122,13 +127,15 @@ export function buildPresetBadges(theme,preset){
    if(f.id==='a-dtsma')f.pattern=f.pattern.replace(forbid(M.audDtshd),'');
    f.pattern=f.pattern.replace('(?s)^','(?s)^'+requireMarker(PRESET_MARKER));
    if(!f.pattern)throw new Error(`Missing pattern ${f.id}`);
-   const original=ILLUSTRATED_APPEARANCE[theme].filters[f.id.replace(/-webrip$/,'')];
+   const original=ILLUSTRATED_APPEARANCE[theme].filters[f.id]??ILLUSTRATED_APPEARANCE[theme].filters[f.id.replace(/-webrip$/,'')];
    if(!original?.imageURL)throw new Error(`Missing Kingsize artwork: ${theme}/${f.id}`);
    f.imageURL=original.imageURL;
    if(theme==='mono')Object.assign(f,{tagColor:original.tagColor,borderColor:original.borderColor,textColor:original.textColor,tagStyle:original.tagStyle});
    else if(theme==='solid')applySolidTheme(f);
+   else if(theme==='outline')applyOutlineTheme(f);
    else applyTransparentTheme(f);
  }
+ filters=groupLanguageFilters(filters,ILLUSTRATED_APPEARANCE[theme]);
  filters.sort((a,b)=>{
    const [ga,ia,ida]=displayRank(a),[gb,ib,idb]=displayRank(b);
    return ga-gb||ia-ib||ida.localeCompare(idb);
@@ -139,7 +146,7 @@ export function buildPresetBadges(theme,preset){
    const original=ILLUSTRATED_APPEARANCE[theme].groups.find(g=>g.id===id);
    const c=colorsFor(id,theme);
    if(theme==='mono')return{id,name:groups[id],color:original?.color??c.fill,borderColor:original?.borderColor??c.border,isExpanded:true};
-   const meta=theme==='solid'?solidMeta[id]:TRANSPARENT_GROUP_META[id];
+   const meta=theme==='outline'?{color:'#00000000',borderColor:'#FF'+(OUTLINE_PALETTE[id]??(id==='gr'?'66DEAC':'CDD3DB'))}:theme==='solid'?solidMeta[id]:TRANSPARENT_GROUP_META[id];
    return{id,name:groups[id],color:meta?.color??c.fill,borderColor:meta?.borderColor??c.border,isExpanded:true};
  })};
 }

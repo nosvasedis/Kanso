@@ -1,15 +1,15 @@
-/** Kanso 2 presets. Requires the verified AIOStreams 2.35.9 formatter engine. */
+/** Kanso presets. Requires the verified AIOStreams 2.36.0 formatter engine. */
 import { MARKER_ATOMS as M, TIER_MARKERS, LANGUAGE_MARKERS, SUBTITLE_MARKERS } from './formatter-markers.mjs';
 import { loadTierGroupsFromBadgesSync, tierRseRuleNames } from './tier-inject-generator.mjs';
 import { SYNC_TIER_IDS } from './tier-group-sync.mjs';
 import { FORMATTER_STREAMING_SEGMENTS } from './streaming-formatter-patterns.mjs';
 import { TITLE_TRANSPORT } from './formatter-layout.mjs';
 import { FORMATTER_RANK_STARS } from './quality-rank-patterns.mjs';
-import { languageReplaceEntries, subtitleIdForLanguage } from './language-catalog.mjs';
+import { LANGUAGE_CATALOG, subtitleIdForLanguage } from './language-catalog.mjs';
 
 export const PRESET_MAX_LENGTH = 15000;
-export const MIN_AIOSTREAMS_VERSION = '2.35.9';
-export const PRESET_MARKER = '\u206f\u200b\u206f\u200b\u206f';
+export const MIN_AIOSTREAMS_VERSION = '2.36.0';
+export const PRESET_MARKER = '\u206f\u200b\u206f\u200d\u206f';
 const gate=(condition,yes,no='')=>`{${condition}["${yes}"||"${no}"]}`;
 const marker=id=>M[id];
 const fn="stream.filename::replace({stream.releaseGroup},'')::replace({stream.title},'')";
@@ -36,7 +36,8 @@ function tierInject(){
 }
 
 /** No regex is passed to ::~: AIOStreams uses substring/array membership. */
-const SOURCE = gate('stream.quality::~REMUX',M.srcRemux)+
+const SOURCE = gate('stream.quality::~REMUX::and::stream.quality::~DVD::isfalse',M.srcRemux)+
+ gate('stream.quality::=DVD REMUX',M.srcDvdRemux)+gate('stream.quality::=HC HD-Rip',M.srcHcRip)+
  gate('stream.quality::~BluRay::and::stream.quality::~REMUX::isfalse',M.srcBluray)+
  gate('stream.quality::~CAM',M.srcCam)+gate('stream.quality::~HDTV',M.srcHdtv)+
  gate('stream.quality::=WEBRip',M.srcWebrip)+gate('stream.quality::=WEB-DL',M.srcWebdl)+
@@ -62,7 +63,8 @@ const VISUAL=gate(VISUAL_CONFLICT,'',visual) +
  gate(`stream.visualTags::~10bit::and::${hdr}::isfalse`,marker('vis10bit')) +
  gate('stream.visualTags::~AI',marker('visAi')) +
  gate('stream.editions::~IMAX Enhanced::or::stream.visualTags::~IMAX Enhanced',marker('visImaxE'),gate('stream.editions::~IMAX::or::stream.visualTags::~IMAX',marker('visImax'))) +
- gate('stream.visualTags::~3D',marker('vis3d'));
+ gate('stream.visualTags::~3D',marker('vis3d'))+
+ gate('stream.visualTags::~H-SBS',M.visSbs)+gate('stream.visualTags::~H-OU',M.visOu);
 
 export const PREFERRED_TRACKS="stream.audioTracks::where('lang={user.languages}','!lang=Unknown|Original|Multi|Dual Audio|Dubbed','!commentary','!title~commentary')";
 const usableTracks="stream.audioTracks::where('!commentary','!title~commentary')";
@@ -78,8 +80,9 @@ const canonicalAudio="::lower::replace('eac3','dd+')::replace('ac3','dd')::repla
 const values=entries=>entries.map(([value])=>`'${value}'`).join(',');
 const replacementChain=entries=>[...entries].sort((a,b)=>b[0].length-a[0].length).map(([value,atom])=>`::replace('${value.toUpperCase()}','${marker(atom)}')`).join('');
 const rawValues=values(trackCodecs);
-const TRACK_AUDIO=gate(`track.tag::in(${tagValues})`,`{track.tag::upper${replacementChain(trackTags)}}`) +
- gate(`track.tag::exists::isfalse::and::track.codec::in(${rawValues})`,`{track.codec::upper${replacementChain(trackCodecs)}}`) +
+const TRACK_AUDIO=gate('track.tags::exists',`{track.tags::keep(${tagValues})${replacementChain(trackTags)}::join('')}`,
+ gate(`track.tag::in(${tagValues})`,`{track.tag::upper${replacementChain(trackTags)}}`)) +
+ gate(`track.tags::exists::isfalse::and::track.tag::exists::isfalse::and::track.codec::in(${rawValues})`,`{track.codec::upper${replacementChain(trackCodecs)}}`) +
  gate('track.title::~Atmos',marker('audAtmos')) +
  gate('track.title::~DTS:X',marker('audDtsx'))+
  gate('stream.audioTracks::length::=1::and::stream.audioTags::~Atmos',M.audAtmos)+
@@ -93,12 +96,14 @@ const filenameAudio=[['Atmos','audAtmos'],['TrueHD','audTruehd'],['DDP','audDdpl
 const fileTagEntries=[...trackTags,['E-AC-3','audDdplus'],['DDP','audDdplus'],['AC3','audDd'],['DTS-X','audDtsx']];
 const fileAudio=`{stream.audioTags::keep(${values(fileTagEntries)})${replacementChain(fileTagEntries)}::join('')}`;
 const fallbackAudio=gate('stream.audioTags::exists',fileAudio,gate('stream.quality::exists::or::stream.resolution::exists',filenameAudio));
-const AUDIO=gate('stream.audioTracks::exists',selectedTrack(TRACK_AUDIO),fallbackAudio);
-const languageChain=languageReplaceEntries().map(([token,id])=>`::replace('${token.toUpperCase()}','${LANGUAGE_MARKERS[id]}')`).join('');
-const subtitleChain=languageReplaceEntries().map(([token,id])=>`::replace('${token.toUpperCase()}','${SUBTITLE_MARKERS[subtitleIdForLanguage(id)]}')`).join('');
+// ISO codes shorten repeated chains without broadening preferred-language
+// matching. AIOStreams keeps ES-MX and PT-BR distinct before display grouping.
+const languageCodes=LANGUAGE_CATALOG.map(({id})=>[id==='l-lat'?'ES-MX':id==='l-pt-pt'?'PT':id.slice(2).toUpperCase(),id]).sort((a,b)=>b[0].length-a[0].length);
+const languageChain=languageCodes.map(([code,id])=>`::replace('${code}','${LANGUAGE_MARKERS[id]}')`).join('');
+const subtitleChain=languageCodes.map(([code,id])=>`::replace('${code}','${SUBTITLE_MARKERS[subtitleIdForLanguage(id)]}')`).join('');
 const placeholders="'Unknown','Original','Multi','Dual Audio','Dubbed'";
 /** Exact catalog names only. keep() drops concatenated MULTI dumps so replace cannot light the whole inventory. */
-const languageNames=(list,limit)=>`{${list}::remove(${placeholders})::slice(0,${limit})::join(' ')::upper${languageChain}}`;
+const languageNames=(list,limit)=>`{${list}::remove(${placeholders})::slice(0,${limit})::languageCode::join(' ')${languageChain}}`;
 function languageMarkers(detailed){
  const limit=detailed?4:1;
  const fromTracks=gate('stream.audioTracks::exists',
@@ -111,18 +116,18 @@ function languageMarkers(detailed){
  return fromTracks+fromNames;
 }
 const SUBTITLE_MARKERS_INJECT=gate('user.languages::exists::or::user.subtitles::exists',
- `{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::join(' ')::upper${subtitleChain}}`);
-const CHANNELS=gate('stream.audioTracks::exists',selectedTrack(
-  gate('track.channels::~7.1::or::track.channels::~8.1',M.ch71)+
-  gate('track.channels::~6.1::and::track.channels::~7.1::isfalse',M.ch61)+
-  gate('track.channels::~5.1::and::track.channels::~7.1::isfalse::and::track.channels::~6.1::isfalse',M.ch51)+
-  gate('track.channels::~2.0::and::track.channels::~5.1::isfalse::and::track.channels::~6.1::isfalse::and::track.channels::~7.1::isfalse',M.ch20)
-),
- gate('stream.audioChannels::~7.1::or::stream.audioChannels::~8.1',M.ch71)+
- gate('stream.audioChannels::~6.1::and::stream.audioChannels::~7.1::isfalse',M.ch61)+
- gate('stream.audioChannels::~5.1::and::stream.audioChannels::~7.1::isfalse::and::stream.audioChannels::~6.1::isfalse',M.ch51)+
- gate('stream.audioChannels::~2.0::and::stream.audioChannels::~5.1::isfalse::and::stream.audioChannels::~6.1::isfalse::and::stream.audioChannels::~7.1::isfalse',M.ch20)
-);
+ `{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::languageCode::join(' ')${subtitleChain}}`);
+const channelFacts=[['8.1','ch81'],['7.1','ch71'],['6.1','ch61'],['5.1','ch51'],['2.1','ch21'],['2.0','ch20'],['1.0','ch10']];
+// Track channels are one exact value. File-level arrays choose one layout by
+// precedence, using flat conditions within the engine's nesting limit.
+function channelMarkers(field,single=false){return channelFacts.map(([value,atom],index)=>gate(single?`${field}::in('${value}')`:`${field}::~${value}`+channelFacts.slice(0,index).map(([higher])=>`::and::${field}::~${higher}::isfalse`).join(''),M[atom])).join('');}
+const CHANNELS=gate('stream.audioTracks::exists',selectedTrack(channelMarkers('track.channels',true)),channelMarkers('stream.audioChannels'));
+// Accessibility belongs to the same audio selection as codec/channels. Do not
+// advertise a different-language or commentary track as the chosen audio.
+const AUDIO_ACCESS=gate('track.visualImpaired::istrue::or::track.title::lower::~audio description::or::track.title::lower::~descriptive audio',M.accessAd);
+const subtitleAccess=list=>`{${list}::each('${gate('track.forced::istrue::or::track.title::lower::~forced',M.captionForced)+gate('track.hearingImpaired::istrue::or::track.title::lower::~sdh::or::track.title::lower::~hearing impaired',M.captionSdh)}')::join('')}`;
+const AUDIO=gate('stream.audioTracks::exists',selectedTrack(TRACK_AUDIO+AUDIO_ACCESS),fallbackAudio);
+const SUBTITLE_ACCESS=gate('user.subtitles::exists',subtitleAccess("stream.subtitleTracks::where('lang={user.subtitles}')"),subtitleAccess('stream.subtitleTracks'));
 /** Canonical encode names; `{? ?}` keeps separators aligned with a real value. */
 const encodeShown="{stream.encode::upper::replace('X265','HEVC')::replace('H265','HEVC')::replace('X264','AVC')::replace('H264','AVC')::replace('XVID','XviD')::replace('DIVX','DivX')}";
 
@@ -196,7 +201,7 @@ export function buildPresetFormatter(preset='compact'){
  let name=PRESET_NAME+PRESET_MARKER;
  let description=visible;
  // Source and tier share a field so native per-field scans cannot echo the source.
- const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,CHANNELS,languageMarkers(detailed),SUBTITLE_MARKERS_INJECT,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];
+const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,CHANNELS,languageMarkers(detailed),SUBTITLE_MARKERS_INJECT+SUBTITLE_ACCESS,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];
  // Find an exact two-field partition; greedy packing can reject a valid fit.
  const active=segments.filter(Boolean);
  let partition;

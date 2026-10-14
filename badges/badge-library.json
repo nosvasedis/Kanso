@@ -990,6 +990,56 @@
       "id": "sub-pa",
       "groupId": "gsub",
       "name": "PA SUB"
+    },
+    {
+      "id": "ch-81",
+      "groupId": "gc",
+      "name": "8.1"
+    },
+    {
+      "id": "ch-21",
+      "groupId": "gc",
+      "name": "2.1"
+    },
+    {
+      "id": "ch-10",
+      "groupId": "gc",
+      "name": "1.0"
+    },
+    {
+      "id": "q-hc",
+      "groupId": "grl",
+      "name": "HC HDRIP"
+    },
+    {
+      "id": "q-dvd-remux",
+      "groupId": "grl",
+      "name": "DVD REMUX"
+    },
+    {
+      "id": "v-3d-sbs",
+      "groupId": "gv",
+      "name": "3D SBS"
+    },
+    {
+      "id": "v-3d-ou",
+      "groupId": "gv",
+      "name": "3D OU"
+    },
+    {
+      "id": "a-description",
+      "groupId": "ga",
+      "name": "Audio description"
+    },
+    {
+      "id": "caption-forced",
+      "groupId": "gsub",
+      "name": "Forced subtitles"
+    },
+    {
+      "id": "caption-sdh",
+      "groupId": "gsub",
+      "name": "SDH subtitles"
     }
   ]
 }

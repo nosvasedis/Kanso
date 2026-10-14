@@ -34,6 +34,8 @@ export const RELEASE_FILTER_IDS = ["q-r", "q-b", "q-w", "q-wr", "q-cam", "q-hdtv
 
 /** @param {string} id @param {string} groupId */
 export function strokeForFilter(id, groupId) {
+  // Apple uses a white reverse on clear surfaces; black chrome disappears.
+  if (id === 's-atvp') return '#FFCDD3DB';
   try {
     return borderArgb(chromeRgb6(id, groupId));
   } catch {
@@ -164,7 +166,7 @@ export const MONO_FILTER_ORDER = {
     "a-mp3",
     "a-pcm",
   ],
-  gc: ["ch-71", "ch-61", "ch-51", "ch-20"],
+  gc: ["ch-81", "ch-71", "ch-61", "ch-51", "ch-21", "ch-20", "ch-10"],
   ge: ["ge-av1", "ge-hevc", "ge-avc", "ge-xvid", "ge-divx"],
   gl: LANGUAGE_BADGE_IDS,
   gsub: SUBTITLE_BADGE_IDS,

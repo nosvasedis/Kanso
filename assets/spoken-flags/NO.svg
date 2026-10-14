@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" viewBox="0 0 80 60"><defs><clipPath id="speech"><path d="M12 2H68Q78 2 78 12V38Q78 48 68 48H25L11 59L14 48H12Q2 48 2 38V12Q2 2 12 2Z"/></clipPath></defs><g clip-path="url(#speech)"><rect width="80" height="60" fill="#ed2939"/><svg  xmlns="http://www.w3.org/2000/svg" id="flag-icons-no" viewBox="0 0 640 480" width="80" height="48" preserveAspectRatio="none">
+  <path fill="#ed2939" d="M0 0h640v480H0z"/>
+  <path fill="#fff" d="M180 0h120v480H180z"/>
+  <path fill="#fff" d="M0 180h640v120H0z"/>
+  <path fill="#002664" d="M210 0h60v480h-60z"/>
+  <path fill="#002664" d="M0 210h640v60H0z"/>
+</svg>
+</g></svg>

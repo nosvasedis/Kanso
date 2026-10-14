@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="60" viewBox="0 0 80 60"><defs><clipPath id="speech"><path d="M12 2H68Q78 2 78 12V38Q78 48 68 48H25L11 59L14 48H12Q2 48 2 38V12Q2 2 12 2Z"/></clipPath></defs><g clip-path="url(#speech)"><rect width="80" height="60" fill="#ffffff"/><svg  xmlns="http://www.w3.org/2000/svg" id="flag-icons-jp" viewBox="0 0 640 480" width="80" height="48" preserveAspectRatio="none">
+  <defs>
+    <clipPath id="jp-a">
+      <path fill-opacity=".7" d="M-88 32h640v480H-88z"/>
+    </clipPath>
+  </defs>
+  <g fill-rule="evenodd" stroke-width="1pt" clip-path="url(#jp-a)" transform="translate(88 -32)">
+    <path fill="#fff" d="M-128 32h720v480h-720z"/>
+    <circle cx="523.1" cy="344.1" r="194.9" fill="#bc002d" transform="translate(-168.4 8.6)scale(.76554)"/>
+  </g>
+</svg>
+</g></svg>

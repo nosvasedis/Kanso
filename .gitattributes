@@ -1,0 +1,5 @@
+# Retain vendor SVG and license bytes for provenance. Source formatting includes
+# trailing spaces; authored project files still receive normal whitespace checks.
+assets/badge-sources/*.svg whitespace=-blank-at-eol
+assets/fonts/OFL-Manrope.txt whitespace=-blank-at-eol
+sync-ui/fonts/OFL-Manrope.txt whitespace=-blank-at-eol

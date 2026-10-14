@@ -20,6 +20,7 @@ import {
 } from "./tier-group-sync.mjs";
 import { pushAllGists } from "./gist-push.mjs";
 import { githubToken, loadGistConfig, parseGistId, resolveGistTargets } from "./gist-config.mjs";
+import {PRESET_SKINS} from './preset-badges.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const UI_DIR = path.join(ROOT, "sync-ui");
@@ -28,7 +29,7 @@ const PORT = Number(process.env.SYNC_PORT) || 3847;
 
 const DEFAULT_CONFIG = {
   gistUrl: "",
-  gistFilename: "kanso-solid.json",
+  gistFilename: "kanso-solid.json", // legacy single-gist setting maps to Solid
   nuvioNotes: "",
   /** Groups to never auto-remove (strict sync). Case-insensitive. */
   neverRemoveGroups: [],
@@ -70,6 +71,7 @@ function json(res, status, body) {
 }
 
 function mime(filePath) {
+  if (filePath.endsWith(".ttf")) return "font/ttf";
   if (filePath.endsWith(".css")) return "text/css; charset=utf-8";
   if (filePath.endsWith(".js")) return "application/javascript; charset=utf-8";
   if (filePath.endsWith(".html")) return "text/html; charset=utf-8";
@@ -169,13 +171,9 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (url.pathname === "/api/badges-json" && req.method === "GET") {
-      const which = url.searchParams.get("which") ?? "solid";
-      const filePath =
-        which === "mono"
-          ? MONO_BADGES_PATH
-          : which === "transparent"
-            ? TRANSPARENT_BADGES_PATH
-            : SOLID_BADGES_PATH;
+      const which = url.searchParams.get("which") ?? "outline";
+      if(!PRESET_SKINS.includes(which))return json(res,400,{ok:false,error:'Unknown badge skin'});
+      const filePath=path.join(ROOT,`kanso-${which}.json`);
       const raw = await fs.readFile(filePath, "utf8");
       return json(res, 200, { ok: true, which, content: raw });
     }
@@ -198,7 +196,7 @@ const server = http.createServer(async (req, res) => {
       const config = await loadGistConfig();
       const token = await githubToken();
       const targets = resolveGistTargets(config);
-      const themes = ["solid", "transparent", "mono"].map((theme) => ({
+      const themes = PRESET_SKINS.map((theme) => ({
         theme,
         url: targets[theme].url,
         gistId: parseGistId(targets[theme].url),

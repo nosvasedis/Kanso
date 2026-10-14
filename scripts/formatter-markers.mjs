@@ -50,6 +50,11 @@ function* generateTripletMarkers() {
       }
     }
   }
+  // Extend only after exhausting the original namespace, preserving every
+  // existing allocation. U+200C is invisible and survives Nuvio's trim().
+  const extended=[...TRIPLET_BASES,0x200c];
+  for(const a of extended)for(const b of extended)for(const c of extended)
+    if([a,b,c].includes(0x200c))yield String.fromCharCode(a,b,c)+MARKER_SEPARATOR;
 }
 
 /** @param {string} haystack @param {string} needle */
@@ -299,6 +304,14 @@ for (const id of LANGUAGE_BADGE_IDS) {
 for (const id of SUB_BADGE_IDS) {
   BADGE_MARKERS[id] = SUBTITLE_MARKERS[id];
 }
+// Append extension atoms after the existing allocation. Never move old tier,
+// language or audio atoms when adding new channel facts.
+const extensionAtoms=['ch81','ch21','ch10','srcHcRip','srcDvdRemux','visSbs','visOu','accessAd','captionForced','captionSdh'];
+const extensionMarkers=allocateMarkers(allocated.length+extensionAtoms.length).slice(allocated.length);
+for(let n=0;n<extensionAtoms.length;n++)MARKER_ATOMS[extensionAtoms[n]]=extensionMarkers[n];
+BADGE_MARKERS['ch-81']=['ch81'];BADGE_MARKERS['ch-21']=['ch21'];BADGE_MARKERS['ch-10']=['ch10'];
+const extensionBadges={'q-hc':'srcHcRip','q-dvd-remux':'srcDvdRemux','v-3d-sbs':'visSbs','v-3d-ou':'visOu','a-description':'accessAd','caption-forced':'captionForced','caption-sdh':'captionSdh'};
+for(const [id,atom] of Object.entries(extensionBadges))BADGE_MARKERS[id]=[atom];
 
 /** Resolve atom key or raw marker string. @param {string | string[]} ref */
 export function resolveMarkerRef(ref) {
@@ -483,11 +496,14 @@ export const V2_INJECT_IMPLEMENTED_IDS = new Set([
   "a-aac",
   "a-mp3",
   "a-pcm",
-  // Phase 3 — gc (4)
+  // Phase 3 — gc (7)
+  "ch-81",
   "ch-71",
   "ch-61",
   "ch-51",
+  "ch-21",
   "ch-20",
+  "ch-10",
   // Phase 4 — gms (20)
   "web-6",
   "web-5",
@@ -546,6 +562,7 @@ export const V2_INJECT_IMPLEMENTED_IDS = new Set([
   "edition-bw",
   "edition-true-hue",
   "edition-theatrical",
+  'q-hc','q-dvd-remux','v-3d-sbs','v-3d-ou','a-description','caption-forced','caption-sdh',
 ]);
 
 /**
@@ -553,6 +570,9 @@ export const V2_INJECT_IMPLEMENTED_IDS = new Set([
  * @type {Record<string, string[]>}
  */
 export const V2_PATTERN_MARKER_EXCLUSIONS = {
+  'v-3d':['visSbs','visOu'],
+  'v-3d-sbs':['visOu'],
+  'v-3d-ou':['visSbs'],
   "v-dv-hdr10": ["visHdr10p"],
   "v-dv-hdr": ["visHdr10p", "visHdr10"],
   "v-hdr10": ["drDv"],
@@ -674,7 +694,7 @@ export function validateMarkerRegistry() {
     }
   }
 
-  const expected = Object.values(MONO_FILTER_ORDER).flat().length;
+  const expected = Object.values(MONO_FILTER_ORDER).flat().length+Object.keys(extensionBadges).length;
   if (ALL_V2_BADGE_IDS.length !== expected) {
     errors.push(`Expected ${expected} badge IDs, got ${ALL_V2_BADGE_IDS.length}`);
   }

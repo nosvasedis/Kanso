@@ -4,6 +4,7 @@
  */
 import { streamingBrandRgb6 } from "./streaming-brand-colors.mjs";
 import { specialTagRgb6 } from "./special-tag-colors.mjs";
+import {contrast} from './badge-color-utils.mjs';
 
 export const CHROME = {
   seadex: "6A1B9A",
@@ -86,7 +87,6 @@ export function borderArgb(rgb6) {
 
 /** @param {string} rgb6 */
 export function solidInkForRgb6(rgb6) {
-  return SOLID_DARK_INK.has(rgb6.replace("#", "").slice(0, 6).toUpperCase())
-    ? "#000000"
-    : "#FFFFFF";
+  const rgb=rgb6.replace('#','').slice(0,6);
+  return contrast('000000',rgb)>=contrast('FFFFFF',rgb)?'#000000':'#FFFFFF';
 }

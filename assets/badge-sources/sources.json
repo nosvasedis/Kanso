@@ -1,0 +1,138 @@
+{
+  "dts.png": {
+    "url": "https://dts.com/wp-content/themes/dts-master-theme/assets/img/DTS-Logo.png",
+    "bytes": 4250,
+    "sha256": "db4a35f649c9194439f48fb05e99066b38eb5d71e86206aab937401c588afc3c"
+  },
+  "hdr10plus.png": {
+    "url": "https://hdr10plus.org/wp-content/uploads/2023/10/cropped-header_logo.png",
+    "bytes": 31690,
+    "sha256": "b179e72d889f23eec7cfbb471d8df1d8312839fa034ac387edcbeffd9219acff"
+  },
+  "opus.svg": {
+    "url": "https://opus-codec.org/assets/img/opus-logo.svg",
+    "bytes": 9461,
+    "sha256": "ab2480e12b99807f8124fec7bf218ac8a41995b0ba7d51fef4100a21b2bbb2e4"
+  },
+  "bluray.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Blu-ray_Disc.svg",
+    "bytes": 8276,
+    "sha256": "575bfcc076b9b137c71b3aa039c1ac1aa2d0fcfb667774496250b82a0dc2d7b1"
+  },
+  "criterion.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/The_Criterion_Collection_Logo.svg",
+    "bytes": 588,
+    "sha256": "f2d4b6908fe37e3d5446646ca1766df715d0ccf4be8ca853711fd18d5b83ea1d"
+  },
+  "hdr10.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/HDR_10_logo_(black).svg",
+    "bytes": 1805,
+    "sha256": "85b9fbdc469fccfc28765f4c9edaf1b07181fe6b9eb41741e7cfa2e782acf0cc"
+  },
+  "flac.gif": {
+    "url": "https://xiph.org/flac/images/logo130.gif",
+    "bytes": 3895,
+    "sha256": "42d50acd99b09ff7d49a902807e4d8750c0dd363f24120d3a3de32f730148f40"
+  },
+  "apple-tv.svg": {
+    "url": "https://hdr10plus.org/wp-content/uploads/2025/11/Apple_TV_Logo_Wht_CI_082925.svg",
+    "bytes": 1633,
+    "sha256": "288efa17f5fb8788c4c9d9e9c494faa59b69ff71c5b4ad4c25aad3b94b819f4b"
+  },
+  "disney.png": {
+    "url": "https://hdr10plus.org/wp-content/uploads/2025/10/DisneyLogo_2024_VECTOR_White_RGB-scaled.png",
+    "bytes": 19841,
+    "sha256": "0762101fc520aad6328704f376c231ddf67760ed8ca366929088bb78661835a2"
+  },
+  "netflix.png": {
+    "url": "https://hdr10plus.org/wp-content/uploads/2025/04/Netflix_logo_white.png",
+    "bytes": 10776,
+    "sha256": "78190e7e6650291d5366ec7eb2df4e1b01617b1668ddac381c0461f8fd441503"
+  },
+  "prime.png": {
+    "url": "https://hdr10plus.org/wp-content/uploads/2023/12/prime.png",
+    "bytes": 6385,
+    "sha256": "0ae92aff1eb445f117272c0649fcd7d85f8157123a99e8baf9ddd9543de8e9dd"
+  },
+  "hulu.png": {
+    "url": "https://hdr10plus.org/wp-content/uploads/2023/12/hulu.png",
+    "bytes": 2208,
+    "sha256": "7ee1bce0fac393f5d2a74dc403e2dd408a4092d8f10d2b6d5afc4ee2c6369af3"
+  },
+  "paramount.png": {
+    "url": "https://hdr10plus.org/wp-content/uploads/2023/12/paramount.png",
+    "bytes": 6949,
+    "sha256": "2e2e5283856ea2894db81fde1059cfa309dcd7552e4789fd9e827845cf6e1a0b"
+  },
+  "dolby.svg": {
+    "url": "https://www.dolby.com/globalassets/logo/dolby_logo_white.svg",
+    "bytes": 3698,
+    "sha256": "f22a696cb2c15818f2c980da683aac44b05d8b6607ae5d3a8072053b84c9d710"
+  },
+  "dolby-vision.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Dolby_Vision_2021_logo.svg",
+    "bytes": 4131,
+    "sha256": "7cce88489ff3d8d27642cd0e7eed61d0cfb4eff1c866bc3250bbb88e143395eb"
+  },
+  "dolby-atmos.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Logo_Dolby_Atmos.svg",
+    "bytes": 5631,
+    "sha256": "41573e5e5d9b419aeedd2a9da56f1459408beff8eed5e53bee68c5f73c07ead1"
+  },
+  "dolby-truehd.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Dolby_TrueHD.svg",
+    "bytes": 7314,
+    "sha256": "41a13b3b99138d13d83262aaa3acdfa8f1e736024327e1601eabc937fdb4ca2a"
+  },
+  "dolby-digital-plus.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Dolby-Digital-Plus.svg",
+    "bytes": 5446,
+    "sha256": "a2f3b84070cdedd60cc4721c265fc1a423a670b72920b0faa2489ee827b431c8"
+  },
+  "dolby-digital.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Dolby-Digital.svg",
+    "bytes": 4336,
+    "sha256": "02ef59d19c7ac5facdb1776f3697cea6c76d29590815e0cd655440b879c1642f"
+  },
+  "dts-ma.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/DTS-HD-MA.svg",
+    "bytes": 12261,
+    "sha256": "07965a85011102d5135d4f2a193508c49e5b36465c4bfa5000dd7d94dc8c8f08"
+  },
+  "hbo-max.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/HBO_Max_May_2025_(Horizontal).svg",
+    "bytes": 3923,
+    "sha256": "bb7bd106b8eab3e2d4a99f1fb543409763ca64a0dad57cdd7a60cb77e3b3cd2f"
+  },
+  "crunchyroll.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Crunchyroll_2024.svg",
+    "bytes": 3864,
+    "sha256": "aaac22356b346c60e49e63a93123df2a6c2108b7b0a66bf2246ff350db839476"
+  },
+  "peacock.jpg": {
+    "url": "https://www.peacocktv.com/dam/growth/assets/Logos/peacock-logo-contentpromo-2026.jpg",
+    "bytes": 24362,
+    "sha256": "f39c0e95721105404858e1ff0f15ff0f0b2f2102eebe0d8616fc4bd806b91631"
+  },
+  "imax.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1c/IMAX_blue_logo.svg",
+    "bytes": 1813,
+    "sha256": "2b276f66362bece821ad2f46280a3b3d273613029846b7608f31ae0b3a2907f0"
+  },
+  "dts-x.png": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/DTS_X_B%26W.png",
+    "bytes": 19081,
+    "sha256": "cae69519c22d02b16509fa1eace6ef45996733ce3626cf72a926f4122e89a9c5"
+  },
+  "hdr10plus.svg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/HDR10%2B_Logo.svg",
+    "reference": "https://commons.wikimedia.org/wiki/File:HDR10%2B_Logo.svg",
+    "originalSource": "https://image-us.samsung.com/SamsungUS/samsung/us/tvs/2021LSP9PremiereLaserProjectorSpecSheetv2.pdf",
+    "author": "Samsung Group",
+    "license": "CC-BY-SA-4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Recolored to flat single ink for badge rendering; no shadow.",
+    "bytes": 19964,
+    "sha256": "9619f73c4c3f26ac5b6439a08957cb718f0c0bd74114ad0790e5aa153bdecb82"
+  }
+}

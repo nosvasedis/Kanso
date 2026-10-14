@@ -1,0 +1,195 @@
+{
+  "licenseUrl": "https://raw.githubusercontent.com/lipis/flag-icons/main/LICENSE",
+  "flags": {
+    "EN": {
+      "country": "gb",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/gb.svg",
+      "sha256": "c8be1e7208798a4ae692ee1e937065d498bb29e741943f6172b29118b8ed8066"
+    },
+    "ES": {
+      "country": "es",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/es.svg",
+      "sha256": "f9cfaff858e95f830733ade9591037b5322dfb5827a53b70956a3d190bb49b9a"
+    },
+    "FR": {
+      "country": "fr",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/fr.svg",
+      "sha256": "a526851c372e3372b1596be71af355ea72b1650bbc4c06e6e2c226900d3de6cc"
+    },
+    "DE": {
+      "country": "de",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/de.svg",
+      "sha256": "efd480af5a154a7651f29da23ee0d09dbc892410fb4041898ddf8face336c575"
+    },
+    "IT": {
+      "country": "it",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/it.svg",
+      "sha256": "9fa88118818d9b64838f578e2babcca3d0630aed21b5c33b34aff7ac5ce506bc"
+    },
+    "PT": {
+      "country": "pt",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/pt.svg",
+      "sha256": "a7a2cf0b44aaaaf4f3bdc0ee0fa308ec7085bdfedd3f72da1473d43fd2a569fb"
+    },
+    "TR": {
+      "country": "tr",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/tr.svg",
+      "sha256": "256a1d6afbedb9f731566982331a1cd1ad14aba211b8a61d338855879505e74f"
+    },
+    "PL": {
+      "country": "pl",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/pl.svg",
+      "sha256": "06687a4b90fc00195d0795aea1c26a9f73f1b6ea6a76e358724b2f1f32b7c8f4"
+    },
+    "UK": {
+      "country": "ua",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/ua.svg",
+      "sha256": "b7892e2bee1b25eb5407d6f5249b020dcece29ee1c9cc1a8a6a10c4f38ce6801"
+    },
+    "ID": {
+      "country": "id",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/id.svg",
+      "sha256": "5cd3acc4939dd7eae6318c8d75df8c0d1733f650e2504a2635b0dbf3dfabb040"
+    },
+    "TH": {
+      "country": "th",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/th.svg",
+      "sha256": "329cc0d520536d6eb4b9304105f23650c2d02bbdba8f8696e996dbf166de6f2e"
+    },
+    "VI": {
+      "country": "vn",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/vn.svg",
+      "sha256": "2355037201315d74581ab0ad60b5587a29a087d26b0525bdeb8676e64fae5b86"
+    },
+    "JA": {
+      "country": "jp",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg",
+      "sha256": "bfea80baf9989383dc4bf7ca594ed95be0df0ff125bfc88d0bfa878eb0198022"
+    },
+    "KO": {
+      "country": "kr",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/kr.svg",
+      "sha256": "7a6cd5b51d0e2841ed8b79b1147ad8a66cf3c09f6344d4a63b5e4413ffa5d15b"
+    },
+    "ZH": {
+      "country": "cn",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/cn.svg",
+      "sha256": "981da9bdf82d48e31691f20578cefcb26cf7d0bd95e4ebd5c0df00bdfe988c1a"
+    },
+    "IN": {
+      "country": "in",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/in.svg",
+      "sha256": "91185efa1a9b52cdc0e470712518efeefc4e4d6a6555bae9de997ba71885bb98"
+    },
+    "AR": {
+      "country": "sa",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/sa.svg",
+      "sha256": "5738c8cfca5fea63587cbcf69237996c8ce6283f8016853150686f37311b620e"
+    },
+    "RU": {
+      "country": "ru",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/ru.svg",
+      "sha256": "7100aaae51ff3b6a2bf0ca932b3bc518bdc760814725e7cca31d821a26c3dd7c"
+    },
+    "EL": {
+      "country": "gr",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/gr.svg",
+      "sha256": "a184070f7678b06777be8ac38cb05ba41829591a6dac9b64b2b72db66aec82f5"
+    },
+    "SV": {
+      "country": "se",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/se.svg",
+      "sha256": "b3b5071e6c1d4a0e3db828bab5c7dfd68d0e90fcf3b25b15e9a2c4f96c1f79c9"
+    },
+    "NL": {
+      "country": "nl",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/nl.svg",
+      "sha256": "8f691f17fe70894537af8e92f2ca47761d353639b0defc15cbe561eb503ab010"
+    },
+    "DA": {
+      "country": "dk",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/dk.svg",
+      "sha256": "d2847c0bd7a1fb97977ee51f2f618c5ebc5898dd66ef9804f187613c27bdca1a"
+    },
+    "NO": {
+      "country": "no",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/no.svg",
+      "sha256": "ceea17af051dceefd5759a824213eb40ac8a8095aa88a6874a7bbc8de637357a"
+    },
+    "FI": {
+      "country": "fi",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/fi.svg",
+      "sha256": "012edd984cf1879463c2855b7df02dea2f7de7f7a66b244fb1e22b4227f7aa65"
+    },
+    "CS": {
+      "country": "cz",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/cz.svg",
+      "sha256": "d601fcc2e5b1fd48b79d53c55108af4c0e90793f146db51f3ee449d8d69512bc"
+    },
+    "SK": {
+      "country": "sk",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/sk.svg",
+      "sha256": "578d0693bc95214334248b47c5719dd01cfc9839bd909a726df045d499fabbb6"
+    },
+    "HU": {
+      "country": "hu",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/hu.svg",
+      "sha256": "4891ce591bf29b5b68609c29d973a30f1ef109032d8dab369208d0d5f615bc74"
+    },
+    "RO": {
+      "country": "ro",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/ro.svg",
+      "sha256": "17a3a747fc5e63302aaa670a667e5812f3676f46768e5a3e87b254bd41762840"
+    },
+    "BG": {
+      "country": "bg",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/bg.svg",
+      "sha256": "b6d979fc96dc6b46c1697a5e05ecfe1fac1fa912ed480ca7a2a9b450f087faf6"
+    },
+    "HR": {
+      "country": "hr",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/hr.svg",
+      "sha256": "3c98eae5ee93f0d75e10170beb96e26908830e2e6f7f7af2a4b281a097aeb946"
+    },
+    "SR": {
+      "country": "rs",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/rs.svg",
+      "sha256": "b6e08e2eca1ec4c287e5d5d7c36d7d4ad9503ad030133b04cf315f95ab49961c"
+    },
+    "SL": {
+      "country": "si",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/si.svg",
+      "sha256": "3a5e0cac44baaea6b6d8e91054844b6ea72764f6dbe363c11ea11fd81203733a"
+    },
+    "ET": {
+      "country": "ee",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/ee.svg",
+      "sha256": "25642310e287fbdc02e1ac3e0e08fadca9a32eae195f67b6863bf0fc6247176b"
+    },
+    "LV": {
+      "country": "lv",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/lv.svg",
+      "sha256": "d0d1ac1c0e301f808be3db32bcd7cdbc8986b6ec15574f557f440caed8b7bb31"
+    },
+    "LT": {
+      "country": "lt",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/lt.svg",
+      "sha256": "dc0401993f6e14b3a58fa496d874b95dfcb58614052a868b14492166782c1006"
+    },
+    "HE": {
+      "country": "il",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/il.svg",
+      "sha256": "04a099ac4370b5e856f5f8d44ce0822ec47a6d3bc395a7d048d3a46d69274d68"
+    },
+    "FA": {
+      "country": "ir",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/ir.svg",
+      "sha256": "cb363e09bafbff6de7c2fba6a002ca33f0563dc83a2328d34adb492cf80ca629"
+    },
+    "MS": {
+      "country": "my",
+      "url": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/my.svg",
+      "sha256": "bb30e84a099d2d9dc286ab091bdd40ae7a8e332eb49827f2df4f11803e613667"
+    }
+  }
+}

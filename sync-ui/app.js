@@ -225,11 +225,11 @@ async function refreshGistStatus() {
     const data = await api("/api/gist-status");
     if (data.canPush) {
       el.textContent =
-        "Ready to publish Compact + Detailed to all three gists. Publish repository assets/formatters first.";
+        "Ready to publish Compact + Detailed to all four gists. Publish repository assets/formatters first.";
       el.className = "gist-status ready";
     } else if (data.hasToken) {
       const configured = data.themes?.filter((t) => t.gistId).length ?? 0;
-      el.textContent = `${configured}/3 gist URLs configured.`;
+      el.textContent = `${configured}/4 gist URLs configured.`;
       el.className = "gist-status";
     } else if (data.themes?.some((t) => t.gistId)) {
       el.textContent = "Gist URLs saved — add GITHUB_TOKEN to .env to enable auto-push.";

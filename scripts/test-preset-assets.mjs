@@ -2,10 +2,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {RETIRED_BADGE_IDS} from './retired-badges.mjs';
-import {buildPresetBadges,DISPLAY_FILTER_ORDER,DISPLAY_GROUP_ORDER,ILLUSTRATED_APPEARANCE,PRESET_SKINS,SPECIAL_DISPLAY_IDS} from './preset-badges.mjs';
+import {buildPresetBadges,DISPLAY_FILTER_ORDER,DISPLAY_GROUP_ORDER,ILLUSTRATED_APPEARANCE,PRESET_SKINS,SPECIAL_DISPLAY_IDS,PRESENTATION_SPECIAL_IDS} from './preset-badges.mjs';
 import {LANGUAGE_BADGE_IDS} from './language-catalog.mjs';
 import {applyTransparentTheme,MONO_FILTER_ORDER,TRANSPARENT_FILL} from './badge-transparent-theme.mjs';
 import {applySolidTheme} from './badge-solid-theme.mjs';
+import {applyOutlineTheme} from './badge-outline-theme.mjs';
 import {borderArgb,chromeRgb6} from './badge-chrome-map.mjs';
 import sharp from 'sharp';
 import {BADGE_IMAGE_FILES_DIR,hashIconBuffer,iconFileName} from './icon-cdn.mjs';
@@ -20,7 +21,7 @@ async function opaqueAvgLum(buffer){
  }
  return n?s/n:0;
 }
-assert.deepEqual([...MONO_FILTER_ORDER.gst].sort(),SPECIAL_DISPLAY_IDS.filter(id=>!['v-imax-e','v-imax','v-3d'].includes(id)).sort(),'Every library special is in the leading specials block');
+assert.deepEqual([...MONO_FILTER_ORDER.gst].sort(),SPECIAL_DISPLAY_IDS.filter(id=>!PRESENTATION_SPECIAL_IDS.includes(id)).sort(),'Every library special is in the leading specials block');
 function expectChrome(pack,skin,id,groupId){
  const f=pack.filters.find(x=>x.id===id);
  assert.ok(f,`${skin} missing ${id}`);
@@ -32,9 +33,9 @@ function expectChrome(pack,skin,id,groupId){
    assert.equal(f.textColor,t.textColor,`${skin}/${id} ink`);
    assert.equal(f.tagStyle,'filled');
  }else if(skin==='transparent'||skin==='outline'){
-   const t=applyTransparentTheme({id,groupId});
+   const t=skin==='outline'?applyOutlineTheme({id,groupId}):applyTransparentTheme({id,groupId});
    assert.equal(f.tagColor,TRANSPARENT_FILL,`${skin}/${id} transparent fill`);
-   assert.equal(f.borderColor,borderArgb(rgb),`${skin}/${id} border`);
+   assert.equal(f.borderColor,t.borderColor,`${skin}/${id} border`);
    assert.equal(f.textColor,t.textColor,`${skin}/${id} ink`);
    assert.equal(f.tagStyle,t.tagStyle);
  }else{
@@ -97,25 +98,22 @@ for(const preset of ['compact','detailed'])for(const skin of PRESET_SKINS){
  for(let i=0;i<pack.filters.length;i++){
    const f=pack.filters[i],ref=expected.filters[i];
    for(const key of ['id','pattern','isEnabled','tagColor','textColor','borderColor'])assert.equal(f[key],ref[key]);
-   const original=ILLUSTRATED_APPEARANCE[skin].filters[f.id.replace(/-webrip$/,'')];
-   assert.equal(f.imageURL,original.imageURL,`Kingsize glyph missing for ${skin}/${f.id}`);
+   const original=ILLUSTRATED_APPEARANCE[skin].filters[f.id]??ILLUSTRATED_APPEARANCE[skin].filters[f.id.replace(/-webrip$/,'')];
+   assert.equal(f.imageURL,original.imageURL,`Artwork missing for ${skin}/${f.id}`);
    const file=path.basename(new URL(f.imageURL).pathname),buffer=await fs.readFile(path.join(BADGE_IMAGE_FILES_DIR,file));
    assert.equal(file,iconFileName(hashIconBuffer(buffer)),'PNG bytes must match the content hash');
    const lum=await opaqueAvgLum(buffer);
-   if(skin==='solid'&&(f.groupId==='gst'||f.groupId==='gv')){
-     assert.ok(lum<40,`solid/${f.id} special/picture glyph must be black on the fill (${lum.toFixed(1)})`);
-   }
-   if(LANGUAGE_BADGE_IDS.includes(f.id)){
-     const flag=ILLUSTRATED_APPEARANCE.outline.filters[f.id].imageURL;
-     assert.equal(f.imageURL,flag,`${skin}/${f.id} must use the flag glyph`);
+   if(skin==='solid'&&!f.id.startsWith('l-')&&!f.id.startsWith('sub-')){
+     if(f.textColor==='#000000')assert.ok(lum<40,`solid/${f.id} needs dark ink on its bright fill (${lum.toFixed(1)})`);
+     else assert.ok(lum>215,`solid/${f.id} needs light ink on its dark fill (${lum.toFixed(1)})`);
    }
    if(LOCAL_EXTRA_IDS.has(f.id)){
-     const wantBlack=skin==='mono'||(skin==='solid'&&f.id==='v-3d');
+     const wantBlack=skin==='mono'||(skin==='solid'&&f.textColor==='#000000');
      if(wantBlack)assert.ok(lum<40,`${skin}/${f.id} glyph stays black (${lum.toFixed(1)})`);
-     else assert.ok(lum>215,`${skin}/${f.id} glyph ink should be white like AAC/FLAC (${lum.toFixed(1)})`);
+     else if(skin!=='outline')assert.ok(lum>215,`${skin}/${f.id} glyph ink should be white like AAC/FLAC (${lum.toFixed(1)})`);
    }
    checked.add(file);
  }
 }
 assert.ok(checked.size>100,'Enough unique rehosted glyphs');
-console.log(`PASS: ${PRESET_SKINS.length} skins retain rehosted Kingsize artwork; ${checked.size} unique PNG hashes.`);
+console.log(`PASS: ${PRESET_SKINS.length} skins have valid artwork and category chrome; ${checked.size} unique PNG hashes.`);

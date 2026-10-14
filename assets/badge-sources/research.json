@@ -1,0 +1,144 @@
+[
+  {
+    "page": "https://www.dolby.com/technologies/dolby-atmos/",
+    "status": 200,
+    "assets": [
+      "https://www.dolby.com/globalassets/ari-assets/atmos_background2_16x9.jpg",
+      "https://www.dolby.com/siteassets/technologies/dolby-atmos/atmos-2.jpg",
+      "https://www.dolby.com/siteassets/technologies/dolby-atmos/banner-atmos-r.jpg?width=1440&quality=80",
+      "https://www.dolby.com/globalassets/logo/dolby_logo_white.svg",
+      "https://www.dolby.com/siteassets/navigation/new-social-media-icons/x-logo-2.svg"
+    ]
+  },
+  {
+    "page": "https://www.dolby.com/technologies/dolby-vision/",
+    "status": 200,
+    "assets": [
+      "https://www.dolby.com/siteassets/technologies/dolby-vision/01_vision_still.png",
+      "https://www.dolby.com/globalassets/logo/dolby_logo_white.svg",
+      "https://www.dolby.com/siteassets/navigation/new-social-media-icons/x-logo-2.svg"
+    ]
+  },
+  {
+    "page": "https://www.dolby.com/technologies/dolby-truehd/",
+    "status": 200,
+    "assets": [
+      "https://www.dolby.com/globalassets/logo/dolby_logo_white.svg",
+      "https://www.dolby.com/siteassets/navigation/new-social-media-icons/x-logo-2.svg"
+    ]
+  },
+  {
+    "page": "https://www.dolby.com/technologies/dolby-digital-plus/",
+    "status": 200,
+    "assets": [
+      "https://www.dolby.com/globalassets/logo/dolby_logo_white.svg",
+      "https://www.dolby.com/siteassets/navigation/new-social-media-icons/x-logo-2.svg"
+    ]
+  },
+  {
+    "page": "https://www.dolby.com/technologies/dolby-digital/",
+    "status": 200,
+    "assets": [
+      "https://www.dolby.com/globalassets/logo/dolby_logo_white.svg",
+      "https://www.dolby.com/siteassets/navigation/new-social-media-icons/x-logo-2.svg"
+    ]
+  },
+  {
+    "page": "https://news.dolby.com/en-WW/assets/categories/1219/",
+    "error": "fetch failed",
+    "assets": []
+  },
+  {
+    "page": "https://dts.com/dtsx/",
+    "status": 200,
+    "assets": []
+  },
+  {
+    "page": "https://dts.com/patents-automotive/",
+    "status": 200,
+    "assets": [
+      "https://dts.com/wp-content/themes/dts-master-theme/assets/img/a-part-of-xperi-logo-4.png",
+      "https://dts.com/wp-content/themes/dts-master-theme/assets/img//DTS-Logo.png"
+    ]
+  },
+  {
+    "page": "https://www.imaxenhanced.com/",
+    "status": 403,
+    "assets": []
+  },
+  {
+    "page": "https://www.imax.com/",
+    "status": 403,
+    "assets": []
+  },
+  {
+    "page": "https://www.peacocktv.com/",
+    "status": 200,
+    "assets": [
+      "https://www.peacocktv.com/static/peacock-toolkit/53.4.0/peacock/favicons/favicon_16x16.png",
+      "https://www.peacocktv.com/static/peacock-toolkit/53.4.0/peacock/favicons/favicon_32x32.png",
+      "https://www.peacocktv.com/static/peacock-toolkit/53.4.0/peacock/favicons/apple-touch-icon_32x32.png",
+      "https://www.peacocktv.com/static/peacock-toolkit/53.4.0/peacock/favicons/apple-touch-icon_120x120.png",
+      "https://www.peacocktv.com/static/peacock-toolkit/53.4.0/peacock/favicons/apple-touch-icon_152x152.png",
+      "https://www.peacocktv.com/static/peacock-toolkit/53.4.0/peacock/favicons/apple-touch-icon_180x180.png",
+      "https://www.peacocktv.com/dam/commerce/assets/partners/logo-peacock-social-1200x628.jpg",
+      "https://www.peacocktv.com/dam/growth/assets/Logos/peacock-logo-contentpromo-2026.jpg?downsize=3840%3A*&output-format=webp&output-quality=75"
+    ]
+  },
+  {
+    "page": "https://www.crunchyroll.com/about",
+    "status": 403,
+    "assets": []
+  },
+  {
+    "page": "https://hdr10plus.org/",
+    "status": 200,
+    "assets": [
+      "https://hdr10plus.org/wp-content/uploads/2025/11/HDR10_Logo_Color_Final_Alt.jpg",
+      "https://hdr10plus.org/wp-content/uploads/2023/11/hdr10-fav-150x150.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/11/hdr10-fav.png",
+      "https://hdr10plus.org/wp-content/uploads/2026/05/home-outline.png",
+      "https://hdr10plus.org/wp-content/uploads/2026/04/cropped-header_logo_advanced.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/cropped-header_logo.png",
+      "https://hdr10plus.org/wp-content/uploads/2026/04/hdr10_gaming.png",
+      "https://hdr10plus.org/wp-content/themes/hdr10plus/dist/img/menu.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/menu.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/menu-close.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/home-entertaiment-rings-of-power.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/entertaiment.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/descendent.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/gaming.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/play_button.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/11/descendent.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/left_arrow.png",
+      "https://hdr10plus.org/wp-content/uploads/2025/11/Apple_TV_Logo_Wht_CI_082925.svg",
+      "https://hdr10plus.org/wp-content/uploads/2025/10/DisneyLogo_2024_VECTOR_White_RGB-scaled.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/hulu.png",
+      "https://hdr10plus.org/wp-content/uploads/2025/04/Netflix_logo_white.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/prime.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/youtube.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/paramount.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/rakuten-tv.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/watcha.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/tving.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/magenta-tv.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/megogo.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/12/IVI_logo_crop.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/right_arrow.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/11/drag_icon.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/sdr_logo.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/hdr_logo.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/building_icon.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/11/adopters_icon.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/slide_logo.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/search_icon.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/10/faq_open.png",
+      "https://hdr10plus.org/wp-content/uploads/2023/11/form_icon.png"
+    ]
+  },
+  {
+    "page": "https://releases.moe/",
+    "status": 200,
+    "assets": []
+  }
+]
