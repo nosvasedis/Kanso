@@ -115,8 +115,8 @@ function languageMarkers(detailed){
      languageNames('stream.languages',limit)));
  return fromTracks+fromNames;
 }
-const SUBTITLE_MARKERS_INJECT=gate('user.languages::exists::or::user.subtitles::exists',
- `{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::languageCode::join(' ')${subtitleChain}}`);
+// keep() emits nothing for an empty preference list, so an outer gate is redundant.
+const SUBTITLE_MARKERS_INJECT=`{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::languageCode::join(' ')${subtitleChain}}`;
 const channelFacts=[['8.1','ch81'],['7.1','ch71'],['6.1','ch61'],['5.1','ch51'],['2.1','ch21'],['2.0','ch20'],['1.0','ch10']];
 // Track channels are one exact value. File-level arrays choose one layout by
 // precedence, using flat conditions within the engine's nesting limit.
@@ -149,10 +149,10 @@ const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.sead
 // and stars are neutral, so a later U+200F badge marker could choose RTL.
 export const TITLE_LTR_ANCHOR='\u200e';
 const debridType="stream.type::in('debrid','usenet','stremio-usenet')";
-const TITLE_CACHE=gate(debridType,gate('service.cached::istrue','⚡ ',gate('service.cached::isfalse','⏳ ','❔ ')));
+const CACHE_STATE=gate('service.cached::istrue','⚡',gate('service.cached::isfalse','⏳','❔'));
 const TITLE_SEEDERS=gate("stream.type::=p2p::and::stream.seeders::>0",' {stream.seeders} seeders')+
  gate(`${debridType}::and::service.cached::isfalse::and::stream.seeders::>0`,' {stream.seeders} seeders');
-export const PRESET_NAME=TITLE_LTR_ANCHOR+TITLE_CACHE+TITLE_TRANSPORT+FORMATTER_RANK_STARS+TITLE_SEEDERS;
+export const PRESET_NAME=TITLE_LTR_ANCHOR+TITLE_TRANSPORT+FORMATTER_RANK_STARS+TITLE_SEEDERS;
 
 /** Optional parts carry a separator only after an earlier nonempty field. */
 function row(parts){return parts.map((p,i)=>{
@@ -172,6 +172,7 @@ export function buildPresetFormatter(preset='compact'){
  if(!['compact','detailed'].includes(preset))throw new Error(`Unknown preset ${preset}`);
  const detailed=preset==='detailed';
  const release=row([
+   {condition:'stream.type::=debrid',text:CACHE_STATE},
    part('stream.container','📦 {stream.container::upper}'),
    part('stream.encode',`🎞️ ${encodeShown}`),
    part('stream.releaseGroup','👥 {stream.releaseGroup}'),

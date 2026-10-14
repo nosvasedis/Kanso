@@ -11,6 +11,9 @@ import {LANGUAGE_CATALOG} from './language-catalog.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
 type FX={label:string;file?:string;parsed?:any;prefs?:string[];required?:string[];included?:string[];originalLanguage?:string;type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
 const fx:FX[]=[
+ ...['debrid','usenet','stremio-usenet','http','p2p','live','youtube','archive','external'].flatMap(type=>[true,false,null].map(cache=>({label:`cache row ${type}/${cache}`,type,cache,parsed:{container:'mkv',encode:'hevc'},text:[type==='debrid'?`${cache===true?'⚡':cache===false?'⏳':'❔'} · 📦 MKV · 🎞️ HEVC`:'📦 MKV · 🎞️ HEVC'],...(type==='debrid'?{}:{absent:['⚡','⏳','❔']})}))),
+ ...Array.from({length:16},(_,bits)=>({label:`conditional release separators ${bits}`,parsed:{...(bits&1?{container:'mkv'}:{}),...(bits&2?{encode:'hevc'}:{}),...(bits&4?{releaseGroup:'GROUP'}:{}),...(bits&8?{country:'US'}:{})}})),
+ {label:'debrid cache alone has no dot',flags:{size:undefined,addon:undefined},service:false,text:['❔'],absent:['·']},
  {label:'multi-tag DD+ Atmos without title',parsed:{audioTracks:[{lang:'English',tags:['DD+','Atmos'],channels:'5.1'}]},common:['a-at-dp','ch-51','l-en'],forbid:['a-at','a-dp']},
  {label:'multi-tag TrueHD Atmos without title',parsed:{audioTracks:[{lang:'English',tags:['TrueHD','Atmos']}]},common:['a-at-th'],forbid:['a-th','a-at']},
  {label:'multi-tag DTS:X MA without title',parsed:{audioTracks:[{lang:'English',tags:['DTS-HD MA','DTS:X']}]},common:['a-dtsx-ma'],forbid:['a-dtsma','a-dtsx']},
@@ -173,10 +176,11 @@ for(const preset of ['compact','detailed']){
    assert.doesNotMatch(visible,/🇬🇧|🇯🇵|🇫🇷|🇬🇷|🇷🇺|🇸🇪|💬 ELˢ/,`${preset}/${f.label}: formatter echoed a chip-owned fact`);
    assert.doesNotMatch(visible,/Audio: file tags|Audio unverified|File channels|^\s*(?:🎧|🔊|💬|🧩)\s*$/m,'Remove diagnostic wording and orphaned emoji rows');
    assert.doesNotMatch(visible,/🧩\s*·\s*Comet/,'Attach the addon cue to its name');
-   assert.match(clean(out.name),/🔗|🧲|🌐|📰/,`Restored transport imagery: ${f.label}`);
+   assert.match(clean(out.name),/🔗|🧲|🌐|📰|📺|▶️|🗄️|↗️/,`Restored transport imagery: ${f.label}`);
    if((f.score??80)>=20)assert.match(clean(out.name),/[★☆]/,'Keep original title stars');
    assert.doesNotMatch(visible,/\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
-   assert.doesNotMatch(clean(out.description),/^\s*·|\n\s*·|·\s*$|\n\n/,`${preset}/${f.label}: separator leak`);
+   assert.doesNotMatch(clean(out.description),/^\s*·|\n\s*·|·\s*(?:\n|$)|·\s*·|\n\n/,`${preset}/${f.label}: separator leak`);
+   assert.doesNotMatch(clean(out.name),/[⚡⏳❔]/u,`${preset}/${f.label}: cache status belongs in the description`);
    for(const t of [...f.text??[],...(preset==='detailed'?f.detailText??[]:[])])assert.ok(visible.includes(t),`${preset}/${f.label}: missing ${t}: ${visible}`);
    for(const t of f.absent??[])assert.ok(!visible.includes(t),`${preset}/${f.label}: unexpected ${t}: ${visible}`);
    let reference:string[]|undefined;

@@ -1,8 +1,8 @@
-# Kanso 2.3.0 — Manrope, Outline, Instant markers
+# Kanso 2.3.1 — Manrope, Outline, Instant markers
 
 Kanso keeps Instant Unicode matching on structured AIOStreams fields. Outline is the default appearance, with Manrope Semibold for generic labels and original artwork for brand marks. Four skins share consistent geometry: Solid, Transparent, Mono and Outline. Category colors remain gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming and distinct specials. See [badge design and source notes](badge-design.md). This release replaces the previous badge appearance and formatter contract.
 
-The formatter never prints a fact an enabled chip already shows. Language, subtitles, channels, source family/tier, CAM/TS/TC/SCR and picture tags are chips. Encode sits beside the container as `🎞️` text, not a chip. The title carries cache (`⚡`/`⏳`/`❔`), transport emoji and stars. Seeders appear on the title only for P2P or uncached streams.
+The formatter never prints a fact an enabled chip already shows. Language, subtitles, channels, source family/tier, CAM/TS/TC/SCR and picture tags are chips. Encode sits beside the container as `🎞️` text, not a chip. The title carries transport emoji and stars. Debrid cache state (`⚡`/`⏳`/`❔`) starts the container/codec description row, with a dot only before another visible field. Seeders appear on the title only for P2P or uncached streams.
 
 ## Inventory
 
@@ -16,10 +16,14 @@ Chips read left to right as specials (SeaDex, IMAX, 3D, Hybrid, Criterion, cuts,
 
 ## Verification
 
-337 real-engine fixtures × two presets × four skins on official AIOStreams 2.36.0. Templates fit the default 15,000-character budget: Compact 12,540/12,478; Detailed 14,988/14,988. Every exported badge has a positive structured-metadata fixture.
+381 real-engine fixtures × two presets × four skins on official AIOStreams 2.36.0. Templates fit the default 15,000-character budget: Compact 12,459/12,550; Detailed 14,996/14,997. Every exported badge has a positive structured-metadata fixture.
 
 Refresh the formatter and **replace** the old imported Kanso badge pack. Updating a remote JSON does not automatically delete old entries retained by a merge in the client. Keep Kanso as your custom formatter during Tamtaro template updates.
 
-## Nuvio coverage in 2.3.0
+## Nuvio coverage in 2.3.1
 
 Audio metadata supports AIOStreams 2.36.0 multi-value track tags, with legacy single-tag and codec fallbacks. Audio description (AD) follows the same selected usable audio track as codec and channels. Forced and SDH subtitle indicators follow configured subtitle languages, or known tracks when no preference is configured; flags and descriptive track titles are supported. These indicators describe available file tracks, not the player selection. Hardcoded HDRip has its own HC HDRIP source; DVD REMUX is distinct from Blu-ray REMUX and cannot claim Blu-ray tiers. H-SBS and H-OU use 3D SBS and 3D OU artwork, suppress generic 3D duplication, and suppress both layouts when metadata contradicts itself. All new markers append to the existing namespace without moving older IDs.
+
+## Cache row in 2.3.1
+
+Debrid-only cache state moved from the title to the start of the container/codec description row. The cache cue never prints for Usenet, HTTP, P2P, live, YouTube, archive or external streams, even when upstream supplies a cached property. Conditional separators appear only between visible fields; a cache cue alone has no trailing dot.
