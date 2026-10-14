@@ -12,6 +12,7 @@ import {
 } from "./icon-cdn.mjs";
 import { applyLocalExtraGlyphs } from "./local-extra-glyphs.mjs";
 import { applySolidDarkGlyphs } from "./solid-dark-glyphs.mjs";
+import { applyLanguageFlags } from "./language-flag-glyphs.mjs";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const APPEARANCE_PATH = path.join(ROOT, "badges", "illustrated-appearance.json");
@@ -94,6 +95,7 @@ async function main() {
   }
   await applyLocalExtraGlyphs(appearance);
   await applySolidDarkGlyphs(appearance);
+  applyLanguageFlags(appearance);
   await fs.writeFile(APPEARANCE_PATH, JSON.stringify(appearance, null, 2) + "\n");
   console.log("Canonicalized Kingsize appearance ids");
 }

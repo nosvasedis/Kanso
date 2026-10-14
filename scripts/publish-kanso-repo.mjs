@@ -54,7 +54,7 @@ await fs.writeFile(path.join(evidence,'repository-release.json'),JSON.stringify(
 console.log(`Reviewed overlay: ${paths.length} files, no deletions, base ${before}`);
 if(dryRun){console.log('Dry run: checkout ready for review, no remote writes.');process.exit(0);}
 if(paths.length){
- run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m',`Kanso ${VERSION}: black special and picture glyphs on Solid`],work,true);
+ run(['-c','user.email=nosvasedis@users.noreply.github.com','-c','user.name=nosvasedis','commit','-m',`Kanso ${VERSION}: language flag glyphs on every skin`],work,true);
  run(['push','origin','HEAD:main'],work,true);
 }
 const commit=run(['rev-parse','HEAD'],work,true);

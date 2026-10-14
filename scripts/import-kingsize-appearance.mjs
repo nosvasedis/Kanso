@@ -85,8 +85,11 @@ function pickVariant(names, preferred) {
   return names[0];
 }
 
-function languageFileForSkin(base, files, skin) {
+function languageFileForSkin(base, files, skin, { flag = false } = {}) {
   const names = files.filter((n) => n === `${base}.png` || n.startsWith(`${base}-`));
+  if (flag) {
+    return pickVariant(names, [`${base}.png`, `${base}-white.png`, `${base}-black.png`]);
+  }
   if (skin === "solid" || skin === "mono") {
     return pickVariant(names, [`${base}-black.png`, `${base}.png`]);
   }
@@ -156,7 +159,7 @@ async function main() {
     languageHosted[lang.id] = {};
     subtitleHosted[subtitleId(lang)] = {};
     for (const skin of Object.keys(SKIN_SOURCES)) {
-      const langFile = languageFileForSkin(lang.file, languageFiles, skin);
+      const langFile = languageFileForSkin(lang.file, languageFiles, skin, { flag: true });
       const subFile = languageFileForSkin(lang.file, subtitleFiles, skin);
       languageHosted[lang.id][skin] = await hostPng(
         `${RAW}/badge-images/language/${langFile}`,

@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {RETIRED_BADGE_IDS} from './retired-badges.mjs';
 import {buildPresetBadges,DISPLAY_FILTER_ORDER,DISPLAY_GROUP_ORDER,ILLUSTRATED_APPEARANCE,PRESET_SKINS,SPECIAL_DISPLAY_IDS} from './preset-badges.mjs';
+import {LANGUAGE_BADGE_IDS} from './language-catalog.mjs';
 import {applyTransparentTheme,MONO_FILTER_ORDER,TRANSPARENT_FILL} from './badge-transparent-theme.mjs';
 import {applySolidTheme} from './badge-solid-theme.mjs';
 import {borderArgb,chromeRgb6} from './badge-chrome-map.mjs';
@@ -103,6 +104,10 @@ for(const preset of ['compact','detailed'])for(const skin of PRESET_SKINS){
    const lum=await opaqueAvgLum(buffer);
    if(skin==='solid'&&(f.groupId==='gst'||f.groupId==='gv')){
      assert.ok(lum<40,`solid/${f.id} special/picture glyph must be black on the fill (${lum.toFixed(1)})`);
+   }
+   if(LANGUAGE_BADGE_IDS.includes(f.id)){
+     const flag=ILLUSTRATED_APPEARANCE.outline.filters[f.id].imageURL;
+     assert.equal(f.imageURL,flag,`${skin}/${f.id} must use the flag glyph`);
    }
    if(LOCAL_EXTRA_IDS.has(f.id)){
      const wantBlack=skin==='mono'||(skin==='solid'&&f.id==='v-3d');
