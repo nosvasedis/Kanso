@@ -51,7 +51,7 @@ assert.equal(design.filters['ch-51'].glyph,'speaker','Channels need a speaker');
 const previous=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/layout-before-2.3.3.json'),'utf8'));
 for(const id of ['ch-10','ch-20','ch-21','ch-51','ch-61','ch-71','ch-81','q-dvd-remux','r-4k','r-1440','r-1080','r-720'])for(const skin of ['outline','transparent','solid','mono']){
  const current=await sharp(path.join(BADGE_IMAGE_FILES_DIR,design.filters[id].skins[skin].file)).metadata();
- const old=await sharp(path.join(BADGE_IMAGE_FILES_DIR,previous.filters[id].skins[skin].file)).metadata();
+ const old=previous.filters[id].skins[skin];
  assert.ok(current.width<old.width,`${skin}/${id}: narrower artwork than 2.3.2`);
  if(id.startsWith('ch-')){
   assert.equal(design.filters[id].layout,'speaker above channel number');
