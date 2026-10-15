@@ -68,20 +68,14 @@ async function logo(id,ink='white'){
  b=await recolor(b,ink,{removeBlack:id==='a-flac'||id==='s-pcok',removeWhite:id==='a-dtsx'});
  return sharp(b).trim({background:'#00000000'}).resize({height:INK_HEIGHT,width:270,fit:'inside'}).png().toBuffer();
 }
-async function join(parts){
+async function join(parts,padding=PAD){
  const metas=await Promise.all(parts.map(b=>sharp(b).metadata()));
- const width=metas.reduce((s,m)=>s+m.width,0)+GAP*(parts.length-1)+PAD*2;
- let x=PAD;
+ const width=metas.reduce((s,m)=>s+m.width,0)+GAP*(parts.length-1)+padding*2;
+ let x=padding;
  const layers=parts.map((input,i)=>{const layer={input,left:x,top:Math.floor((HEIGHT-metas[i].height)/2)};x+=metas[i].width+GAP;return layer;});
  return sharp({create:{width,height:HEIGHT,channels:4,background:'#00000000'}}).composite(layers).png().toBuffer();
 }
 async function icon(name,ink='white',height=44){return sharp(Buffer.from(glyphSvg(name,ink))).resize({height}).png().toBuffer();}
-async function tier(number,ink){
- const color=inkColor(ink);
- const label=await text('T'+number,ink,44,true),m=await sharp(label).metadata();
- const line=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${m.width+12}" height="56"><path d="M2 6v44" stroke="${color}" stroke-width="2" opacity=".7"/></svg>`);
- return sharp(line).composite([{input:label,left:12,top:6}]).png().toBuffer();
-}
 async function separator(ink){
  return sharp(Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="4" height="56"><path d="M2 6v44" stroke="${inkColor(ink)}" stroke-width="2" opacity=".7"/></svg>`)).png().toBuffer();
 }
@@ -93,10 +87,19 @@ async function bluraySymbol(ink){
  await fs.writeFile(path.join(ROOT,'assets/glyphs/bluray-symbol.svg'),svg);
  return recolor(await sharp(Buffer.from(svg)).resize({height:30}).png().toBuffer(),ink);
 }
-async function stackedSource(glyph,label,ink,override){
+async function stackedSource(glyph,label,ink,override,number){
  const caption=await text(label.toUpperCase(),ink,27,true),m=await sharp(caption).metadata();
- const emblem=override??await icon(glyph,ink,30),em=await sharp(emblem).metadata(),width=Math.max(120,m.width+8,em.width);
- return sharp({create:{width,height:60,channels:4,background:'#00000000'}}).composite([{input:emblem,left:Math.floor((width-em.width)/2),top:0},{input:caption,left:Math.floor((width-m.width)/2),top:33}]).png().toBuffer();
+ const emblem=override??await icon(glyph,ink,30),em=await sharp(emblem).metadata();
+ const tierLabel=number?await text('T'+number,ink,32,true):null;
+ const tm=tierLabel?await sharp(tierLabel).metadata():null;
+ const topWidth=em.width+(tm?14+tm.width:0),width=Math.max(96,m.width,topWidth);
+ const left=Math.floor((width-topWidth)/2),layers=[{input:emblem,left,top:1}];
+ if(tierLabel&&tm){
+  const line=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="3" height="28"><path d="M1.5 1v26" stroke="${inkColor(ink)}" stroke-width="1.75" opacity=".7"/></svg>`);
+  layers.push({input:line,left:left+em.width+5,top:2},{input:tierLabel,left:left+em.width+14,top:0});
+ }
+ layers.push({input:caption,left:Math.floor((width-m.width)/2),top:33});
+ return sharp({create:{width,height:60,channels:4,background:'#00000000'}}).composite(layers).png().toBuffer();
 }
 const RESOLUTION_CAPTIONS={'r-4k':['4K','ULTRA HD'],'r-1440':['1440p','QUAD HD'],'r-1080':['1080p','FULL HD'],'r-720':['720p','HD'],'r-576':['576p','SD'],'r-480':['480p','SD'],'r-360':['360p','SD'],'r-240':['240p','SD'],'r-144':['144p','SD']};
 async function resolutionMark(id,ink,skin,f){
@@ -110,16 +113,17 @@ async function resolutionMark(id,ink,skin,f){
  const screen=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="60"><rect x="2" y="2" width="${width-4}" height="38" rx="1.5" fill="${filled?inkColor(ink):'none'}" stroke="${inkColor(ink)}" stroke-width="2.5"/></svg>`);
  return sharp(screen).composite([{input:top,left:Math.floor((width-tm.width)/2),top:Math.floor((42-tm.height)/2)},{input:bottom,left:Math.floor((width-bm.width)/2),top:43}]).png().toBuffer();
 }
-async function subtitleMark(code,ink,skin,f){
+async function subtitleMark(code,ink){
  const svg=await subtitleDocumentSvg(code,inkColor(ink));
  await fs.mkdir(path.join(ROOT,'assets/subtitle-flags'),{recursive:true});
  await fs.writeFile(path.join(ROOT,'assets/subtitle-flags',code+'-background.svg'),svg);
- const page=await sharp(Buffer.from(svg)).png().toBuffer();
- const bg=skin==='mono'?'#FFFFFF':skin==='solid'?f.tagColor:'#151A21';
- const panel=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="118" height="60"><rect x="56" y="1" width="61" height="58" rx="5" fill="${bg}"/><path d="M57 7v46" stroke="${inkColor(ink)}" stroke-width="1.5" opacity=".55"/></svg>`);
+ // Keep the whole flag document beside the text rather than hiding the overlap
+ // beneath an opaque panel. The language/SUB area is transparent on every skin.
+ const page=await sharp(Buffer.from(svg)).resize({width:62,height:46,fit:'inside'}).png().toBuffer();
+ const panel=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="118" height="60"><path d="M65 8v44" stroke="${inkColor(ink)}" stroke-width="1.5" opacity=".55"/></svg>`);
  const top=await text(code,ink,30,true),bottom=await text('SUB',ink,21,true);
  const tm=await sharp(top).metadata(),bm=await sharp(bottom).metadata();
- return sharp(panel).composite([{input:page,left:0,top:0},{input:panel,left:0,top:0},{input:top,left:57+Math.floor((60-tm.width)/2),top:3},{input:bottom,left:57+Math.floor((60-bm.width)/2),top:37}]).png().toBuffer();
+ return sharp(panel).composite([{input:page,left:0,top:7},{input:top,left:68+Math.floor((50-tm.width)/2),top:3},{input:bottom,left:68+Math.floor((50-bm.width)/2),top:37}]).png().toBuffer();
 }
 const combinations={
  'v-dv-hdr10p':['a-dv','HDR10+'], 'v-dv-hdr10':['a-dv','HDR10'], 'v-dv-hdr':['a-dv','HDR'],
@@ -144,7 +148,7 @@ for(const f of pack.filters){
     await fs.writeFile(path.join(ROOT,'assets/spoken-flags',info.code+'.svg'),svg);
     parts=[await sharp(Buffer.from(svg)).resize({height:52}).png().toBuffer(),await text(info.code,ink)];
     row.kind='speech-flag';row.flagCountry=SPOKEN_FLAGS[info.code];row.glyph=null;
-   }else{parts=[await subtitleMark(info.code,ink,skin,skin==='solid'?applySolidTheme({...f}):f)];row.kind='subtitle-flag';row.glyph=null;row.flagCountry=SPOKEN_FLAGS[info.code];row.layout='flag document behind stacked language / SUB';}
+   }else{parts=[await subtitleMark(info.code,ink)];row.kind='subtitle-flag';row.glyph=null;row.flagCountry=SPOKEN_FLAGS[info.code];row.layout='flag document beside stacked language / SUB';}
    row.code=info.code;row.meaning=info.name;row.sources=[];
   }else if(combinations[id]){
    const [base,suffix]=combinations[id];parts=[await logo(base,ink),await text(suffix,ink,38)];
@@ -165,9 +169,9 @@ for(const f of pack.filters){
    const number=id.match(/\d+/)[0],web=id.startsWith('web-'),bluray=id.startsWith('blu-ray-');
    const glyph=glyphForBadge(id,f.groupId);
    const sourceLabel=web?(id.endsWith('-webrip')?'WEBRip':'WEB-DL'):'REMUX';
-   parts=bluray?[await stackedSource(null,'BLU-RAY',ink,await bluraySymbol(ink)),await tier(number,ink)]:[await stackedSource(glyph,sourceLabel,ink),await tier(number,ink)];
+   parts=bluray?[await stackedSource(null,'BLU-RAY',ink,await bluraySymbol(ink),number)]:[await stackedSource(glyph,sourceLabel,ink,null,number)];
    row.kind=bluray?'logo-tier':'custom-glyph';row.glyph=bluray?null:glyph;row.tier=Number(number);row.sources=bluray?[sources['bluray.svg'].url]:[];
-   row.layout='stacked source with large plain tier';
+   row.layout='icon and plain tier above source caption';
   }else{
    const label=LABELS[id]??f.name;
    const glyph=glyphForBadge(id,f.groupId);
@@ -175,7 +179,7 @@ for(const f of pack.filters){
    row.kind=glyph?'custom-glyph':'text';row.glyph=glyph;
    if(f.groupId==='grl')row.layout='icon above caption';
   }
-  let b=await join(parts);
+  let b=await join(parts,['gms','grl'].includes(f.groupId)?6:PAD);
   // Coil fits within 92/16: keep a 5.5:1 maximum aspect ratio at native chip size.
   const m=await sharp(b).metadata();
   if(m.width>352)b=await sharp(b).resize({width:336,height:HEIGHT,fit:'inside'}).extend({top:Math.floor((HEIGHT-Math.round(HEIGHT*336/m.width))/2),bottom:Math.ceil((HEIGHT-Math.round(HEIGHT*336/m.width))/2),left:8,right:8,background:'#00000000'}).png().toBuffer();

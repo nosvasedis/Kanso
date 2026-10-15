@@ -50,7 +50,7 @@ for(const row of Object.values(design.filters))if(row.glyph)assert.ok(await fs.s
 assert.equal(design.filters['ch-51'].glyph,'speaker','Channels need a speaker');
 assert.equal(design.filters['l-el'].kind,'speech-flag','Spoken languages need a speech-shaped flag');
 assert.equal(design.filters['sub-el'].kind,'subtitle-flag','Subtitles need a flag-backed text document');
-assert.equal(design.filters['sub-el'].layout,'flag document behind stacked language / SUB');
+assert.equal(design.filters['sub-el'].layout,'flag document beside stacked language / SUB');
 assert.equal(design.filters['sub-el'].code,'EL');
 for(const row of Object.values(design.filters).filter(r=>r.code))assert.match(row.code,/^[A-Z]{2}$/,'Every language code is two letters');
 for(const id of ['l-hi','l-ta','l-bn','l-te','l-ml','l-kn','l-mr','l-gu','l-pa','l-lat','l-pt-br','l-pt-pt'])for(const key of [id,id.replace(/^l-/,'sub-')])assert.ok(!design.filters[key],`${key}: redundant display badge removed`);
@@ -63,7 +63,13 @@ for(const id of ['q-w','q-wr','q-r']){
  const meta=await sharp(path.join(BADGE_IMAGE_FILES_DIR,design.filters[id].skins.outline.file)).metadata();
  assert.ok(meta.width<=176,`${id}: compact source stays within 44px of artwork at native size`);
 }
-for(const id of ['web-1','remux-1','blu-ray-1'])assert.equal(design.filters[id].layout,'stacked source with large plain tier');
+for(const id of ['web-1','remux-1','blu-ray-1'])assert.equal(design.filters[id].layout,'icon and plain tier above source caption');
+// The open gap between the language and SUB must expose any app background,
+// rather than an opaque panel that happens to match the gallery surface.
+for(const [id,row] of Object.entries(design.filters).filter(([,r])=>r.kind==='subtitle-flag'))for(const skin of ['outline','transparent','solid','mono']){
+ const {data,info}=await sharp(path.join(BADGE_IMAGE_FILES_DIR,row.skins[skin].file)).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+ for(let x=80;x<126;x++)assert.equal(data[(37*info.width+x)*4+3],0,`${skin}/${id}: subtitle lettering has no opaque backing`);
+}
 assert.notEqual(design.filters['hybrid-release'].skins.outline.ink,design.filters['edition-directors-cut'].skins.outline.ink,'Specials keep individual hues');
 for(const [id,row] of Object.entries(design.filters)){
  assert.notEqual(row.skins.outline.file,row.skins.transparent.file,`${id}: Outline and Transparent must differ`);

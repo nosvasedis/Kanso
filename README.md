@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.3.1
+# Kanso 2.3.2
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
@@ -8,7 +8,7 @@ Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **E
 
 ![New Kanso Outline badge system](assets/Kanso/kanso-badges-preview.png)
 
-This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.3.1 replaces the previous badge appearance and formatter contract; use the matching install files below.
+This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.3.2 replaces the previous badge appearance and formatter contract; use the matching install files below.
 
 ## Choose a matching pair
 

@@ -1,4 +1,4 @@
-# Kanso 2.3.1 — Manrope, Outline, Instant markers
+# Kanso 2.3.2 — Manrope, Outline, Instant markers
 
 Kanso keeps Instant Unicode matching on structured AIOStreams fields. Outline is the default appearance, with Manrope Semibold for generic labels and original artwork for brand marks. Four skins share consistent geometry: Solid, Transparent, Mono and Outline. Category colors remain gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming and distinct specials. See [badge design and source notes](badge-design.md). This release replaces the previous badge appearance and formatter contract.
 
@@ -20,10 +20,14 @@ Chips read left to right as specials (SeaDex, IMAX, 3D, Hybrid, Criterion, cuts,
 
 Refresh the formatter and **replace** the old imported Kanso badge pack. Updating a remote JSON does not automatically delete old entries retained by a merge in the client. Keep Kanso as your custom formatter during Tamtaro template updates.
 
-## Nuvio coverage in 2.3.1
+## Nuvio coverage in 2.3.2
 
 Audio metadata supports AIOStreams 2.36.0 multi-value track tags, with legacy single-tag and codec fallbacks. Audio description (AD) follows the same selected usable audio track as codec and channels. Forced and SDH subtitle indicators follow configured subtitle languages, or known tracks when no preference is configured; flags and descriptive track titles are supported. These indicators describe available file tracks, not the player selection. Hardcoded HDRip has its own HC HDRIP source; DVD REMUX is distinct from Blu-ray REMUX and cannot claim Blu-ray tiers. H-SBS and H-OU use 3D SBS and 3D OU artwork, suppress generic 3D duplication, and suppress both layouts when metadata contradicts itself. All new markers append to the existing namespace without moving older IDs.
 
-## Cache row in 2.3.1
+## Cache row in 2.3.2
 
 Debrid-only cache state moved from the title to the start of the container/codec description row. The cache cue never prints for Usenet, HTTP, P2P, live, YouTube, archive or external streams, even when upstream supplies a cached property. Conditional separators appear only between visible fields; a cache cue alone has no trailing dot.
+
+## Badge refinement in 2.3.2
+
+Subtitle language/SUB lettering has no background panel in any skin. The complete flag document sits beside the lettering, exposing the real app background between and around the letters. Source captions retain their previous type size; source/tier glyphs share a compact upper row above the caption. Generic source padding is reduced. Formatter text and matching semantics are unchanged.
