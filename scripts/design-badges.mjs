@@ -152,6 +152,7 @@ await fs.mkdir(path.join(ROOT,'assets/glyphs'),{recursive:true});
 for(const name of Object.keys(GLYPHS))await fs.writeFile(path.join(ROOT,'assets/glyphs',name+'.svg'),glyphSvg(name));
 for(const f of pack.filters){
  const id=f.id;
+ const pairedLogos=id==='v-dv-hdr10p'||id==='v-dv-hdr10';
  const row={label:f.name,kind:'text',sources:[],skins:{}};
  for(const skin of ['outline','transparent','solid','mono']){
   const ink=skin==='outline'?applyOutlineTheme({...f}).textColor:skin==='mono'||(skin==='solid'&&applySolidTheme({...f}).textColor==='#000000')?'black':'white';
@@ -169,13 +170,14 @@ for(const f of pack.filters){
   }else if(combinations[id]){
    const [base,suffix]=combinations[id];parts=[await logo(base,ink,56),await text(suffix,ink,24,true)];
    row.kind='logo-label';row.sources=direct[base]?[sources[direct[base]].url]:[inherited[base],original.themes.outline.filters[base].imageURL];
-   if(id==='v-dv-hdr10p'){parts=[await logo('a-dv',ink,56),await logo('v-hdr10p',ink,24)];row.sources.push(sources['hdr10plus.svg'].url);}
-   if(id==='v-dv-hdr10'){parts=[await logo('a-dv',ink,56),await logo('v-hdr10',ink,24)];row.sources.push(sources['hdr10.svg'].url);}
+   if(id==='v-dv-hdr10p'){parts=[await logo('a-dv',ink,52),await logo('v-hdr10p',ink,38)];row.sources.push(sources['hdr10plus.svg'].url);}
+   if(id==='v-dv-hdr10'){parts=[await logo('a-dv',ink,52),await logo('v-hdr10',ink,48)];row.sources.push(sources['hdr10.svg'].url);}
    parts.splice(1,0,await separator(ink));row.layout='compound with vertical separator';
    const primary=await sharp(parts[0]).metadata(),secondary=await sharp(parts[2]).metadata();
-   const secondaryWidth=352-PAD*2-14-4-primary.width;
-   if(secondary.width>secondaryWidth)parts[2]=await sharp(parts[2]).resize({width:secondaryWidth,height:24,fit:'inside'}).png().toBuffer();
+   const secondaryWidth=352-PAD*2-(pairedLogos?12:14)-4-primary.width;
+   if(secondary.width>secondaryWidth)parts[2]=await sharp(parts[2]).resize({width:secondaryWidth,height:secondary.height,fit:'inside'}).png().toBuffer();
    row.primaryHeight=primary.height;row.secondaryHeight=(await sharp(parts[2]).metadata()).height;
+   row.secondaryKind=pairedLogos?'logo':'text';
   }else if(id==='criterion-collection'){
    const mark=await sharp(await logo(id,ink)).resize({height:30}).png().toBuffer();
    parts=[await stackedSource(null,'CRITERION',ink,mark)];row.kind='logo-label';row.sources=[sources['criterion.svg'].url];row.layout='icon above caption';
@@ -208,7 +210,7 @@ for(const f of pack.filters){
    row.kind=glyph?'custom-glyph':'text';row.glyph=glyph;
    if(f.groupId==='grl')row.layout='icon above caption';
   }
-  let b=f.groupId==='gc'?parts[0]:await join(parts,['gms','grl','gr'].includes(f.groupId)?6:PAD,combinations[id]?7:GAP);
+  let b=f.groupId==='gc'?parts[0]:await join(parts,['gms','grl','gr'].includes(f.groupId)?6:PAD,combinations[id]?(pairedLogos?6:7):GAP);
   // Coil fits within 92/16: keep a 5.5:1 maximum aspect ratio at native chip size.
   const m=await sharp(b).metadata();
   if(combinations[id]&&m.width>352)throw new Error(`${id}: compound must fit without shrinking its primary logo`);

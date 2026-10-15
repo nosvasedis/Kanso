@@ -1,4 +1,4 @@
-# Kanso 2.4.0 — Manrope, Outline, Instant markers
+# Kanso 2.4.1 — Manrope, Outline, Instant markers
 
 Kanso keeps Instant Unicode matching on structured AIOStreams fields. Outline is the default appearance, with Manrope Semibold for generic labels and original artwork for brand marks. Four skins share consistent geometry: Solid, Transparent, Mono and Outline. Category colors remain gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming and distinct specials. See [badge design and source notes](badge-design.md). This release replaces the previous badge appearance and formatter contract.
 
@@ -45,3 +45,7 @@ HC HDRIP stacks HC above HDRIP; FORCED keeps its full word below the subtitle gl
 Compound badges enlarge the main official mark and reduce secondary HDR, DD+, TrueHD, MA and HD elements. The separator stays quiet and the primary logo cannot be rescaled to make room for a suffix. Channels use a large filled speaker beside bold numbers, replacing the tiny vertical stack.
 
 Formatter wording is shorter: `📚 Pack`, `🌱 125` for seeders and `⬇️ Preload`. Private/freeleech use `🔐` and `🆓` without repeating the icon meaning in words. `📂 Library` remains distinct from a season pack. Preferred-audio and HDR/SDR warnings keep their meaning with shorter text; provider health details and messages remain intact. Equal file/folder sizes print once; a distinct positive folder size still has its `📁` cue. All dot separators remain conditional. The service field's duplicate existence gate was removed to keep both template fields below 15,000 characters. Detection markers, language selection, tiers and cache behavior are unchanged. Refresh both the formatter and badge pack to receive the complete update.
+
+## Paired official marks in 2.4.1
+
+Dolby Vision + HDR10/HDR10+ use balanced brand-logo sizing rather than the small text-suffix treatment. Vision uses 52px height, boxed HDR10 uses 48px, and the much wider HDR10+ mark uses 38px for comparable visual weight without shrinking the entire composition. Both official marks and the separator remain intact across all four skins. Plain HDR text and audio text suffixes retain the smaller hierarchy introduced in 2.4.0. Formatter output and all other badge images are unchanged.

@@ -10,6 +10,11 @@ const design=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/manifest
 assert.equal(design.font.family,'Manrope');
 assert.equal(design.defaultSkin,'outline');
 const checked=new Set();
+const preceding=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/layout-before-2.4.1.json'),'utf8'));
+for(const [id,row] of Object.entries(design.filters))for(const skin of ['outline','transparent','solid','mono']){
+ if(id==='v-dv-hdr10'||id==='v-dv-hdr10p')assert.notEqual(row.skins[skin].file,preceding.filters[id].skins[skin].file,`${id}: revised logo balance`);
+ else assert.equal(row.skins[skin].file,preceding.filters[id].skins[skin].file,`${id}: paired-logo fix preserves other artwork`);
+}
 const empty=await sharp({create:{width:118,height:60,channels:4,background:'#00000000'}}).png().toBuffer();
 const caption=await sharp({create:{width:50,height:20,channels:4,background:'#FFFFFF'}}).png().toBuffer();
 await assert.rejects(()=>containedComposite(empty,[{input:caption,left:0,top:43}],'resolution caption'),/exceeds/,'Reject the former resolution overflow instead of silently cropping');
@@ -81,7 +86,10 @@ for(const [id,row] of Object.entries(design.filters))for(const skin of ['outline
   assert.ok(Math.max(...ys)-Math.min(...ys)>=36,`${id}: speaker silhouette is large enough for native-size viewing`);
  }
  if(row.layout==='compound with vertical separator'){
-  assert.equal(row.primaryHeight,56);assert.ok(row.secondaryHeight>=18&&row.secondaryHeight<=24);
+  if(id==='v-dv-hdr10'||id==='v-dv-hdr10p'){
+   assert.equal(row.secondaryKind,'logo');assert.equal(row.primaryHeight,52);
+   assert.equal(row.secondaryHeight,id==='v-dv-hdr10'?48:38,`${id}: the HDR mark shares visual weight with Vision`);
+  }else{assert.equal(row.primaryHeight,56);assert.ok(row.secondaryHeight>=18&&row.secondaryHeight<=24);}
  }
 }
 // Compare the complete caption alpha against independently rendered font ink.

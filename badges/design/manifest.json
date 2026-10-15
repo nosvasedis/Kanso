@@ -2243,29 +2243,30 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/aaa58715ba40ac72.png?rev=aaa58715ba40",
-          "file": "aaa58715ba40ac72.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/490d26a632d8d3cc.png?rev=490d26a632d8",
+          "file": "490d26a632d8d3cc.png",
           "ink": "#F6D365"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9aea65241355750c.png?rev=9aea65241355",
-          "file": "9aea65241355750c.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/850bb3a440e857d0.png?rev=850bb3a440e8",
+          "file": "850bb3a440e857d0.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/61f6e762782d964d.png?rev=61f6e762782d",
-          "file": "61f6e762782d964d.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/17018476292f2b28.png?rev=17018476292f",
+          "file": "17018476292f2b28.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/61f6e762782d964d.png?rev=61f6e762782d",
-          "file": "61f6e762782d964d.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/17018476292f2b28.png?rev=17018476292f",
+          "file": "17018476292f2b28.png",
           "ink": "black"
         }
       },
       "layout": "compound with vertical separator",
-      "primaryHeight": 56,
-      "secondaryHeight": 24
+      "primaryHeight": 52,
+      "secondaryHeight": 38,
+      "secondaryKind": "logo"
     },
     "v-dv-hdr10": {
       "label": "DV/HDR10",
@@ -2276,29 +2277,30 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/727b7faf86c4cd3a.png?rev=727b7faf86c4",
-          "file": "727b7faf86c4cd3a.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4086ea2f7635eeb3.png?rev=4086ea2f7635",
+          "file": "4086ea2f7635eeb3.png",
           "ink": "#F6D365"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0737d3c4a0d391a8.png?rev=0737d3c4a0d3",
-          "file": "0737d3c4a0d391a8.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/748f0f8bc935e049.png?rev=748f0f8bc935",
+          "file": "748f0f8bc935e049.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/769f88c6ff6cdb3c.png?rev=769f88c6ff6c",
-          "file": "769f88c6ff6cdb3c.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/13f7146335f92260.png?rev=13f7146335f9",
+          "file": "13f7146335f92260.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/769f88c6ff6cdb3c.png?rev=769f88c6ff6c",
-          "file": "769f88c6ff6cdb3c.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/13f7146335f92260.png?rev=13f7146335f9",
+          "file": "13f7146335f92260.png",
           "ink": "black"
         }
       },
       "layout": "compound with vertical separator",
-      "primaryHeight": 56,
-      "secondaryHeight": 24
+      "primaryHeight": 52,
+      "secondaryHeight": 48,
+      "secondaryKind": "logo"
     },
     "v-dv-hdr": {
       "label": "DV/HDR",
@@ -2330,7 +2332,8 @@
       },
       "layout": "compound with vertical separator",
       "primaryHeight": 56,
-      "secondaryHeight": 24
+      "secondaryHeight": 24,
+      "secondaryKind": "text"
     },
     "v-hdr10p": {
       "label": "HDR10+",
@@ -2589,7 +2592,8 @@
       },
       "layout": "compound with vertical separator",
       "primaryHeight": 56,
-      "secondaryHeight": 21
+      "secondaryHeight": 21,
+      "secondaryKind": "text"
     },
     "a-dtsx-ma": {
       "label": "DTS:X MA",
@@ -2621,7 +2625,8 @@
       },
       "layout": "compound with vertical separator",
       "primaryHeight": 56,
-      "secondaryHeight": 24
+      "secondaryHeight": 24,
+      "secondaryKind": "text"
     },
     "a-at-dp": {
       "label": "DD+ Atmos",
@@ -2653,7 +2658,8 @@
       },
       "layout": "compound with vertical separator",
       "primaryHeight": 56,
-      "secondaryHeight": 24
+      "secondaryHeight": 24,
+      "secondaryKind": "text"
     },
     "a-dtsx-hd": {
       "label": "DTS:X HD",
@@ -2685,7 +2691,8 @@
       },
       "layout": "compound with vertical separator",
       "primaryHeight": 56,
-      "secondaryHeight": 24
+      "secondaryHeight": 24,
+      "secondaryKind": "text"
     },
     "a-dtsx": {
       "label": "DTS:X",
@@ -2775,7 +2782,8 @@
       },
       "layout": "compound with vertical separator",
       "primaryHeight": 56,
-      "secondaryHeight": 24
+      "secondaryHeight": 24,
+      "secondaryKind": "text"
     },
     "a-dtses": {
       "label": "DTS-ES",
@@ -2807,7 +2815,8 @@
       },
       "layout": "compound with vertical separator",
       "primaryHeight": 56,
-      "secondaryHeight": 24
+      "secondaryHeight": 24,
+      "secondaryKind": "text"
     },
     "a-dts": {
       "label": "DTS",
