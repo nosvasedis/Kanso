@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "clippingGuard": "scripts/badge-layout.mjs",
   "channelConcept": "badges/design/channels-concept.png",
   "channelPrompt": "badges/design/channels-prompt.txt",
@@ -2243,27 +2243,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/73b94e33fa5e154e.png?rev=73b94e33fa5e",
-          "file": "73b94e33fa5e154e.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/aaa58715ba40ac72.png?rev=aaa58715ba40",
+          "file": "aaa58715ba40ac72.png",
           "ink": "#F6D365"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0778a3251dd81c69.png?rev=0778a3251dd8",
-          "file": "0778a3251dd81c69.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9aea65241355750c.png?rev=9aea65241355",
+          "file": "9aea65241355750c.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6a15753c63e5f213.png?rev=6a15753c63e5",
-          "file": "6a15753c63e5f213.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/61f6e762782d964d.png?rev=61f6e762782d",
+          "file": "61f6e762782d964d.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6a15753c63e5f213.png?rev=6a15753c63e5",
-          "file": "6a15753c63e5f213.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/61f6e762782d964d.png?rev=61f6e762782d",
+          "file": "61f6e762782d964d.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "v-dv-hdr10": {
       "label": "DV/HDR10",
@@ -2274,27 +2276,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/40c59aa900a2ae40.png?rev=40c59aa900a2",
-          "file": "40c59aa900a2ae40.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/727b7faf86c4cd3a.png?rev=727b7faf86c4",
+          "file": "727b7faf86c4cd3a.png",
           "ink": "#F6D365"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/12f739cfd5add6e7.png?rev=12f739cfd5ad",
-          "file": "12f739cfd5add6e7.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0737d3c4a0d391a8.png?rev=0737d3c4a0d3",
+          "file": "0737d3c4a0d391a8.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fb9b0c77abfbbb74.png?rev=fb9b0c77abfb",
-          "file": "fb9b0c77abfbbb74.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/769f88c6ff6cdb3c.png?rev=769f88c6ff6c",
+          "file": "769f88c6ff6cdb3c.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fb9b0c77abfbbb74.png?rev=fb9b0c77abfb",
-          "file": "fb9b0c77abfbbb74.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/769f88c6ff6cdb3c.png?rev=769f88c6ff6c",
+          "file": "769f88c6ff6cdb3c.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "v-dv-hdr": {
       "label": "DV/HDR",
@@ -2304,27 +2308,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6d0f8994e9c8bb69.png?rev=6d0f8994e9c8",
-          "file": "6d0f8994e9c8bb69.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2ebd963bbf20387a.png?rev=2ebd963bbf20",
+          "file": "2ebd963bbf20387a.png",
           "ink": "#F6D365"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2c77c980bfbe49ac.png?rev=2c77c980bfbe",
-          "file": "2c77c980bfbe49ac.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7c8d718fea595965.png?rev=7c8d718fea59",
+          "file": "7c8d718fea595965.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/06e76ec2d05cb062.png?rev=06e76ec2d05c",
-          "file": "06e76ec2d05cb062.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a3b8435e2d84a4b4.png?rev=a3b8435e2d84",
+          "file": "a3b8435e2d84a4b4.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/06e76ec2d05cb062.png?rev=06e76ec2d05c",
-          "file": "06e76ec2d05cb062.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a3b8435e2d84a4b4.png?rev=a3b8435e2d84",
+          "file": "a3b8435e2d84a4b4.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "v-hdr10p": {
       "label": "HDR10+",
@@ -2561,27 +2567,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1e791c13161368fb.png?rev=1e791c131613",
-          "file": "1e791c13161368fb.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7269163c535bbe1f.png?rev=7269163c535b",
+          "file": "7269163c535bbe1f.png",
           "ink": "#65D8E8"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/283bdb1c8e754b87.png?rev=283bdb1c8e75",
-          "file": "283bdb1c8e754b87.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/43073617557dd01b.png?rev=43073617557d",
+          "file": "43073617557dd01b.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/da22a8ec1825282a.png?rev=da22a8ec1825",
-          "file": "da22a8ec1825282a.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ec46f3f425bef2d9.png?rev=ec46f3f425be",
+          "file": "ec46f3f425bef2d9.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/da22a8ec1825282a.png?rev=da22a8ec1825",
-          "file": "da22a8ec1825282a.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ec46f3f425bef2d9.png?rev=ec46f3f425be",
+          "file": "ec46f3f425bef2d9.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 21
     },
     "a-dtsx-ma": {
       "label": "DTS:X MA",
@@ -2591,27 +2599,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7b44ee15a9a6f633.png?rev=7b44ee15a9a6",
-          "file": "7b44ee15a9a6f633.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/eb72d87ddafc4d94.png?rev=eb72d87ddafc",
+          "file": "eb72d87ddafc4d94.png",
           "ink": "#65D8E8"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/de22d32e95c4c6b0.png?rev=de22d32e95c4",
-          "file": "de22d32e95c4c6b0.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ea702acade55b5fe.png?rev=ea702acade55",
+          "file": "ea702acade55b5fe.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/68401823e8573336.png?rev=68401823e857",
-          "file": "68401823e8573336.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9fcf5d1c18b888f8.png?rev=9fcf5d1c18b8",
+          "file": "9fcf5d1c18b888f8.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/68401823e8573336.png?rev=68401823e857",
-          "file": "68401823e8573336.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9fcf5d1c18b888f8.png?rev=9fcf5d1c18b8",
+          "file": "9fcf5d1c18b888f8.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "a-at-dp": {
       "label": "DD+ Atmos",
@@ -2621,27 +2631,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8ab5c9ec2b110fa1.png?rev=8ab5c9ec2b11",
-          "file": "8ab5c9ec2b110fa1.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/57db2c2b311980e7.png?rev=57db2c2b3119",
+          "file": "57db2c2b311980e7.png",
           "ink": "#65D8E8"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3856f4a511bc1645.png?rev=3856f4a511bc",
-          "file": "3856f4a511bc1645.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/72a63f26e26c2c83.png?rev=72a63f26e26c",
+          "file": "72a63f26e26c2c83.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/673a936164636869.png?rev=673a93616463",
-          "file": "673a936164636869.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/45d96399f906f6c3.png?rev=45d96399f906",
+          "file": "45d96399f906f6c3.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/673a936164636869.png?rev=673a93616463",
-          "file": "673a936164636869.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/45d96399f906f6c3.png?rev=45d96399f906",
+          "file": "45d96399f906f6c3.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "a-dtsx-hd": {
       "label": "DTS:X HD",
@@ -2651,27 +2663,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8a655effb7dd6423.png?rev=8a655effb7dd",
-          "file": "8a655effb7dd6423.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a30c6f7f2cf7f55d.png?rev=a30c6f7f2cf7",
+          "file": "a30c6f7f2cf7f55d.png",
           "ink": "#65D8E8"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/474f8944a9d36cc6.png?rev=474f8944a9d3",
-          "file": "474f8944a9d36cc6.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/39a9f97d7437bf63.png?rev=39a9f97d7437",
+          "file": "39a9f97d7437bf63.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/47c0f38e0faa927f.png?rev=47c0f38e0faa",
-          "file": "47c0f38e0faa927f.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d5ea57b96304508f.png?rev=d5ea57b96304",
+          "file": "d5ea57b96304508f.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/47c0f38e0faa927f.png?rev=47c0f38e0faa",
-          "file": "47c0f38e0faa927f.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d5ea57b96304508f.png?rev=d5ea57b96304",
+          "file": "d5ea57b96304508f.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "a-dtsx": {
       "label": "DTS:X",
@@ -2739,27 +2753,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3513375823cb1555.png?rev=3513375823cb",
-          "file": "3513375823cb1555.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c2df546c99606b6f.png?rev=c2df546c9960",
+          "file": "c2df546c99606b6f.png",
           "ink": "#65D8E8"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3b2337ed6acebdca.png?rev=3b2337ed6ace",
-          "file": "3b2337ed6acebdca.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7af4a41c2ab0f607.png?rev=7af4a41c2ab0",
+          "file": "7af4a41c2ab0f607.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d38583cf981101c9.png?rev=d38583cf9811",
-          "file": "d38583cf981101c9.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b5a0561d764ecf02.png?rev=b5a0561d764e",
+          "file": "b5a0561d764ecf02.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d38583cf981101c9.png?rev=d38583cf9811",
-          "file": "d38583cf981101c9.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b5a0561d764ecf02.png?rev=b5a0561d764e",
+          "file": "b5a0561d764ecf02.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "a-dtses": {
       "label": "DTS-ES",
@@ -2769,27 +2785,29 @@
       ],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a45eccb32ee5ea99.png?rev=a45eccb32ee5",
-          "file": "a45eccb32ee5ea99.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/23cb604cf4574176.png?rev=23cb604cf457",
+          "file": "23cb604cf4574176.png",
           "ink": "#65D8E8"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ecdb9c2b3a0dc2e9.png?rev=ecdb9c2b3a0d",
-          "file": "ecdb9c2b3a0dc2e9.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1ea79f68bb8d08d0.png?rev=1ea79f68bb8d",
+          "file": "1ea79f68bb8d08d0.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d2862c797c1db4e2.png?rev=d2862c797c1d",
-          "file": "d2862c797c1db4e2.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7ec750df2ab9971a.png?rev=7ec750df2ab9",
+          "file": "7ec750df2ab9971a.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d2862c797c1db4e2.png?rev=d2862c797c1d",
-          "file": "d2862c797c1db4e2.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7ec750df2ab9971a.png?rev=7ec750df2ab9",
+          "file": "7ec750df2ab9971a.png",
           "ink": "black"
         }
       },
-      "layout": "compound with vertical separator"
+      "layout": "compound with vertical separator",
+      "primaryHeight": 56,
+      "secondaryHeight": 24
     },
     "a-dts": {
       "label": "DTS",
@@ -3112,28 +3130,28 @@
       "sources": [],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5ce065d6a73a2f72.png?rev=5ce065d6a73a",
-          "file": "5ce065d6a73a2f72.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e2573df7867c0889.png?rev=e2573df7867c",
+          "file": "e2573df7867c0889.png",
           "ink": "#72C4D2"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a2235a05bae25931.png?rev=a2235a05bae2",
-          "file": "a2235a05bae25931.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bd52936211183d93.png?rev=bd5293621118",
+          "file": "bd52936211183d93.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/59a91d890d51bc7a.png?rev=59a91d890d51",
-          "file": "59a91d890d51bc7a.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1faa435dd2f9dc1d.png?rev=1faa435dd2f9",
+          "file": "1faa435dd2f9dc1d.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/59a91d890d51bc7a.png?rev=59a91d890d51",
-          "file": "59a91d890d51bc7a.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1faa435dd2f9dc1d.png?rev=1faa435dd2f9",
+          "file": "1faa435dd2f9dc1d.png",
           "ink": "black"
         }
       },
       "glyph": "speaker",
-      "layout": "speaker above channel number"
+      "layout": "full-height speaker beside channel number"
     },
     "ch-71": {
       "label": "7.1",
@@ -3141,28 +3159,28 @@
       "sources": [],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ab177f092e3da514.png?rev=ab177f092e3d",
-          "file": "ab177f092e3da514.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2f62064d79d1e3a6.png?rev=2f62064d79d1",
+          "file": "2f62064d79d1e3a6.png",
           "ink": "#72C4D2"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1f211d8549245fbb.png?rev=1f211d854924",
-          "file": "1f211d8549245fbb.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d661bcc48a23f10b.png?rev=d661bcc48a23",
+          "file": "d661bcc48a23f10b.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b30e8ee572d35e54.png?rev=b30e8ee572d3",
-          "file": "b30e8ee572d35e54.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/38305364f05ce86c.png?rev=38305364f05c",
+          "file": "38305364f05ce86c.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b30e8ee572d35e54.png?rev=b30e8ee572d3",
-          "file": "b30e8ee572d35e54.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/38305364f05ce86c.png?rev=38305364f05c",
+          "file": "38305364f05ce86c.png",
           "ink": "black"
         }
       },
       "glyph": "speaker",
-      "layout": "speaker above channel number"
+      "layout": "full-height speaker beside channel number"
     },
     "ch-61": {
       "label": "6.1",
@@ -3170,28 +3188,28 @@
       "sources": [],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fd3718dba1a8a354.png?rev=fd3718dba1a8",
-          "file": "fd3718dba1a8a354.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d8b52ce7f91bec38.png?rev=d8b52ce7f91b",
+          "file": "d8b52ce7f91bec38.png",
           "ink": "#72C4D2"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9617e365e160575a.png?rev=9617e365e160",
-          "file": "9617e365e160575a.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0f730242b9e2d48c.png?rev=0f730242b9e2",
+          "file": "0f730242b9e2d48c.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/067a31c5f11e366d.png?rev=067a31c5f11e",
-          "file": "067a31c5f11e366d.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0e6e6267da79e9c3.png?rev=0e6e6267da79",
+          "file": "0e6e6267da79e9c3.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/067a31c5f11e366d.png?rev=067a31c5f11e",
-          "file": "067a31c5f11e366d.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0e6e6267da79e9c3.png?rev=0e6e6267da79",
+          "file": "0e6e6267da79e9c3.png",
           "ink": "black"
         }
       },
       "glyph": "speaker",
-      "layout": "speaker above channel number"
+      "layout": "full-height speaker beside channel number"
     },
     "ch-51": {
       "label": "5.1",
@@ -3199,28 +3217,28 @@
       "sources": [],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4ee5a4b11c99a8eb.png?rev=4ee5a4b11c99",
-          "file": "4ee5a4b11c99a8eb.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d563299b5da54b77.png?rev=d563299b5da5",
+          "file": "d563299b5da54b77.png",
           "ink": "#72C4D2"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1cd1238386bb6dfd.png?rev=1cd1238386bb",
-          "file": "1cd1238386bb6dfd.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e22c44d1ca25c2eb.png?rev=e22c44d1ca25",
+          "file": "e22c44d1ca25c2eb.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/19afbdabcc99fc35.png?rev=19afbdabcc99",
-          "file": "19afbdabcc99fc35.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac07e07b9f053ad4.png?rev=ac07e07b9f05",
+          "file": "ac07e07b9f053ad4.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/19afbdabcc99fc35.png?rev=19afbdabcc99",
-          "file": "19afbdabcc99fc35.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac07e07b9f053ad4.png?rev=ac07e07b9f05",
+          "file": "ac07e07b9f053ad4.png",
           "ink": "black"
         }
       },
       "glyph": "speaker",
-      "layout": "speaker above channel number"
+      "layout": "full-height speaker beside channel number"
     },
     "ch-21": {
       "label": "2.1",
@@ -3228,28 +3246,28 @@
       "sources": [],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/83754fc634289261.png?rev=83754fc63428",
-          "file": "83754fc634289261.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/00b5d1728be8edd6.png?rev=00b5d1728be8",
+          "file": "00b5d1728be8edd6.png",
           "ink": "#72C4D2"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b738b7071e888480.png?rev=b738b7071e88",
-          "file": "b738b7071e888480.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bcaecf38287bb637.png?rev=bcaecf38287b",
+          "file": "bcaecf38287bb637.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5d2386e14c3c6349.png?rev=5d2386e14c3c",
-          "file": "5d2386e14c3c6349.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/caa1e561f616137f.png?rev=caa1e561f616",
+          "file": "caa1e561f616137f.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5d2386e14c3c6349.png?rev=5d2386e14c3c",
-          "file": "5d2386e14c3c6349.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/caa1e561f616137f.png?rev=caa1e561f616",
+          "file": "caa1e561f616137f.png",
           "ink": "black"
         }
       },
       "glyph": "speaker",
-      "layout": "speaker above channel number"
+      "layout": "full-height speaker beside channel number"
     },
     "ch-20": {
       "label": "2.0",
@@ -3257,28 +3275,28 @@
       "sources": [],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f809e0a2b4db7952.png?rev=f809e0a2b4db",
-          "file": "f809e0a2b4db7952.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/902648c351328b9f.png?rev=902648c35132",
+          "file": "902648c351328b9f.png",
           "ink": "#72C4D2"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6936e7090e110936.png?rev=6936e7090e11",
-          "file": "6936e7090e110936.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/27e6b6f5546e0c3a.png?rev=27e6b6f5546e",
+          "file": "27e6b6f5546e0c3a.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2235211cde5f804f.png?rev=2235211cde5f",
-          "file": "2235211cde5f804f.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/199dd06a626ae488.png?rev=199dd06a626a",
+          "file": "199dd06a626ae488.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2235211cde5f804f.png?rev=2235211cde5f",
-          "file": "2235211cde5f804f.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/199dd06a626ae488.png?rev=199dd06a626a",
+          "file": "199dd06a626ae488.png",
           "ink": "black"
         }
       },
       "glyph": "speaker",
-      "layout": "speaker above channel number"
+      "layout": "full-height speaker beside channel number"
     },
     "ch-10": {
       "label": "1.0",
@@ -3286,28 +3304,28 @@
       "sources": [],
       "skins": {
         "outline": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e1c767d35b7aaa88.png?rev=e1c767d35b7a",
-          "file": "e1c767d35b7aaa88.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1b16c1707b6d46c5.png?rev=1b16c1707b6d",
+          "file": "1b16c1707b6d46c5.png",
           "ink": "#72C4D2"
         },
         "transparent": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/87817dcc5e9cf488.png?rev=87817dcc5e9c",
-          "file": "87817dcc5e9cf488.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4a4bd8e5d735723f.png?rev=4a4bd8e5d735",
+          "file": "4a4bd8e5d735723f.png",
           "ink": "white"
         },
         "solid": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/81e45812ad4cebba.png?rev=81e45812ad4c",
-          "file": "81e45812ad4cebba.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3d42a516458e175c.png?rev=3d42a516458e",
+          "file": "3d42a516458e175c.png",
           "ink": "black"
         },
         "mono": {
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/81e45812ad4cebba.png?rev=81e45812ad4c",
-          "file": "81e45812ad4cebba.png",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3d42a516458e175c.png?rev=3d42a516458e",
+          "file": "3d42a516458e175c.png",
           "ink": "black"
         }
       },
       "glyph": "speaker",
-      "layout": "speaker above channel number"
+      "layout": "full-height speaker beside channel number"
     },
     "l-en": {
       "label": "EN",

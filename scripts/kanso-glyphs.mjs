@@ -12,7 +12,7 @@ export const GLYPHS={
  remux:'<rect x="2" y="3" width="11" height="11" rx="2"/><rect x="19" y="3" width="11" height="11" rx="2"/><path d="M5 7h.1M5 10h.1M22 7h.1M22 10h.1M7.5 15c0 4 8.5 3 8.5 7m8.5-7c0 4-8.5 3-8.5 7"/><rect x="10" y="22" width="12" height="8" rx="2"/>',
  speech:'<path d="M22 10a8 8 0 0 0-8-7H11a9 9 0 0 0-9 9v1a9 9 0 0 0 4 7v7l6-5h3a8 8 0 0 0 7-7M25 9c3 3 3 8 0 11m4-15c5 6 5 13 0 19"/>',
  subtitle:'<rect x="2" y="5" width="28" height="22" rx="4"/><path d="M8 14h16M8 20h10"/>',
- speaker:'<path d="M3 12h6l9-8v24l-9-8H3zM23 11c3 3 3 7 0 10m4-15c6 6 6 14 0 20"/>',
+ speaker:'<path d="M3 11h6l11-8v26L9 21H3a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1z" fill="currentColor" stroke="none"/><path d="M26 7a13 13 0 0 1 0 18" stroke-width="3"/>',
  screen:'<path d="M3 11V5h7m12 0h7v6m0 10v5h-7m-12 0H3v-5M12 30h8m-4-4v4"/>',
  range:'<circle cx="16" cy="16" r="8"/><path d="M16 8v16M16 1v3m0 24v3M1 16h3m24 0h3M5 5l2 2m18 18 2 2M5 27l2-2M25 7l2-2"/><path d="M16 8a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/>',
  cut:'<circle cx="7" cy="7" r="4"/><circle cx="7" cy="25" r="4"/><path d="m10 10 14 14M10 22 24 8M26 4h4v24h-4"/>',

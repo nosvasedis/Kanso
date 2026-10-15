@@ -59,7 +59,7 @@ async function text(label,ink='white',h=INK_HEIGHT,bold=false){
  const b=await sharp({text:{text:`<span foreground="${inkColor(ink)}" letter_spacing="500">${esc(label)}</span>`,font:`Manrope ${bold?'Bold':'SemiBold'} 48`,fontfile,rgba:true,dpi:72}}).png().toBuffer();
  return recolor(await sharp(b).resize({height:h}).png().toBuffer(),ink);
 }
-async function logo(id,ink='white'){
+async function logo(id,ink='white',height=INK_HEIGHT){
  const file=direct[id];
  let b=await fs.readFile(file?newPath(file):oldPath(id));
  if(file?.endsWith('.svg'))b=await sharp(b,{density:160}).png().toBuffer();
@@ -67,13 +67,13 @@ async function logo(id,ink='white'){
  if(id==='a-flac')b=await sharp(b).extract({left:0,top:0,width:262,height:106}).png().toBuffer();
  // Flat vector HDR10+ artwork avoids the old header PNG's baked-in shadow.
  b=await recolor(b,ink,{removeBlack:id==='a-flac'||id==='s-pcok',removeWhite:id==='a-dtsx'});
- return sharp(b).trim({background:'#00000000'}).resize({height:INK_HEIGHT,width:270,fit:'inside'}).png().toBuffer();
+ return sharp(b).trim({background:'#00000000'}).resize({height,width:270,fit:'inside'}).png().toBuffer();
 }
-async function join(parts,padding=PAD){
+async function join(parts,padding=PAD,gap=GAP){
  const metas=await Promise.all(parts.map(b=>sharp(b).metadata()));
- const width=metas.reduce((s,m)=>s+m.width,0)+GAP*(parts.length-1)+padding*2;
+ const width=metas.reduce((s,m)=>s+m.width,0)+gap*(parts.length-1)+padding*2;
  let x=padding;
- const layers=parts.map((input,i)=>{const layer={input,left:x,top:Math.floor((HEIGHT-metas[i].height)/2)};x+=metas[i].width+GAP;return layer;});
+ const layers=parts.map((input,i)=>{const layer={input,left:x,top:Math.floor((HEIGHT-metas[i].height)/2)};x+=metas[i].width+gap;return layer;});
  return containedComposite({create:{width,height:HEIGHT,channels:4,background:'#00000000'}},layers,'badge row');
 }
 async function icon(name,ink='white',height=44){return sharp(Buffer.from(glyphSvg(name,ink))).resize({height}).png().toBuffer();}
@@ -102,14 +102,11 @@ async function stackedSource(glyph,label,ink,override,number){
  layers.push({input:caption,left:Math.floor((width-m.width)/2),top:33});
  return containedComposite({create:{width,height:60,channels:4,background:'#00000000'}},layers,'stacked source');
 }
-async function stackedChannel(label,ink){
- const emblem=await icon('speaker',ink,29),number=await text(label,ink,28,true);
- const em=await sharp(emblem).metadata(),nm=await sharp(number).metadata();
- const width=Math.max(em.width,nm.width)+4;
- return containedComposite({create:{width,height:60,channels:4,background:'#00000000'}},[
-  {input:emblem,left:Math.floor((width-em.width)/2),top:0},
-  {input:number,left:Math.floor((width-nm.width)/2),top:32},
- ],'stacked channels');
+async function channelMark(label,ink){
+ // A compact, filled silhouette remains visible at 16px artwork height.
+ // Use the client's minimum width for full-height ink rather than a tiny stack.
+ const speaker=await sharp(Buffer.from(glyphSvg('speaker',ink)),{density:160}).trim({background:'#00000000'}).resize({height:44}).png().toBuffer();
+ return join([speaker,await text(label,ink,42,true)],4,7);
 }
 async function twoLineSource(glyph,upper,lower,ink){
  const disc=await icon(glyph,ink,27),dvd=await text(upper,ink,28,true);
@@ -150,7 +147,7 @@ const combinations={
  'a-dtsx-ma':['a-dtsx','MA'], 'a-dtsx-hd':['a-dtsx','HD'],
  'a-dtshd':['a-dts','HD'], 'a-dtses':['a-dts','ES'],
 };
-const manifest={version:6,clippingGuard:'scripts/badge-layout.mjs',channelConcept:'badges/design/channels-concept.png',channelPrompt:'badges/design/channels-prompt.txt',concept:'badges/design/glyph-concept.png',spokenFlagConcept:'badges/design/spoken-flags-concept.png',compactConcept:'badges/design/compact-sources-subtitles-concept.png',spokenFlagSources:'assets/flag-sources/manifest.json',flagColorsPreserved:true,outlineInk:'matches borderColor',transparentInk:'white',customGlyphSource:'scripts/kanso-glyphs.mjs',font:{family:'Manrope',weight:600,captionWeight:700,file:'assets/fonts/Manrope.ttf',license:'assets/fonts/OFL-Manrope.txt'},defaultSkin:'outline',geometry:{height:HEIGHT,inkHeight:INK_HEIGHT,padding:PAD,gap:GAP,stroke:2.15},languageFamilies:LANGUAGE_FAMILIES,filters:{}};
+const manifest={version:7,clippingGuard:'scripts/badge-layout.mjs',channelConcept:'badges/design/channels-concept.png',channelPrompt:'badges/design/channels-prompt.txt',concept:'badges/design/glyph-concept.png',spokenFlagConcept:'badges/design/spoken-flags-concept.png',compactConcept:'badges/design/compact-sources-subtitles-concept.png',spokenFlagSources:'assets/flag-sources/manifest.json',flagColorsPreserved:true,outlineInk:'matches borderColor',transparentInk:'white',customGlyphSource:'scripts/kanso-glyphs.mjs',font:{family:'Manrope',weight:600,captionWeight:700,file:'assets/fonts/Manrope.ttf',license:'assets/fonts/OFL-Manrope.txt'},defaultSkin:'outline',geometry:{height:HEIGHT,inkHeight:INK_HEIGHT,padding:PAD,gap:GAP,stroke:2.15},languageFamilies:LANGUAGE_FAMILIES,filters:{}};
 await fs.mkdir(path.join(ROOT,'assets/glyphs'),{recursive:true});
 for(const name of Object.keys(GLYPHS))await fs.writeFile(path.join(ROOT,'assets/glyphs',name+'.svg'),glyphSvg(name));
 for(const f of pack.filters){
@@ -170,11 +167,15 @@ for(const f of pack.filters){
    }else{parts=[await subtitleMark(info.code,ink)];row.kind='subtitle-flag';row.glyph=null;row.flagCountry=SPOKEN_FLAGS[info.code];row.layout='flag document beside stacked language / SUB';}
    row.code=info.code;row.meaning=info.name;row.sources=[];
   }else if(combinations[id]){
-   const [base,suffix]=combinations[id];parts=[await logo(base,ink),await text(suffix,ink,38)];
+   const [base,suffix]=combinations[id];parts=[await logo(base,ink,56),await text(suffix,ink,24,true)];
    row.kind='logo-label';row.sources=direct[base]?[sources[direct[base]].url]:[inherited[base],original.themes.outline.filters[base].imageURL];
-   if(id==='v-dv-hdr10p'){parts=[await logo('a-dv',ink),await logo('v-hdr10p',ink)];row.sources.push(sources['hdr10plus.svg'].url);}
-   if(id==='v-dv-hdr10'){parts=[await logo('a-dv',ink),await logo('v-hdr10',ink)];row.sources.push(sources['hdr10.svg'].url);}
+   if(id==='v-dv-hdr10p'){parts=[await logo('a-dv',ink,56),await logo('v-hdr10p',ink,24)];row.sources.push(sources['hdr10plus.svg'].url);}
+   if(id==='v-dv-hdr10'){parts=[await logo('a-dv',ink,56),await logo('v-hdr10',ink,24)];row.sources.push(sources['hdr10.svg'].url);}
    parts.splice(1,0,await separator(ink));row.layout='compound with vertical separator';
+   const primary=await sharp(parts[0]).metadata(),secondary=await sharp(parts[2]).metadata();
+   const secondaryWidth=352-PAD*2-14-4-primary.width;
+   if(secondary.width>secondaryWidth)parts[2]=await sharp(parts[2]).resize({width:secondaryWidth,height:24,fit:'inside'}).png().toBuffer();
+   row.primaryHeight=primary.height;row.secondaryHeight=(await sharp(parts[2]).metadata()).height;
   }else if(id==='criterion-collection'){
    const mark=await sharp(await logo(id,ink)).resize({height:30}).png().toBuffer();
    parts=[await stackedSource(null,'CRITERION',ink,mark)];row.kind='logo-label';row.sources=[sources['criterion.svg'].url];row.layout='icon above caption';
@@ -188,7 +189,7 @@ for(const f of pack.filters){
   }else if(id==='caption-forced'){
    parts=[await stackedSource('forced-caption','FORCED',ink)];row.kind='custom-glyph';row.glyph='forced-caption';row.layout='icon above caption';
   }else if(f.groupId==='gc'){
-   parts=[await stackedChannel(f.name,ink)];row.kind='custom-glyph';row.glyph='speaker';row.layout='speaker above channel number';
+   parts=[await channelMark(f.name,ink)];row.kind='custom-glyph';row.glyph='speaker';row.layout='full-height speaker beside channel number';
   }else if(RESOLUTION_CAPTIONS[id]){
    parts=[await resolutionMark(id,ink,skin,skin==='solid'?applySolidTheme({...f}):f)];row.kind='text';row.layout='framed display above quality';row.quality=RESOLUTION_CAPTIONS[id][1];
   }else if(direct[id]||inherited[id]){
@@ -207,9 +208,10 @@ for(const f of pack.filters){
    row.kind=glyph?'custom-glyph':'text';row.glyph=glyph;
    if(f.groupId==='grl')row.layout='icon above caption';
   }
-  let b=await join(parts,f.groupId==='gc'?2:['gms','grl','gr'].includes(f.groupId)?6:PAD);
+  let b=f.groupId==='gc'?parts[0]:await join(parts,['gms','grl','gr'].includes(f.groupId)?6:PAD,combinations[id]?7:GAP);
   // Coil fits within 92/16: keep a 5.5:1 maximum aspect ratio at native chip size.
   const m=await sharp(b).metadata();
+  if(combinations[id]&&m.width>352)throw new Error(`${id}: compound must fit without shrinking its primary logo`);
   if(m.width>352)b=await sharp(b).resize({width:336,height:HEIGHT,fit:'inside'}).extend({top:Math.floor((HEIGHT-Math.round(HEIGHT*336/m.width))/2),bottom:Math.ceil((HEIGHT-Math.round(HEIGHT*336/m.width))/2),left:8,right:8,background:'#00000000'}).png().toBuffer();
   // Seal the final ink after resampling: Lanczos can overshoot RGB at opaque
   // edges, so the actual Outline glyph pixels must be recolored last.

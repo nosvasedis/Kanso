@@ -55,14 +55,10 @@ assert.notEqual(design.filters['web-1'].skins.outline.file,design.filters['web-1
 for(const row of Object.values(design.filters))if(row.glyph)assert.ok(await fs.stat(path.join(ROOT,'assets/glyphs',row.glyph+'.svg')));
 assert.equal(design.filters['ch-51'].glyph,'speaker','Channels need a speaker');
 const previous=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/layout-before-2.3.3.json'),'utf8'));
-for(const id of ['ch-10','ch-20','ch-21','ch-51','ch-61','ch-71','ch-81','q-dvd-remux','r-4k','r-1440','r-1080','r-720'])for(const skin of ['outline','transparent','solid','mono']){
+for(const id of ['q-dvd-remux','r-4k','r-1440','r-1080','r-720'])for(const skin of ['outline','transparent','solid','mono']){
  const current=await sharp(path.join(BADGE_IMAGE_FILES_DIR,design.filters[id].skins[skin].file)).metadata();
  const old=previous.filters[id].skins[skin];
  assert.ok(current.width<old.width,`${skin}/${id}: narrower artwork than 2.3.2`);
- if(id.startsWith('ch-')){
-  assert.equal(design.filters[id].layout,'speaker above channel number');
-  assert.ok(current.width<=72,`${id}: nearly square channel canvas`);
- }
 }
 assert.equal(design.filters['q-dvd-remux'].layout,'DVD above REMUX');
 assert.equal(design.filters['q-hc'].layout,'HC above HDRIP');
@@ -71,9 +67,22 @@ for(const [id,row] of Object.entries(design.filters)){
  if(id.includes('edition')||['remastered-release','regraded-release'].includes(id))assert.ok(!row.label.includes('.'),`${id}: edition labels have no abbreviation periods`);
 }
 const latestPrevious=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/layout-before-2.3.4.json'),'utf8'));
-for(const [id,row] of Object.entries(design.filters))if(id==='q-hc'||id==='caption-forced'||id.startsWith('ch-'))for(const skin of ['outline','transparent','solid','mono']){
+for(const [id,row] of Object.entries(design.filters))if(id==='q-hc'||id==='caption-forced')for(const skin of ['outline','transparent','solid','mono']){
  const m=await sharp(path.join(BADGE_IMAGE_FILES_DIR,row.skins[skin].file)).metadata();
  assert.ok(m.width<latestPrevious.filters[id].skins[skin].width,`${id}: tighter than 2.3.3 without squeezing the lettering`);
+}
+for(const [id,row] of Object.entries(design.filters))for(const skin of ['outline','transparent','solid','mono']){
+ if(id.startsWith('ch-')){
+  assert.equal(row.layout,'full-height speaker beside channel number');
+  const input=path.join(BADGE_IMAGE_FILES_DIR,row.skins[skin].file);
+  const {data,info}=await sharp(input).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+  assert.ok(info.width<=152,`${id}: uses a compact image slot without tiny lettering`);
+  const ys=[];for(let y=0;y<64;y++)for(let x=4;x<52;x++)if(data[(y*info.width+x)*4+3]>200)ys.push(y);
+  assert.ok(Math.max(...ys)-Math.min(...ys)>=36,`${id}: speaker silhouette is large enough for native-size viewing`);
+ }
+ if(row.layout==='compound with vertical separator'){
+  assert.equal(row.primaryHeight,56);assert.ok(row.secondaryHeight>=18&&row.secondaryHeight<=24);
+ }
 }
 // Compare the complete caption alpha against independently rendered font ink.
 // Canvas-edge checks alone cannot catch a glyph cropped inside an inner panel.

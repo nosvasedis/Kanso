@@ -150,8 +150,8 @@ const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.sead
 export const TITLE_LTR_ANCHOR='\u200e';
 const debridType="stream.type::in('debrid','usenet','stremio-usenet')";
 const CACHE_STATE=gate('service.cached::istrue','⚡',gate('service.cached::isfalse','⏳','❔'));
-const TITLE_SEEDERS=gate("stream.type::=p2p::and::stream.seeders::>0",' {stream.seeders} seeders')+
- gate(`${debridType}::and::service.cached::isfalse::and::stream.seeders::>0`,' {stream.seeders} seeders');
+const TITLE_SEEDERS=gate("stream.type::=p2p::and::stream.seeders::>0",' 🌱 {stream.seeders}')+
+ gate(`${debridType}::and::service.cached::isfalse::and::stream.seeders::>0`,' 🌱 {stream.seeders}');
 export const PRESET_NAME=TITLE_LTR_ANCHOR+TITLE_TRANSPORT+FORMATTER_RANK_STARS+TITLE_SEEDERS;
 
 /** Optional parts carry a separator only after an earlier nonempty field. */
@@ -162,11 +162,11 @@ function row(parts){return parts.map((p,i)=>{
 const part=(field,text=`{${field}}`)=>({field,condition:present(field),text});
 const context=gate('stream.regexMatched::lower::~bad',"🚩 {stream.regexMatched::replace('Radarr ','')::replace('Sonarr ','')}\n") +
  gate('stream.upscaled::istrue','🔼 Upscaled\n') +
- gate(VISUAL_CONFLICT,'⚠️ Conflicting HDR/SDR tags\n');
+ gate(VISUAL_CONFLICT,'⚠️ HDR/SDR conflict\n');
 const healthMessage="{stream.message::replace('NZB Health: 🚫','❌')::replace('NZB Health: ','')::replace('AvailNZB 💚','💚')}";
 const messages=gate('stream.message::exists',gate('stream.message::$NZB Health::or::stream.message::$AvailNZB','\n','\n💬 ')+healthMessage);
-const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists',gate(`${PREFERRED_TRACKS}::exists::isfalse`,'🗣️ Preferred audio unavailable\n'),
- gate(`${reliable}::and::${knownLanguages}::exists::and::${preferredLanguages}::exists::isfalse`,'🗣️ Preferred audio unavailable\n')));
+const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists',gate(`${PREFERRED_TRACKS}::exists::isfalse`,'🗣️ Preferred audio missing\n'),
+ gate(`${reliable}::and::${knownLanguages}::exists::and::${preferredLanguages}::exists::isfalse`,'🗣️ Preferred audio missing\n')));
 
 export function buildPresetFormatter(preset='compact'){
  if(!['compact','detailed'].includes(preset))throw new Error(`Unknown preset ${preset}`);
@@ -179,12 +179,13 @@ export function buildPresetFormatter(preset='compact'){
    ...(detailed?[part('stream.country')]:[]),
  ]);
  const fileCore=row([
-   {condition:'stream.seasonPack::istrue',text:'📚 Season pack'},
-   part('stream.size','💾 {stream.size::sbytes}'),part('stream.folderSize','📁 {stream.folderSize::sbytes}'),
+   {condition:'stream.seasonPack::istrue',text:'📚 Pack'},
+   part('stream.size','💾 {stream.size::sbytes}'),
+   {condition:'stream.folderSize::neq::stream.size::and::stream.folderSize::>0',text:'📁 {stream.folderSize::sbytes}'},
  ]);
  const file=fileCore+(detailed?'{? 📶 {stream.bitrate::sbitrate}?}{? 🕐 {stream.age}?}':'');
  const debrid="stream.type::in('debrid','usenet','stremio-usenet')";
- const servicePath=gate('service.shortName::exists','☁️ {service.shortName}');
+ const servicePath='☁️ {service.shortName}';
  const deliveryCore=row([
    {condition:'service.shortName::exists',text:servicePath},
    part('addon.name',gate('stream.proxied::istrue','🛡️','🧩')+' {addon.name::truncate(14)}'),
@@ -194,8 +195,8 @@ export function buildPresetFormatter(preset='compact'){
  // separator gates. Suppress an indexer that already equals the addon label.
  const deliveryRow=deliveryCore+(detailed?
    gate('stream.indexer::lower::neq::addon.name::lower::and::stream.indexer::exists',' 🔍 {stream.indexer::truncate(18)}')+
-   gate('stream.private::istrue',' 🔐 Private')+gate('stream.freeleech::istrue',' 🆓 Freeleech')+
-   gate('stream.library::istrue::or::stream.preloading::istrue',' '+gate('stream.library::istrue','📚 Library','⬇️ Preloading')):'');
+   gate('stream.private::istrue',' 🔐')+gate('stream.freeleech::istrue',' 🆓')+
+   gate('stream.library::istrue::or::stream.preloading::istrue',' '+gate('stream.library::istrue','📂 Library','⬇️ Preload')):'');
  const joinRows=rows=>rows.join('\n{tools.removeLine}\n');
  let visible=context+noPreferred+joinRows([release,file,deliveryRow]);
  visible+=messages;
