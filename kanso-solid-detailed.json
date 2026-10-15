@@ -16,7 +16,7 @@
     {
       "id": "v-imax-e",
       "groupId": "gst",
-      "name": "IMAX ENH.",
+      "name": "IMAX ENH",
       "type": "filter",
       "isEnabled": true,
       "pattern": "(?s)^(?=.*(?:\\u206f\\u200b\\u206f\\u200d\\u206f))(?=.*(?:\\u180b\\u200f\\u200e\\u206f))",

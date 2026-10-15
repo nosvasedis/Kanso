@@ -61,7 +61,7 @@ export const LABELS={
  'q-r':'REMUX','q-b':'BLU-RAY','q-w':'WEB-DL','q-wr':'WEBRip','q-cam':'CAM','q-hdtv':'HDTV','q-hdrip':'HDRip','q-dvdrip':'DVDRip','q-scr':'SCR','q-tc':'TC','q-ts':'TS',
  'r-4k':'4K','r-1440':'1440p','r-144':'144p',
  'ge-av1':'AV1','ge-hevc':'HEVC','ge-avc':'AVC','ge-xvid':'XviD','ge-divx':'DivX',
- 'v-dv-hdr10p':'DV/HDR10+','v-dv-hdr10':'DV/HDR10','v-dv-hdr':'DV/HDR','v-hdr10p':'HDR10+','v-hdr10':'HDR10','v-hdr':'HDR','v-hlg':'HLG','v-10bit':'10bit','v-imax-e':'IMAX ENH.','v-imax':'IMAX','a-dv':'DOLBY VISION','v-sdr':'SDR','v-ai':'AI','v-3d':'3D',
+ 'v-dv-hdr10p':'DV/HDR10+','v-dv-hdr10':'DV/HDR10','v-dv-hdr':'DV/HDR','v-hdr10p':'HDR10+','v-hdr10':'HDR10','v-hdr':'HDR','v-hlg':'HLG','v-10bit':'10bit','v-imax-e':'IMAX ENH','v-imax':'IMAX','a-dv':'DOLBY VISION','v-sdr':'SDR','v-ai':'AI','v-3d':'3D',
  'a-at-th':'TrueHD Atmos','a-at-dp':'DD+ Atmos','a-dtsx-ma':'DTS:X MA','a-dtsx-hd':'DTS:X HD','a-dtsx':'DTS:X','a-dtsma':'DTS-HD MA','a-dtshd':'DTS-HD','a-dtses':'DTS-ES','a-th':'TrueHD','a-at':'Atmos','a-dp':'DD+','a-dd':'DD',
 };
 const sourceAtoms={'q-hc':'srcHcRip','q-dvd-remux':'srcDvdRemux','q-r':'srcRemux','q-b':'srcBluray','q-w':'srcWebdl','q-wr':'srcWebrip','q-cam':'srcCam','q-hdtv':'srcHdtv','q-hdrip':'srcHdrip','q-dvdrip':'srcDvdrip','q-scr':'srcScr','q-tc':'srcTc','q-ts':'srcTs'};

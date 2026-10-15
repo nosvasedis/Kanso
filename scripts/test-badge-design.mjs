@@ -21,6 +21,7 @@ for(const skin of ['outline','transparent','solid','mono'])for(const suffix of [
  const pack=JSON.parse(await fs.readFile(path.join(ROOT,`kanso-${skin}${suffix}.json`),'utf8'));
  for(const f of pack.filters){
   const row=design.filters[f.id];assert.ok(row,`Missing design ${f.id}`);
+  if(f.groupId==='gst')assert.ok(!f.name.includes('.'),`${f.id}: special-edition captions have no periods`);
   if(skin==='solid')assert.ok(contrast(f.textColor,f.tagColor)>=4.5,`${f.id}: Solid lettering is readable on its actual fill`);
   assert.equal(row.skins[skin].imageURL,f.imageURL,`${skin}/${f.id} uses the new design`);
   if(row.kind.includes('logo'))assert.ok(row.sources.length&&row.sources.every(s=>s.startsWith('https://')),`${f.id} requires provenance`);

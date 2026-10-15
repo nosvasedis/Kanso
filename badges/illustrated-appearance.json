@@ -2470,7 +2470,7 @@
           "tagStyle": "filled"
         },
         "v-imax-e": {
-          "name": "IMAX ENH.",
+          "name": "IMAX ENH",
           "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6ec8b3232a4467e9.png?rev=6ec8b3232a44",
           "tagColor": "#FFD500",
           "textColor": "#000000",
@@ -5196,7 +5196,7 @@
           "tagStyle": "bordered"
         },
         "v-imax-e": {
-          "name": "IMAX ENH.",
+          "name": "IMAX ENH",
           "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/58541d2433d2e6ea.png?rev=58541d2433d2",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
@@ -7922,7 +7922,7 @@
           "tagStyle": "filled"
         },
         "v-imax-e": {
-          "name": "IMAX ENH.",
+          "name": "IMAX ENH",
           "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6ec8b3232a4467e9.png?rev=6ec8b3232a44",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
@@ -10648,7 +10648,7 @@
           "tagStyle": "bordered"
         },
         "v-imax-e": {
-          "name": "IMAX ENH.",
+          "name": "IMAX ENH",
           "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3426319c93aa8eb3.png?rev=3426319c93aa",
           "tagColor": "#00000000",
           "textColor": "#FFD500",
