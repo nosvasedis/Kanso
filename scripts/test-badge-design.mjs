@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import {containedComposite} from './badge-layout.mjs';
 import {ROOT,BADGE_IMAGE_FILES_DIR,hashIconBuffer,iconFileName} from './icon-cdn.mjs';
 import {contrast} from './badge-outline-theme.mjs';
 import {MARKER_ATOMS,TIER_MARKERS,LANGUAGE_MARKERS,SUBTITLE_MARKERS,MARKER_REGISTRY_VALIDATION} from './formatter-markers.mjs';
@@ -9,6 +10,10 @@ const design=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/manifest
 assert.equal(design.font.family,'Manrope');
 assert.equal(design.defaultSkin,'outline');
 const checked=new Set();
+const empty=await sharp({create:{width:118,height:60,channels:4,background:'#00000000'}}).png().toBuffer();
+const caption=await sharp({create:{width:50,height:20,channels:4,background:'#FFFFFF'}}).png().toBuffer();
+await assert.rejects(()=>containedComposite(empty,[{input:caption,left:0,top:43}],'resolution caption'),/exceeds/,'Reject the former resolution overflow instead of silently cropping');
+await assert.rejects(()=>containedComposite(empty,[{input:caption,left:70,top:3}],'subtitle lettering'),/exceeds/,'Reject lettering outside the subtitle canvas');
 assert.deepEqual(MARKER_REGISTRY_VALIDATION,{ok:true,errors:[]},'Complete marker registry stays valid after the new channel facts');
 const baseline=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/marker-baseline.json'),'utf8'));
 for(const [name,current] of Object.entries({MARKER_ATOMS,TIER_MARKERS,LANGUAGE_MARKERS,SUBTITLE_MARKERS}))for(const [key,value] of Object.entries(baseline[name]))assert.equal(current[key],value,`${name}/${key}: preexisting markers must not move`);
@@ -59,6 +64,33 @@ for(const id of ['ch-10','ch-20','ch-21','ch-51','ch-61','ch-71','ch-81','q-dvd-
  }
 }
 assert.equal(design.filters['q-dvd-remux'].layout,'DVD above REMUX');
+assert.equal(design.filters['q-hc'].layout,'HC above HDRIP');
+assert.equal(design.filters['caption-forced'].layout,'icon above caption');
+for(const [id,row] of Object.entries(design.filters)){
+ if(id.includes('edition')||['remastered-release','regraded-release'].includes(id))assert.ok(!row.label.includes('.'),`${id}: edition labels have no abbreviation periods`);
+}
+const latestPrevious=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/layout-before-2.3.4.json'),'utf8'));
+for(const [id,row] of Object.entries(design.filters))if(id==='q-hc'||id==='caption-forced'||id.startsWith('ch-'))for(const skin of ['outline','transparent','solid','mono']){
+ const m=await sharp(path.join(BADGE_IMAGE_FILES_DIR,row.skins[skin].file)).metadata();
+ assert.ok(m.width<latestPrevious.filters[id].skins[skin].width,`${id}: tighter than 2.3.3 without squeezing the lettering`);
+}
+// Compare the complete caption alpha against independently rendered font ink.
+// Canvas-edge checks alone cannot catch a glyph cropped inside an inner panel.
+async function completeCaption(id,skin,label,height,position){
+ const expected=await sharp({text:{text:`<span foreground="#FFFFFF" letter_spacing="500">${label}</span>`,font:'Manrope Bold 48',fontfile:path.join(ROOT,'assets/fonts/Manrope.ttf'),rgba:true,dpi:72}}).resize({height}).ensureAlpha().png().toBuffer();
+ const em=await sharp(expected).metadata();
+ const input=path.join(BADGE_IMAGE_FILES_DIR,design.filters[id].skins[skin].file),im=await sharp(input).metadata();
+ const {left,top}=position(im,em);
+ const expectedAlpha=await sharp(expected).extractChannel('alpha').raw().toBuffer();
+ const actualAlpha=await sharp(input).extract({left,top,width:em.width,height:em.height}).extractChannel('alpha').raw().toBuffer();
+ assert.deepEqual(actualAlpha,expectedAlpha,`${skin}/${id}: every pixel of ${label} survives compositing`);
+}
+for(const [id,row] of Object.entries(design.filters))for(const skin of ['outline','transparent','solid','mono']){
+ if(row.quality)await completeCaption(id,skin,row.quality,20,(im,em)=>({left:6+Math.floor((im.width-12-em.width)/2),top:41}));
+ if(row.kind==='subtitle-flag'){
+  for(const [label,h,y] of [[row.code,30,5],['SUB',21,39]])await completeCaption(id,skin,label,h,(im,em)=>({left:76+Math.floor((im.width-84-em.width)/2),top:y}));
+ }
+}
 assert.equal(design.filters['r-1440'].quality,'QHD','Keep 1440p accurate rather than relabeling it 2K');
 assert.equal(design.filters['l-el'].kind,'speech-flag','Spoken languages need a speech-shaped flag');
 assert.equal(design.filters['sub-el'].kind,'subtitle-flag','Subtitles need a flag-backed text document');

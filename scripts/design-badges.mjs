@@ -10,6 +10,7 @@ import {spokenFlagSvg,subtitleDocumentSvg,SPOKEN_FLAGS} from './spoken-flags.mjs
 import {glyphSvg,glyphForBadge,GLYPHS} from './kanso-glyphs.mjs';
 import {languageDisplayInfo,LANGUAGE_FAMILIES} from './display-language-families.mjs';
 import {spawnSync} from 'node:child_process';
+import {containedComposite} from './badge-layout.mjs';
 
 const designDir=path.join(ROOT,'badges/design');
 await fs.mkdir(designDir,{recursive:true});
@@ -73,7 +74,7 @@ async function join(parts,padding=PAD){
  const width=metas.reduce((s,m)=>s+m.width,0)+GAP*(parts.length-1)+padding*2;
  let x=padding;
  const layers=parts.map((input,i)=>{const layer={input,left:x,top:Math.floor((HEIGHT-metas[i].height)/2)};x+=metas[i].width+GAP;return layer;});
- return sharp({create:{width,height:HEIGHT,channels:4,background:'#00000000'}}).composite(layers).png().toBuffer();
+ return containedComposite({create:{width,height:HEIGHT,channels:4,background:'#00000000'}},layers,'badge row');
 }
 async function icon(name,ink='white',height=44){return sharp(Buffer.from(glyphSvg(name,ink))).resize({height}).png().toBuffer();}
 async function separator(ink){
@@ -99,24 +100,24 @@ async function stackedSource(glyph,label,ink,override,number){
   layers.push({input:line,left:left+em.width+5,top:2},{input:tierLabel,left:left+em.width+14,top:0});
  }
  layers.push({input:caption,left:Math.floor((width-m.width)/2),top:33});
- return sharp({create:{width,height:60,channels:4,background:'#00000000'}}).composite(layers).png().toBuffer();
+ return containedComposite({create:{width,height:60,channels:4,background:'#00000000'}},layers,'stacked source');
 }
 async function stackedChannel(label,ink){
  const emblem=await icon('speaker',ink,29),number=await text(label,ink,28,true);
  const em=await sharp(emblem).metadata(),nm=await sharp(number).metadata();
- const width=Math.max(52,em.width,nm.width);
- return sharp({create:{width,height:60,channels:4,background:'#00000000'}}).composite([
+ const width=Math.max(em.width,nm.width)+4;
+ return containedComposite({create:{width,height:60,channels:4,background:'#00000000'}},[
   {input:emblem,left:Math.floor((width-em.width)/2),top:0},
   {input:number,left:Math.floor((width-nm.width)/2),top:32},
- ]).png().toBuffer();
+ ],'stacked channels');
 }
-async function dvdRemux(ink){
- const disc=await icon('disc',ink,27),dvd=await text('DVD',ink,28,true);
+async function twoLineSource(glyph,upper,lower,ink){
+ const disc=await icon(glyph,ink,27),dvd=await text(upper,ink,28,true);
  const dm=await sharp(disc).metadata(),tm=await sharp(dvd).metadata();
- const top=await sharp({create:{width:dm.width+7+tm.width,height:30,channels:4,background:'#00000000'}}).composite([
+ const top=await containedComposite({create:{width:dm.width+7+tm.width,height:30,channels:4,background:'#00000000'}},[
   {input:disc,left:0,top:1},{input:dvd,left:dm.width+7,top:0},
- ]).png().toBuffer();
- return stackedSource(null,'REMUX',ink,top);
+ ],'source heading');
+ return stackedSource(null,lower,ink,top);
 }
 const RESOLUTION_CAPTIONS={'r-4k':['4K','UHD'],'r-1440':['1440p','QHD'],'r-1080':['1080p','FHD'],'r-720':['720p','HD'],'r-576':['576p','SD'],'r-480':['480p','SD'],'r-360':['360p','SD'],'r-240':['240p','SD'],'r-144':['144p','SD']};
 async function resolutionMark(id,ink,skin,f){
@@ -127,8 +128,8 @@ async function resolutionMark(id,ink,skin,f){
  const tm=await sharp(top).metadata(),bm=await sharp(bottom).metadata(),width=Math.max(84,tm.width+14,bm.width+12);
  // The screen is part of the resolution symbol. Nuvio owns the outer chip.
  // Clear skins use a hollow display; filled skins use a reversed display face.
- const screen=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="60"><rect x="2" y="2" width="${width-4}" height="38" rx="1.5" fill="${filled?inkColor(ink):'none'}" stroke="${inkColor(ink)}" stroke-width="2.5"/></svg>`);
- return sharp(screen).composite([{input:top,left:Math.floor((width-tm.width)/2),top:Math.floor((42-tm.height)/2)},{input:bottom,left:Math.floor((width-bm.width)/2),top:43}]).png().toBuffer();
+ const screen=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="62"><rect x="2" y="2" width="${width-4}" height="36" rx="1.5" fill="${filled?inkColor(ink):'none'}" stroke="${inkColor(ink)}" stroke-width="2.5"/></svg>`);
+ return containedComposite(screen,[{input:top,left:Math.floor((width-tm.width)/2),top:Math.floor((40-tm.height)/2)},{input:bottom,left:Math.floor((width-bm.width)/2),top:40}],'resolution '+id);
 }
 async function subtitleMark(code,ink){
  const svg=await subtitleDocumentSvg(code,inkColor(ink));
@@ -137,10 +138,11 @@ async function subtitleMark(code,ink){
  // Keep the whole flag document beside the text rather than hiding the overlap
  // beneath an opaque panel. The language/SUB area is transparent on every skin.
  const page=await sharp(Buffer.from(svg)).resize({width:62,height:46,fit:'inside'}).png().toBuffer();
- const panel=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="118" height="60"><path d="M65 8v44" stroke="${inkColor(ink)}" stroke-width="1.5" opacity=".55"/></svg>`);
  const top=await text(code,ink,30,true),bottom=await text('SUB',ink,21,true);
  const tm=await sharp(top).metadata(),bm=await sharp(bottom).metadata();
- return sharp(panel).composite([{input:page,left:0,top:7},{input:top,left:68+Math.floor((50-tm.width)/2),top:3},{input:bottom,left:68+Math.floor((50-bm.width)/2),top:37}]).png().toBuffer();
+ const lane=Math.max(50,tm.width,bm.width)+8,width=68+lane;
+ const panel=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="60"><path d="M65 8v44" stroke="${inkColor(ink)}" stroke-width="1.5" opacity=".55"/></svg>`);
+ return containedComposite(panel,[{input:page,left:0,top:7},{input:top,left:68+Math.floor((lane-tm.width)/2),top:3},{input:bottom,left:68+Math.floor((lane-bm.width)/2),top:37}],'subtitle '+code);
 }
 const combinations={
  'v-dv-hdr10p':['a-dv','HDR10+'], 'v-dv-hdr10':['a-dv','HDR10'], 'v-dv-hdr':['a-dv','HDR'],
@@ -148,7 +150,7 @@ const combinations={
  'a-dtsx-ma':['a-dtsx','MA'], 'a-dtsx-hd':['a-dtsx','HD'],
  'a-dtshd':['a-dts','HD'], 'a-dtses':['a-dts','ES'],
 };
-const manifest={version:5,channelConcept:'badges/design/channels-concept.png',channelPrompt:'badges/design/channels-prompt.txt',concept:'badges/design/glyph-concept.png',spokenFlagConcept:'badges/design/spoken-flags-concept.png',compactConcept:'badges/design/compact-sources-subtitles-concept.png',spokenFlagSources:'assets/flag-sources/manifest.json',flagColorsPreserved:true,outlineInk:'matches borderColor',transparentInk:'white',customGlyphSource:'scripts/kanso-glyphs.mjs',font:{family:'Manrope',weight:600,captionWeight:700,file:'assets/fonts/Manrope.ttf',license:'assets/fonts/OFL-Manrope.txt'},defaultSkin:'outline',geometry:{height:HEIGHT,inkHeight:INK_HEIGHT,padding:PAD,gap:GAP,stroke:2.15},languageFamilies:LANGUAGE_FAMILIES,filters:{}};
+const manifest={version:6,clippingGuard:'scripts/badge-layout.mjs',channelConcept:'badges/design/channels-concept.png',channelPrompt:'badges/design/channels-prompt.txt',concept:'badges/design/glyph-concept.png',spokenFlagConcept:'badges/design/spoken-flags-concept.png',compactConcept:'badges/design/compact-sources-subtitles-concept.png',spokenFlagSources:'assets/flag-sources/manifest.json',flagColorsPreserved:true,outlineInk:'matches borderColor',transparentInk:'white',customGlyphSource:'scripts/kanso-glyphs.mjs',font:{family:'Manrope',weight:600,captionWeight:700,file:'assets/fonts/Manrope.ttf',license:'assets/fonts/OFL-Manrope.txt'},defaultSkin:'outline',geometry:{height:HEIGHT,inkHeight:INK_HEIGHT,padding:PAD,gap:GAP,stroke:2.15},languageFamilies:LANGUAGE_FAMILIES,filters:{}};
 await fs.mkdir(path.join(ROOT,'assets/glyphs'),{recursive:true});
 for(const name of Object.keys(GLYPHS))await fs.writeFile(path.join(ROOT,'assets/glyphs',name+'.svg'),glyphSvg(name));
 for(const f of pack.filters){
@@ -180,7 +182,11 @@ for(const f of pack.filters){
    parts=[await stackedSource(null,'BLU-RAY',ink,await bluraySymbol(ink))];
    row.kind='logo-label';row.sources=[sources['bluray.svg'].url];row.layout='icon above caption';
   }else if(id==='q-dvd-remux'){
-   parts=[await dvdRemux(ink)];row.kind='custom-glyph';row.glyph='disc';row.layout='DVD above REMUX';
+   parts=[await twoLineSource('disc','DVD','REMUX',ink)];row.kind='custom-glyph';row.glyph='disc';row.layout='DVD above REMUX';
+  }else if(id==='q-hc'){
+   parts=[await twoLineSource('hard-sub','HC','HDRIP',ink)];row.kind='custom-glyph';row.glyph='hard-sub';row.layout='HC above HDRIP';
+  }else if(id==='caption-forced'){
+   parts=[await stackedSource('forced-caption','FORCED',ink)];row.kind='custom-glyph';row.glyph='forced-caption';row.layout='icon above caption';
   }else if(f.groupId==='gc'){
    parts=[await stackedChannel(f.name,ink)];row.kind='custom-glyph';row.glyph='speaker';row.layout='speaker above channel number';
   }else if(RESOLUTION_CAPTIONS[id]){
@@ -201,7 +207,7 @@ for(const f of pack.filters){
    row.kind=glyph?'custom-glyph':'text';row.glyph=glyph;
    if(f.groupId==='grl')row.layout='icon above caption';
   }
-  let b=await join(parts,['gms','grl','gc','gr'].includes(f.groupId)?6:PAD);
+  let b=await join(parts,f.groupId==='gc'?2:['gms','grl','gr'].includes(f.groupId)?6:PAD);
   // Coil fits within 92/16: keep a 5.5:1 maximum aspect ratio at native chip size.
   const m=await sharp(b).metadata();
   if(m.width>352)b=await sharp(b).resize({width:336,height:HEIGHT,fit:'inside'}).extend({top:Math.floor((HEIGHT-Math.round(HEIGHT*336/m.width))/2),bottom:Math.ceil((HEIGHT-Math.round(HEIGHT*336/m.width))/2),left:8,right:8,background:'#00000000'}).png().toBuffer();

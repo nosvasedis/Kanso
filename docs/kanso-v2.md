@@ -1,4 +1,4 @@
-# Kanso 2.3.3 — Manrope, Outline, Instant markers
+# Kanso 2.3.4 — Manrope, Outline, Instant markers
 
 Kanso keeps Instant Unicode matching on structured AIOStreams fields. Outline is the default appearance, with Manrope Semibold for generic labels and original artwork for brand marks. Four skins share consistent geometry: Solid, Transparent, Mono and Outline. Category colors remain gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming and distinct specials. See [badge design and source notes](badge-design.md). This release replaces the previous badge appearance and formatter contract.
 
@@ -34,4 +34,8 @@ Subtitle language/SUB lettering has no background panel in any skin. The complet
 
 ## Compact artwork in 2.3.3
 
-DVD REMUX puts DVD above REMUX. Channel artwork is nearly square, with a centered speaker above its channel number, based on the retained imagegen study. Resolution displays use shorter UHD/QHD/FHD captions and reduced side spacing, keeping exact numeric resolutions. Long specials use EXT CUT, THEATR., UNCENS., REMAST., OPEN MT. and REGRADE; Criterion keeps its official emblem above the full name. All four skins use matching geometry and retain individual edition hues. These are artwork and label changes; formatter detection and markers are unchanged.
+DVD REMUX puts DVD above REMUX. Channel artwork is nearly square, with a centered speaker above its channel number, based on the retained imagegen study. Resolution displays use shorter UHD/QHD/FHD captions and reduced side spacing, keeping exact numeric resolutions. Long specials use EXT CUT, THEATR, UNCENS, REMAST, OPEN MT and REGRADE; Criterion keeps its official emblem above the full name. All four skins use matching geometry and retain individual edition hues. These are artwork and label changes; formatter detection and markers are unchanged.
+
+## Complete captions in 2.3.4
+
+HC HDRIP stacks HC above HDRIP; FORCED keeps its full word below the subtitle glyph. Channel artwork removes unused minimum width and reduces side padding without compressing its digits. Edition abbreviations have no periods. Resolution captions now fit fully inside the canvas, and subtitle language/SUB lanes grow to fit their measured lettering with a clear right margin. Generation rejects out-of-bounds layers. Tests compare every resolution caption, subtitle code and SUB caption against the complete font rendering across all four skins. Formatter fields and detection markers are unchanged.

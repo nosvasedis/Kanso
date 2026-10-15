@@ -56,8 +56,8 @@ function displayRank(filter){
 }
 export const LABELS={
  'q-hc':'HC HDRIP','q-dvd-remux':'DVD REMUX','v-3d-sbs':'3D SBS','v-3d-ou':'3D OU','a-description':'AD','caption-forced':'FORCED','caption-sdh':'SDH',
- 'edition-directors-cut':'DIR CUT','edition-extended':'EXT CUT','edition-true-hue':'TRUE HUE','edition-bw':'B&W','edition-theatrical':'THEATR.','seadex-release':'SEADEX',
- 'criterion-collection':'CRITERION','proper-release':'PROPER','repack-release':'REPACK','remastered-release':'REMAST.','open-matte-edition':'OPEN MT.','regraded-release':'REGRADE','uncensored-edition':'UNCENS.','uncut-edition':'UNCUT','hybrid-release':'HYBRID',
+ 'edition-directors-cut':'DIR CUT','edition-extended':'EXT CUT','edition-true-hue':'TRUE HUE','edition-bw':'B&W','edition-theatrical':'THEATR','seadex-release':'SEADEX',
+ 'criterion-collection':'CRITERION','proper-release':'PROPER','repack-release':'REPACK','remastered-release':'REMAST','open-matte-edition':'OPEN MT','regraded-release':'REGRADE','uncensored-edition':'UNCENS','uncut-edition':'UNCUT','hybrid-release':'HYBRID',
  'q-r':'REMUX','q-b':'BLU-RAY','q-w':'WEB-DL','q-wr':'WEBRip','q-cam':'CAM','q-hdtv':'HDTV','q-hdrip':'HDRip','q-dvdrip':'DVDRip','q-scr':'SCR','q-tc':'TC','q-ts':'TS',
  'r-4k':'4K','r-1440':'1440p','r-144':'144p',
  'ge-av1':'AV1','ge-hevc':'HEVC','ge-avc':'AVC','ge-xvid':'XviD','ge-divx':'DivX',
