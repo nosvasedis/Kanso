@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.3.2
+# Kanso 2.3.3
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
@@ -8,7 +8,7 @@ Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **E
 
 ![New Kanso Outline badge system](assets/Kanso/kanso-badges-preview.png)
 
-This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.3.2 replaces the previous badge appearance and formatter contract; use the matching install files below.
+This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.3.3 replaces the previous badge appearance and formatter contract; use the matching install files below.
 
 ## Choose a matching pair
 
@@ -70,7 +70,7 @@ Keep Kanso as the custom formatter when updating Tamtaro; changing the formatter
 
 ## Appearance
 
-Manrope Semibold gives generic badges a shared voice; small captions and tiers use Bold. Brand marks retain their own letterforms. Source icons sit above their captions to save horizontal space, and tiers use large, plain T1–T8 labels. Channels have a speaker. Spoken languages use speech-shaped flags with horizontal codes; subtitles use flag-filled documents behind a code stacked above SUB. All four skins share geometry. **Outline has colored words and glyphs matching the border; Transparent has white words and glyphs.** Flags retain real colors. Special editions keep distinct colors, and sources and their tiers share family hues. Picture uses gold, audio/channels cyan and languages/subtitles orchid/violet. Capture sources use coral. Solid uses category fill with contrasting ink; Mono uses white/black. Nuvio draws the border. The new channel contract requires the new formatter and pack together; mismatched old output fails closed.
+Manrope Semibold gives generic badges a shared voice; small captions and tiers use Bold. Brand marks retain their own letterforms. Source icons sit above their captions to save horizontal space, and tiers use large, plain T1–T8 labels. DVD REMUX stacks DVD above REMUX. Compact resolution displays use UHD/QHD/FHD captions, and longer editions use readable abbreviations. Channels place a speaker above the number in nearly square artwork. Spoken languages use speech-shaped flags with horizontal codes; subtitles use flag-filled documents behind a code stacked above SUB. All four skins share geometry. **Outline has colored words and glyphs matching the border; Transparent has white words and glyphs.** Flags retain real colors. Special editions keep distinct colors, and sources and their tiers share family hues. Picture uses gold, audio/channels cyan and languages/subtitles orchid/violet. Capture sources use coral. Solid uses category fill with contrasting ink; Mono uses white/black. Nuvio draws the border. The new channel contract requires the new formatter and pack together; mismatched old output fails closed.
 
 The title begins with an invisible U+200E left-to-right anchor so Nuvio TV 1.0.0 cannot let a later hidden marker pick RTL alignment. HDR10+/HDR10/HLG suppress redundant generic HDR badges, and DTS Master Audio wins over generic DTS-HD. Structured audio tags cannot borrow a different codec from the filename.
 

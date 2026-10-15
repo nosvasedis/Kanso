@@ -1,4 +1,4 @@
-# Kanso 2.3.2 — Manrope, Outline, Instant markers
+# Kanso 2.3.3 — Manrope, Outline, Instant markers
 
 Kanso keeps Instant Unicode matching on structured AIOStreams fields. Outline is the default appearance, with Manrope Semibold for generic labels and original artwork for brand marks. Four skins share consistent geometry: Solid, Transparent, Mono and Outline. Category colors remain gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming and distinct specials. See [badge design and source notes](badge-design.md). This release replaces the previous badge appearance and formatter contract.
 
@@ -31,3 +31,7 @@ Debrid-only cache state moved from the title to the start of the container/codec
 ## Badge refinement in 2.3.2
 
 Subtitle language/SUB lettering has no background panel in any skin. The complete flag document sits beside the lettering, exposing the real app background between and around the letters. Source captions retain their previous type size; source/tier glyphs share a compact upper row above the caption. Generic source padding is reduced. Formatter text and matching semantics are unchanged.
+
+## Compact artwork in 2.3.3
+
+DVD REMUX puts DVD above REMUX. Channel artwork is nearly square, with a centered speaker above its channel number, based on the retained imagegen study. Resolution displays use shorter UHD/QHD/FHD captions and reduced side spacing, keeping exact numeric resolutions. Long specials use EXT CUT, THEATR., UNCENS., REMAST., OPEN MT. and REGRADE; Criterion keeps its official emblem above the full name. All four skins use matching geometry and retain individual edition hues. These are artwork and label changes; formatter detection and markers are unchanged.

@@ -7,7 +7,7 @@
       "filters": {
         "seadex-release": {
           "name": "SEADEX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ec0ce52a8fa98210.png?rev=ec0ce52a8fa9",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/737c29762c9601a4.png?rev=737c29762c96",
           "tagColor": "#FFD500",
           "textColor": "#000000",
           "borderColor": "#FFD500",
@@ -15,7 +15,7 @@
         },
         "hybrid-release": {
           "name": "HYBRID",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/67c5d3694f88a614.png?rev=67c5d3694f88",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ce7ede824af652bf.png?rev=ce7ede824af6",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -23,7 +23,7 @@
         },
         "criterion-collection": {
           "name": "CRITERION",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/838deab40c8ec2be.png?rev=838deab40c8e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/166a6cdbdeaa5abb.png?rev=166a6cdbdeaa",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -31,7 +31,7 @@
         },
         "proper-release": {
           "name": "PROPER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/431ea4bbc2267d59.png?rev=431ea4bbc226",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/86faf981974195f3.png?rev=86faf9819741",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -39,31 +39,31 @@
         },
         "repack-release": {
           "name": "REPACK",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/26e7baa3482ff795.png?rev=26e7baa3482f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5fe5a291a8ca197b.png?rev=5fe5a291a8ca",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
           "tagStyle": "filled"
         },
         "remastered-release": {
-          "name": "REMASTER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/70ceafff2a01d102.png?rev=70ceafff2a01",
+          "name": "REMAST.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b3f351218a6b1cae.png?rev=b3f351218a6b",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
           "tagStyle": "filled"
         },
         "open-matte-edition": {
-          "name": "OPEN MATTE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b5ff0b4229b1be76.png?rev=b5ff0b4229b1",
+          "name": "OPEN MT.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/89f8bbaf9eda50da.png?rev=89f8bbaf9eda",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
           "tagStyle": "filled"
         },
         "regraded-release": {
-          "name": "REGRADED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/303d78ea0e17ff39.png?rev=303d78ea0e17",
+          "name": "REGRADE",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8fefe9c08929dfd9.png?rev=8fefe9c08929",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -71,15 +71,15 @@
         },
         "edition-directors-cut": {
           "name": "DIR CUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a204ad047a6f0c92.png?rev=a204ad047a6f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/905e396b080f584e.png?rev=905e396b080f",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
           "tagStyle": "filled"
         },
         "edition-extended": {
-          "name": "EXTENDED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e81f0ecf8c45b29e.png?rev=e81f0ecf8c45",
+          "name": "EXT CUT",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/884ba02db33fb220.png?rev=884ba02db33f",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -87,15 +87,15 @@
         },
         "uncut-edition": {
           "name": "UNCUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/29b3908566970385.png?rev=29b390856697",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c1205ad2dd96ac54.png?rev=c1205ad2dd96",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
           "tagStyle": "filled"
         },
         "uncensored-edition": {
-          "name": "UNCENSORED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dd916b8cd0347769.png?rev=dd916b8cd034",
+          "name": "UNCENS.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7c28bfc5b9c89147.png?rev=7c28bfc5b9c8",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -118,8 +118,8 @@
           "tagStyle": "filled"
         },
         "edition-theatrical": {
-          "name": "THEATRICAL",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/647d7cdb27d74d25.png?rev=647d7cdb27d7",
+          "name": "THEATR.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/30ddf29d85764eec.png?rev=30ddf29d8576",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -263,7 +263,7 @@
         },
         "r-4k": {
           "name": "4K",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0b3998b4d8daf4ef.png?rev=0b3998b4d8da",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b661e753409f2ef3.png?rev=b661e753409f",
           "tagColor": "#FFD500",
           "textColor": "#000000",
           "borderColor": "#FFD500",
@@ -271,7 +271,7 @@
         },
         "r-1440": {
           "name": "1440p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e349eccc0cdd081e.png?rev=e349eccc0cdd",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/60198564e9c1df6f.png?rev=60198564e9c1",
           "tagColor": "#176BE8",
           "textColor": "#000000",
           "borderColor": "#176BE8",
@@ -279,7 +279,7 @@
         },
         "r-1080": {
           "name": "1080p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/605459bc279bbda0.png?rev=605459bc279b",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7f1601624faadebc.png?rev=7f1601624faa",
           "tagColor": "#2EB853",
           "textColor": "#000000",
           "borderColor": "#2EB853",
@@ -287,7 +287,7 @@
         },
         "r-720": {
           "name": "720p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2162e5714ad1bb7e.png?rev=2162e5714ad1",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5d49b6fc7552f1c3.png?rev=5d49b6fc7552",
           "tagColor": "#FF7300",
           "textColor": "#000000",
           "borderColor": "#FF7300",
@@ -327,7 +327,7 @@
         },
         "r-144": {
           "name": "144p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4e4d92fc5d09f32e.png?rev=4e4d92fc5d09",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/947b5106b285c2a1.png?rev=947b5106b285",
           "tagColor": "#E64141",
           "textColor": "#000000",
           "borderColor": "#E64141",
@@ -663,7 +663,7 @@
         },
         "ch-71": {
           "name": "7.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/babba6d1766b3201.png?rev=babba6d1766b",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b4eef1df9130e8a9.png?rev=b4eef1df9130",
           "tagColor": "#FFD500",
           "textColor": "#000000",
           "borderColor": "#FFD500",
@@ -671,7 +671,7 @@
         },
         "ch-61": {
           "name": "6.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c604b4a70bfda36b.png?rev=c604b4a70bfd",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ea1675a486d5aa85.png?rev=ea1675a486d5",
           "tagColor": "#176BE8",
           "textColor": "#000000",
           "borderColor": "#176BE8",
@@ -679,7 +679,7 @@
         },
         "ch-51": {
           "name": "5.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/529a787f4861bab3.png?rev=529a787f4861",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ca497661bb0cf9e8.png?rev=ca497661bb0c",
           "tagColor": "#2EB853",
           "textColor": "#000000",
           "borderColor": "#2EB853",
@@ -687,7 +687,7 @@
         },
         "ch-20": {
           "name": "2.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/72dc51f4f2869845.png?rev=72dc51f4f286",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5ade7c33beac4bb7.png?rev=5ade7c33beac",
           "tagColor": "#FF7300",
           "textColor": "#000000",
           "borderColor": "#FF7300",
@@ -2343,7 +2343,7 @@
         },
         "r-576": {
           "name": "576p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0795e69dd907b53c.png?rev=0795e69dd907",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/113e9388ea50e8bf.png?rev=113e9388ea50",
           "tagColor": "#E64141",
           "textColor": "#000000",
           "borderColor": "#E64141",
@@ -2351,7 +2351,7 @@
         },
         "r-480": {
           "name": "480p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8973a09659220546.png?rev=8973a0965922",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bd4f6e3edfc7800e.png?rev=bd4f6e3edfc7",
           "tagColor": "#E64141",
           "textColor": "#000000",
           "borderColor": "#E64141",
@@ -2359,7 +2359,7 @@
         },
         "r-360": {
           "name": "360p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8154abf2babc4169.png?rev=8154abf2babc",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6aec096dfb0c502c.png?rev=6aec096dfb0c",
           "tagColor": "#E64141",
           "textColor": "#000000",
           "borderColor": "#E64141",
@@ -2367,7 +2367,7 @@
         },
         "r-240": {
           "name": "240p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/729a91f8e1f2f5df.png?rev=729a91f8e1f2",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d0ca1a8967e02280.png?rev=d0ca1a8967e0",
           "tagColor": "#E64141",
           "textColor": "#000000",
           "borderColor": "#E64141",
@@ -2455,7 +2455,7 @@
         },
         "edition-bw": {
           "name": "B&W",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cfed9217ee5f17c5.png?rev=cfed9217ee5f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4be8c8ca050f06ca.png?rev=4be8c8ca050f",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -2463,7 +2463,7 @@
         },
         "edition-true-hue": {
           "name": "TRUE HUE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6272efc0dff17c35.png?rev=6272efc0dff1",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6f56fe5b0a19c407.png?rev=6f56fe5b0a19",
           "tagColor": "#BBDEFB",
           "textColor": "#000000",
           "borderColor": "#BBDEFB",
@@ -2503,7 +2503,7 @@
         },
         "v-3d": {
           "name": "3D",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/81b7406504f6c239.png?rev=81b7406504f6",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6e1f7327b04973a3.png?rev=6e1f7327b049",
           "tagColor": "#176BE8",
           "textColor": "#000000",
           "borderColor": "#176BE8",
@@ -2575,7 +2575,7 @@
         },
         "ch-81": {
           "name": "8.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e2ff623cf783927d.png?rev=e2ff623cf783",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3903c6822f19f07b.png?rev=3903c6822f19",
           "tagColor": "#FF7300",
           "textColor": "#000000",
           "borderColor": "#FF7300",
@@ -2583,7 +2583,7 @@
         },
         "ch-21": {
           "name": "2.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/99fa20105df6785a.png?rev=99fa20105df6",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3daac8aa88a55b12.png?rev=3daac8aa88a5",
           "tagColor": "#FF7300",
           "textColor": "#000000",
           "borderColor": "#FF7300",
@@ -2591,7 +2591,7 @@
         },
         "ch-10": {
           "name": "1.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b089fb93e715bd09.png?rev=b089fb93e715",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac34370b9a535113.png?rev=ac34370b9a53",
           "tagColor": "#FF7300",
           "textColor": "#000000",
           "borderColor": "#FF7300",
@@ -2607,7 +2607,7 @@
         },
         "q-dvd-remux": {
           "name": "DVD REMUX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/18b858a4203f4528.png?rev=18b858a4203f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/73fb479983984936.png?rev=73fb47998398",
           "tagColor": "#FFD500",
           "textColor": "#000000",
           "borderColor": "#FFD500",
@@ -2615,7 +2615,7 @@
         },
         "v-3d-sbs": {
           "name": "3D SBS",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5ad8c47dd0b7ad4e.png?rev=5ad8c47dd0b7",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1b17207884fea8eb.png?rev=1b17207884fe",
           "tagColor": "#176BE8",
           "textColor": "#000000",
           "borderColor": "#176BE8",
@@ -2623,7 +2623,7 @@
         },
         "v-3d-ou": {
           "name": "3D OU",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/35f1419b8e037d6a.png?rev=35f1419b8e03",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5561dd3a273b7609.png?rev=5561dd3a273b",
           "tagColor": "#176BE8",
           "textColor": "#000000",
           "borderColor": "#176BE8",
@@ -2733,7 +2733,7 @@
       "filters": {
         "seadex-release": {
           "name": "SEADEX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ec0ce52a8fa98210.png?rev=ec0ce52a8fa9",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/737c29762c9601a4.png?rev=737c29762c96",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FFD500",
@@ -2741,7 +2741,7 @@
         },
         "hybrid-release": {
           "name": "HYBRID",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8d8487b3f9f27de5.png?rev=8d8487b3f9f2",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4e76ac82c601b021.png?rev=4e76ac82c601",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -2749,7 +2749,7 @@
         },
         "criterion-collection": {
           "name": "CRITERION",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/838deab40c8ec2be.png?rev=838deab40c8e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/166a6cdbdeaa5abb.png?rev=166a6cdbdeaa",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -2757,7 +2757,7 @@
         },
         "proper-release": {
           "name": "PROPER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/431ea4bbc2267d59.png?rev=431ea4bbc226",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/86faf981974195f3.png?rev=86faf9819741",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -2765,31 +2765,31 @@
         },
         "repack-release": {
           "name": "REPACK",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/84539a0aa183fc00.png?rev=84539a0aa183",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/044d80092ae6e8e6.png?rev=044d80092ae6",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "remastered-release": {
-          "name": "REMASTER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/70ceafff2a01d102.png?rev=70ceafff2a01",
+          "name": "REMAST.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b3f351218a6b1cae.png?rev=b3f351218a6b",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "open-matte-edition": {
-          "name": "OPEN MATTE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b5ff0b4229b1be76.png?rev=b5ff0b4229b1",
+          "name": "OPEN MT.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/89f8bbaf9eda50da.png?rev=89f8bbaf9eda",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "regraded-release": {
-          "name": "REGRADED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/303d78ea0e17ff39.png?rev=303d78ea0e17",
+          "name": "REGRADE",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8fefe9c08929dfd9.png?rev=8fefe9c08929",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -2797,15 +2797,15 @@
         },
         "edition-directors-cut": {
           "name": "DIR CUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a204ad047a6f0c92.png?rev=a204ad047a6f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/905e396b080f584e.png?rev=905e396b080f",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "edition-extended": {
-          "name": "EXTENDED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d0823a7ec85f2254.png?rev=d0823a7ec85f",
+          "name": "EXT CUT",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1e283aac8087eb3a.png?rev=1e283aac8087",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -2813,15 +2813,15 @@
         },
         "uncut-edition": {
           "name": "UNCUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8cbae005f5299663.png?rev=8cbae005f529",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f17cf3bc60517ad4.png?rev=f17cf3bc6051",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "uncensored-edition": {
-          "name": "UNCENSORED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e80d9104a6ffb2d0.png?rev=e80d9104a6ff",
+          "name": "UNCENS.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/efa6c3cfa0a1a6d7.png?rev=efa6c3cfa0a1",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -2844,8 +2844,8 @@
           "tagStyle": "bordered"
         },
         "edition-theatrical": {
-          "name": "THEATRICAL",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/647d7cdb27d74d25.png?rev=647d7cdb27d7",
+          "name": "THEATR.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/30ddf29d85764eec.png?rev=30ddf29d8576",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -2989,7 +2989,7 @@
         },
         "r-4k": {
           "name": "4K",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/513ed788a4a580fa.png?rev=513ed788a4a5",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b39b8aaa5100f9eb.png?rev=b39b8aaa5100",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FFD500",
@@ -2997,7 +2997,7 @@
         },
         "r-1440": {
           "name": "1440p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6125abaf69d5dadc.png?rev=6125abaf69d5",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d1cbff02a1a3c3dd.png?rev=d1cbff02a1a3",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#176BE8",
@@ -3005,7 +3005,7 @@
         },
         "r-1080": {
           "name": "1080p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/37ac103b397d9395.png?rev=37ac103b397d",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/65444f190afd39d7.png?rev=65444f190afd",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#2EB853",
@@ -3013,7 +3013,7 @@
         },
         "r-720": {
           "name": "720p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e7892d63b8b43a73.png?rev=e7892d63b8b4",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/121929c0dec36a44.png?rev=121929c0dec3",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FF7300",
@@ -3053,7 +3053,7 @@
         },
         "r-144": {
           "name": "144p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8d455bff8507cd50.png?rev=8d455bff8507",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3497f634143f5c1c.png?rev=3497f634143f",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#E64141",
@@ -3389,7 +3389,7 @@
         },
         "ch-71": {
           "name": "7.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d31a577f2cc4ff49.png?rev=d31a577f2cc4",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dc90ff1d1f86bd5c.png?rev=dc90ff1d1f86",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FFD500",
@@ -3397,7 +3397,7 @@
         },
         "ch-61": {
           "name": "6.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b3159d7a0dfe34fd.png?rev=b3159d7a0dfe",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e9f3bc869ae575d6.png?rev=e9f3bc869ae5",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#176BE8",
@@ -3405,7 +3405,7 @@
         },
         "ch-51": {
           "name": "5.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4f50576bb98c23ba.png?rev=4f50576bb98c",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2b8dba05c10d3895.png?rev=2b8dba05c10d",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#2EB853",
@@ -3413,7 +3413,7 @@
         },
         "ch-20": {
           "name": "2.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8a8086300b2e970a.png?rev=8a8086300b2e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/75715a79c2980c4a.png?rev=75715a79c298",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FF7300",
@@ -5069,7 +5069,7 @@
         },
         "r-576": {
           "name": "576p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e38e1b1aca2f45b6.png?rev=e38e1b1aca2f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3466d10871669f63.png?rev=3466d1087166",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#E64141",
@@ -5077,7 +5077,7 @@
         },
         "r-480": {
           "name": "480p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2891e3afc99efe27.png?rev=2891e3afc99e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6b9366cc4551a4a4.png?rev=6b9366cc4551",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#E64141",
@@ -5085,7 +5085,7 @@
         },
         "r-360": {
           "name": "360p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/07fc5e036322f958.png?rev=07fc5e036322",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3484a93e0e1b764a.png?rev=3484a93e0e1b",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#E64141",
@@ -5093,7 +5093,7 @@
         },
         "r-240": {
           "name": "240p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/20fc8c43906f1ab5.png?rev=20fc8c43906f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/28a021ee38349e0b.png?rev=28a021ee3834",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#E64141",
@@ -5181,7 +5181,7 @@
         },
         "edition-bw": {
           "name": "B&W",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cfed9217ee5f17c5.png?rev=cfed9217ee5f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4be8c8ca050f06ca.png?rev=4be8c8ca050f",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -5189,7 +5189,7 @@
         },
         "edition-true-hue": {
           "name": "TRUE HUE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2ceced43026d9187.png?rev=2ceced43026d",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b483b3ee2e3ed3e9.png?rev=b483b3ee2e3e",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#BBDEFB",
@@ -5229,7 +5229,7 @@
         },
         "v-3d": {
           "name": "3D",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9a87bed5ef0d1c19.png?rev=9a87bed5ef0d",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6ea71824ec1064bc.png?rev=6ea71824ec10",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#176BE8",
@@ -5301,7 +5301,7 @@
         },
         "ch-81": {
           "name": "8.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2f71b455eac9ebb4.png?rev=2f71b455eac9",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b540e898742a95e2.png?rev=b540e898742a",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FF7300",
@@ -5309,7 +5309,7 @@
         },
         "ch-21": {
           "name": "2.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c54aeeb17605ec1b.png?rev=c54aeeb17605",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4475ebfd044189ef.png?rev=4475ebfd0441",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FF7300",
@@ -5317,7 +5317,7 @@
         },
         "ch-10": {
           "name": "1.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e2079d6c6fb66249.png?rev=e2079d6c6fb6",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e4a99c1073884470.png?rev=e4a99c107388",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FF7300",
@@ -5333,7 +5333,7 @@
         },
         "q-dvd-remux": {
           "name": "DVD REMUX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/18b858a4203f4528.png?rev=18b858a4203f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/73fb479983984936.png?rev=73fb47998398",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#FFD500",
@@ -5341,7 +5341,7 @@
         },
         "v-3d-sbs": {
           "name": "3D SBS",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5ad8c47dd0b7ad4e.png?rev=5ad8c47dd0b7",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1b17207884fea8eb.png?rev=1b17207884fe",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#176BE8",
@@ -5349,7 +5349,7 @@
         },
         "v-3d-ou": {
           "name": "3D OU",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/35f1419b8e037d6a.png?rev=35f1419b8e03",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5561dd3a273b7609.png?rev=5561dd3a273b",
           "tagColor": "#000000",
           "textColor": "#FFFFFF",
           "borderColor": "#176BE8",
@@ -5459,7 +5459,7 @@
       "filters": {
         "seadex-release": {
           "name": "SEADEX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/05fefc2e451123af.png?rev=05fefc2e4511",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6c655ac44096a433.png?rev=6c655ac44096",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5467,7 +5467,7 @@
         },
         "hybrid-release": {
           "name": "HYBRID",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/67c5d3694f88a614.png?rev=67c5d3694f88",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ce7ede824af652bf.png?rev=ce7ede824af6",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5475,7 +5475,7 @@
         },
         "criterion-collection": {
           "name": "CRITERION",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5936dd90ee68d653.png?rev=5936dd90ee68",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/323e615a33f8c88b.png?rev=323e615a33f8",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5483,7 +5483,7 @@
         },
         "proper-release": {
           "name": "PROPER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/661d8f374260e465.png?rev=661d8f374260",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4754722421f4479e.png?rev=4754722421f4",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5491,31 +5491,31 @@
         },
         "repack-release": {
           "name": "REPACK",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/26e7baa3482ff795.png?rev=26e7baa3482f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5fe5a291a8ca197b.png?rev=5fe5a291a8ca",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
           "tagStyle": "filled"
         },
         "remastered-release": {
-          "name": "REMASTER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1178e844de0eae0a.png?rev=1178e844de0e",
+          "name": "REMAST.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5b4dac4e18f1672b.png?rev=5b4dac4e18f1",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
           "tagStyle": "filled"
         },
         "open-matte-edition": {
-          "name": "OPEN MATTE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/be150f71b93efc84.png?rev=be150f71b93e",
+          "name": "OPEN MT.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bd3abdfa337d4df3.png?rev=bd3abdfa337d",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
           "tagStyle": "filled"
         },
         "regraded-release": {
-          "name": "REGRADED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7947626b19903ff5.png?rev=7947626b1990",
+          "name": "REGRADE",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/08d1d7ce3eb80b82.png?rev=08d1d7ce3eb8",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5523,15 +5523,15 @@
         },
         "edition-directors-cut": {
           "name": "DIR CUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/23f4ef4641a29697.png?rev=23f4ef4641a2",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8b84da815e9447fb.png?rev=8b84da815e94",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
           "tagStyle": "filled"
         },
         "edition-extended": {
-          "name": "EXTENDED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e81f0ecf8c45b29e.png?rev=e81f0ecf8c45",
+          "name": "EXT CUT",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/884ba02db33fb220.png?rev=884ba02db33f",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5539,15 +5539,15 @@
         },
         "uncut-edition": {
           "name": "UNCUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/29b3908566970385.png?rev=29b390856697",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c1205ad2dd96ac54.png?rev=c1205ad2dd96",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
           "tagStyle": "filled"
         },
         "uncensored-edition": {
-          "name": "UNCENSORED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dd916b8cd0347769.png?rev=dd916b8cd034",
+          "name": "UNCENS.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7c28bfc5b9c89147.png?rev=7c28bfc5b9c8",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5570,8 +5570,8 @@
           "tagStyle": "filled"
         },
         "edition-theatrical": {
-          "name": "THEATRICAL",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/470e4673f587d268.png?rev=470e4673f587",
+          "name": "THEATR.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a63d311d0330955a.png?rev=a63d311d0330",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5715,7 +5715,7 @@
         },
         "r-4k": {
           "name": "4K",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d954e675afce4640.png?rev=d954e675afce",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/766d263f3ce64003.png?rev=766d263f3ce6",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5723,7 +5723,7 @@
         },
         "r-1440": {
           "name": "1440p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8dfb2bc0bf175b54.png?rev=8dfb2bc0bf17",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/825d14f4fd6c4cfe.png?rev=825d14f4fd6c",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5731,7 +5731,7 @@
         },
         "r-1080": {
           "name": "1080p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/498c87d3df25fdbc.png?rev=498c87d3df25",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1a5bca3c76f4f5d3.png?rev=1a5bca3c76f4",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5739,7 +5739,7 @@
         },
         "r-720": {
           "name": "720p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/a0e67b77ec414760.png?rev=a0e67b77ec41",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5b8d017f2ec5a2f5.png?rev=5b8d017f2ec5",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -5779,7 +5779,7 @@
         },
         "r-144": {
           "name": "144p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7d9c0893756aed11.png?rev=7d9c0893756a",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b64d43b2e30cc7de.png?rev=b64d43b2e30c",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -6115,7 +6115,7 @@
         },
         "ch-71": {
           "name": "7.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/babba6d1766b3201.png?rev=babba6d1766b",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b4eef1df9130e8a9.png?rev=b4eef1df9130",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -6123,7 +6123,7 @@
         },
         "ch-61": {
           "name": "6.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c604b4a70bfda36b.png?rev=c604b4a70bfd",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ea1675a486d5aa85.png?rev=ea1675a486d5",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -6131,7 +6131,7 @@
         },
         "ch-51": {
           "name": "5.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/529a787f4861bab3.png?rev=529a787f4861",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ca497661bb0cf9e8.png?rev=ca497661bb0c",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -6139,7 +6139,7 @@
         },
         "ch-20": {
           "name": "2.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/72dc51f4f2869845.png?rev=72dc51f4f286",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5ade7c33beac4bb7.png?rev=5ade7c33beac",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -7795,7 +7795,7 @@
         },
         "r-576": {
           "name": "576p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/16e025cbbb6ca572.png?rev=16e025cbbb6c",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5456528efe76b51f.png?rev=5456528efe76",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -7803,7 +7803,7 @@
         },
         "r-480": {
           "name": "480p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4977a819430fa2a2.png?rev=4977a819430f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/53fa7766bb22dfc8.png?rev=53fa7766bb22",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -7811,7 +7811,7 @@
         },
         "r-360": {
           "name": "360p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d7f3cd9cc1a303eb.png?rev=d7f3cd9cc1a3",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/24a5a805819c38b2.png?rev=24a5a805819c",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -7819,7 +7819,7 @@
         },
         "r-240": {
           "name": "240p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/77c79dcbad794249.png?rev=77c79dcbad79",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/673ef9a7e80a6ef1.png?rev=673ef9a7e80a",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -7907,7 +7907,7 @@
         },
         "edition-bw": {
           "name": "B&W",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/932eb4a11bbf018b.png?rev=932eb4a11bbf",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8d9868ab9e85e1ee.png?rev=8d9868ab9e85",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -7915,7 +7915,7 @@
         },
         "edition-true-hue": {
           "name": "TRUE HUE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6272efc0dff17c35.png?rev=6272efc0dff1",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6f56fe5b0a19c407.png?rev=6f56fe5b0a19",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -7955,7 +7955,7 @@
         },
         "v-3d": {
           "name": "3D",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/81b7406504f6c239.png?rev=81b7406504f6",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6e1f7327b04973a3.png?rev=6e1f7327b049",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -8027,7 +8027,7 @@
         },
         "ch-81": {
           "name": "8.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e2ff623cf783927d.png?rev=e2ff623cf783",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3903c6822f19f07b.png?rev=3903c6822f19",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -8035,7 +8035,7 @@
         },
         "ch-21": {
           "name": "2.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/99fa20105df6785a.png?rev=99fa20105df6",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3daac8aa88a55b12.png?rev=3daac8aa88a5",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -8043,7 +8043,7 @@
         },
         "ch-10": {
           "name": "1.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b089fb93e715bd09.png?rev=b089fb93e715",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac34370b9a535113.png?rev=ac34370b9a53",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -8059,7 +8059,7 @@
         },
         "q-dvd-remux": {
           "name": "DVD REMUX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/eaa4ec41e7b273b7.png?rev=eaa4ec41e7b2",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/96510dfa38fdc1f8.png?rev=96510dfa38fd",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -8067,7 +8067,7 @@
         },
         "v-3d-sbs": {
           "name": "3D SBS",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d1b00ffe687da07e.png?rev=d1b00ffe687d",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f060e00fd2cca5e5.png?rev=f060e00fd2cc",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -8075,7 +8075,7 @@
         },
         "v-3d-ou": {
           "name": "3D OU",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e3b28f88c9a998fa.png?rev=e3b28f88c9a9",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7e03f1d862b324d5.png?rev=7e03f1d862b3",
           "tagColor": "#FFFFFF",
           "textColor": "#000000",
           "borderColor": "#FFFFFF",
@@ -8185,7 +8185,7 @@
       "filters": {
         "seadex-release": {
           "name": "SEADEX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1cbc3eb03c1943d0.png?rev=1cbc3eb03c19",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f1190af684f98e84.png?rev=f1190af684f9",
           "tagColor": "#00000000",
           "textColor": "#FFD500",
           "borderColor": "#FFD500",
@@ -8193,7 +8193,7 @@
         },
         "hybrid-release": {
           "name": "HYBRID",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4979565535213cbc.png?rev=497956553521",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/060b9bda03222883.png?rev=060b9bda0322",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -8201,7 +8201,7 @@
         },
         "criterion-collection": {
           "name": "CRITERION",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f8d3f6840d4c0dcc.png?rev=f8d3f6840d4c",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9725f939eea31dcc.png?rev=9725f939eea3",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -8209,7 +8209,7 @@
         },
         "proper-release": {
           "name": "PROPER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4822da79006af65e.png?rev=4822da79006a",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/58fc04ad276d3880.png?rev=58fc04ad276d",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -8217,31 +8217,31 @@
         },
         "repack-release": {
           "name": "REPACK",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/293491988aa1443e.png?rev=293491988aa1",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d79a8b3adf94aeb1.png?rev=d79a8b3adf94",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "remastered-release": {
-          "name": "REMASTER",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fd4a2a58031d0726.png?rev=fd4a2a58031d",
+          "name": "REMAST.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/89da2e394b84f4e2.png?rev=89da2e394b84",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "open-matte-edition": {
-          "name": "OPEN MATTE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/374d1adbceb7ec71.png?rev=374d1adbceb7",
+          "name": "OPEN MT.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d1fcf6f094b94bdb.png?rev=d1fcf6f094b9",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "regraded-release": {
-          "name": "REGRADED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4fa83b26957d4327.png?rev=4fa83b26957d",
+          "name": "REGRADE",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5dc42637665f9658.png?rev=5dc42637665f",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -8249,15 +8249,15 @@
         },
         "edition-directors-cut": {
           "name": "DIR CUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f61b9eb7600f19af.png?rev=f61b9eb7600f",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e4e2f028fe7a9918.png?rev=e4e2f028fe7a",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "edition-extended": {
-          "name": "EXTENDED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/731ed7a76283d890.png?rev=731ed7a76283",
+          "name": "EXT CUT",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5b400d304f831582.png?rev=5b400d304f83",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -8265,15 +8265,15 @@
         },
         "uncut-edition": {
           "name": "UNCUT",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/95b8287f6b8af6ca.png?rev=95b8287f6b8a",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/93dd254cf340969a.png?rev=93dd254cf340",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
           "tagStyle": "bordered"
         },
         "uncensored-edition": {
-          "name": "UNCENSORED",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/388ac6325be1e2da.png?rev=388ac6325be1",
+          "name": "UNCENS.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2768b32bf771d7d4.png?rev=2768b32bf771",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -8296,8 +8296,8 @@
           "tagStyle": "bordered"
         },
         "edition-theatrical": {
-          "name": "THEATRICAL",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4dee6b13700acdf3.png?rev=4dee6b13700a",
+          "name": "THEATR.",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cb5bccbb622d3155.png?rev=cb5bccbb622d",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -8441,7 +8441,7 @@
         },
         "r-4k": {
           "name": "4K",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d67017bd37956bd4.png?rev=d67017bd3795",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d6436bba00750fe7.png?rev=d6436bba0075",
           "tagColor": "#00000000",
           "textColor": "#FFD500",
           "borderColor": "#FFD500",
@@ -8449,7 +8449,7 @@
         },
         "r-1440": {
           "name": "1440p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dd01a3ffcccee1fb.png?rev=dd01a3ffccce",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5fd6e58ba0f8cb13.png?rev=5fd6e58ba0f8",
           "tagColor": "#00000000",
           "textColor": "#176BE8",
           "borderColor": "#176BE8",
@@ -8457,7 +8457,7 @@
         },
         "r-1080": {
           "name": "1080p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3cc2e81495efd779.png?rev=3cc2e81495ef",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1caaa35682893912.png?rev=1caaa3568289",
           "tagColor": "#00000000",
           "textColor": "#2EB853",
           "borderColor": "#2EB853",
@@ -8465,7 +8465,7 @@
         },
         "r-720": {
           "name": "720p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fef1bedcb497515a.png?rev=fef1bedcb497",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cca5f439eb44aa23.png?rev=cca5f439eb44",
           "tagColor": "#00000000",
           "textColor": "#FF7300",
           "borderColor": "#FF7300",
@@ -8505,7 +8505,7 @@
         },
         "r-144": {
           "name": "144p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0dca0cac37d85ccc.png?rev=0dca0cac37d8",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e01faa8a965ec971.png?rev=e01faa8a965e",
           "tagColor": "#00000000",
           "textColor": "#E64141",
           "borderColor": "#E64141",
@@ -8841,7 +8841,7 @@
         },
         "ch-71": {
           "name": "7.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0ea9b03e66016099.png?rev=0ea9b03e6601",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e19c0385da5b46e0.png?rev=e19c0385da5b",
           "tagColor": "#00000000",
           "textColor": "#FFD500",
           "borderColor": "#FFD500",
@@ -8849,7 +8849,7 @@
         },
         "ch-61": {
           "name": "6.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/58910eea353b8567.png?rev=58910eea353b",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e3948d810a4b6c31.png?rev=e3948d810a4b",
           "tagColor": "#00000000",
           "textColor": "#176BE8",
           "borderColor": "#176BE8",
@@ -8857,7 +8857,7 @@
         },
         "ch-51": {
           "name": "5.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/dfbea40a3572a5d0.png?rev=dfbea40a3572",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/14b6a36ff74f4698.png?rev=14b6a36ff74f",
           "tagColor": "#00000000",
           "textColor": "#2EB853",
           "borderColor": "#2EB853",
@@ -8865,7 +8865,7 @@
         },
         "ch-20": {
           "name": "2.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/069af80edba0ca47.png?rev=069af80edba0",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e7938b68fafd3db1.png?rev=e7938b68fafd",
           "tagColor": "#00000000",
           "textColor": "#FF7300",
           "borderColor": "#FF7300",
@@ -10521,7 +10521,7 @@
         },
         "r-576": {
           "name": "576p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fdd2daf3bc32765f.png?rev=fdd2daf3bc32",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/594b95d8011e3308.png?rev=594b95d8011e",
           "tagColor": "#00000000",
           "textColor": "#E64141",
           "borderColor": "#E64141",
@@ -10529,7 +10529,7 @@
         },
         "r-480": {
           "name": "480p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/89b54877f6b2d16f.png?rev=89b54877f6b2",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5d926632213d780d.png?rev=5d926632213d",
           "tagColor": "#00000000",
           "textColor": "#E64141",
           "borderColor": "#E64141",
@@ -10537,7 +10537,7 @@
         },
         "r-360": {
           "name": "360p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/98e72dd23ec1ef90.png?rev=98e72dd23ec1",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cac34a3fc556653e.png?rev=cac34a3fc556",
           "tagColor": "#00000000",
           "textColor": "#E64141",
           "borderColor": "#E64141",
@@ -10545,7 +10545,7 @@
         },
         "r-240": {
           "name": "240p",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0406b60d516a9d6d.png?rev=0406b60d516a",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bace14c3b508a5dc.png?rev=bace14c3b508",
           "tagColor": "#00000000",
           "textColor": "#E64141",
           "borderColor": "#E64141",
@@ -10633,7 +10633,7 @@
         },
         "edition-bw": {
           "name": "B&W",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8ff2d5befea283f7.png?rev=8ff2d5befea2",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7e9edcf6b3518de6.png?rev=7e9edcf6b351",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -10641,7 +10641,7 @@
         },
         "edition-true-hue": {
           "name": "TRUE HUE",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/b199cb7f076b1dcf.png?rev=b199cb7f076b",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5c2b77a53b5308d1.png?rev=5c2b77a53b53",
           "tagColor": "#00000000",
           "textColor": "#BBDEFB",
           "borderColor": "#BBDEFB",
@@ -10681,7 +10681,7 @@
         },
         "v-3d": {
           "name": "3D",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3587f8812b9e448b.png?rev=3587f8812b9e",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4f1ea4f613129e07.png?rev=4f1ea4f61312",
           "tagColor": "#00000000",
           "textColor": "#176BE8",
           "borderColor": "#176BE8",
@@ -10753,7 +10753,7 @@
         },
         "ch-81": {
           "name": "8.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/fae36026c812d43c.png?rev=fae36026c812",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1196254eb40b2a85.png?rev=1196254eb40b",
           "tagColor": "#00000000",
           "textColor": "#FF7300",
           "borderColor": "#FF7300",
@@ -10761,7 +10761,7 @@
         },
         "ch-21": {
           "name": "2.1",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4b4aa84d1804ad17.png?rev=4b4aa84d1804",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9d0903c3dbe83ba6.png?rev=9d0903c3dbe8",
           "tagColor": "#00000000",
           "textColor": "#FF7300",
           "borderColor": "#FF7300",
@@ -10769,7 +10769,7 @@
         },
         "ch-10": {
           "name": "1.0",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0ca04abd4c9a3f85.png?rev=0ca04abd4c9a",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3339b2edaa34d976.png?rev=3339b2edaa34",
           "tagColor": "#00000000",
           "textColor": "#FF7300",
           "borderColor": "#FF7300",
@@ -10785,7 +10785,7 @@
         },
         "q-dvd-remux": {
           "name": "DVD REMUX",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8ca0e84fdceb9489.png?rev=8ca0e84fdceb",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2b48565e7ed41fda.png?rev=2b48565e7ed4",
           "tagColor": "#00000000",
           "textColor": "#FFD500",
           "borderColor": "#FFD500",
@@ -10793,7 +10793,7 @@
         },
         "v-3d-sbs": {
           "name": "3D SBS",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7246cd822a136d98.png?rev=7246cd822a13",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3d31fe61aa50f8cf.png?rev=3d31fe61aa50",
           "tagColor": "#00000000",
           "textColor": "#176BE8",
           "borderColor": "#176BE8",
@@ -10801,7 +10801,7 @@
         },
         "v-3d-ou": {
           "name": "3D OU",
-          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/c9ddea145c108cc6.png?rev=c9ddea145c10",
+          "imageURL": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f4975023a08308b0.png?rev=f4975023a083",
           "tagColor": "#00000000",
           "textColor": "#176BE8",
           "borderColor": "#176BE8",

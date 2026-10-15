@@ -6,6 +6,7 @@ import {CustomFormatter} from '../.vendor/AIOStreams/packages/core/src/formatter
 import {nuvioHaystacks,nuvioRegex} from './benchmark-badge-patterns.mjs';
 import {ROOT,BADGE_IMAGE_FILES_DIR} from './icon-cdn.mjs';
 const out=path.join(ROOT,'docs/discord');await fs.mkdir(out,{recursive:true});
+const version=JSON.parse(await fs.readFile(path.join(ROOT,'package.json'),'utf8')).version;
 const formatter=JSON.parse(await fs.readFile(path.join(ROOT,'formatter-detailed.json'),'utf8'));
 const pack=JSON.parse(await fs.readFile(path.join(ROOT,'kanso-outline-detailed.json'),'utf8'));
 const engine=new CustomFormatter(formatter.name,formatter.description,{userData:{preferredLanguages:['English'],preferredSubtitles:['Greek']},queryType:'movie',maxSeScore:100} as any);
@@ -40,7 +41,7 @@ const brand=await sharp(path.join(ROOT,'assets/Kanso/kanso-icon-transparent.png'
 layers.push({input:brand,left:114,top:697});
 await text('Every detail once.',151,810,21,'#B4C2D5');
 await text('FORMATTER + BADGES',65,943,17,'#A0B2CA',true);
-await text('Kanso 2.3.2 · Nuvio TV preview',65,977,16,'#71849E');
+await text(`Kanso ${version} · Nuvio TV preview`,65,977,16,'#71849E');
 await text('Sources',645,84,27,'#EAF0F9',true);
 await text('All providers',1290,91,18,'#8F9FB5');
 await text('4 demo streams',1649,91,18,'#8F9FB5');
@@ -57,7 +58,7 @@ for(const [i,e] of examples.entries()){
   const input=await fs.readFile(path.join(BADGE_IMAGE_FILES_DIR,path.basename(new URL(f.imageURL).pathname)));
   const m=await sharp(input).metadata();const artH=22,artW=Math.max(47,Math.min(127,Math.round(m.width!/64*artH))),bw=artW+9,bh=28;
   const frame=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${bw}" height="${bh}"><rect x=".75" y=".75" width="${bw-1.5}" height="${bh-1.5}" rx="6" fill="none" stroke="${f.borderColor.slice(-6).padStart(7,'#')}" stroke-width="1.5"/></svg>`);
-  const chip=await sharp(frame).composite([{input:await sharp(input).resize({width:artW,height:artH,fit:'contain'}).png().toBuffer(),left:4,top:3}]).png().toBuffer();
+  const chip=await sharp(frame).composite([{input:await sharp(input).resize({width:artW,height:artH,fit:'contain',background:'#00000000'}).png().toBuffer(),left:4,top:3}]).png().toBuffer();
   layers.push({input:chip,left:bx,top:by});bx+=bw+9;
  }
  if(bx>x+width-24)throw new Error('Badges overflow preview card');

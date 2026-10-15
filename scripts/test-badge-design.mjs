@@ -48,6 +48,18 @@ for(const skin of ['outline','transparent','solid','mono'])for(const suffix of [
 assert.notEqual(design.filters['web-1'].skins.outline.file,design.filters['web-1-webrip'].skins.outline.file,'WEBRip and WEB-DL artwork must differ');
 for(const row of Object.values(design.filters))if(row.glyph)assert.ok(await fs.stat(path.join(ROOT,'assets/glyphs',row.glyph+'.svg')));
 assert.equal(design.filters['ch-51'].glyph,'speaker','Channels need a speaker');
+const previous=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/layout-before-2.3.3.json'),'utf8'));
+for(const id of ['ch-10','ch-20','ch-21','ch-51','ch-61','ch-71','ch-81','q-dvd-remux','r-4k','r-1440','r-1080','r-720'])for(const skin of ['outline','transparent','solid','mono']){
+ const current=await sharp(path.join(BADGE_IMAGE_FILES_DIR,design.filters[id].skins[skin].file)).metadata();
+ const old=await sharp(path.join(BADGE_IMAGE_FILES_DIR,previous.filters[id].skins[skin].file)).metadata();
+ assert.ok(current.width<old.width,`${skin}/${id}: narrower artwork than 2.3.2`);
+ if(id.startsWith('ch-')){
+  assert.equal(design.filters[id].layout,'speaker above channel number');
+  assert.ok(current.width<=72,`${id}: nearly square channel canvas`);
+ }
+}
+assert.equal(design.filters['q-dvd-remux'].layout,'DVD above REMUX');
+assert.equal(design.filters['r-1440'].quality,'QHD','Keep 1440p accurate rather than relabeling it 2K');
 assert.equal(design.filters['l-el'].kind,'speech-flag','Spoken languages need a speech-shaped flag');
 assert.equal(design.filters['sub-el'].kind,'subtitle-flag','Subtitles need a flag-backed text document');
 assert.equal(design.filters['sub-el'].layout,'flag document beside stacked language / SUB');

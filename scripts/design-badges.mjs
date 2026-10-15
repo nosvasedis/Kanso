@@ -101,13 +101,30 @@ async function stackedSource(glyph,label,ink,override,number){
  layers.push({input:caption,left:Math.floor((width-m.width)/2),top:33});
  return sharp({create:{width,height:60,channels:4,background:'#00000000'}}).composite(layers).png().toBuffer();
 }
-const RESOLUTION_CAPTIONS={'r-4k':['4K','ULTRA HD'],'r-1440':['1440p','QUAD HD'],'r-1080':['1080p','FULL HD'],'r-720':['720p','HD'],'r-576':['576p','SD'],'r-480':['480p','SD'],'r-360':['360p','SD'],'r-240':['240p','SD'],'r-144':['144p','SD']};
+async function stackedChannel(label,ink){
+ const emblem=await icon('speaker',ink,29),number=await text(label,ink,28,true);
+ const em=await sharp(emblem).metadata(),nm=await sharp(number).metadata();
+ const width=Math.max(52,em.width,nm.width);
+ return sharp({create:{width,height:60,channels:4,background:'#00000000'}}).composite([
+  {input:emblem,left:Math.floor((width-em.width)/2),top:0},
+  {input:number,left:Math.floor((width-nm.width)/2),top:32},
+ ]).png().toBuffer();
+}
+async function dvdRemux(ink){
+ const disc=await icon('disc',ink,27),dvd=await text('DVD',ink,28,true);
+ const dm=await sharp(disc).metadata(),tm=await sharp(dvd).metadata();
+ const top=await sharp({create:{width:dm.width+7+tm.width,height:30,channels:4,background:'#00000000'}}).composite([
+  {input:disc,left:0,top:1},{input:dvd,left:dm.width+7,top:0},
+ ]).png().toBuffer();
+ return stackedSource(null,'REMUX',ink,top);
+}
+const RESOLUTION_CAPTIONS={'r-4k':['4K','UHD'],'r-1440':['1440p','QHD'],'r-1080':['1080p','FHD'],'r-720':['720p','HD'],'r-576':['576p','SD'],'r-480':['480p','SD'],'r-360':['360p','SD'],'r-240':['240p','SD'],'r-144':['144p','SD']};
 async function resolutionMark(id,ink,skin,f){
  const [number,quality]=RESOLUTION_CAPTIONS[id];
  const filled=skin==='mono'||skin==='solid';
  const reverseInk=skin==='mono'?'white':f.tagColor;
- const top=await text(number,filled?reverseInk:ink,id==='r-4k'?32:28,true),bottom=await text(quality,ink,17,true);
- const tm=await sharp(top).metadata(),bm=await sharp(bottom).metadata(),width=Math.max(128,tm.width+22,bm.width+12);
+ const top=await text(number,filled?reverseInk:ink,id==='r-4k'?32:26,true),bottom=await text(quality,ink,20,true);
+ const tm=await sharp(top).metadata(),bm=await sharp(bottom).metadata(),width=Math.max(84,tm.width+14,bm.width+12);
  // The screen is part of the resolution symbol. Nuvio owns the outer chip.
  // Clear skins use a hollow display; filled skins use a reversed display face.
  const screen=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="60"><rect x="2" y="2" width="${width-4}" height="38" rx="1.5" fill="${filled?inkColor(ink):'none'}" stroke="${inkColor(ink)}" stroke-width="2.5"/></svg>`);
@@ -131,7 +148,7 @@ const combinations={
  'a-dtsx-ma':['a-dtsx','MA'], 'a-dtsx-hd':['a-dtsx','HD'],
  'a-dtshd':['a-dts','HD'], 'a-dtses':['a-dts','ES'],
 };
-const manifest={version:4,concept:'badges/design/glyph-concept.png',spokenFlagConcept:'badges/design/spoken-flags-concept.png',compactConcept:'badges/design/compact-sources-subtitles-concept.png',spokenFlagSources:'assets/flag-sources/manifest.json',flagColorsPreserved:true,outlineInk:'matches borderColor',transparentInk:'white',customGlyphSource:'scripts/kanso-glyphs.mjs',font:{family:'Manrope',weight:600,captionWeight:700,file:'assets/fonts/Manrope.ttf',license:'assets/fonts/OFL-Manrope.txt'},defaultSkin:'outline',geometry:{height:HEIGHT,inkHeight:INK_HEIGHT,padding:PAD,gap:GAP,stroke:2.15},languageFamilies:LANGUAGE_FAMILIES,filters:{}};
+const manifest={version:5,channelConcept:'badges/design/channels-concept.png',channelPrompt:'badges/design/channels-prompt.txt',concept:'badges/design/glyph-concept.png',spokenFlagConcept:'badges/design/spoken-flags-concept.png',compactConcept:'badges/design/compact-sources-subtitles-concept.png',spokenFlagSources:'assets/flag-sources/manifest.json',flagColorsPreserved:true,outlineInk:'matches borderColor',transparentInk:'white',customGlyphSource:'scripts/kanso-glyphs.mjs',font:{family:'Manrope',weight:600,captionWeight:700,file:'assets/fonts/Manrope.ttf',license:'assets/fonts/OFL-Manrope.txt'},defaultSkin:'outline',geometry:{height:HEIGHT,inkHeight:INK_HEIGHT,padding:PAD,gap:GAP,stroke:2.15},languageFamilies:LANGUAGE_FAMILIES,filters:{}};
 await fs.mkdir(path.join(ROOT,'assets/glyphs'),{recursive:true});
 for(const name of Object.keys(GLYPHS))await fs.writeFile(path.join(ROOT,'assets/glyphs',name+'.svg'),glyphSvg(name));
 for(const f of pack.filters){
@@ -157,10 +174,15 @@ for(const f of pack.filters){
    if(id==='v-dv-hdr10'){parts=[await logo('a-dv',ink),await logo('v-hdr10',ink)];row.sources.push(sources['hdr10.svg'].url);}
    parts.splice(1,0,await separator(ink));row.layout='compound with vertical separator';
   }else if(id==='criterion-collection'){
-   parts=[await logo(id,ink),await text('CRITERION',ink,38)];row.kind='logo-label';row.sources=[sources['criterion.svg'].url];
+   const mark=await sharp(await logo(id,ink)).resize({height:30}).png().toBuffer();
+   parts=[await stackedSource(null,'CRITERION',ink,mark)];row.kind='logo-label';row.sources=[sources['criterion.svg'].url];row.layout='icon above caption';
   }else if(id==='q-b'){
    parts=[await stackedSource(null,'BLU-RAY',ink,await bluraySymbol(ink))];
    row.kind='logo-label';row.sources=[sources['bluray.svg'].url];row.layout='icon above caption';
+  }else if(id==='q-dvd-remux'){
+   parts=[await dvdRemux(ink)];row.kind='custom-glyph';row.glyph='disc';row.layout='DVD above REMUX';
+  }else if(f.groupId==='gc'){
+   parts=[await stackedChannel(f.name,ink)];row.kind='custom-glyph';row.glyph='speaker';row.layout='speaker above channel number';
   }else if(RESOLUTION_CAPTIONS[id]){
    parts=[await resolutionMark(id,ink,skin,skin==='solid'?applySolidTheme({...f}):f)];row.kind='text';row.layout='framed display above quality';row.quality=RESOLUTION_CAPTIONS[id][1];
   }else if(direct[id]||inherited[id]){
@@ -175,11 +197,11 @@ for(const f of pack.filters){
   }else{
    const label=LABELS[id]??f.name;
    const glyph=glyphForBadge(id,f.groupId);
-   parts=f.groupId==='grl'&&glyph?[await stackedSource(glyph,label,ink)]:glyph?[await icon(glyph,ink),await text(label,ink)]:[await text(label,ink)];
+   parts=f.groupId==='grl'&&glyph?[await stackedSource(glyph,label,ink)]:glyph?[await icon(glyph,ink),await text(label,ink,f.groupId==='gst'?40:INK_HEIGHT)]:[await text(label,ink)];
    row.kind=glyph?'custom-glyph':'text';row.glyph=glyph;
    if(f.groupId==='grl')row.layout='icon above caption';
   }
-  let b=await join(parts,['gms','grl'].includes(f.groupId)?6:PAD);
+  let b=await join(parts,['gms','grl','gc','gr'].includes(f.groupId)?6:PAD);
   // Coil fits within 92/16: keep a 5.5:1 maximum aspect ratio at native chip size.
   const m=await sharp(b).metadata();
   if(m.width>352)b=await sharp(b).resize({width:336,height:HEIGHT,fit:'inside'}).extend({top:Math.floor((HEIGHT-Math.round(HEIGHT*336/m.width))/2),bottom:Math.ceil((HEIGHT-Math.round(HEIGHT*336/m.width))/2),left:8,right:8,background:'#00000000'}).png().toBuffer();
