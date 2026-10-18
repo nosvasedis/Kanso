@@ -4,7 +4,7 @@ import { loadTierGroupsFromBadgesSync, tierRseRuleNames } from './tier-inject-ge
 import { SYNC_TIER_IDS } from './tier-group-sync.mjs';
 import { FORMATTER_STREAMING_SEGMENTS } from './streaming-formatter-patterns.mjs';
 import { TITLE_TRANSPORT } from './formatter-layout.mjs';
-import { FORMATTER_RANK_STARS } from './quality-rank-patterns.mjs';
+import { FORMATTER_RANK_STARS, FORMATTER_RANK_STARS_DETAILED } from './quality-rank-patterns.mjs';
 import { LANGUAGE_CATALOG, subtitleIdForLanguage } from './language-catalog.mjs';
 
 export const PRESET_MAX_LENGTH = 15000;
@@ -200,7 +200,7 @@ export function buildPresetFormatter(preset='compact'){
  const joinRows=rows=>rows.join('\n{tools.removeLine}\n');
  let visible=context+noPreferred+joinRows([release,file,deliveryRow]);
  visible+=messages;
- let name=PRESET_NAME+PRESET_MARKER;
+ let name=(detailed?TITLE_LTR_ANCHOR+TITLE_TRANSPORT+FORMATTER_RANK_STARS_DETAILED+TITLE_SEEDERS:PRESET_NAME)+PRESET_MARKER;
  let description=visible;
  // Source and tier share a field so native per-field scans cannot echo the source.
 const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,CHANNELS,languageMarkers(detailed),SUBTITLE_MARKERS_INJECT+SUBTITLE_ACCESS,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];

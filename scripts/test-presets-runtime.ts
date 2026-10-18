@@ -9,11 +9,11 @@ import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
 import { displayLanguageId } from './display-language-families.mjs';
 import {LANGUAGE_CATALOG} from './language-catalog.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
-type FX={label:string;file?:string;parsed?:any;prefs?:string[];required?:string[];included?:string[];originalLanguage?:string;type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[]};
+type FX={label:string;file?:string;parsed?:any;prefs?:string[];required?:string[];included?:string[];originalLanguage?:string;type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[];descriptionAbsent?:string[]};
 const fx:FX[]=[
  ...['debrid','usenet','stremio-usenet','http','p2p','live','youtube','archive','external'].flatMap(type=>[true,false,null].map(cache=>({label:`cache row ${type}/${cache}`,type,cache,parsed:{container:'mkv',encode:'hevc'},text:[type==='debrid'?`${cache===true?'⚡':cache===false?'⏳':'❔'} · 📦 MKV · 🎞️ HEVC`:'📦 MKV · 🎞️ HEVC'],...(type==='debrid'?{}:{absent:['⚡','⏳','❔']})}))),
  ...Array.from({length:16},(_,bits)=>({label:`conditional release separators ${bits}`,parsed:{...(bits&1?{container:'mkv'}:{}),...(bits&2?{encode:'hevc'}:{}),...(bits&4?{releaseGroup:'GROUP'}:{}),...(bits&8?{country:'US'}:{})}})),
- {label:'debrid cache alone has no dot',flags:{size:undefined,addon:undefined},service:false,text:['❔'],absent:['·']},
+ {label:'debrid cache alone has no dot',flags:{size:undefined,addon:undefined},service:false,text:['❔'],descriptionAbsent:['·']},
  {label:'multi-tag DD+ Atmos without title',parsed:{audioTracks:[{lang:'English',tags:['DD+','Atmos'],channels:'5.1'}]},common:['a-at-dp','ch-51','l-en'],forbid:['a-at','a-dp']},
  {label:'multi-tag TrueHD Atmos without title',parsed:{audioTracks:[{lang:'English',tags:['TrueHD','Atmos']}]},common:['a-at-th'],forbid:['a-th','a-at']},
  {label:'multi-tag DTS:X MA without title',parsed:{audioTracks:[{lang:'English',tags:['DTS-HD MA','DTS:X']}]},common:['a-dtsx-ma'],forbid:['a-dtsma','a-dtsx']},
@@ -137,6 +137,12 @@ const fx:FX[]=[
  {label:'uncertain language metadata stays quiet',prefs:['English'],parsed:{languages:['English'],mediaInfoQuality:'filename'},absent:['🎧','🇬🇧'],forbid:['l-en']},
  {label:'Tamtaro English DD+ 5.1 without duplicate flags',prefs:['English','Original','Multi','Dual Audio','Dubbed','Unknown'],originalLanguage:'English',parsed:{quality:'WEB',resolution:'2160p',encode:'hevc',container:'mkv',releaseGroup:'FLUX',network:'Amazon',visualTags:['DV','HDR10+'],languages:['English','Japanese'],mediaInfoQuality:'probe',audioTags:['DD+','Atmos','FLAC'],audioTracks:[{lang:'Japanese',tag:'FLAC',channels:'7.1'},{lang:'English',codec:'eac3',tag:'DD+',channels:'5.1',title:'Main Atmos'}]},common:['r-4k','v-dv-hdr10p','a-at-dp','l-en','ch-51'],compact:['q-w'],detailed:['web-1','s-amzn'],forbid:['ge-hevc'],text:['📦 MKV · 🎞️ HEVC · 👥 FLUX'],absent:['🇬🇧','🇯🇵','JA: FLAC']},
  {label:'rank score does not change badge opinion',score:100,parsed:{quality:'WEB',resolution:'1080p'},common:['q-w','r-1080'],forbid:['q-bw','q-gw','q-ow']},
+ {label:'minimum visible score',score:20},
+ {label:'score below star threshold stays quiet',score:19},
+ {label:'zero score stays quiet',score:0},
+ {label:'missing score stays quiet',flags:{streamExpressionScore:undefined}},
+ {label:'normalized score differs from raw score',score:160},
+ {label:'precise score within a star band',score:87},
  {label:'missing language does not leave orphan audio row',prefs:[],parsed:{audioTracks:[{tag:'AAC'}]},common:['a-aac'],absent:['🎧']},
  {label:'unknown language codec stays in its badge',prefs:[],parsed:{audioTracks:[{lang:'Unknown',tag:'AAC'}]},common:['a-aac'],absent:['🎧'],forbid:['l-en']},
  {label:'same codec across preferred languages stays in image',prefs:['English','Greek'],parsed:{audioTracks:[{lang:'English',tag:'AAC',channels:'5.1'},{lang:'Greek',tag:'AAC',channels:'2.0'}]},common:['a-aac','l-en','ch-51'],detailed:['l-el'],absent:['🎧','🇬🇧','🇬🇷']},
@@ -184,12 +190,18 @@ for(const preset of ['compact','detailed']){
    assert.doesNotMatch(visible,/Audio: file tags|Audio unverified|File channels|^\s*(?:🎧|🔊|💬|🧩)\s*$/m,'Remove diagnostic wording and orphaned emoji rows');
    assert.doesNotMatch(visible,/🧩\s*·\s*Comet/,'Attach the addon cue to its name');
    assert.match(clean(out.name),/🔗|🧲|🌐|📰|📺|▶️|🗄️|↗️/,`Restored transport imagery: ${f.label}`);
-   if((f.score??80)>=20)assert.match(clean(out.name),/[★☆]/,'Keep original title stars');
+   if(stream.streamExpressionScore>=20)assert.match(clean(out.name),/[★☆]/,'Keep original title stars');
+   const title=clean(out.name).trimEnd(),rawScore=stream.streamExpressionScore;
+   const normalizedScore=rawScore==null?null:Math.max(0,Math.min(100,Math.round(rawScore)));
+   if(preset==='detailed'&&normalizedScore!==null&&normalizedScore>=20){
+     assert.match(title,new RegExp(`[★☆]{5} · ${normalizedScore}(?:$| 🌱)`),`${f.label}: precise normalized score sits after the stars and before seeders`);
+   }else assert.doesNotMatch(title,/[★☆]{5} · \d| · \d+(?:$| 🌱)/,`${f.label}: no numeric rating in Compact or without visible stars`);
    assert.doesNotMatch(visible,/\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
    assert.doesNotMatch(clean(out.description),/^\s*·|\n\s*·|·\s*(?:\n|$)|·\s*·|\n\n/,`${preset}/${f.label}: separator leak`);
    assert.doesNotMatch(clean(out.name),/[⚡⏳❔]/u,`${preset}/${f.label}: cache status belongs in the description`);
    for(const t of [...f.text??[],...(preset==='detailed'?f.detailText??[]:[])])assert.ok(visible.includes(t),`${preset}/${f.label}: missing ${t}: ${visible}`);
    for(const t of f.absent??[])assert.ok(!visible.includes(t),`${preset}/${f.label}: unexpected ${t}: ${visible}`);
+   for(const t of f.descriptionAbsent??[])assert.ok(!clean(out.description).includes(t),`${preset}/${f.label}: unexpected ${t} in description`);
    let reference:string[]|undefined;
    for(const skin of ['solid','transparent','mono','outline']){
      const pack=JSON.parse(fs.readFileSync(`kanso-${skin}${suffix}.json`,'utf8'));

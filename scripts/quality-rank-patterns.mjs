@@ -58,8 +58,11 @@ const SOURCE = {
 };
 
 /** Visible rank on formatter title — ★/☆ only (Nuvio-safe); spacing from transport trailing space. */
-export const FORMATTER_RANK_STARS =
-  `{stream.nSeScore::>=${RANK_MIN_SCORE}["{stream.nSeScore::pstar${PSTAR_NUVIO_SAFE}}"||""]}`;
+export function formatterRankStars(showScore=false){
+  return `{stream.nSeScore::>=${RANK_MIN_SCORE}["{stream.nSeScore::pstar${PSTAR_NUVIO_SAFE}}${showScore?' · {stream.nSeScore}':''}"||""]}`;
+}
+export const FORMATTER_RANK_STARS = formatterRankStars();
+export const FORMATTER_RANK_STARS_DETAILED = formatterRankStars(true);
 
 /** @deprecated */
 export const FORMATTER_RANK_DIAMONDS = FORMATTER_RANK_STARS;

@@ -1,4 +1,4 @@
-# Kanso 2.4.1 — Manrope, Outline, Instant markers
+# Kanso 2.4.2 — Manrope, Outline, Instant markers
 
 Kanso keeps Instant Unicode matching on structured AIOStreams fields. Outline is the default appearance, with Manrope Semibold for generic labels and original artwork for brand marks. Four skins share consistent geometry: Solid, Transparent, Mono and Outline. Category colors remain gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming and distinct specials. See [badge design and source notes](badge-design.md). This release replaces the previous badge appearance and formatter contract.
 
@@ -16,7 +16,7 @@ Chips read left to right as specials (SeaDex, IMAX, 3D, Hybrid, Criterion, cuts,
 
 ## Verification
 
-388 real-engine fixtures × two presets × four skins on official AIOStreams 2.36.0. Templates fit the default 15,000-character budget: Compact 12,449/12,561; Detailed 14,986/14,987. Every exported badge has a positive structured-metadata fixture.
+394 real-engine fixtures × two presets × four skins on official AIOStreams 2.36.0. Templates fit the default 15,000-character budget: Compact 12,449/12,561; Detailed 14,996/14,997. Every exported badge has a positive structured-metadata fixture.
 
 Refresh the formatter and **replace** the old imported Kanso badge pack. Updating a remote JSON does not automatically delete old entries retained by a merge in the client. Keep Kanso as your custom formatter during Tamtaro template updates.
 
@@ -49,3 +49,7 @@ Formatter wording is shorter: `📚 Pack`, `🌱 125` for seeders and `⬇️ Pr
 ## Paired official marks in 2.4.1
 
 Dolby Vision + HDR10/HDR10+ use balanced brand-logo sizing rather than the small text-suffix treatment. Vision uses 52px height, boxed HDR10 uses 48px, and the much wider HDR10+ mark uses 38px for comparable visual weight without shrinking the entire composition. Both official marks and the separator remain intact across all four skins. Plain HDR text and audio text suffixes retain the smaller hierarchy introduced in 2.4.0. Formatter output and all other badge images are unchanged.
+
+## Detailed rating in 2.4.2
+
+Detailed shows the normalized 0–100 stream-expression score immediately after the stars, for example `🔗 ★★★★☆ · 80`. If a seeder count is shown it follows the rating, such as `🧲 ★★★★☆ · 80 🌱 125`. The number shares the existing star visibility condition (normalized score at least 20); missing scores and lower scores leave no number or separator. This is `nSeScore`, not raw `seScore`, and does not change ranking or badge selection. Compact retains its previous output. Refresh the Detailed formatter to receive this change; badge packs are unchanged.
