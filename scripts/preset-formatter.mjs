@@ -117,10 +117,16 @@ function languageMarkers(detailed){
 }
 // keep() emits nothing for an empty preference list, so an outer gate is redundant.
 const SUBTITLE_MARKERS_INJECT=`{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::languageCode::join(' ')${subtitleChain}}`;
-const channelFacts=[['8.1','ch81'],['7.1','ch71'],['6.1','ch61'],['5.1','ch51'],['2.1','ch21'],['2.0','ch20'],['1.0','ch10']];
+const channelFacts=[['8.1','ch81'],['7.1','ch71'],['6.1','ch61'],['6.0','ch60'],['5.1','ch51'],['5.0','ch50'],['4.0','ch40'],['3.0','ch30'],['2.1','ch21'],['2.0','ch20'],['1.0','ch10']];
 // Track channels are one exact value. File-level arrays choose one layout by
-// precedence, using flat conditions within the engine's nesting limit.
-function channelMarkers(field,single=false){return channelFacts.map(([value,atom],index)=>gate(single?`${field}::in('${value}')`:`${field}::~${value}`+channelFacts.slice(0,index).map(([higher])=>`::and::${field}::~${higher}::isfalse`).join(''),M[atom])).join('');}
+// precedence, filtering and sorting known values without nested conditions.
+function channelMarkers(field,single=false){
+ const known=channelFacts.map(([value])=>`'${value}'`).join(',');
+ const chain=channelFacts.map(([value,atom])=>`::replace('${value}','${M[atom]}')`).join('');
+ // Filter whole values before replacement; never turn e.g. 15.0 into 5.0.
+ // Sorting known file-level layouts preserves the highest-layout precedence.
+ return single?gate(`${field}::in(${known})`,`{${field}${chain}}`):`{${field}::keep(${known})::rsort::first${chain}}`;
+}
 const CHANNELS=gate('stream.audioTracks::exists',selectedTrack(channelMarkers('track.channels',true)),channelMarkers('stream.audioChannels'));
 // Accessibility belongs to the same audio selection as codec/channels. Do not
 // advertise a different-language or commentary track as the chosen audio.

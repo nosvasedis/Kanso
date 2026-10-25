@@ -11,7 +11,7 @@ const editions={'edition-directors-cut':"Director's Cut",'edition-extended':'Ext
 const flags={'proper-release':'proper','repack-release':'repack','remastered-release':'remastered','regraded-release':'regraded','uncensored-edition':'uncensored','seadex-release':'seadexBest'};
 const networks={'s-nflx':'Netflix','s-amzn':'Amazon','s-atvp':'Apple TV','s-dsnp':'Disney','s-hmax':'HBO Max','s-hulu':'Hulu','s-pcok':'Peacock','s-pamp':'Paramount','s-croll':'Crunchyroll'};
 const sources={'q-r':'REMUX','q-b':'BluRay','q-w':'WEB-DL','q-wr':'WEBRip','q-cam':'CAM','q-hdtv':'HDTV','q-hdrip':'HDRip','q-dvdrip':'DVDRip','q-scr':'SCR','q-tc':'TC','q-ts':'TS'};
-const channels={'ch-81':'8.1','ch-71':'7.1','ch-61':'6.1','ch-51':'5.1','ch-21':'2.1','ch-20':'2.0','ch-10':'1.0'};
+const channels={'ch-81':'8.1','ch-71':'7.1','ch-61':'6.1','ch-60':'6.0','ch-51':'5.1','ch-50':'5.0','ch-40':'4.0','ch-30':'3.0','ch-21':'2.1','ch-20':'2.0','ch-10':'1.0'};
 const encoders={'ge-av1':'av1','ge-hevc':'hevc','ge-avc':'avc','ge-xvid':'xvid','ge-divx':'divx'};
 const languages={...Object.fromEntries(LANGUAGE_CATALOG.map(l=>[l.id,l.tokens[0]])),'l-in':'Hindi','l-pt':'Portuguese'};
 export const coverageFixtures=pack.filters.map(({id})=>{

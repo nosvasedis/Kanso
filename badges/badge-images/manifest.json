@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T11:39:56.876Z",
+  "generatedAt": "2026-10-25T15:35:32.207Z",
   "brand": "Kanso",
   "version": 2,
   "defaultSkin": "outline",
@@ -81,7 +81,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1faa435dd2f9dc1d.png?rev=1faa435dd2f9",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/38305364f05ce86c.png?rev=38305364f05c",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0e6e6267da79e9c3.png?rev=0e6e6267da79",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2a103bab28d41b14.png?rev=2a103bab28d4",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac07e07b9f053ad4.png?rev=ac07e07b9f05",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f2e5620859ba43f4.png?rev=f2e5620859ba",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d24cd598159df360.png?rev=d24cd598159d",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2990b7bc16a7d2d5.png?rev=2990b7bc16a7",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/caa1e561f616137f.png?rev=caa1e561f616",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/199dd06a626ae488.png?rev=199dd06a626a",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3d42a516458e175c.png?rev=3d42a516458e",
@@ -239,7 +243,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bd52936211183d93.png?rev=bd5293621118",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d661bcc48a23f10b.png?rev=d661bcc48a23",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0f730242b9e2d48c.png?rev=0f730242b9e2",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/71ca1cd3075c65dc.png?rev=71ca1cd3075c",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e22c44d1ca25c2eb.png?rev=e22c44d1ca25",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7eb81c309f78c370.png?rev=7eb81c309f78",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/49febded9ee1a145.png?rev=49febded9ee1",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9cf0bb59d129af91.png?rev=9cf0bb59d129",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bcaecf38287bb637.png?rev=bcaecf38287b",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/27e6b6f5546e0c3a.png?rev=27e6b6f5546e",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4a4bd8e5d735723f.png?rev=4a4bd8e5d735",
@@ -397,7 +405,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1faa435dd2f9dc1d.png?rev=1faa435dd2f9",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/38305364f05ce86c.png?rev=38305364f05c",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0e6e6267da79e9c3.png?rev=0e6e6267da79",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2a103bab28d41b14.png?rev=2a103bab28d4",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac07e07b9f053ad4.png?rev=ac07e07b9f05",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f2e5620859ba43f4.png?rev=f2e5620859ba",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d24cd598159df360.png?rev=d24cd598159d",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2990b7bc16a7d2d5.png?rev=2990b7bc16a7",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/caa1e561f616137f.png?rev=caa1e561f616",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/199dd06a626ae488.png?rev=199dd06a626a",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3d42a516458e175c.png?rev=3d42a516458e",
@@ -555,7 +567,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e2573df7867c0889.png?rev=e2573df7867c",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2f62064d79d1e3a6.png?rev=2f62064d79d1",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d8b52ce7f91bec38.png?rev=d8b52ce7f91b",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/064fb4082f3e79a2.png?rev=064fb4082f3e",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d563299b5da54b77.png?rev=d563299b5da5",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bc70226032c4146e.png?rev=bc70226032c4",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cda7cd0e851f2bde.png?rev=cda7cd0e851f",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e348d00f18242bea.png?rev=e348d00f1824",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/00b5d1728be8edd6.png?rev=00b5d1728be8",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/902648c351328b9f.png?rev=902648c35132",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1b16c1707b6d46c5.png?rev=1b16c1707b6d",
@@ -746,7 +762,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1faa435dd2f9dc1d.png?rev=1faa435dd2f9",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/38305364f05ce86c.png?rev=38305364f05c",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0e6e6267da79e9c3.png?rev=0e6e6267da79",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2a103bab28d41b14.png?rev=2a103bab28d4",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac07e07b9f053ad4.png?rev=ac07e07b9f05",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f2e5620859ba43f4.png?rev=f2e5620859ba",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d24cd598159df360.png?rev=d24cd598159d",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2990b7bc16a7d2d5.png?rev=2990b7bc16a7",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/caa1e561f616137f.png?rev=caa1e561f616",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/199dd06a626ae488.png?rev=199dd06a626a",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3d42a516458e175c.png?rev=3d42a516458e",
@@ -937,7 +957,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bd52936211183d93.png?rev=bd5293621118",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d661bcc48a23f10b.png?rev=d661bcc48a23",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0f730242b9e2d48c.png?rev=0f730242b9e2",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/71ca1cd3075c65dc.png?rev=71ca1cd3075c",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e22c44d1ca25c2eb.png?rev=e22c44d1ca25",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/7eb81c309f78c370.png?rev=7eb81c309f78",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/49febded9ee1a145.png?rev=49febded9ee1",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9cf0bb59d129af91.png?rev=9cf0bb59d129",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bcaecf38287bb637.png?rev=bcaecf38287b",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/27e6b6f5546e0c3a.png?rev=27e6b6f5546e",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/4a4bd8e5d735723f.png?rev=4a4bd8e5d735",
@@ -1128,7 +1152,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1faa435dd2f9dc1d.png?rev=1faa435dd2f9",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/38305364f05ce86c.png?rev=38305364f05c",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/0e6e6267da79e9c3.png?rev=0e6e6267da79",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2a103bab28d41b14.png?rev=2a103bab28d4",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ac07e07b9f053ad4.png?rev=ac07e07b9f05",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f2e5620859ba43f4.png?rev=f2e5620859ba",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d24cd598159df360.png?rev=d24cd598159d",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2990b7bc16a7d2d5.png?rev=2990b7bc16a7",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/caa1e561f616137f.png?rev=caa1e561f616",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/199dd06a626ae488.png?rev=199dd06a626a",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3d42a516458e175c.png?rev=3d42a516458e",
@@ -1319,7 +1347,11 @@
       "ch-81": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e2573df7867c0889.png?rev=e2573df7867c",
       "ch-71": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/2f62064d79d1e3a6.png?rev=2f62064d79d1",
       "ch-61": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d8b52ce7f91bec38.png?rev=d8b52ce7f91b",
+      "ch-60": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/064fb4082f3e79a2.png?rev=064fb4082f3e",
       "ch-51": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d563299b5da54b77.png?rev=d563299b5da5",
+      "ch-50": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/bc70226032c4146e.png?rev=bc70226032c4",
+      "ch-40": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/cda7cd0e851f2bde.png?rev=cda7cd0e851f",
+      "ch-30": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e348d00f18242bea.png?rev=e348d00f1824",
       "ch-21": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/00b5d1728be8edd6.png?rev=00b5d1728be8",
       "ch-20": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/902648c351328b9f.png?rev=902648c35132",
       "ch-10": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/1b16c1707b6d46c5.png?rev=1b16c1707b6d",
@@ -1407,8 +1439,8 @@
     "compact": {
       "formatter": "formatter.json",
       "lengths": {
-        "name": 12449,
-        "description": 12561
+        "name": 12173,
+        "description": 12219
       },
       "packs": {
         "solid": "kanso-solid.json",
@@ -1420,8 +1452,8 @@
     "detailed": {
       "formatter": "formatter-detailed.json",
       "lengths": {
-        "name": 14996,
-        "description": 14997
+        "name": 14688,
+        "description": 14687
       },
       "packs": {
         "solid": "kanso-solid-detailed.json",
@@ -1431,5 +1463,5 @@
       }
     }
   },
-  "uniqueHashes": 576
+  "uniqueHashes": 588
 }

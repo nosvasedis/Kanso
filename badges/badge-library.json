@@ -1040,6 +1040,26 @@
       "id": "caption-sdh",
       "groupId": "gsub",
       "name": "SDH subtitles"
+    },
+    {
+      "id": "ch-60",
+      "groupId": "gc",
+      "name": "6.0"
+    },
+    {
+      "id": "ch-50",
+      "groupId": "gc",
+      "name": "5.0"
+    },
+    {
+      "id": "ch-40",
+      "groupId": "gc",
+      "name": "4.0"
+    },
+    {
+      "id": "ch-30",
+      "groupId": "gc",
+      "name": "3.0"
     }
   ]
 }

@@ -11,6 +11,19 @@ import {LANGUAGE_CATALOG} from './language-catalog.mjs';
 const clean=(s:string)=>s.replace(/[\u180b-\u180d\u200b-\u200f\u2060-\u206f\ufeff]/g,'');
 type FX={label:string;file?:string;parsed?:any;prefs?:string[];required?:string[];included?:string[];originalLanguage?:string;type?:string;cache?:boolean|null;service?:boolean;score?:number;rse?:string[];anime?:boolean;flags?:any;common?:string[];compact?:string[];detailed?:string[];forbid?:string[];text?:string[];absent?:string[];detailText?:string[];descriptionAbsent?:string[]};
 const fx:FX[]=[
+ ...['3.0','4.0','5.0','6.0'].flatMap(ch=>{
+   const id='ch-'+ch.replace('.','');
+   return [
+    {label:`exact selected track ${ch}`,parsed:{audioTracks:[{lang:'English',tag:'AAC',channels:ch}],audioChannels:['7.1']},common:[id]},
+    {label:`file-level ${ch} unordered layouts`,parsed:{audioChannels:['2.0',ch]},common:[id]},
+    {label:`file-level ${ch} reversed layouts`,parsed:{audioChannels:[ch,'2.0']},common:[id]},
+   ];
+ }),
+ {label:'6.0 wins over 5.1 at file level',parsed:{audioChannels:['5.1','6.0']},common:['ch-60'],forbid:['ch-51']},
+ {label:'6.1 remains distinct from 6.0',parsed:{audioChannels:['6.0','6.1']},common:['ch-61'],forbid:['ch-60']},
+ {label:'unknown track 15.0 does not become 5.0',parsed:{audioTracks:[{lang:'English',tag:'AAC',channels:'15.0'}]},forbid:['ch-50','ch-51']},
+ {label:'unknown file layouts do not become known layouts',parsed:{audioChannels:['15.0','6.01','9.1']},forbid:['ch-50','ch-60','ch-61','ch-51']},
+ {label:'preferred 4.0 is not borrowed from another track',parsed:{audioTracks:[{lang:'Japanese',tag:'FLAC',channels:'7.1'},{lang:'English',tag:'AAC',channels:'4.0'}]},common:['ch-40','a-aac'],forbid:['ch-71','a-flac']},
  ...['debrid','usenet','stremio-usenet','http','p2p','live','youtube','archive','external'].flatMap(type=>[true,false,null].map(cache=>({label:`cache row ${type}/${cache}`,type,cache,parsed:{container:'mkv',encode:'hevc'},text:[type==='debrid'?`${cache===true?'⚡':cache===false?'⏳':'❔'} · 📦 MKV · 🎞️ HEVC`:'📦 MKV · 🎞️ HEVC'],...(type==='debrid'?{}:{absent:['⚡','⏳','❔']})}))),
  ...Array.from({length:16},(_,bits)=>({label:`conditional release separators ${bits}`,parsed:{...(bits&1?{container:'mkv'}:{}),...(bits&2?{encode:'hevc'}:{}),...(bits&4?{releaseGroup:'GROUP'}:{}),...(bits&8?{country:'US'}:{})}})),
  {label:'debrid cache alone has no dot',flags:{size:undefined,addon:undefined},service:false,text:['❔'],descriptionAbsent:['·']},
@@ -209,6 +222,7 @@ for(const preset of ['compact','detailed']){
      assert.ok(pack.groups.every((g:any)=>pack.filters.some((b:any)=>b.groupId===g.id)), 'No empty retired groups');
      const hay=nuvioHaystacks([out.name,out.description,f.file].filter(Boolean));
      const hits=pack.filters.filter((b:any)=>b.isEnabled&&hay.some((s:string)=>nuvioRegex(b.pattern).test(s))).map((b:any)=>b.id);
+     assert.ok(hits.filter((id:string)=>id.startsWith('ch-')).length<=1,`${preset}/${f.label}: only the selected channel layout is shown`);
      const audioRow=visible.split('\n').filter(s=>s.startsWith('🎧')).join(' ');
      for(const id of hits)for(const fact of audioBadgeFacts[id]??[]){
        const word=fact.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');

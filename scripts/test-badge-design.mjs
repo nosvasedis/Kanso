@@ -13,7 +13,7 @@ const checked=new Set();
 const preceding=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/layout-before-2.4.1.json'),'utf8'));
 for(const [id,row] of Object.entries(design.filters))for(const skin of ['outline','transparent','solid','mono']){
  if(id==='v-dv-hdr10'||id==='v-dv-hdr10p')assert.notEqual(row.skins[skin].file,preceding.filters[id].skins[skin].file,`${id}: revised logo balance`);
- else assert.equal(row.skins[skin].file,preceding.filters[id].skins[skin].file,`${id}: paired-logo fix preserves other artwork`);
+ else if(preceding.filters[id])assert.equal(row.skins[skin].file,preceding.filters[id].skins[skin].file,`${id}: existing artwork is preserved`);
 }
 const empty=await sharp({create:{width:118,height:60,channels:4,background:'#00000000'}}).png().toBuffer();
 const caption=await sharp({create:{width:50,height:20,channels:4,background:'#FFFFFF'}}).png().toBuffer();

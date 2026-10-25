@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.4.2
+# Kanso 2.5.0
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
@@ -8,7 +8,7 @@ Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **E
 
 ![New Kanso Outline badge system](assets/Kanso/kanso-badges-preview.png)
 
-This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.4.2 replaces the previous badge appearance and formatter contract; use the matching install files below.
+This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.5.0 replaces the previous badge appearance and formatter contract; use the matching install files below.
 
 ## Choose a matching pair
 
@@ -26,7 +26,7 @@ This preview uses the generated badge PNGs. The [local gallery](badges/design/ga
 5. For an upgrade, **refresh both the formatter and the badge pack**. Kanso uses a version marker; mixed old/new exports are prevented from producing confident badges. Saving a URL does not guarantee the app has fetched the newest content—refresh its sync/import when needed.
 6. On Nuvio TV, turn off its native file-size badges if you keep Kanso's `💾` size row. TV 1.0.0 enables native size badges by default; this app setting is separate from the imported pack.
 
-Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 12,449 / 12,561 characters; Detailed is 14,996 / 14,997. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 12,173 / 12,219 characters; Detailed is 14,688 / 14,687. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## What each preset shows
 
@@ -85,7 +85,7 @@ npm run test:setup
 npm run release
 ```
 
-The setup clones the official AIOStreams **v2.36.0**, pinned to commit `ce6244454ee131bf0945b2bd6abc670a449b224d`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 394 fixtures × two presets × four skins, plus all referenced PNG hashes and tier-sync regressions. No native playback/device compatibility claim is made by these tests.
+The setup clones the official AIOStreams **v2.36.0**, pinned to commit `ce6244454ee131bf0945b2bd6abc670a449b224d`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 415 fixtures × two presets × four skins, plus all referenced PNG hashes and tier-sync regressions. No native playback/device compatibility claim is made by these tests.
 
 Every exported badge has a positive real-metadata fixture. For native Java regex and Nuvio's exact first-strong direction semantics, run `node scripts/test-nuvio-java.mjs` with Java 21 or later; pass `--java=/path/to/java` to select an installed runtime. These checks do not substitute for testing your installed TV app or playback.
 

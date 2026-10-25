@@ -166,7 +166,7 @@ export const MONO_FILTER_ORDER = {
     "a-mp3",
     "a-pcm",
   ],
-  gc: ["ch-81", "ch-71", "ch-61", "ch-51", "ch-21", "ch-20", "ch-10"],
+  gc: ["ch-81", "ch-71", "ch-61", "ch-60", "ch-51", "ch-50", "ch-40", "ch-30", "ch-21", "ch-20", "ch-10"],
   ge: ["ge-av1", "ge-hevc", "ge-avc", "ge-xvid", "ge-divx"],
   gl: LANGUAGE_BADGE_IDS,
   gsub: SUBTITLE_BADGE_IDS,

@@ -306,10 +306,11 @@ for (const id of SUB_BADGE_IDS) {
 }
 // Append extension atoms after the existing allocation. Never move old tier,
 // language or audio atoms when adding new channel facts.
-const extensionAtoms=['ch81','ch21','ch10','srcHcRip','srcDvdRemux','visSbs','visOu','accessAd','captionForced','captionSdh'];
+const extensionAtoms=['ch81','ch21','ch10','srcHcRip','srcDvdRemux','visSbs','visOu','accessAd','captionForced','captionSdh','ch60','ch50','ch40','ch30'];
 const extensionMarkers=allocateMarkers(allocated.length+extensionAtoms.length).slice(allocated.length);
 for(let n=0;n<extensionAtoms.length;n++)MARKER_ATOMS[extensionAtoms[n]]=extensionMarkers[n];
 BADGE_MARKERS['ch-81']=['ch81'];BADGE_MARKERS['ch-21']=['ch21'];BADGE_MARKERS['ch-10']=['ch10'];
+for(const value of ['60','50','40','30'])BADGE_MARKERS['ch-'+value]=['ch'+value];
 const extensionBadges={'q-hc':'srcHcRip','q-dvd-remux':'srcDvdRemux','v-3d-sbs':'visSbs','v-3d-ou':'visOu','a-description':'accessAd','caption-forced':'captionForced','caption-sdh':'captionSdh'};
 for(const [id,atom] of Object.entries(extensionBadges))BADGE_MARKERS[id]=[atom];
 
@@ -496,11 +497,15 @@ export const V2_INJECT_IMPLEMENTED_IDS = new Set([
   "a-aac",
   "a-mp3",
   "a-pcm",
-  // Phase 3 — gc (7)
+  // Phase 3 — gc (11)
   "ch-81",
   "ch-71",
   "ch-61",
+  "ch-60",
   "ch-51",
+  "ch-50",
+  "ch-40",
+  "ch-30",
   "ch-21",
   "ch-20",
   "ch-10",
