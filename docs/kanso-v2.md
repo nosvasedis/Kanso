@@ -1,3 +1,8 @@
+# Kanso 2.5.2 — Kanso Player
+
+- **Kanso Player packs** (`kanso-player-<skin>.json`, in each skin's gist): the same artwork, matched against the plain text that Nuvio's player writes from the decoder, so badges appear under the player title. Chips cover resolution, picture, and the codec, channels and language of the selected audio track. Conservative where that text is ambiguous: DV never claims HDR10, SDR is never claimed, and DTS-HD MA needs both Nuvio tokens.
+- **Verification:** `npm run test:player` ports Nuvio `playbackMatchText` (mpv + ExoPlayer) and checks 34,876 decoder states × 4 skins against independently written truths. `--java` repeats the check in native Java regex.
+
 # Kanso 2.5.1 — accuracy release
 
 - **Languages:** codes are mapped as whole list items. Uncatalogued languages (Icelandic, Catalan, Irish, Tagalog, Galician, Basque…) no longer leak as visible text (`★★★★☆ · 87IS`), and Taiwanese/Filipino no longer light Tamil, Swedish, Finnish or Norwegian. Unknown languages no longer consume Detailed's four slots; Compact keeps the language tied to the selected codec track.

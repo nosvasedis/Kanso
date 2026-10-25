@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.5.1
+# Kanso 2.5.2
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
@@ -8,7 +8,7 @@ Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **E
 
 ![New Kanso Outline badge system](assets/Kanso/kanso-badges-preview.png)
 
-This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.5.1 replaces the previous badge appearance and formatter contract; use the matching install files below.
+This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.5.2 replaces the previous badge appearance and formatter contract; use the matching install files below.
 
 ## Choose a matching pair
 
@@ -27,6 +27,22 @@ This preview uses the generated badge PNGs. The [local gallery](badges/design/ga
 6. On Nuvio TV, turn off its native file-size badges if you keep Kanso's `💾` size row. TV 1.0.0 enables native size badges by default; this app setting is separate from the imported pack.
 
 The AIOStreams default limit is **15,000 characters per field**. Compact (13,540 / 13,604) fits it. **Detailed (16,064 / 16,064) requires a raised limit**: on a self-hosted instance set `MAX_FORMATTER_TEMPLATE_LENGTH=20000`. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+
+## Kanso Player (badges under the player title)
+
+Nuvio's player does not read the formatter. It writes its own plain text from the decoder (for example `2160p 4K UHD HEVC DV HDR HDR10 10bit TrueHD Atmos 7.1 eng English`), so the stream-list packs, which match only Kanso's invisible markers, stay dark there by design. In Nuvio, choose a **Kanso Player** pack as the player badge pack, and keep the normal Kanso pack for the stream list. The packs use the same artwork as the stream-list packs and live in the same gists:
+
+**Kanso Player:** [Solid](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-player-solid.json) · [Transparent](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-player-transparent.json) · [Mono](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-player-mono.json) · [Outline](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-player-outline.json)
+
+The player shows only what the playing decoder proves: resolution, picture, the codec and channels of the **selected** audio track, and its language. Source, tiers, editions, streaming origin and subtitles are not in the player's text, so they have no player chip. Because that text cannot separate some cases, a few chips are deliberately conservative:
+- **Dolby Vision** shows DV only, never DV + HDR10, since profile 5 (no HDR10 base) looks the same as profile 8. HDR10+ shows as HDR10, its base layer.
+- **SDR** is never claimed, because a missing HDR token can also mean the transfer is unknown.
+- **DTS-HD MA** needs both Nuvio tokens, because Nuvio also writes `DTS-HD MA` for a DTS-ES Matrix profile. ExoPlayer reports MA as DTS-HD.
+- **Channels:** Nuvio reports only 1.0, 2.0, 5.1 and 7.1, so other layouts have no chip, and a 6-channel track always reads as 5.1.
+- **Atmos** appears only when the player reports it: E-AC-3 JOC, or an Atmos codec profile in mpv. ExoPlayer TrueHD shows as TrueHD.
+- **Language** is matched on the track's own code, so it works with any app locale, a Greek one included.
+
+`npm run test:player` ports Nuvio's `playbackMatchText` and checks 34,876 decoder states (mpv and ExoPlayer) against independently written truths for every skin. `node scripts/test-player-badges.mjs --java` repeats the check in native Java regex.
 
 ## What each preset shows
 

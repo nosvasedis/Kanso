@@ -13,8 +13,8 @@ export async function pushGist(theme,{dryRun=false}={}){
  const target=resolveGistTargets(await loadGistConfig())[theme];
  const id=parseGistId(target.url);if(!id)return{skipped:true,reason:'no_gist_url',theme};
  if(!target.filename?.endsWith('.json'))throw new Error('Gist filename must end in .json');
- const names=[target.filename,target.filename.replace(/\.json$/,'-detailed.json')];
- const localNames=[`kanso-${theme}.json`,`kanso-${theme}-detailed.json`];
+ const names=[target.filename,target.filename.replace(/\.json$/,'-detailed.json'),`kanso-player-${theme}.json`];
+ const localNames=[`kanso-${theme}.json`,`kanso-${theme}-detailed.json`,`kanso-player-${theme}.json`];
  const bodies=await Promise.all(localNames.map(f=>fs.readFile(path.join(ROOT,f),'utf8')));
  if(dryRun)return{ok:true,dryRun:true,theme,gistId:id,filename:names.join(', '),bytes:bodies.reduce((n,b)=>n+Buffer.byteLength(b),0)};
  await requireOwner('nosvasedis');
@@ -24,7 +24,7 @@ export async function pushGist(theme,{dryRun=false}={}){
  const backup=path.join(evidence,`gist-${id}-before-${before.history?.[0]?.version??Date.now()}.json`);
  try{await fs.writeFile(backup,JSON.stringify(before,null,2)+'\n',{flag:'wx'});}catch(e){if(e.code!=='EEXIST')throw e;}
  const files=Object.fromEntries(names.map((name,i)=>[name,{content:bodies[i]}]));
- await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso ${VERSION} ${theme}: Compact + Detailed Instant-marker badges for Nuvio`,files})});
+ await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso ${VERSION} ${theme}: Compact + Detailed Instant-marker badges and Kanso Player badges for Nuvio`,files})});
  const after=await github(`/gists/${id}?verification=${Date.now()}`);
  for(let i=0;i<names.length;i++){
    const f=after.files[names[i]];if(!f)throw new Error('Published gist file missing');

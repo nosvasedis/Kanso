@@ -11,7 +11,7 @@ const raw=async url=>{const r=await fetch(url,{headers:{'Cache-Control':'no-cach
 const repo=`${ICON_CDN_OWNER}/${ICON_CDN_REPO}`;
 const commit=(await github(`/repos/${repo}/commits/main`)).sha;
 const base=`https://raw.githubusercontent.com/${repo}/${commit}`;
-const repositoryFiles=['README.md','formatter.json','formatter-detailed.json',...['','-detailed'].flatMap(s=>['name','description'].map(f=>`formatter${s}-export-${f}.txt`)),...PRESET_SKINS.flatMap(t=>['','-detailed'].map(s=>`kanso-${t}${s}.json`))];
+const repositoryFiles=['README.md','formatter.json','formatter-detailed.json',...['','-detailed'].flatMap(s=>['name','description'].map(f=>`formatter${s}-export-${f}.txt`)),...PRESET_SKINS.flatMap(t=>['','-detailed'].map(s=>`kanso-${t}${s}.json`)),...PRESET_SKINS.map(t=>`kanso-player-${t}.json`)];
 for(const file of repositoryFiles){
  const local=await fs.readFile(path.join(ROOT,file));const remote=await raw(base+'/'+file);
  if(sha(local)!==sha(remote))throw new Error(`Repository byte mismatch: ${file}`);
@@ -33,9 +33,9 @@ if(!process.argv.includes('--repository-only')){
  for(const theme of PRESET_SKINS){
    const t=targets[theme],id=parseGistId(t.url);const meta=await github(`/gists/${id}?verification=${Date.now()}`);
    if(meta.owner?.login!==ICON_CDN_OWNER)throw new Error('Gist ownership differs');
-   for(const suffix of ['','-detailed']){
-     const filename=t.filename.replace(/\.json$/,suffix+'.json');const f=meta.files[filename];if(!f)throw new Error(`Missing gist file ${filename}`);
-     const local=await fs.readFile(path.join(ROOT,`kanso-${theme}${suffix}.json`));
+   for(const [filename,localName] of [...['','-detailed'].map(s=>[t.filename.replace(/\.json$/,s+'.json'),`kanso-${theme}${s}.json`]),[`kanso-player-${theme}.json`,`kanso-player-${theme}.json`]]){
+     const f=meta.files[filename];if(!f)throw new Error(`Missing gist file ${filename}`);
+     const local=await fs.readFile(path.join(ROOT,localName));
      const remote=await raw(f.raw_url);
      if(sha(local)!==sha(remote))throw new Error(`Public gist byte mismatch: ${filename}`);
      gists.push({theme,filename,sha256:sha(local),url:f.raw_url});

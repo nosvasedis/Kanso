@@ -1,12 +1,12 @@
 {
   "name": "kanso",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "Kanso — clean stream marks for Nuvio. No echo. Every detail once.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-presets.mjs",
+    "build": "node scripts/build-presets.mjs && node scripts/build-player-packs.mjs",
     "test:setup": "node scripts/setup-test-engine.mjs",
-    "test": "npm run test:formatter && npm run test:real-titles && npm run test:assets && npm run test:design && npm run test:tier-sync",
+    "test": "npm run test:formatter && npm run test:real-titles && npm run test:player && npm run test:assets && npm run test:design && npm run test:tier-sync",
     "design:badges": "node scripts/design-badges.mjs",
     "design:preview": "node scripts/preview-badge-design.mjs",
     "test:design": "node scripts/test-badge-design.mjs",
@@ -38,7 +38,8 @@
     "publish": "npm run release:publish",
     "mono:publish": "npm run release:publish",
     "mono": "npm run build",
-    "test:real-titles": "tsx scripts/test-real-titles.ts"
+    "test:real-titles": "tsx scripts/test-real-titles.ts",
+    "test:player": "node scripts/test-player-badges.mjs"
   },
   "keywords": [],
   "author": "",

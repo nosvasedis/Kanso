@@ -29,6 +29,7 @@ const before=run(['rev-parse','HEAD'],work,true);
 const files=['README.md','package.json','package-lock.json','.gitignore','.gitattributes','.env.example','sync-helper.bat','formatter.json','formatter-detailed.json',
  ...['','-detailed'].flatMap(s=>['name','description'].map(f=>`formatter${s}-export-${f}.txt`)),
  ...PRESET_SKINS.flatMap(t=>['','-detailed'].map(s=>`kanso-${t}${s}.json`)),
+ ...PRESET_SKINS.map(t=>`kanso-player-${t}.json`),
  'backup/v1/oracle/nosvasedis-badges-solid.json','docs/kanso-v2.md','docs/badge-design.md','badges/badge-images/README.md','badges/badge-images/manifest.json'];
 const copy=async(src,dest)=>{await fs.mkdir(path.dirname(dest),{recursive:true});await fs.copyFile(src,dest);};
 for(const f of files)await copy(path.join(ROOT,f),path.join(work,f));
