@@ -4,7 +4,7 @@ import { PLAYER_PATTERNS } from './player-badge-patterns.mjs';
 
 export const PLAYER_SKINS = ['solid', 'transparent', 'mono', 'outline'];
 export const PLAYER_ID_PREFIX = 'kp-';
-export const playerPackFile = skin => `kanso-player-${skin}.json`;
+export const playerPackFile = skin => `kanso-${skin}-player.json`;
 
 export function buildPlayerPack(skin) {
   const source = JSON.parse(fs.readFileSync(`kanso-${skin}-detailed.json`, 'utf8'));

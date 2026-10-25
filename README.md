@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.5.2
+# Kanso 2.5.3
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
@@ -8,7 +8,7 @@ Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **E
 
 ![New Kanso Outline badge system](assets/Kanso/kanso-badges-preview.png)
 
-This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.5.2 replaces the previous badge appearance and formatter contract; use the matching install files below.
+This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.5.3 replaces the previous badge appearance and formatter contract; use the matching install files below.
 
 ## Choose a matching pair
 
@@ -30,9 +30,9 @@ The AIOStreams default limit is **15,000 characters per field**. Compact (13,540
 
 ## Kanso Player (badges under the player title)
 
-Nuvio's player does not read the formatter. It writes its own plain text from the decoder (for example `2160p 4K UHD HEVC DV HDR HDR10 10bit TrueHD Atmos 7.1 eng English`), so the stream-list packs, which match only Kanso's invisible markers, stay dark there by design. In Nuvio, choose a **Kanso Player** pack as the player badge pack, and keep the normal Kanso pack for the stream list. The packs use the same artwork as the stream-list packs and live in the same gists:
+Nuvio's player does not read the formatter. It writes its own plain text from the decoder (for example `2160p 4K UHD HEVC DV HDR HDR10 10bit TrueHD Atmos 7.1 eng English`), so the stream-list packs, which match only Kanso's invisible markers, stay dark there by design. In Nuvio, choose a **Kanso Player** pack as the player badge pack, and keep the normal Kanso pack for the stream list. The packs use the same artwork as the stream-list packs and live in the same gists. Use **two different links**: a stream-list pack (for example `kanso-outline-detailed.json`) in the stream badge setting, and the matching `-player` pack in the player badge setting. A stream-list pack in the player shows nothing.
 
-**Kanso Player:** [Solid](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-player-solid.json) · [Transparent](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-player-transparent.json) · [Mono](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-player-mono.json) · [Outline](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-player-outline.json)
+**Kanso Player:** [Solid](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-solid-player.json) · [Transparent](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-transparent-player.json) · [Mono](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-mono-player.json) · [Outline](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-outline-player.json)
 
 The player shows only what the playing decoder proves: resolution, picture, the codec and channels of the **selected** audio track, and its language. Source, tiers, editions, streaming origin and subtitles are not in the player's text, so they have no player chip. Because that text cannot separate some cases, a few chips are deliberately conservative:
 - **Dolby Vision** shows DV only, never DV + HDR10, since profile 5 (no HDR10 base) looks the same as profile 8. HDR10+ shows as HDR10, its base layer.
