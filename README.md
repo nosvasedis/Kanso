@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.5.0
+# Kanso 2.5.1
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source and picture; encode sits beside the container as formatter text. Compact is the default. Detailed adds numbered tiers, streaming origin and provenance. Four skins: Solid, Transparent, Mono and Outline.
 
@@ -8,7 +8,7 @@ Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **E
 
 ![New Kanso Outline badge system](assets/Kanso/kanso-badges-preview.png)
 
-This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.5.0 replaces the previous badge appearance and formatter contract; use the matching install files below.
+This preview uses the generated badge PNGs. The [local gallery](badges/design/gallery.html) includes all four skins and an approximate native 20px view. Device rendering has not been verified. Kanso 2.5.1 replaces the previous badge appearance and formatter contract; use the matching install files below.
 
 ## Choose a matching pair
 
@@ -26,14 +26,14 @@ This preview uses the generated badge PNGs. The [local gallery](badges/design/ga
 5. For an upgrade, **refresh both the formatter and the badge pack**. Kanso uses a version marker; mixed old/new exports are prevented from producing confident badges. Saving a URL does not guarantee the app has fetched the newest content—refresh its sync/import when needed.
 6. On Nuvio TV, turn off its native file-size badges if you keep Kanso's `💾` size row. TV 1.0.0 enables native size badges by default; this app setting is separate from the imported pack.
 
-Hosts may override the default template limit. Current default is **15,000 characters per field**. Compact is 12,173 / 12,219 characters; Detailed is 14,688 / 14,687. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
+The AIOStreams default limit is **15,000 characters per field**. Compact (13,540 / 13,604) fits it. **Detailed (16,064 / 16,064) requires a raised limit**: on a self-hosted instance set `MAX_FORMATTER_TEMPLATE_LENGTH=20000`. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## What each preset shows
 
 | Information | Compact | Detailed |
 |---|---|---|
 | Title: transport emoji and stars | Yes | Yes |
-| Numeric normalized score after stars | Hidden | When stars are shown |
+| Score after stars, as % of the best stream in the list (`★★★★☆ · 87%`) | Hidden | When stars are shown |
 | Debrid cache state: start of container/codec description row | Yes | Yes |
 | Size, container, encode (`🎞️`), release group, addon/service | Yes | Yes |
 | Warnings that have no chip (preferred audio missing, HDR/SDR conflict, upscaled, Bad-rule name, NZB health) | Yes | Yes |
@@ -49,7 +49,7 @@ Hosts may override the default template limit. Current default is **15,000 chara
 
 Chips read left to right as specials (SeaDex, IMAX, 3D, Hybrid, Criterion, cuts, B&W, remaster/proper), then streaming origin, then numbered tier or generic source, then resolution, picture, audio, channels, language and subtitles. Encode is formatter text on the release row (`📦 MKV · 🎞️ HEVC · 👥 GROUP`), never a chip.
 
-Changing the preset does not change AIOStreams sorting or ranking. Tiers are named rule/group classifications, not playback guarantees. Unknown tiers display one source badge. WEBRip is classified separately from WEB-DL. The title stars show AIOStreams relative expression score, not a guarantee of playback or objective file quality.
+Changing the preset does not change AIOStreams sorting or ranking. Tiers are named rule/group classifications, not playback guarantees. Unknown tiers display one source badge. WEBRip is classified separately from WEB-DL. The title stars show AIOStreams relative expression score, rounded to the nearest whole star (Nuvio cannot draw half stars), not a guarantee of playback or objective file quality. The `%` is relative to the top-scored stream of the same list.
 
 The detection library contains 201 definitions. The redesigned Compact exports 156 chips; Detailed exports 189, including six WEBRip tier variants. Language variants are consolidated into 38 display families in each audio/subtitle row. New reported-channel badges cover 1.0, 2.1 and 8.1; 8.1 no longer displays as 7.1. Best/Good/OK score chips, unranked family chips, MULTI language chips and encoder chips stay retired. No disabled placeholders or empty groups are exported.
 
@@ -58,7 +58,7 @@ The detection library contains 201 definitions. The redesigned Compact exports 1
 - **No inferred HDR from 4K REMUX.** Unknown range shows neither HDR nor SDR. Explicit SDR, HLG and supported DV/HDR combinations stay distinct. Conflicting SDR/HDR metadata produces a warning rather than simultaneous claims.
 - Structured source/resolution information takes precedence. Limited filename fallbacks require bounded tokens and technical context; parsed title/release-group strings are removed from that fallback text.
 - With audio tracks, Compact uses the **first usable matching track in file order** from your AIOStreams preferred-language context, excluding known commentary. The selected codec, channel and language chips belong to that same track. Detailed can show up to four matching preferred languages. Extra languages and subtitles on the file that are not in that preference list do not get chips. It does not guarantee the player will select that track.
-- If the preferred language is unavailable, a warning replaces a misleading language/codec assertion. Unrecognized languages have no chip. The 48 detected identities map to 38 spoken/subtitle display families. ES groups Spanish variants, PT groups Portuguese variants, and IN groups the nine Indian languages for both audio and subtitles. IN is a family label; use the player to see the exact language. Preference selection still uses exact identities.
+- If the preferred language is unavailable, a warning replaces a misleading language/codec assertion. Unrecognized languages have no chip and leave no visible text: codes are mapped as whole list items, so for example Taiwanese or Filipino can never light Tamil, Swedish, Finnish or Norwegian. The 48 detected identities map to 38 spoken/subtitle display families. ES groups Spanish variants, PT groups Portuguese variants, and IN groups the nine Indian languages for both audio and subtitles. IN is a family label; use the player to see the exact language. Preference selection still uses exact identities.
 - Without track metadata, audio codec tags describe the **file**, not a guaranteed language/codec pairing. Without tracks, a language chip is used only with `probe` or `indexer` confidence. Channels, subtitles and source never also appear as formatter text. Encode is formatter-owned beside the container and is not truncated.
 - Cache state is `⚡` cached, `⏳` uncached or `❔` unknown, at the start of the container/codec description row, and only for debrid streams. A dot follows only when another release field appears. Usenet, HTTP, P2P, live and other delivery types do not receive a cache cue. Bad sources and upstream health messages remain visible.
 - A Netflix/Prime/etc. origin badge does not establish current subscription availability or regional rights.
@@ -85,7 +85,7 @@ npm run test:setup
 npm run release
 ```
 
-The setup clones the official AIOStreams **v2.36.0**, pinned to commit `ce6244454ee131bf0945b2bd6abc670a449b224d`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 415 fixtures × two presets × four skins, plus all referenced PNG hashes and tier-sync regressions. No native playback/device compatibility claim is made by these tests.
+The setup clones the official AIOStreams **v2.36.0**, pinned to commit `ce6244454ee131bf0945b2bd6abc670a449b224d`, into ignored `.vendor/`. The release build is local and never uploads. It validates actual engine syntax/rendering and matching across 415 fixtures × two presets × four skins, plus 71 real release names (movies, series, anime) parsed by the engine's own FileParser with exact chip sets and visible-text grammar (`npm run test:real-titles`), all referenced PNG hashes and tier-sync regressions. No native playback/device compatibility claim is made by these tests.
 
 Every exported badge has a positive real-metadata fixture. For native Java regex and Nuvio's exact first-strong direction semantics, run `node scripts/test-nuvio-java.mjs` with Java 21 or later; pass `--java=/path/to/java` to select an installed runtime. These checks do not substitute for testing your installed TV app or playback.
 

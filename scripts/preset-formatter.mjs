@@ -7,7 +7,8 @@ import { TITLE_TRANSPORT } from './formatter-layout.mjs';
 import { FORMATTER_RANK_STARS, FORMATTER_RANK_STARS_DETAILED } from './quality-rank-patterns.mjs';
 import { LANGUAGE_CATALOG, subtitleIdForLanguage } from './language-catalog.mjs';
 
-export const PRESET_MAX_LENGTH = 15000;
+/** Self-hosted AIOStreams: set MAX_FORMATTER_TEMPLATE_LENGTH to at least this (engine default 15000). */
+export const PRESET_MAX_LENGTH = 20000;
 export const MIN_AIOSTREAMS_VERSION = '2.36.0';
 export const PRESET_MARKER = '\u206f\u200b\u206f\u200d\u206f';
 const gate=(condition,yes,no='')=>`{${condition}["${yes}"||"${no}"]}`;
@@ -59,10 +60,12 @@ const visual=[['DV','drDv'],['HDR10','visHdr10'],['HLG','visHlg'],['SDR','visSdr
  .map(([tag,atom])=>gate(`stream.visualTags::~${tag}`,marker(atom))).join('')+
  gate('stream.visualTags::~HDR10+',gate('stream.visualTags::~DV',M.visHdr10p,M.drHdr10p))+
  gate('stream.visualTags::~HDR',gate('stream.visualTags::~DV',M.visHdr,M.drHdr));
+const IMAX_PLAIN=gate('stream.editions::~IMAX::or::stream.visualTags::~IMAX',marker('visImax'));
 const VISUAL=gate(VISUAL_CONFLICT,'',visual) +
  gate(`stream.visualTags::~10bit::and::${hdr}::isfalse`,marker('vis10bit')) +
  gate('stream.visualTags::~AI',marker('visAi')) +
- gate('stream.editions::~IMAX Enhanced::or::stream.visualTags::~IMAX Enhanced',marker('visImaxE'),gate('stream.editions::~IMAX::or::stream.visualTags::~IMAX',marker('visImax'))) +
+ // The parser folds IMAX.Enhanced into IMAX; the bounded token keeps the specific claim.
+ gate('stream.editions::~IMAX Enhanced::or::stream.visualTags::~IMAX Enhanced',marker('visImaxE'),gate('stream.filename::exists',gate(token('IMAX.Enhanced'),marker('visImaxE'),IMAX_PLAIN),IMAX_PLAIN)) +
  gate('stream.visualTags::~3D',marker('vis3d'))+
  gate('stream.visualTags::~H-SBS',M.visSbs)+gate('stream.visualTags::~H-OU',M.visOu);
 
@@ -75,13 +78,15 @@ export function selectedTrack(content){
 }
 const trackTags=[['Atmos','audAtmos'],['TrueHD','audTruehd'],['DD+','audDdplus'],['DD','audDd'],['DTS:X','audDtsx'],['DTS-HD MA','audDtsma'],['DTS-HD','audDtshd'],['DTS-ES','audDtses'],['DTS','audDts'],['FLAC','audFlac'],['Opus','audOpus'],['AAC','audAac'],['MP3','audMp3'],['PCM','audPcm']];
 const trackCodecs=[['truehd','audTruehd'],['eac3','audDdplus'],['ac3','audDd'],['aac','audAac'],['flac','audFlac'],['opus','audOpus'],['mp3','audMp3'],['pcm_s16le','audPcm'],['pcm_s24le','audPcm']];
-const tagValues=trackTags.map(([t])=>`'${t}'`).join(',');
+// Probes and indexers spell Dolby/DTS several ways; each alias maps to one artwork.
+const trackTagAliases=[...trackTags,['E-AC-3','audDdplus'],['EAC3','audDdplus'],['DDP','audDdplus'],['AC3','audDd'],['AC-3','audDd'],['DTS-X','audDtsx']];
+const tagValues=trackTagAliases.map(([t])=>`'${t}'`).join(',');
 const canonicalAudio="::lower::replace('eac3','dd+')::replace('ac3','dd')::replace('_s16le','')::replace('_s24le','')";
 const values=entries=>entries.map(([value])=>`'${value}'`).join(',');
 const replacementChain=entries=>[...entries].sort((a,b)=>b[0].length-a[0].length).map(([value,atom])=>`::replace('${value.toUpperCase()}','${marker(atom)}')`).join('');
 const rawValues=values(trackCodecs);
-const TRACK_AUDIO=gate('track.tags::exists',`{track.tags::keep(${tagValues})${replacementChain(trackTags)}::join('')}`,
- gate(`track.tag::in(${tagValues})`,`{track.tag::upper${replacementChain(trackTags)}}`)) +
+const TRACK_AUDIO=gate('track.tags::exists',`{track.tags::keep(${tagValues})${replacementChain(trackTagAliases)}::join('')}`,
+ gate(`track.tag::in(${tagValues})`,`{track.tag::upper${replacementChain(trackTagAliases)}}`)) +
  gate(`track.tags::exists::isfalse::and::track.tag::exists::isfalse::and::track.codec::in(${rawValues})`,`{track.codec::upper${replacementChain(trackCodecs)}}`) +
  gate('track.title::~Atmos',marker('audAtmos')) +
  gate('track.title::~DTS:X',marker('audDtsx'))+
@@ -99,24 +104,31 @@ const fallbackAudio=gate('stream.audioTags::exists',fileAudio,gate('stream.quali
 // ISO codes shorten repeated chains without broadening preferred-language
 // matching. AIOStreams keeps ES-MX and PT-BR distinct before display grouping.
 const languageCodes=LANGUAGE_CATALOG.map(({id})=>[id==='l-lat'?'ES-MX':id==='l-pt-pt'?'PT':id.slice(2).toUpperCase(),id]).sort((a,b)=>b[0].length-a[0].length);
-const languageChain=languageCodes.map(([code,id])=>`::replace('${code}','${LANGUAGE_MARKERS[id]}')`).join('');
-const subtitleChain=languageCodes.map(([code,id])=>`::replace('${code}','${SUBTITLE_MARKERS[subtitleIdForLanguage(id)]}')`).join('');
+// Replace whole list items, never substrings of a joined string: an
+// uncatalogued code (IS, CA, TAIWANESE, FILIPINO) must neither leak as text
+// nor light TA/SE/FI/NO. keep() then drops every item that is not a marker.
+const listChain=markers=>languageCodes.map(([code,id])=>`::replace('${code}','${markers(id)}')`).join('')+`::keep(${languageCodes.map(([,id])=>`'${markers(id)}'`).join(',')})`;
+const languageChain=listChain(id=>LANGUAGE_MARKERS[id]);
+const subtitleChain=listChain(id=>SUBTITLE_MARKERS[subtitleIdForLanguage(id)]);
 const placeholders="'Unknown','Original','Multi','Dual Audio','Dubbed'";
-/** Exact catalog names only. keep() drops concatenated MULTI dumps so replace cannot light the whole inventory. */
-const languageNames=(list,limit)=>`{${list}::remove(${placeholders})::slice(0,${limit})::languageCode::join(' ')${languageChain}}`;
+/** Exact catalog codes only; the limit counts displayable languages, after unknown ones are dropped. */
+// One-track Compact keeps the file-order selection shared with codec/channels.
+const languageNames=(list,limit,selected=false)=>selected&&limit===1
+ ?`{${list}::remove(${placeholders})::slice(0,1)::languageCode${languageChain}::join(' ')}`
+ :`{${list}::remove(${placeholders})::languageCode${languageChain}::slice(0,${limit})::join(' ')}`;
 function languageMarkers(detailed){
  const limit=detailed?4:1;
  const fromTracks=gate('stream.audioTracks::exists',
    gate('user.languages::exists',
-     languageNames(`${PREFERRED_TRACKS}::pluck('lang')::keep({user.languages})`,limit),
-     languageNames(`${usableTracks}::pluck('lang')`,limit)));
+     languageNames(`${PREFERRED_TRACKS}::pluck('lang')::keep({user.languages})`,limit,true),
+     languageNames(`${usableTracks}::pluck('lang')`,limit,true)));
  const fromNames=gate(`${reliable}::and::stream.audioTracks::exists::isfalse`,
    gate('user.languages::exists',languageNames('stream.uLanguages::keep({user.languages})',limit),
      languageNames('stream.languages',limit)));
  return fromTracks+fromNames;
 }
 // keep() emits nothing for an empty preference list, so an outer gate is redundant.
-const SUBTITLE_MARKERS_INJECT=`{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::languageCode::join(' ')${subtitleChain}}`;
+const SUBTITLE_MARKERS_INJECT=`{stream.uSubtitles::keep({user.subtitles})::remove(${placeholders})::languageCode${subtitleChain}::join(' ')}`;
 const channelFacts=[['8.1','ch81'],['7.1','ch71'],['6.1','ch61'],['6.0','ch60'],['5.1','ch51'],['5.0','ch50'],['4.0','ch40'],['3.0','ch30'],['2.1','ch21'],['2.0','ch20'],['1.0','ch10']];
 // Track channels are one exact value. File-level arrays choose one layout by
 // precedence, filtering and sorting known values without nested conditions.
@@ -139,7 +151,7 @@ const encodeShown="{stream.encode::upper::replace('X265','HEVC')::replace('H265'
 
 /** Prefer structured editions/flags; contextual filename fallback only for unsupported provenance. */
 const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.seadex) +
- gate("stream.editions::~Director's Cut",M.editionDc) + gate('stream.editions::~Extended',M.editionExt) +
+ gate("stream.editions::~Director's Cut",M.editionDc) + gate("stream.editions::~Extended::or::stream.editions::~Extended Edition",M.editionExt) +
  gate('stream.editions::~Black and White::or::stream.editions::~B&W',M.editionBw) +
  gate('stream.editions::~True-Hue',M.editionHue) + gate('stream.editions::~Open Matte',M.gstOpenMatte) +
  gate('stream.proper::istrue',M.gstProper) + gate('stream.repack::istrue',M.gstRepack) +
@@ -147,9 +159,13 @@ const SPECIAL=gate('stream.seadexBest::istrue::or::stream.seadex::istrue',M.sead
  gate('stream.uncensored::istrue',M.gstUncensored) + gate('stream.editions::~Uncut',M.gstUncut) +
  gate('stream.editions::~Theatrical',M.gstTheatrical) +
  gate('stream.quality::exists',gate(token('HYBRID'),M.gstHybrid)+gate(`${token('CRITERION')}::or::${token('Criterion.Collection')}`,M.gstCriterion)+
+   // Editions the parser itself reports stay structured-first; ones it never
+   // reports (B&W, Open Matte, True-Hue) always read a bounded filename token.
    gate('stream.editions::exists::isfalse',[
-     ["Director's.Cut",'editionDc'],['Directors.Cut','editionDc'],['Extended','editionExt'],['B&W','editionBw'],['Black.and.White','editionBw'],['Open.Matte','gstOpenMatte'],['Uncut','gstUncut'],['Theatrical','gstTheatrical'],['True-Hue','editionHue'],['Remastered','gstRemaster']
-   ].map(([t,a])=>gate(token(t),M[a])).join('')));
+     ["Director's.Cut",'editionDc'],['Directors.Cut','editionDc'],['Extended','editionExt'],['Uncut','gstUncut'],['Theatrical','gstTheatrical'],['Remastered','gstRemaster']
+   ].map(([t,a])=>gate(token(t),M[a])).join(''))+
+   [['B&W','editionBw'],['Black.and.White','editionBw'],['Open.Matte','gstOpenMatte'],['True-Hue','editionHue']]
+   .map(([t,a])=>gate(token(t),M[a])).join(''));
 
 // Nuvio TV aligns the entire title by its first strong bidi character. Emoji
 // and stars are neutral, so a later U+200F badge marker could choose RTL.

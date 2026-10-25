@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T15:35:32.207Z",
+  "generatedAt": "2026-10-25T15:56:16.136Z",
   "brand": "Kanso",
   "version": 2,
   "defaultSkin": "outline",
@@ -1439,8 +1439,8 @@
     "compact": {
       "formatter": "formatter.json",
       "lengths": {
-        "name": 12173,
-        "description": 12219
+        "name": 13540,
+        "description": 13604
       },
       "packs": {
         "solid": "kanso-solid.json",
@@ -1452,8 +1452,8 @@
     "detailed": {
       "formatter": "formatter-detailed.json",
       "lengths": {
-        "name": 14688,
-        "description": 14687
+        "name": 16064,
+        "description": 16064
       },
       "packs": {
         "solid": "kanso-solid-detailed.json",

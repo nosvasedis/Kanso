@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { CustomFormatter } from '../.vendor/AIOStreams/packages/core/src/formatters/custom.ts';
 import { validateTemplate } from '../.vendor/AIOStreams/packages/core/src/formatters/engine/parser.ts';
-import { buildPresetFormatter, PRESET_MARKER, TITLE_LTR_ANCHOR } from './preset-formatter.mjs';
+import { buildPresetFormatter, PRESET_MARKER, TITLE_LTR_ANCHOR, PRESET_MAX_LENGTH } from './preset-formatter.mjs';
 import { RETIRED_BADGE_IDS } from './retired-badges.mjs';
 import {coverageFixtures,audioBadgeFacts} from './preset-coverage-fixtures.mjs';
 import { nuvioHaystacks,nuvioRegex } from './benchmark-badge-patterns.mjs';
@@ -188,7 +188,7 @@ for(const preset of ['compact','detailed']){
  assert.ok(!templates.description.includes('releaseGroup::truncate'),`${preset}: release group must not be truncated`);
  for(const [key,value] of Object.entries(templates)){
    assert.deepEqual(validateTemplate(value as string),[],`${preset} ${key}: invalid real-engine syntax`);
-   assert.ok((value as string).length<=15000);
+   assert.ok((value as string).length<=PRESET_MAX_LENGTH);
    assert.equal(fs.readFileSync(`formatter${suffix}-export-${key}.txt`,'utf8').trimEnd(),value);
  }
  for(const f of fx){
@@ -207,8 +207,8 @@ for(const preset of ['compact','detailed']){
    const title=clean(out.name).trimEnd(),rawScore=stream.streamExpressionScore;
    const normalizedScore=rawScore==null?null:Math.max(0,Math.min(100,Math.round(rawScore)));
    if(preset==='detailed'&&normalizedScore!==null&&normalizedScore>=20){
-     assert.match(title,new RegExp(`[★☆]{5} · ${normalizedScore}(?:$| 🌱)`),`${f.label}: precise normalized score sits after the stars and before seeders`);
-   }else assert.doesNotMatch(title,/[★☆]{5} · \d| · \d+(?:$| 🌱)/,`${f.label}: no numeric rating in Compact or without visible stars`);
+     assert.match(title,new RegExp(`[★☆]{5} · ${normalizedScore}%(?:$| 🌱)`),`${f.label}: precise normalized score sits after the stars and before seeders`);
+   }else assert.doesNotMatch(title,/[★☆]{5} · \d| · \d+%?(?:$| 🌱)/,`${f.label}: no numeric rating in Compact or without visible stars`);
    assert.doesNotMatch(visible,/\{(?:stream|track|user|cannot_|unknown_|unable_)/,`${preset}/${f.label}: template/rank leak ${visible}`);
    assert.doesNotMatch(clean(out.description),/^\s*·|\n\s*·|·\s*(?:\n|$)|·\s*·|\n\n/,`${preset}/${f.label}: separator leak`);
    assert.doesNotMatch(clean(out.name),/[⚡⏳❔]/u,`${preset}/${f.label}: cache status belongs in the description`);

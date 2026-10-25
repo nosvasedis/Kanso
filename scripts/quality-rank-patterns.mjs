@@ -9,8 +9,9 @@ import {
 
 export const RANK_BEST = "♛";
 
-/** Nuvio cannot render pstar half-star (⯪) — show an empty star instead. */
-export const PSTAR_NUVIO_SAFE = "::replace('⯪','☆')";
+/** Nuvio cannot render pstar half-star (⯪). Round it up so the stars round
+ * to the nearest whole star (90 → ★★★★★, 70 → ★★★★☆) instead of flooring. */
+export const PSTAR_NUVIO_SAFE = "::replace('⯪','★')";
 
 /** Visible rank bands on formatter title (must match qualityRankPattern). */
 export const RANK_VISIBLE = {
@@ -59,7 +60,7 @@ const SOURCE = {
 
 /** Visible rank on formatter title — ★/☆ only (Nuvio-safe); spacing from transport trailing space. */
 export function formatterRankStars(showScore=false){
-  return `{stream.nSeScore::>=${RANK_MIN_SCORE}["{stream.nSeScore::pstar${PSTAR_NUVIO_SAFE}}${showScore?' · {stream.nSeScore}':''}"||""]}`;
+  return `{stream.nSeScore::>=${RANK_MIN_SCORE}["{stream.nSeScore::pstar${PSTAR_NUVIO_SAFE}}${showScore?' · {stream.nSeScore}%':''}"||""]}`;
 }
 export const FORMATTER_RANK_STARS = formatterRankStars();
 export const FORMATTER_RANK_STARS_DETAILED = formatterRankStars(true);

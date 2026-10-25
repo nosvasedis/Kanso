@@ -1,3 +1,12 @@
+# Kanso 2.5.1 — accuracy release
+
+- **Languages:** codes are mapped as whole list items. Uncatalogued languages (Icelandic, Catalan, Irish, Tagalog, Galician, Basque…) no longer leak as visible text (`★★★★☆ · 87IS`), and Taiwanese/Filipino no longer light Tamil, Swedish, Finnish or Norwegian. Unknown languages no longer consume Detailed's four slots; Compact keeps the language tied to the selected codec track.
+- **Editions:** the parser reports `Extended Edition`; the Extended chip now appears on real releases. `IMAX.Enhanced` (parsed as plain IMAX) keeps the IMAX Enhanced chip. Open Matte, B&W and True-Hue are read from a bounded filename token even when another edition is parsed.
+- **Audio:** probe/indexer tag spellings `AC3`, `AC-3`, `E-AC-3`, `EAC3`, `DDP`, `DTS-X` map to their artwork.
+- **Score:** Detailed shows `★★★★☆ · 87%` (percent of the best stream in the list). Half stars round up instead of showing as empty.
+- **Budget:** Compact 13,540/13,604 fits the default limit; Detailed 16,064/16,064 needs `MAX_FORMATTER_TEMPLATE_LENGTH=20000`.
+- **Verification:** new `npm run test:real-titles`: 71 real movie/series/anime release names parsed by the engine FileParser, exact chip sets, visible-text grammar, × 2 presets × 4 skins. Plus 415 existing fixtures and the Java/Nuvio check.
+
 # Kanso 2.5.0 — Manrope, Outline, Instant markers
 
 Kanso keeps Instant Unicode matching on structured AIOStreams fields. Outline is the default appearance, with Manrope Semibold for generic labels and original artwork for brand marks. Four skins share consistent geometry: Solid, Transparent, Mono and Outline. Category colors remain gold picture, cyan sound, orchid locale, traffic-light resolution, blue tiers, slate source, brand streaming and distinct specials. See [badge design and source notes](badge-design.md). This release replaces the previous badge appearance and formatter contract.
