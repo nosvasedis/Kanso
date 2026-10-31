@@ -16,7 +16,7 @@ export const playerPackFile = skin => `kanso-${skin}-player.json`;
 export const NAME_GROUPS = new Set(['gst', 'gs', 'gms', 'grl', 'gsub']);
 
 export function buildPlayerPack(skin) {
-  const source = JSON.parse(fs.readFileSync(`kanso-${skin}-detailed.json`, 'utf8'));
+  const source = JSON.parse(fs.readFileSync(`kanso-${skin}.json`, 'utf8'));
   const missing = [...PLAYER_PATTERNS.keys()].filter(id => !source.filters.some(f => f.id === id));
   if (missing.length) throw new Error(`${skin}: player badges without artwork: ${missing.join(' ')}`);
   const overlap = source.filters.filter(f => PLAYER_PATTERNS.has(f.id) && NAME_GROUPS.has(f.groupId)).map(f => f.id);

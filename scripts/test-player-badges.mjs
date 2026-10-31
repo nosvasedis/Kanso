@@ -169,7 +169,7 @@ let checked = 0;
 for (const skin of PLAYER_SKINS) {
   const { pack, filters } = loadPack(skin);
   assert.deepEqual(pack, buildPlayerPack(skin), `${skin}: player pack is stale; run npm run build`);
-  const source = JSON.parse(fs.readFileSync(`kanso-${skin}-detailed.json`, 'utf8'));
+  const source = JSON.parse(fs.readFileSync(`kanso-${skin}.json`, 'utf8'));
   for (const f of pack.filters) {
     const original = source.filters.find(s => PLAYER_ID_PREFIX + s.id === f.id);
     assert.equal(f.imageURL, original.imageURL, `${f.id}: player uses the same artwork`);
@@ -201,7 +201,7 @@ const evidence = JSON.parse(fs.readFileSync('docs/release-evidence/real-title-re
 for (const skin of PLAYER_SKINS) {
   const { filters } = loadPack(skin);
   for (const e of evidence) {
-    const streamPack = JSON.parse(fs.readFileSync(`kanso-${skin}-detailed.json`, 'utf8'));
+    const streamPack = JSON.parse(fs.readFileSync(`kanso-${skin}.json`, 'utf8'));
     const groupOf = new Map(streamPack.filters.map(f => [f.id, f.groupId]));
     const want = e.hits.filter(id => NAME_GROUPS.has(groupOf.get(id))).sort();
     // Decoder plays the same file: its own groups are covered, the name fills the rest.

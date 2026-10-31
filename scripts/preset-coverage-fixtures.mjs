@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import {tierRseRuleNames} from './tier-inject-generator.mjs';
 import {LANGUAGE_CATALOG, subtitleIdForLanguage} from './language-catalog.mjs';
-const pack=JSON.parse(fs.readFileSync(new URL('../kanso-solid-detailed.json',import.meta.url),'utf8'));
+const pack=JSON.parse(fs.readFileSync(new URL('../kanso-solid.json',import.meta.url),'utf8'));
 const extensions={'q-hc':{quality:'HC HD-Rip'},'q-dvd-remux':{quality:'DVD REMUX'},'v-3d-sbs':{visualTags:['3D','H-SBS']},'v-3d-ou':{visualTags:['3D','H-OU']},'a-description':{audioTracks:[{lang:'English',tags:['AAC'],visualImpaired:true}]},'caption-forced':{subtitleTracks:[{lang:'English',forced:true}]},'caption-sdh':{subtitleTracks:[{lang:'English',hearingImpaired:true}]}};
 const visual={'v-dv-hdr10p':['DV','HDR10+'],'v-dv-hdr10':['DV','HDR10'],'v-dv-hdr':['DV','HDR'],'a-dv':['DV'],'v-hdr10p':['HDR10+'],'v-hdr10':['HDR10'],'v-hdr':['HDR'],'v-hlg':'HLG','v-10bit':['10bit'],'v-ai':['AI'],'v-sdr':['SDR'],'v-3d':['3D']};
 const audio={'a-at-th':['TrueHD','Atmos'],'a-at-dp':['DD+','Atmos'],'a-dtsx-ma':['DTS-HD MA','DTS:X'],'a-dtsx-hd':['DTS-HD','DTS:X'],'a-dtsx':['DTS:X'],'a-dtsma':['DTS-HD MA'],'a-dtshd':['DTS-HD'],'a-dtses':['DTS-ES'],'a-dts':['DTS'],'a-th':['TrueHD'],'a-at':['Atmos'],'a-dp':['DD+'],'a-dd':['DD'],'a-flac':['FLAC'],'a-opus':['OPUS'],'a-aac':['AAC'],'a-mp3':['MP3'],'a-pcm':['PCM']};

@@ -26,9 +26,9 @@ const work=path.join(ROOT,'badges/badge-images/.release-worktree',String(Date.no
 await fs.mkdir(path.dirname(work),{recursive:true});
 run(['clone','--branch','main',`https://github.com/${repo}.git`,work],ROOT,true);
 const before=run(['rev-parse','HEAD'],work,true);
-const files=['README.md','package.json','package-lock.json','.gitignore','.gitattributes','.env.example','sync-helper.bat','formatter-detailed.json',
- ...['name','description'].map(f=>`formatter-detailed-export-${f}.txt`),
- ...PRESET_SKINS.map(t=>`kanso-${t}-detailed.json`),
+const files=['README.md','package.json','package-lock.json','.gitignore','.gitattributes','.env.example','sync-helper.bat','formatter.json',
+ ...['name','description'].map(f=>`formatter-export-${f}.txt`),
+ ...PRESET_SKINS.map(t=>`kanso-${t}.json`),
  ...PRESET_SKINS.map(t=>`kanso-${t}-player.json`),
  'backup/v1/oracle/nosvasedis-badges-solid.json','docs/kanso-v2.md','docs/badge-design.md','badges/badge-images/README.md','badges/badge-images/manifest.json'];
 const copy=async(src,dest)=>{await fs.mkdir(path.dirname(dest),{recursive:true});await fs.copyFile(src,dest);};
@@ -38,7 +38,7 @@ const overlay=async(src,dest)=>{for(const e of await fs.readdir(src,{withFileTyp
 for(const dir of ['scripts','badges','sync-ui','assets/Kanso','assets/fonts','assets/badge-sources','assets/glyphs','assets/flag-sources','assets/spoken-flags','assets/subtitle-flags'])await overlay(path.join(ROOT,dir),path.join(work,dir));
 // Ship current references only; previously published hashes stay in the checkout.
 const referenced=new Set();
-for(const theme of PRESET_SKINS)for(const suffix of ['-detailed']){
+for(const theme of PRESET_SKINS)for(const suffix of ['']){
  const pack=JSON.parse(await fs.readFile(path.join(ROOT,`kanso-${theme}${suffix}.json`),'utf8'));
  for(const f of pack.filters)referenced.add(path.basename(new URL(f.imageURL).pathname));
 }

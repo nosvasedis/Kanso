@@ -1,3 +1,8 @@
+# Kanso 2.6.1 — simpler links
+
+- One preset, so file names no longer carry `-detailed`: `formatter.json` (+ `formatter-export-name.txt` / `formatter-export-description.txt`), `kanso-<skin>.json` for the stream list and `kanso-<skin>-player.json` for the player.
+- The 2.6.0 `-detailed` files were removed from the repository and the gists. The `formatter.json` and `kanso-<skin>.json` addresses, which served Compact before 2.6.0, now serve the one Kanso formatter and stream pack. Re-import to pick it up.
+
 # Kanso 2.6.0 — one formatter, Player badges for Nuvio beta.9
 
 - **Compact retired.** `formatter.json`, its export files and the `kanso-<skin>.json` packs were removed from the repository and the gists. Kanso is now one formatter (`formatter-detailed.json`) with one stream-list pack and one player pack per skin.

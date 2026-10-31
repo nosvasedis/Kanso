@@ -12,11 +12,11 @@ const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 /** GitHub titles a gist by its first file; a space sorts before `-`, so this leads. */
 export const gistIndexName=theme=>`Kanso ${theme[0].toUpperCase()}${theme.slice(1)}.md`;
 /** Files from earlier releases that this publish removes. */
-export const retiredGistFiles=theme=>[`kanso-player-${theme}.json`,`kanso-${theme}.json`];
+export const retiredGistFiles=theme=>[`kanso-player-${theme}.json`,`kanso-${theme}-detailed.json`];
 export function gistIndex(theme,id){
  const raw=f=>`https://gist.githubusercontent.com/nosvasedis/${id}/raw/${f}`;
  return `# Kanso ${VERSION} · ${theme[0].toUpperCase()}${theme.slice(1)}\n\nImport one link per Nuvio setting. Each file is a separate badge pack.\n\n| Use it for | File | Link |\n|---|---|---|\n`+
-  `| Stream list (Kanso formatter) | \`kanso-${theme}-detailed.json\` | ${raw(`kanso-${theme}-detailed.json`)} |\n`+
+  `| Stream list (Kanso formatter) | \`kanso-${theme}.json\` | ${raw(`kanso-${theme}.json`)} |\n`+
   `| Player badges (Nuvio player badge pack) | \`kanso-${theme}-player.json\` | ${raw(`kanso-${theme}-player.json`)} |\n\n`+
   `Stream-list packs need the matching Kanso formatter: https://github.com/nosvasedis/Kanso\n`;
 }
@@ -24,8 +24,8 @@ export async function pushGist(theme,{dryRun=false}={}){
  const target=resolveGistTargets(await loadGistConfig())[theme];
  const id=parseGistId(target.url);if(!id)return{skipped:true,reason:'no_gist_url',theme};
  if(!target.filename?.endsWith('.json'))throw new Error('Gist filename must end in .json');
- const names=[target.filename.replace(/\.json$/,'-detailed.json'),`kanso-${theme}-player.json`];
- const localNames=[`kanso-${theme}-detailed.json`,`kanso-${theme}-player.json`];
+ const names=[target.filename,`kanso-${theme}-player.json`];
+ const localNames=[`kanso-${theme}.json`,`kanso-${theme}-player.json`];
  const bodies=await Promise.all(localNames.map(f=>fs.readFile(path.join(ROOT,f),'utf8')));
  names.unshift(gistIndexName(theme));bodies.unshift(gistIndex(theme,id));
  if(dryRun)return{ok:true,dryRun:true,theme,gistId:id,filename:names.join(', '),bytes:bodies.reduce((n,b)=>n+Buffer.byteLength(b),0)};

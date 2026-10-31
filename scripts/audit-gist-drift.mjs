@@ -4,10 +4,10 @@ import crypto from "node:crypto";
 import { BADGE_GIST_DEFAULTS, parseGistId } from "./gist-config.mjs";
 
 const localFiles = {
-  solid: "kanso-solid-detailed.json",
-  transparent: "kanso-transparent-detailed.json",
-  mono: "kanso-mono-detailed.json",
-  outline: "kanso-outline-detailed.json",
+  solid: "kanso-solid.json",
+  transparent: "kanso-transparent.json",
+  mono: "kanso-mono.json",
+  outline: "kanso-outline.json",
 };
 const hash = (text) => crypto.createHash("sha256").update(text).digest("hex");
 let drift = 0;

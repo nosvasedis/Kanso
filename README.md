@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/Kanso/kanso-lockup-light.png" alt="Kanso" width="420" /></p>
 
-# Kanso 2.6.0
+# Kanso 2.6.1
 
 Instant-marker stream badges and a no-echo formatter for Nuvio + AIOStreams. **Every fact appears once:** chips own language, subtitles, channels, source, tier, streaming origin and picture; encode sits beside the container as formatter text. One formatter, four skins (Solid, Transparent, Mono, Outline), and a matching **Kanso Player** pack for badges under the Nuvio player title. The Compact preset was retired in 2.6.0.
 
@@ -14,29 +14,29 @@ This preview uses the generated badge PNGs. The [local gallery](badges/design/ga
 
 Use **one formatter** and **two badge links per skin**: one for the Nuvio stream list and one for the Nuvio player.
 
-**Formatter:** [formatter-detailed.json](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter-detailed.json)
+**Formatter:** [formatter.json](https://raw.githubusercontent.com/nosvasedis/Kanso/main/formatter.json)
 
 | Skin | Stream list (stream badge setting) | Player (player badge setting) |
 |---|---|---|
-| **Solid** | [kanso-solid-detailed.json](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-solid-detailed.json) | [kanso-solid-player.json](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-solid-player.json) |
-| **Transparent** | [kanso-transparent-detailed.json](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-transparent-detailed.json) | [kanso-transparent-player.json](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-transparent-player.json) |
-| **Mono** | [kanso-mono-detailed.json](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-mono-detailed.json) | [kanso-mono-player.json](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-mono-player.json) |
-| **Outline** | [kanso-outline-detailed.json](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-outline-detailed.json) | [kanso-outline-player.json](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-outline-player.json) |
+| **Solid** | [kanso-solid.json](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-solid.json) | [kanso-solid-player.json](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-solid-player.json) |
+| **Transparent** | [kanso-transparent.json](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-transparent.json) | [kanso-transparent-player.json](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-transparent-player.json) |
+| **Mono** | [kanso-mono.json](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-mono.json) | [kanso-mono-player.json](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-mono-player.json) |
+| **Outline** | [kanso-outline.json](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-outline.json) | [kanso-outline-player.json](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-outline-player.json) |
 
 1. Use **AIOStreams 2.36.0 or later**, verified against the official 2.36.0 engine. Older engines can lack the track operations this formatter needs.
-2. In AIOStreams, select the custom formatter and import or sync the formatter URL. Alternatively, paste its `name` and `description` from `formatter-detailed-export-name.txt` and `formatter-detailed-export-description.txt`.
+2. In AIOStreams, select the custom formatter and import or sync the formatter URL. Alternatively, paste its `name` and `description` from `formatter-export-name.txt` and `formatter-export-description.txt`.
 3. Set your preferred audio and subtitle languages in AIOStreams. Kanso reads those preferences.
 4. In Nuvio, **replace** any old Kanso pack with the stream-list link of your skin, and set the matching `-player` link as the player badge pack. Do not merge with an old import, which can leave retired entries behind.
 5. For an upgrade, **refresh the formatter and both packs**. Kanso uses a version marker, so mixed old/new exports fail closed instead of showing confident badges. Saving a URL does not guarantee the app has fetched the newest content; refresh its import when needed.
 6. On Nuvio TV, turn off its native file-size badges if you keep Kanso's `💾` size row.
 
-**Compact users (before 2.6.0):** the Compact formatter (`formatter.json`) and packs (`kanso-<skin>.json`) were removed. Switch to the formatter and links above.
+**Upgrading from 2.6.0 or earlier:** the links no longer contain `-detailed`. `formatter.json` and `kanso-<skin>.json` now serve the one Kanso formatter and stream pack (the old Compact files at these addresses were retired), and the `-detailed` files were removed. Re-import the links above.
 
 The AIOStreams default template limit is **15,000 characters per field**. Kanso (19,159 / 12,969) **requires a raised limit**: on a self-hosted instance set `MAX_FORMATTER_TEMPLATE_LENGTH=20000`. If a host rejects a template, check its engine version and configured limit. Do not truncate the templates.
 
 ## Kanso Player (badges under the player title)
 
-Nuvio's player does not read the formatter. It writes its own plain text from the decoder (for example `2160p 4K UHD HEVC DV HDR HDR10 10bit TrueHD Atmos 7.1 eng English`), so the stream-list packs, which match only Kanso's invisible markers, stay dark there by design. In Nuvio, choose a **Kanso Player** pack as the player badge pack, and keep the normal Kanso pack for the stream list. The packs use the same artwork as the stream-list packs and live in the same gists. Use **two different links**: a stream-list pack (for example `kanso-outline-detailed.json`) in the stream badge setting, and the matching `-player` pack in the player badge setting. A stream-list pack in the player shows nothing.
+Nuvio's player does not read the formatter. It writes its own plain text from the decoder (for example `2160p 4K UHD HEVC DV HDR HDR10 10bit TrueHD Atmos 7.1 eng English`), so the stream-list packs, which match only Kanso's invisible markers, stay dark there by design. In Nuvio, choose a **Kanso Player** pack as the player badge pack, and keep the normal Kanso pack for the stream list. The packs use the same artwork as the stream-list packs and live in the same gists. Use **two different links**: a stream-list pack (for example `kanso-outline.json`) in the stream badge setting, and the matching `-player` pack in the player badge setting. A stream-list pack in the player shows nothing.
 
 **Kanso Player:** [Solid](https://gist.githubusercontent.com/nosvasedis/7abd79424bb8981b511838524c52f097/raw/kanso-solid-player.json) · [Transparent](https://gist.githubusercontent.com/nosvasedis/63b769d205bddbbef79faf8beef53c28/raw/kanso-transparent-player.json) · [Mono](https://gist.githubusercontent.com/nosvasedis/1858e332fef11d136f76c697ea6c7439/raw/kanso-mono-player.json) · [Outline](https://gist.githubusercontent.com/nosvasedis/0c3a88f4231dd17a249384e39cdbb127/raw/kanso-outline-player.json)
 

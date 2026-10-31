@@ -22,7 +22,7 @@ await assert.rejects(()=>containedComposite(empty,[{input:caption,left:70,top:3}
 assert.deepEqual(MARKER_REGISTRY_VALIDATION,{ok:true,errors:[]},'Complete marker registry stays valid after the new channel facts');
 const baseline=JSON.parse(await fs.readFile(path.join(ROOT,'badges/design/marker-baseline.json'),'utf8'));
 for(const [name,current] of Object.entries({MARKER_ATOMS,TIER_MARKERS,LANGUAGE_MARKERS,SUBTITLE_MARKERS}))for(const [key,value] of Object.entries(baseline[name]))assert.equal(current[key],value,`${name}/${key}: preexisting markers must not move`);
-for(const skin of ['outline','transparent','solid','mono'])for(const suffix of ['-detailed']){
+for(const skin of ['outline','transparent','solid','mono'])for(const suffix of ['']){
  const pack=JSON.parse(await fs.readFile(path.join(ROOT,`kanso-${skin}${suffix}.json`),'utf8'));
  for(const f of pack.filters){
   const row=design.filters[f.id];assert.ok(row,`Missing design ${f.id}`);

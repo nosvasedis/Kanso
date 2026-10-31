@@ -29,7 +29,7 @@ const PORT = Number(process.env.SYNC_PORT) || 3847;
 
 const DEFAULT_CONFIG = {
   gistUrl: "",
-  gistFilename: "kanso-solid-detailed.json", // legacy single-gist setting maps to Solid
+  gistFilename: "kanso-solid.json", // legacy single-gist setting maps to Solid
   nuvioNotes: "",
   /** Groups to never auto-remove (strict sync). Case-insensitive. */
   neverRemoveGroups: [],
@@ -173,7 +173,7 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname === "/api/badges-json" && req.method === "GET") {
       const which = url.searchParams.get("which") ?? "outline";
       if(!PRESET_SKINS.includes(which))return json(res,400,{ok:false,error:'Unknown badge skin'});
-      const filePath=path.join(ROOT,`kanso-${which}-detailed.json`);
+      const filePath=path.join(ROOT,`kanso-${which}.json`);
       const raw = await fs.readFile(filePath, "utf8");
       return json(res, 200, { ok: true, which, content: raw });
     }

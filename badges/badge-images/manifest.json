@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-31T13:49:47.551Z",
+  "generatedAt": "2026-10-31T13:59:15.323Z",
   "brand": "Kanso",
   "version": 2,
   "defaultSkin": "outline",
   "defaultFont": "Manrope",
   "minimumAIOStreams": "2.36.0",
   "themes": {
-    "solid-detailed": {
+    "solid": {
       "seadex-release": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/737c29762c9601a4.png?rev=737c29762c96",
       "v-imax-e": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6ec8b3232a4467e9.png?rev=6ec8b3232a44",
       "v-imax": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e7e7038b67d51cf4.png?rev=e7e7038b67d5",
@@ -201,7 +201,7 @@
       "caption-forced": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9abbe296acfa0fde.png?rev=9abbe296acfa",
       "caption-sdh": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/85cb2a7a15823648.png?rev=85cb2a7a1582"
     },
-    "transparent-detailed": {
+    "transparent": {
       "seadex-release": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/737c29762c9601a4.png?rev=737c29762c96",
       "v-imax-e": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/58541d2433d2e6ea.png?rev=58541d2433d2",
       "v-imax": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/ec726d32f41d03b8.png?rev=ec726d32f41d",
@@ -396,7 +396,7 @@
       "caption-forced": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/9abbe296acfa0fde.png?rev=9abbe296acfa",
       "caption-sdh": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/85cb2a7a15823648.png?rev=85cb2a7a1582"
     },
-    "mono-detailed": {
+    "mono": {
       "seadex-release": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6c655ac44096a433.png?rev=6c655ac44096",
       "v-imax-e": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/6ec8b3232a4467e9.png?rev=6ec8b3232a44",
       "v-imax": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/e7e7038b67d51cf4.png?rev=e7e7038b67d5",
@@ -591,7 +591,7 @@
       "caption-forced": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/8a2118a0e079e507.png?rev=8a2118a0e079",
       "caption-sdh": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/d63043d3f7c83bf6.png?rev=d63043d3f7c8"
     },
-    "outline-detailed": {
+    "outline": {
       "seadex-release": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/f1190af684f98e84.png?rev=f1190af684f9",
       "v-imax-e": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/3426319c93aa8eb3.png?rev=3426319c93aa",
       "v-imax": "https://raw.githubusercontent.com/nosvasedis/Kanso/main/files/5cf819cf78f09dcb.png?rev=5cf819cf78f0",
@@ -789,16 +789,16 @@
   },
   "presets": {
     "detailed": {
-      "formatter": "formatter-detailed.json",
+      "formatter": "formatter.json",
       "lengths": {
         "name": 19159,
         "description": 12969
       },
       "packs": {
-        "solid": "kanso-solid-detailed.json",
-        "transparent": "kanso-transparent-detailed.json",
-        "mono": "kanso-mono-detailed.json",
-        "outline": "kanso-outline-detailed.json"
+        "solid": "kanso-solid.json",
+        "transparent": "kanso-transparent.json",
+        "mono": "kanso-mono.json",
+        "outline": "kanso-outline.json"
       }
     }
   },

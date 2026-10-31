@@ -27,7 +27,7 @@ const execFileAsync = promisify(execFile);
  * pattern (unexpected shape).”
  */
 export const TIER_SYNC_TARGET = V1_SOLID_BADGES_PATH;
-export const FORMATTER_JSON_PATH = path.join(ROOT, "formatter-detailed.json");
+export const FORMATTER_JSON_PATH = path.join(ROOT, "formatter.json");
 export {
   SOLID_BADGES_PATH,
   TRANSPARENT_BADGES_PATH,
@@ -221,7 +221,7 @@ export async function fetchVidhinRegexes(url = VIDHIN_REGEXES_URL) {
 }
 
 /**
- * Rebuild formatter-detailed.json from the freshly synced tier groups.
+ * Rebuild formatter.json from the freshly synced tier groups.
  * Runs scripts/patch-formatter.mjs in a fresh process so the module-level tier
  * inject constants pick up the updated oracle.
  */

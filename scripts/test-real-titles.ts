@@ -27,7 +27,7 @@ const renders: any[] = [];
 const DIMS: Record<string, [number, number]> = { '2160p': [3840, 2160], '1440p': [2560, 1440], '1080p': [1920, 1080], '720p': [1280, 720], '576p': [720, 576], '480p': [720, 480] };
 const fixtures = REAL_TITLE_FIXTURES as any[];
 for (const preset of ['detailed']) {
-  const suffix = '-detailed';
+  const suffix = '';
   const templates = JSON.parse(fs.readFileSync(`formatter${suffix}.json`, 'utf8'));
   const packs = ['solid', 'transparent', 'mono', 'outline'].map(skin => JSON.parse(fs.readFileSync(`kanso-${skin}${suffix}.json`, 'utf8')));
   for (const f of fixtures) {
