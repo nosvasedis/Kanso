@@ -7,9 +7,9 @@ const java=process.argv.find(a=>a.startsWith('--java='))?.slice(7)??'java';
 const evidence=JSON.parse(await fs.readFile('docs/release-evidence/engine-fixtures.json','utf8'));
 const b64=text=>Buffer.from(text,'utf8').toString('base64');
 const lines=[];
-for(const preset of ['compact','detailed'])for(const skin of ['solid','transparent','mono','outline']){
+for(const preset of ['detailed'])for(const skin of ['solid','transparent','mono','outline']){
  const key=`${preset}-${skin}`;
- const pack=JSON.parse(await fs.readFile(`kanso-${skin}${preset==='compact'?'':'-detailed'}.json`,'utf8'));
+ const pack=JSON.parse(await fs.readFile(`kanso-${skin}-detailed.json`,'utf8'));
  for(const f of pack.filters)lines.push(['P',key,f.id,b64(f.pattern)].join('\t'));
  for(const e of evidence.filter(e=>e.preset===preset)){
    const p=e.stream.parsedFile??{};

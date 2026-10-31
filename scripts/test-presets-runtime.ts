@@ -180,8 +180,8 @@ const fx:FX[]=[
 ];
 fx.push(...coverageFixtures);
 const evidence:any[]=[];
-for(const preset of ['compact','detailed']){
- const suffix=preset==='compact'?'':'-detailed';
+for(const preset of ['detailed']){
+ const suffix='-detailed';
  const templates=JSON.parse(fs.readFileSync(`formatter${suffix}.json`,'utf8'));
  assert.deepEqual(templates,buildPresetFormatter(preset));
  assert.ok(templates.description.includes('🎞️'),`${preset}: encode sits beside the container`);
@@ -245,14 +245,14 @@ fs.mkdirSync('docs/release-evidence',{recursive:true});
 for(const oldPresetMarker of ['\u206f\u200b\u206f\u200b\u206f','\u206f\u200b\u206f\u200c\u206f']){
 for(const e of evidence.slice(0,8)){
  const hay=nuvioHaystacks([e.rawName.replaceAll(PRESET_MARKER,oldPresetMarker),e.rawDescription.replaceAll(PRESET_MARKER,oldPresetMarker)]);
- const pack=JSON.parse(fs.readFileSync(`kanso-outline${e.preset==='compact'?'':'-detailed'}.json`,'utf8'));
+ const pack=JSON.parse(fs.readFileSync(`kanso-outline-detailed.json`,'utf8'));
  assert.equal(pack.filters.filter((b:any)=>hay.some((s:string)=>nuvioRegex(b.pattern).test(s))).length,0,'Old formatter / new badges must fail closed');
 }
 }
 fs.writeFileSync('docs/release-evidence/engine-fixtures.json',JSON.stringify(evidence,null,2)+'\n');
-for(const preset of ['compact','detailed']){
- const inventory=JSON.parse(fs.readFileSync(`kanso-solid${preset==='compact'?'':'-detailed'}.json`,'utf8')).filters;
+for(const preset of ['detailed']){
+ const inventory=JSON.parse(fs.readFileSync('kanso-solid-detailed.json','utf8')).filters;
  const covered=new Set(evidence.filter(f=>f.preset===preset).flatMap(f=>f.badges));
  assert.deepEqual(inventory.map((f:any)=>f.id).filter((id:string)=>!covered.has(id)),[],`${preset}: every exported badge must have a positive real-engine fixture`);
 }
-console.log(`PASS: ${fx.length} fixtures × 2 presets × 4 skins; Instant markers, no echo, AIOStreams 2.36.0.`);
+console.log(`PASS: ${fx.length} fixtures × 4 skins; Instant markers, no echo, AIOStreams 2.36.0.`);

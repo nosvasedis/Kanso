@@ -63,7 +63,9 @@ const visual=[['DV','drDv'],['HDR10','visHdr10'],['HLG','visHlg'],['SDR','visSdr
 const IMAX_PLAIN=gate('stream.editions::~IMAX::or::stream.visualTags::~IMAX',marker('visImax'));
 const VISUAL=gate(VISUAL_CONFLICT,'',visual) +
  gate(`stream.visualTags::~10bit::and::${hdr}::isfalse`,marker('vis10bit')) +
- gate('stream.visualTags::~AI',marker('visAi')) +
+  gate('stream.visualTags::~AI',marker('visAi'));
+// IMAX and 3D are Specials: they ride in stream.name with the other specials.
+const VISUAL_SPECIAL=
  // The parser folds IMAX.Enhanced into IMAX; the bounded token keeps the specific claim.
  gate('stream.editions::~IMAX Enhanced::or::stream.visualTags::~IMAX Enhanced',marker('visImaxE'),gate('stream.filename::exists',gate(token('IMAX.Enhanced'),marker('visImaxE'),IMAX_PLAIN),IMAX_PLAIN)) +
  gate('stream.visualTags::~3D',marker('vis3d'))+
@@ -190,8 +192,9 @@ const messages=gate('stream.message::exists',gate('stream.message::$NZB Health::
 const noPreferred=gate('user.languages::exists',gate('stream.audioTracks::exists',gate(`${PREFERRED_TRACKS}::exists::isfalse`,'🗣️ Preferred audio missing\n'),
  gate(`${reliable}::and::${knownLanguages}::exists::and::${preferredLanguages}::exists::isfalse`,'🗣️ Preferred audio missing\n')));
 
-export function buildPresetFormatter(preset='compact'){
- if(!['compact','detailed'].includes(preset))throw new Error(`Unknown preset ${preset}`);
+export function buildPresetFormatter(preset='detailed'){
+ // Compact was retired in 2.6.0.
+ if(preset!=='detailed')throw new Error(`Unknown preset ${preset}`);
  const detailed=preset==='detailed';
  const release=row([
    {condition:'stream.type::=debrid',text:CACHE_STATE},
@@ -224,18 +227,13 @@ export function buildPresetFormatter(preset='compact'){
  visible+=messages;
  let name=(detailed?TITLE_LTR_ANCHOR+TITLE_TRANSPORT+FORMATTER_RANK_STARS_DETAILED+TITLE_SEEDERS:PRESET_NAME)+PRESET_MARKER;
  let description=visible;
- // Source and tier share a field so native per-field scans cannot echo the source.
-const segments=[(detailed?tierInject():'')+SOURCE,SPECIAL,RESOLUTION,VISUAL,AUDIO,CHANNELS,languageMarkers(detailed),SUBTITLE_MARKERS_INJECT+SUBTITLE_ACCESS,...(detailed?FORMATTER_STREAMING_SEGMENTS:[])];
- // Find an exact two-field partition; greedy packing can reject a valid fit.
- const active=segments.filter(Boolean);
- let partition;
- for(let bits=0;bits<(1<<active.length);bits++){
-   let n=name,d=description;
-   active.forEach((s,i)=>{if(bits&(1<<i))n+=s;else d+=s;});
-   if(Math.max(n.length,d.length)<=PRESET_MAX_LENGTH&&(!partition||Math.max(n.length,d.length)<Math.max(partition.n.length,partition.d.length)))partition={n,d};
- }
- if(!partition)throw new Error(`Preset ${preset}: templates cannot fit the ${PRESET_MAX_LENGTH} character budget (visible ${name.length}/${description.length}; badge segments ${active.map(s=>s.length).join('/')})`);
- name=partition.n;description=partition.d;
+ // Nuvio's player (TV 1.1.0-beta.9+) matches its badge pack against stream.name
+ // after the decoder, so facts the decoder cannot know live in the name: source
+ // and tier (one field, so per-field scans cannot echo the source), specials,
+ // subtitles and streaming origin. Spoken language rides along for budget only:
+ // the player pack reads language from the selected track, never from here.
+ name+=[(detailed?tierInject():'')+SOURCE,SPECIAL+VISUAL_SPECIAL,SUBTITLE_MARKERS_INJECT+SUBTITLE_ACCESS,languageMarkers(detailed),...(detailed?FORMATTER_STREAMING_SEGMENTS:[])].join('');
+ description+=[RESOLUTION,VISUAL,AUDIO,CHANNELS].join('');
  if(Math.max(name.length,description.length)>PRESET_MAX_LENGTH)throw new Error(`Preset ${preset} exceeds ${PRESET_MAX_LENGTH}: ${name.length}/${description.length}`);
  return {name,description};
 }

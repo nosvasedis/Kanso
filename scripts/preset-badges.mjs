@@ -97,15 +97,13 @@ export function colorsFor(group,theme){
  return{fill:'#00000000',ink:'#FFFFFF',border:'#FF'+fill};
 }
 export function buildPresetBadges(theme,preset){
- if(!PRESET_SKINS.includes(theme)||!['compact','detailed'].includes(preset))throw new Error('Unknown preset/skin');
+ if(!PRESET_SKINS.includes(theme)||preset!=='detailed')throw new Error('Unknown preset/skin');
  let filters=library.filters.filter(f=>!RETIRED_BADGE_IDS.has(f.id)).map(original=>{
    const f={...original,type:'filter',isEnabled:true};
    if(SPECIAL_DISPLAY_IDS.includes(f.id))f.groupId='gst';
    f.label=LABELS[f.id]??f.name;
    if(sourceAtoms[f.id])f.pattern=plainSource(f.id,preset);
    else f.pattern=v2PatternForBadge(f.id);
-   if(preset==='compact'&&['gms','gs'].includes(f.groupId))f.isEnabled=false;
-   if(preset==='compact'&&f.id==='v-10bit')f.isEnabled=false;
    if(f.groupId==='gms'){
      const family=f.id.startsWith('web-')?'web':f.id.startsWith('blu-ray-')?'bluray':'remux';
      const source=family==='web'?M.srcWebdl:family==='bluray'?M.srcBluray:M.srcRemux;

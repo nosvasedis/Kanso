@@ -13,7 +13,12 @@ const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const t = s => `(?<!\\S)${esc(s)}(?!\\S)`;
 const has = s => `(?=.*${t(s)})`;
 const not = s => `(?!.*${t(s)})`;
-const rule = (...parts) => `(?s)^${parts.join('')}`;
+// Nuvio TV 1.1.0-beta.9+ also matches the pack against the filename and stream
+// name for groups the decoder left empty. Decoder text always opens with its
+// resolution tokens, so every decoder rule is anchored there and can never be
+// lit by a filename such as "Movie 2160p ITA ENG".
+export const DECODER_START = String.raw`(?:2160p 4K UHD|1440p 2K|1080p FHD|720p|\d{1,4}p SD)(?!\S)`;
+const rule = (...parts) => `(?s)^(?=${DECODER_START})${parts.join('')}`;
 
 // Resolution: Nuvio emits exactly one of these heights.
 const RESOLUTION = [['r-4k', '2160p'], ['r-1440', '1440p'], ['r-1080', '1080p'], ['r-720', '720p'],
@@ -22,11 +27,12 @@ const RESOLUTION = [['r-4k', '2160p'], ['r-1440', '1440p'], ['r-1080', '1080p'],
 
 // Picture. `HDR10` means a PQ transfer, `DV` a Dolby Vision track. DV profile 5
 // has no HDR10 base and is indistinguishable here, so DV never claims HDR10.
-// HDR10+ metadata is not reported; its HDR10 base is what HDR10 states.
+// Nuvio adds HDR10+ only when the decoder already reports PQ and the filename says HDR10+.
 // Without PQ/HLG the transfer may still be unknown, so SDR is never claimed.
 const PICTURE = [
   ['a-dv', rule(has('DV'))],
-  ['v-hdr10', rule(has('HDR10'), not('DV'))],
+  ['v-hdr10p', rule(has('HDR10+'), not('DV'))],
+  ['v-hdr10', rule(has('HDR10'), not('HDR10+'), not('DV'))],
   ['v-hlg', rule(has('HLG'))],
   ['v-10bit', rule(has('10bit'), not('HDR'), not('DV'))],
 ];
@@ -35,7 +41,7 @@ const PICTURE = [
 // codec profile. Nuvio adds `DTS-HD MA` for any profile containing "MA"
 // (including DTS-ES Matrix), so MA also requires the `DTS-HD` token.
 // `DTS-HD` alone is a different token from the two-word `DTS-HD MA`.
-const HD = `(?<!\S)DTS-HD(?! MA(?!\S))(?!\S)`;
+const HD = String.raw`(?<!\S)DTS-HD(?! MA(?!\S))(?!\S)`;
 const hasHd = `(?=.*${HD})`, notHd = `(?!.*${HD})`;
 const ma = [hasHd, has('DTS-HD MA')].join('');
 const AUDIO = [
@@ -55,7 +61,8 @@ const AUDIO = [
   ['a-flac', rule(has('FLAC'))],
   ['a-opus', rule(has('Opus'))],
   ['a-mp3', rule(has('MP3'))],
-  ['a-pcm', rule('(?=.*(?<!\\S)PCM_[SUF]\\d+(?:LE|BE)?(?!\\S))')],
+  // mpv reports "PCM" from beta.9; older builds passed PCM_S16LE-style names.
+  ['a-pcm', rule(String.raw`(?=.*(?<!\S)PCM(?:_[SUF]\d+(?:LE|BE)?)?(?!\S))`)],
 ];
 
 // Nuvio reports only these channel counts (1, 2, 6, 8).
@@ -78,7 +85,7 @@ export const PLAYER_LANGUAGE_CODES = {
 };
 // A code with an optional region/script (pt-BR, es-419, zh-Hant) is one token.
 const LANGUAGE = Object.entries(PLAYER_LANGUAGE_CODES).map(([id, codes]) =>
-  [id, `(?i)(?s)^(?=.*(?<!\\S)(?:${codes.join('|')})(?:[-_][a-z0-9]{2,4})*(?!\\S))`]);
+  [id, `(?i)(?s)^(?=${DECODER_START})(?=.*(?<!\\S)(?:${codes.join('|')})(?:[-_][a-z0-9]{2,4})*(?!\\S))`]);
 
 /** Badge id -> Java/Kotlin regex, in the order chips should read. */
 export const PLAYER_PATTERNS = new Map([...RESOLUTION, ...PICTURE, ...AUDIO, ...CHANNELS, ...LANGUAGE]);

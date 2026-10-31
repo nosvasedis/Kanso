@@ -22,9 +22,12 @@ const LINE_GRAMMAR = [
   /^☁️ RD · 🧩 Comet(?: 🔍 \S+)?$/u,
 ];
 let failures = 0;
+// Renders reused by test-player-badges.mjs (player reads filename + stream.name).
+const renders: any[] = [];
+const DIMS: Record<string, [number, number]> = { '2160p': [3840, 2160], '1440p': [2560, 1440], '1080p': [1920, 1080], '720p': [1280, 720], '576p': [720, 576], '480p': [720, 480] };
 const fixtures = REAL_TITLE_FIXTURES as any[];
-for (const preset of ['compact', 'detailed']) {
-  const suffix = preset === 'compact' ? '' : '-detailed';
+for (const preset of ['detailed']) {
+  const suffix = '-detailed';
   const templates = JSON.parse(fs.readFileSync(`formatter${suffix}.json`, 'utf8'));
   const packs = ['solid', 'transparent', 'mono', 'outline'].map(skin => JSON.parse(fs.readFileSync(`kanso-${skin}${suffix}.json`, 'utf8')));
   for (const f of fixtures) {
@@ -43,6 +46,9 @@ for (const preset of ['compact', 'detailed']) {
     const name = clean(out.name).trim(), lines = clean(out.description).split('\n').filter(Boolean);
     const hay = nuvioHaystacks([out.name, out.description, f.file]);
     const hitSets = packs.map(p => p.filters.filter((b: any) => b.isEnabled && hay.some((s: string) => nuvioRegex(b.pattern).test(s))).map((b: any) => b.id).sort());
+    const [w, h] = DIMS[parsed.resolution] ?? [1920, 1080];
+    renders.push({ preset, label: f.label, filename: f.file, rawName: out.name, hits: hitSets[0],
+      decoder: { videoWidth: w, videoHeight: h, videoCodec: 'HEVC', hdr: (parsed.visualTags ?? []).filter((t: string) => ['DV', 'HDR10', 'HLG'].includes(t)), bitDepth: null, audioCodec: 'AAC', audioProfiles: [], audioChannels: 2 } });
     const expected = [...f.badges, ...(f[preset] ?? [])].map(displayLanguageId).sort();
     if (dump) { console.log(`\n[${preset}] ${f.label}\n  parsed: ${JSON.stringify({ q: parsed.quality, r: parsed.resolution, v: parsed.visualTags, a: parsed.audioTags, c: parsed.audioChannels, n: parsed.network, e: parsed.editions, g: parsed.releaseGroup })}\n  name: ${name}\n  desc: ${lines.join(' ⏎ ')}\n  hits: ${hitSets[0].join(' ')}\n  want: ${expected.join(' ')}`); }
     try {
@@ -60,5 +66,7 @@ for (const preset of ['compact', 'detailed']) {
     }
   }
 }
+fs.mkdirSync('docs/release-evidence', { recursive: true });
+fs.writeFileSync('docs/release-evidence/real-title-renders.json', JSON.stringify(renders, null, 2) + '\n');
 if (failures) { console.error(`\n${failures} real-title failures`); process.exit(1); }
-console.log(`PASS: ${fixtures.length} real titles × 2 presets × 4 skins; exact chips, no residue, % score.`);
+console.log(`PASS: ${fixtures.length} real titles × 4 skins; exact chips, no residue, % score.`);

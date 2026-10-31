@@ -4,9 +4,10 @@ import crypto from "node:crypto";
 import { BADGE_GIST_DEFAULTS, parseGistId } from "./gist-config.mjs";
 
 const localFiles = {
-  solid: "kanso-solid.json",
-  transparent: "kanso-transparent.json",
-  mono: "kanso-mono.json",
+  solid: "kanso-solid-detailed.json",
+  transparent: "kanso-transparent-detailed.json",
+  mono: "kanso-mono-detailed.json",
+  outline: "kanso-outline-detailed.json",
 };
 const hash = (text) => crypto.createHash("sha256").update(text).digest("hex");
 let drift = 0;
@@ -19,7 +20,8 @@ for (const theme of Object.keys(localFiles)) {
   });
   if (!response.ok) throw new Error(`${theme}: GitHub ${response.status}`);
   const gist = await response.json();
-  const remoteFile = gist.files[target.filename] ?? Object.values(gist.files)[0];
+  const remoteFile = gist.files[localFiles[theme]];
+  if (!remoteFile) throw new Error(`${theme}: gist has no ${localFiles[theme]}`);
   let remote = remoteFile.content;
   if (remoteFile.truncated) remote = await (await fetch(remoteFile.raw_url)).text();
   const local = await fs.readFile(localFiles[theme], "utf8");

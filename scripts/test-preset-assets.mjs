@@ -45,8 +45,8 @@ function expectChrome(pack,skin,id,groupId){
  }
 }
 const checked=new Set();
-for(const preset of ['compact','detailed'])for(const skin of PRESET_SKINS){
- const suffix=preset==='compact'?'':'-detailed';
+for(const preset of ['detailed'])for(const skin of PRESET_SKINS){
+ const suffix='-detailed';
  const pack=JSON.parse(await fs.readFile(`kanso-${skin}${suffix}.json`,'utf8'));const expected=buildPresetBadges(skin,preset);
  assert.ok(pack.filters.every(f=>f.isEnabled&&!RETIRED_BADGE_IDS.has(f.id)),'Retired filters are removed from the product');
  assert.ok(pack.groups.every(g=>pack.filters.some(f=>f.groupId===g.id)),'No empty groups');

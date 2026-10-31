@@ -1,3 +1,11 @@
+# Kanso 2.6.0 — one formatter, Player badges for Nuvio beta.9
+
+- **Compact retired.** `formatter.json`, its export files and the `kanso-<skin>.json` packs were removed from the repository and the gists. Kanso is now one formatter (`formatter-detailed.json`) with one stream-list pack and one player pack per skin.
+- **Kanso Player follows Nuvio TV 1.1.0-beta.9 / Mobile 0.6.6-beta.** The player now also reads `stream.name` for groups the decoder cannot know, so specials (Hybrid, Criterion, IMAX, 3D, cuts…), streaming origin, tier, source and subtitles appear in the player exactly as in the stream list. The formatter keeps those markers in the title field.
+- **Decoder chips stay decoder-only.** Resolution, picture, audio, channels and language are anchored to Nuvio's decoder text, so a filename or stream name can never light them. HDR10+ is shown when the decoder reports PQ and Nuvio confirms HDR10+ from the filename. mpv's new `PCM` label is recognised.
+- **Budget:** 19,159 / 12,969 characters; needs `MAX_FORMATTER_TEMPLATE_LENGTH=20000`.
+- **Verification:** the player test ports beta.9's two-phase `matchedPlayerBadges`, `refinePlaybackText` and mpv labels: 36,666 decoder states, noisy names that must stay dark, and 71 real titles through `stream.name` × 4 skins, repeated in native Java regex. The stream list is unchanged by beta.9's whitespace normalisation (3,320 renders, 0 differences).
+
 # Kanso 2.5.3 — clearer gists
 
 - Player packs are now `kanso-<skin>-player.json`, beside `kanso-<skin>.json` (Compact) and `kanso-<skin>-detailed.json`. The 2.5.2 names `kanso-player-<skin>.json` were removed; re-enter the player link in Nuvio.

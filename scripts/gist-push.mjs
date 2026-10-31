@@ -1,4 +1,4 @@
-/** Publish both presets; preserve all other gist files; verify each write. */
+/** Publish the Detailed and player packs; preserve unrelated gist files; verify each write. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -12,12 +12,11 @@ const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 /** GitHub titles a gist by its first file; a space sorts before `-`, so this leads. */
 export const gistIndexName=theme=>`Kanso ${theme[0].toUpperCase()}${theme.slice(1)}.md`;
 /** Files from earlier releases that this publish removes. */
-export const retiredGistFiles=theme=>[`kanso-player-${theme}.json`];
+export const retiredGistFiles=theme=>[`kanso-player-${theme}.json`,`kanso-${theme}.json`];
 export function gistIndex(theme,id){
  const raw=f=>`https://gist.githubusercontent.com/nosvasedis/${id}/raw/${f}`;
  return `# Kanso ${VERSION} · ${theme[0].toUpperCase()}${theme.slice(1)}\n\nImport one link per Nuvio setting. Each file is a separate badge pack.\n\n| Use it for | File | Link |\n|---|---|---|\n`+
-  `| Stream list, Compact formatter | \`kanso-${theme}.json\` | ${raw(`kanso-${theme}.json`)} |\n`+
-  `| Stream list, Detailed formatter | \`kanso-${theme}-detailed.json\` | ${raw(`kanso-${theme}-detailed.json`)} |\n`+
+  `| Stream list (Kanso formatter) | \`kanso-${theme}-detailed.json\` | ${raw(`kanso-${theme}-detailed.json`)} |\n`+
   `| Player badges (Nuvio player badge pack) | \`kanso-${theme}-player.json\` | ${raw(`kanso-${theme}-player.json`)} |\n\n`+
   `Stream-list packs need the matching Kanso formatter: https://github.com/nosvasedis/Kanso\n`;
 }
@@ -25,8 +24,8 @@ export async function pushGist(theme,{dryRun=false}={}){
  const target=resolveGistTargets(await loadGistConfig())[theme];
  const id=parseGistId(target.url);if(!id)return{skipped:true,reason:'no_gist_url',theme};
  if(!target.filename?.endsWith('.json'))throw new Error('Gist filename must end in .json');
- const names=[target.filename,target.filename.replace(/\.json$/,'-detailed.json'),`kanso-${theme}-player.json`];
- const localNames=[`kanso-${theme}.json`,`kanso-${theme}-detailed.json`,`kanso-${theme}-player.json`];
+ const names=[target.filename.replace(/\.json$/,'-detailed.json'),`kanso-${theme}-player.json`];
+ const localNames=[`kanso-${theme}-detailed.json`,`kanso-${theme}-player.json`];
  const bodies=await Promise.all(localNames.map(f=>fs.readFile(path.join(ROOT,f),'utf8')));
  names.unshift(gistIndexName(theme));bodies.unshift(gistIndex(theme,id));
  if(dryRun)return{ok:true,dryRun:true,theme,gistId:id,filename:names.join(', '),bytes:bodies.reduce((n,b)=>n+Buffer.byteLength(b),0)};
@@ -38,7 +37,7 @@ export async function pushGist(theme,{dryRun=false}={}){
  try{await fs.writeFile(backup,JSON.stringify(before,null,2)+'\n',{flag:'wx'});}catch(e){if(e.code!=='EEXIST')throw e;}
  const retired=retiredGistFiles(theme).filter(name=>before.files[name]);
  const files=Object.fromEntries([...names.map((name,i)=>[name,{content:bodies[i]}]),...retired.map(name=>[name,null])]);
- await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso ${VERSION} ${theme}: stream-list badges (Compact, Detailed) and player badges for Nuvio`,files})});
+ await github(`/gists/${id}`,{method:'PATCH',body:JSON.stringify({description:`Kanso ${VERSION} ${theme}: stream-list and player badges for Nuvio`,files})});
  const after=await github(`/gists/${id}?verification=${Date.now()}`);
  for(let i=0;i<names.length;i++){
    const f=after.files[names[i]];if(!f)throw new Error('Published gist file missing');

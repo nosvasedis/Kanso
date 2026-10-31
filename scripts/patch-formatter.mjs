@@ -1,3 +1,3 @@
-/** Compatibility entry point: rebuild both presets locally, without uploading. */
+/** Compatibility entry point: rebuild the presets locally, without uploading. */
 import {buildPresets} from './build-presets.mjs';
 await buildPresets();

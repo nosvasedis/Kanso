@@ -12,13 +12,13 @@ const raw=async url=>{const r=await fetch(url,{headers:{'Cache-Control':'no-cach
 const repo=`${ICON_CDN_OWNER}/${ICON_CDN_REPO}`;
 const commit=(await github(`/repos/${repo}/commits/main`)).sha;
 const base=`https://raw.githubusercontent.com/${repo}/${commit}`;
-const repositoryFiles=['README.md','formatter.json','formatter-detailed.json',...['','-detailed'].flatMap(s=>['name','description'].map(f=>`formatter${s}-export-${f}.txt`)),...PRESET_SKINS.flatMap(t=>['','-detailed'].map(s=>`kanso-${t}${s}.json`)),...PRESET_SKINS.map(t=>`kanso-${t}-player.json`)];
+const repositoryFiles=['README.md','formatter-detailed.json',...['name','description'].map(f=>`formatter-detailed-export-${f}.txt`),...PRESET_SKINS.map(t=>`kanso-${t}-detailed.json`),...PRESET_SKINS.map(t=>`kanso-${t}-player.json`)];
 for(const file of repositoryFiles){
  const local=await fs.readFile(path.join(ROOT,file));const remote=await raw(base+'/'+file);
  if(sha(local)!==sha(remote))throw new Error(`Repository byte mismatch: ${file}`);
 }
 const icons=new Map();
-for(const t of PRESET_SKINS)for(const suffix of ['','-detailed']){
+for(const t of PRESET_SKINS)for(const suffix of ['-detailed']){
  const pack=JSON.parse(await fs.readFile(path.join(ROOT,`kanso-${t}${suffix}.json`),'utf8'));
  for(const f of pack.filters){const file=path.basename(new URL(f.imageURL).pathname);icons.set(file,f.imageURL);}
 }
@@ -36,7 +36,7 @@ if(!process.argv.includes('--repository-only')){
    if(meta.owner?.login!==ICON_CDN_OWNER)throw new Error('Gist ownership differs');
    if(!meta.files[gistIndexName(theme)])throw new Error(`Missing gist index ${gistIndexName(theme)}`);
    for(const old of retiredGistFiles(theme))if(meta.files[old])throw new Error(`Retired gist file still public: ${old}`);
-   for(const [filename,localName] of [...['','-detailed'].map(s=>[t.filename.replace(/\.json$/,s+'.json'),`kanso-${theme}${s}.json`]),[`kanso-${theme}-player.json`,`kanso-${theme}-player.json`]]){
+   for(const [filename,localName] of [[t.filename.replace(/\.json$/,'-detailed.json'),`kanso-${theme}-detailed.json`],[`kanso-${theme}-player.json`,`kanso-${theme}-player.json`]]){
      const f=meta.files[filename];if(!f)throw new Error(`Missing gist file ${filename}`);
      const local=await fs.readFile(path.join(ROOT,localName));
      const remote=await raw(f.raw_url);
